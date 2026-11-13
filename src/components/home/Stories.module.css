@@ -1,0 +1,154 @@
+.section {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 104px;
+}
+
+/* Coverflow */
+.flow {
+  position: relative;
+  height: 500px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  -webkit-perspective: 1400px;
+  perspective: 1400px;
+}
+
+.flow .item {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 320px;
+  height: 460px;
+  margin-left: -160px;
+  transition:
+    transform 0.7s var(--ease-out),
+    opacity 0.5s;
+}
+
+/* Лента со snap на телефоне */
+.strip {
+  display: flex;
+  margin: 24px 0 0;
+  padding: 0 var(--gutter) 12px;
+  overflow-x: auto;
+  list-style: none;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 var(--gutter);
+  scrollbar-width: none;
+}
+
+.strip::-webkit-scrollbar {
+  display: none;
+}
+
+.strip .item {
+  flex: 0 0 260px;
+  height: 380px;
+  margin-right: 14px;
+  scroll-snap-align: start;
+}
+
+.card {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--r-card);
+  background: var(--ink);
+  box-shadow: var(--shadow-raised);
+  cursor: pointer;
+  transition: filter 0.5s;
+}
+
+.side {
+  filter: saturate(0.7) brightness(0.85);
+}
+
+.photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.shade {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: var(--shade-card);
+}
+
+.meta {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  left: 20px;
+  display: grid;
+  justify-items: start;
+  grid-gap: 6px;
+  gap: 6px;
+  color: var(--white);
+  text-align: left;
+}
+
+.badge {
+  padding: 4px 9px;
+  border-radius: var(--r-badge);
+  background: var(--on-photo-chip);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+}
+
+.avatar {
+  width: 26px;
+  height: 26px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--grad-avatar);
+}
+
+.note {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding-bottom: 64px;
+  }
+
+  .title {
+    font-size: 21px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow .item,
+  .card {
+    transition: none;
+  }
+}
