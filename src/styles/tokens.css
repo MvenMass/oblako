@@ -210,6 +210,25 @@
   --shadow-ticket: drop-shadow(0 34px 50px rgba(11, 37, 64, 0.2));
   --grad-avatar: linear-gradient(135deg, #38bde8, #c8146f);
 
+  /* Сцены городов */
+  --window-light: #ffd27a;
+  --moon-crater: #dcd6be;
+  --scene-shade: linear-gradient(180deg, rgba(6, 23, 47, 0) 55%, rgba(6, 23, 47, 0.42));
+  --moscow-bar: #b9c6d3;
+  --hero-glass: rgba(255, 255, 255, 0.8);
+  --hero-shadow-day: 0 10px 40px rgba(6, 23, 47, 0.12);
+  --hero-shadow-night: 0 10px 40px rgba(6, 23, 47, 0.35);
+
+  /* Тематическая секция Тбилиси: вино */
+  --wine-bg: #3a1220;
+  --wine-ink: #fff6ef;
+  --wine-muted: #ebcfc6;
+  --wine-eyebrow: #f2be96;
+  --wine-vine: #7a9a4b;
+  --wine-top: #c23a5e;
+  --wine-bottom: #6e1e35;
+  --wine-glass: rgba(255, 255, 255, 0.06);
+
   /* Первый экран */
   --field-bg: rgba(255, 255, 255, 0.55);
   --grad-badge: linear-gradient(135deg, #38bde8, #8b6cf0);

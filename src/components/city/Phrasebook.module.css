@@ -1,0 +1,119 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 14px;
+  gap: 14px;
+}
+
+.card {
+  display: grid;
+  grid-gap: 8px;
+  gap: 8px;
+  padding: 22px;
+  border: 1px solid var(--tag-border);
+  border-radius: 24px;
+  background: var(--field-bg);
+  box-shadow: var(--shadow-card);
+  color: var(--c-ink);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    transform 0.3s var(--ease-out),
+    box-shadow 0.3s,
+    border-color 0.3s;
+}
+
+.card:hover,
+.on {
+  transform: translateY(-4px);
+}
+
+.on {
+  border-color: var(--c-accent);
+  box-shadow: var(--c-shadow);
+}
+
+.top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.native {
+  font-family: var(--c-font);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.eq {
+  display: flex;
+  flex: none;
+  align-items: center;
+  height: 22px;
+  margin-left: 10px;
+  color: var(--c-accent);
+}
+
+.eq span {
+  width: 3px;
+  height: 18px;
+  margin-left: 3px;
+  border-radius: 2px;
+  background: currentColor;
+  transform: scaleY(0.5);
+}
+
+.eqOn {
+  color: var(--c-accent2);
+}
+
+.eqOn span {
+  animation: eq 0.6s ease-in-out infinite;
+}
+
+.eqOn span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.eqOn span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes eq {
+  0%,
+  100% {
+    transform: scaleY(0.4);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.translit {
+  color: var(--c-accent);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.ru {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.note {
+  min-height: 1.4em;
+  color: var(--c-muted);
+  font-size: 13px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+
+  .eqOn span {
+    animation: none;
+    transform: none;
+  }
+}

@@ -1,0 +1,237 @@
+.seasons {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 88px var(--gutter) 0;
+}
+
+.card {
+  display: grid;
+  grid-gap: 22px;
+  gap: 22px;
+  padding: 32px;
+  border: 1px solid var(--glass-border);
+  border-radius: 32px;
+  background: var(--glass-bg);
+  box-shadow: var(--glass-shadow);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.title {
+  margin-right: 12px;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  color: var(--c-muted);
+  font-size: 13px;
+}
+
+.legend i {
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
+  border-radius: 4px;
+  background: var(--c-grad-bar);
+}
+
+.chart {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-gap: 10px;
+  gap: 10px;
+  align-items: end;
+  height: 220px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.temp {
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.bar {
+  display: block;
+  width: 100%;
+  border-radius: 10px 10px 4px 4px;
+  background: var(--c-line);
+  transform-origin: bottom;
+  animation: bar-fill 2.6s var(--ease-out) 0.6s both;
+}
+
+.best {
+  background: var(--c-grad-bar);
+}
+
+@keyframes bar-fill {
+  from {
+    transform: scaleY(0);
+  }
+}
+
+.month {
+  margin-top: 8px;
+  color: var(--c-muted);
+  font-size: 12px;
+}
+
+/* План на 3 дня */
+.plan {
+  padding-bottom: 104px;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-gap: 16px;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.day {
+  display: grid;
+  align-content: start;
+  grid-gap: 18px;
+  gap: 18px;
+  padding: 26px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-card);
+  background: var(--glass-bg);
+  box-shadow: var(--glass-shadow);
+}
+
+.dayHead {
+  display: flex;
+  align-items: baseline;
+}
+
+.dayNum {
+  margin-right: 10px;
+  color: var(--c-accent);
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+}
+
+.dayLabel {
+  color: var(--c-muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.stops {
+  display: grid;
+  grid-gap: 12px;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stops li {
+  position: relative;
+  padding-left: 22px;
+  line-height: 1.45;
+}
+
+.stops li::before {
+  content: '';
+  position: absolute;
+  top: 7px;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--c-accent2);
+}
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: -6px;
+}
+
+.cta > * {
+  margin: 6px;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  min-height: 56px;
+  padding: 0 24px;
+  border-radius: var(--r-btn);
+  background: var(--c-accent);
+  box-shadow: var(--c-shadow);
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.ctaButton svg {
+  margin-left: 10px;
+}
+
+.ctaNote {
+  color: var(--c-muted);
+  font-size: 14px;
+}
+
+@media (max-width: 767px) {
+  .seasons {
+    padding-top: 64px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .chart {
+    grid-gap: 4px;
+    gap: 4px;
+  }
+
+  .temp {
+    font-size: 10px;
+  }
+
+  .month {
+    font-size: 10px;
+  }
+
+  .plan {
+    padding-bottom: 72px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar {
+    animation: none;
+  }
+}

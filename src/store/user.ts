@@ -9,6 +9,8 @@ interface UserActions {
   setRoute: (cityId: string, days: RouteDay[]) => void;
   /** «В маршрут» из галереи города */
   addToRoute: (cityId: string, placeId: string) => void;
+  /** Тоггл «В маршрут» в галерее города */
+  toggleRoutePlace: (cityId: string, placeId: string) => void;
   setPacked: (cityId: string, itemId: string, packed: boolean) => void;
   setSeat: (seat: string | null) => void;
   setShade: (shade: boolean) => void;
@@ -46,6 +48,15 @@ export const useUserStore = create<UserStore>()(
         set((s) => ({
           routeAdded: { ...s.routeAdded, [cityId]: unique(s.routeAdded[cityId] ?? [], placeId) },
         })),
+
+      toggleRoutePlace: (cityId, placeId) =>
+        set((s) => {
+          const list = s.routeAdded[cityId] ?? [];
+          const next = list.includes(placeId)
+            ? list.filter((id) => id !== placeId)
+            : [...list, placeId];
+          return { routeAdded: { ...s.routeAdded, [cityId]: next } };
+        }),
 
       setPacked: (cityId, itemId, packed) =>
         set((s) => {

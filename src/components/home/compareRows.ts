@@ -1,20 +1,6 @@
 import type { City } from '@/types/city';
 import { formatRub, nbsp } from '@/lib/cities';
-
-const MONTHS_SHORT = [
-  'янв',
-  'фев',
-  'мар',
-  'апр',
-  'май',
-  'июн',
-  'июл',
-  'авг',
-  'сен',
-  'окт',
-  'ноя',
-  'дек',
-];
+import { MONTHS_SHORT } from '@/lib/months';
 
 export interface CompareRow {
   label: string;
