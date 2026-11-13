@@ -1,0 +1,7 @@
+dist
+coverage
+docs
+public
+src/data
+package-lock.json
+src/types
