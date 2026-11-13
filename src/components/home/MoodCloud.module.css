@@ -1,0 +1,208 @@
+.section {
+  position: relative;
+  overflow: hidden;
+  padding: 40px 0 104px;
+}
+
+.aurora {
+  position: absolute;
+  top: 80px;
+  right: 10%;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  background: var(--aurora-dusk-soft);
+  opacity: 0.55;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 600px;
+  grid-gap: 40px;
+  gap: 40px;
+  align-items: center;
+}
+
+.text {
+  display: grid;
+  grid-gap: 16px;
+  gap: 16px;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.sphere {
+  position: relative;
+  width: 600px;
+  max-width: 100%;
+  height: 600px;
+  touch-action: pan-y;
+}
+
+.ball {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 470px;
+  height: 470px;
+  margin: -235px 0 0 -235px;
+  border-radius: 50%;
+  background: var(--sphere-bg);
+  box-shadow: var(--sphere-shadow);
+}
+
+.tag {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-height: 40px;
+  padding: 8px 14px;
+  border: 1px solid var(--tag-border);
+  border-radius: 12px;
+  background: var(--tag-bg);
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    box-shadow 0.3s;
+  will-change: transform, opacity;
+}
+
+.tag:hover {
+  background: var(--white);
+}
+
+.tag[aria-pressed='true'] {
+  border-color: var(--pink);
+  background: var(--pink);
+  box-shadow: var(--shadow-cta);
+  color: var(--white);
+}
+
+/* Папки городов */
+.hits {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 150px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hit {
+  flex: 0 1 260px;
+  margin: 14px 18px 0 0;
+}
+
+.folder {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 140px;
+  padding: 22px 22px 18px;
+  border-radius: 8px 22px 22px 22px;
+  background: var(--shade-card), linear-gradient(135deg, var(--c1), var(--c2));
+  box-shadow: var(--shadow-raised);
+  color: var(--white);
+  text-decoration: none;
+  animation: folder-rise 0.6s var(--ease-out) both;
+  transition: transform 0.3s var(--ease-out);
+}
+
+.folder:hover {
+  transform: translateY(-4px);
+}
+
+@keyframes folder-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+.tab {
+  position: absolute;
+  top: -14px;
+  left: 0;
+  width: 90px;
+  height: 16px;
+  border-radius: 8px 12px 0 0;
+  background: var(--c1);
+}
+
+.country {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.name {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.note {
+  font-size: 13px;
+}
+
+@media (max-width: 1023px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sphere {
+    justify-self: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding: 24px 0 64px;
+  }
+
+  .sphere {
+    width: 340px;
+    height: 340px;
+  }
+
+  .ball {
+    width: 280px;
+    height: 280px;
+    margin: -140px 0 0 -140px;
+  }
+
+  .tag {
+    min-height: 36px;
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+
+  .hit {
+    flex-basis: 100%;
+    margin-right: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .folder {
+    animation: none;
+  }
+}

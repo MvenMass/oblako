@@ -68,6 +68,8 @@ export const MOOD_TAGS: [string, string[]][] = [
 
 export interface Story {
   title: string;
+  /** Плашка на карточке: «Стамбул · 7 дней» */
+  badge: string;
   cityId: string;
   /** Ключи фото из public/photos/<cityId>/ — по одному на слайд */
   photos: string[];
@@ -77,6 +79,7 @@ export interface Story {
 export const STORIES: Story[] = [
   {
     title: 'Неделя в Стамбуле',
+    badge: 'Стамбул · 7 дней',
     cityId: 'istanbul',
     photos: ['balat', 'ferry', 'galata'],
     slides: [
@@ -87,6 +90,7 @@ export const STORIES: Story[] = [
   },
   {
     title: 'Тбилиси на выходные',
+    badge: 'Тбилиси · 3 дня',
     cityId: 'tbilisi',
     photos: ['oldtown', 'narikala', 'baths'],
     slides: [
@@ -97,6 +101,7 @@ export const STORIES: Story[] = [
   },
   {
     title: 'Закат на Босфоре',
+    badge: 'Стамбул · 1 вечер',
     cityId: 'istanbul',
     photos: ['night', 'ferry', 'sophia'],
     slides: [
@@ -107,6 +112,7 @@ export const STORIES: Story[] = [
   },
   {
     title: 'Хинкали-тур',
+    badge: 'Тбилиси · 2 дня',
     cityId: 'tbilisi',
     photos: ['khinkali', 'oldtown', 'aivani'],
     slides: [
@@ -117,6 +123,7 @@ export const STORIES: Story[] = [
   },
   {
     title: 'Мцхета за полдня',
+    badge: 'Мцхета · полдня',
     cityId: 'tbilisi',
     photos: ['jvari', 'aivani', 'narikala'],
     slides: [
@@ -127,6 +134,7 @@ export const STORIES: Story[] = [
   },
   {
     title: 'Базары и лампы',
+    badge: 'Стамбул · 1 день',
     cityId: 'istanbul',
     photos: ['bazaar', 'lamps', 'simit'],
     slides: [
@@ -137,6 +145,7 @@ export const STORIES: Story[] = [
   },
   {
     title: 'Ночной Тбилиси',
+    badge: 'Тбилиси · 1 вечер',
     cityId: 'tbilisi',
     photos: ['night', 'bridge', 'oldtown'],
     slides: [
