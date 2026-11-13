@@ -1,0 +1,359 @@
+.section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 140px;
+}
+
+.h2 {
+  margin-bottom: 26px;
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: var(--ls-tight);
+  text-align: center;
+}
+
+.ticket {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 1080px;
+  filter: var(--shadow-ticket);
+}
+
+/* Вырезы-полукруги по линии отрыва */
+.main {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 300px;
+  padding: 34px 40px;
+  border-radius: 28px 0 0 28px;
+  background: var(--ticket-main);
+  -webkit-mask:
+    radial-gradient(circle at 100% 0, transparent 16px, #000 17px) top / 100% 51% no-repeat,
+    radial-gradient(circle at 100% 100%, transparent 16px, #000 17px) bottom / 100% 51% no-repeat;
+  mask:
+    radial-gradient(circle at 100% 0, transparent 16px, #000 17px) top / 100% 51% no-repeat,
+    radial-gradient(circle at 100% 100%, transparent 16px, #000 17px) bottom / 100% 51% no-repeat;
+}
+
+.shake {
+  animation: shake 0.5s ease-out;
+}
+
+@keyframes shake {
+  20% {
+    transform: rotate(-1deg);
+  }
+  40% {
+    transform: rotate(1deg);
+  }
+  60% {
+    transform: rotate(-0.5deg);
+  }
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.brand svg {
+  margin-right: 10px;
+  fill: var(--sky);
+}
+
+.flight {
+  color: var(--pink);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.route {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.city {
+  display: grid;
+}
+
+.small {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.code {
+  font-size: 84px;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+.arc {
+  width: 160px;
+  height: 40px;
+  margin: 0 28px;
+  fill: none;
+  stroke: var(--sky);
+  stroke-width: 2;
+  stroke-dasharray: 5 6;
+}
+
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.details > span {
+  display: grid;
+  margin: 0 32px 8px 0;
+}
+
+.details b {
+  color: var(--ink);
+  font-size: 18px;
+}
+
+.perf {
+  width: 0;
+  margin: 18px 0;
+  border-left: 3px dashed var(--perf-line);
+}
+
+.stubWrap {
+  position: relative;
+  flex: 0 0 280px;
+}
+
+.stub {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  padding: 30px 26px;
+  border: 0;
+  border-radius: 0 28px 28px 0;
+  background: var(--ticket-stub);
+  color: var(--ink);
+  text-align: left;
+  cursor: grab;
+  touch-action: none;
+  transform-origin: 0 100%;
+  transition:
+    transform 0.9s var(--ease-out),
+    opacity 0.9s;
+  -webkit-mask:
+    radial-gradient(circle at 0 0, transparent 16px, #000 17px) top / 100% 51% no-repeat,
+    radial-gradient(circle at 0 100%, transparent 16px, #000 17px) bottom / 100% 51% no-repeat;
+  mask:
+    radial-gradient(circle at 0 0, transparent 16px, #000 17px) top / 100% 51% no-repeat,
+    radial-gradient(circle at 0 100%, transparent 16px, #000 17px) bottom / 100% 51% no-repeat;
+}
+
+.stub[style] {
+  transition: none;
+}
+
+.stub:active {
+  cursor: grabbing;
+}
+
+.torn {
+  opacity: 0;
+  transform: translate(240px, 160px) rotate(28deg);
+  pointer-events: none;
+}
+
+.stubLabel {
+  color: var(--sky-deep);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.stubTitle {
+  font-size: 30px;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.pull {
+  display: flex;
+  align-items: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.nudge {
+  margin-right: 8px;
+  fill: none;
+  stroke: var(--pink);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  animation: nudge 1.2s ease-in-out infinite;
+}
+
+@keyframes nudge {
+  50% {
+    transform: translateX(8px);
+  }
+}
+
+.barcode {
+  height: 34px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--ink) 0 2px,
+    transparent 2px 5px,
+    var(--ink) 5px 6px,
+    transparent 6px 9px
+  );
+}
+
+.cta {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 0 28px 28px 0;
+  color: var(--ink);
+  text-align: center;
+  text-decoration: none;
+  animation: pop-in 0.45s var(--ease-spring) 0.3s both;
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  min-height: 56px;
+  margin-top: 12px;
+  padding: 0 24px;
+  border-radius: var(--r-btn);
+  background: var(--pink);
+  box-shadow: var(--shadow-cta);
+  color: var(--white);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.ctaButton svg {
+  margin-left: 10px;
+}
+
+@media (max-width: 1023px) {
+  .code {
+    font-size: 64px;
+  }
+
+  .arc {
+    width: 100px;
+    margin: 0 16px;
+  }
+}
+
+/* Телефон: корешок под основной частью, отрывается всё так же вправо */
+@media (max-width: 767px) {
+  .section {
+    padding-bottom: 72px;
+  }
+
+  .ticket {
+    flex-direction: column;
+  }
+
+  .main {
+    min-height: 0;
+    padding: 24px;
+    border-radius: 24px 24px 0 0;
+    -webkit-mask: none;
+    mask: none;
+  }
+
+  .code {
+    font-size: 44px;
+  }
+
+  .arc {
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 40px;
+    margin: 0 12px;
+  }
+
+  .details > span {
+    margin-right: 20px;
+  }
+
+  .perf {
+    width: auto;
+    margin: 0 18px;
+    border-top: 3px dashed var(--perf-line);
+    border-left: 0;
+  }
+
+  .stubWrap {
+    flex-basis: 220px;
+  }
+
+  .stub,
+  .cta {
+    border-radius: 0 0 24px 24px;
+    -webkit-mask: none;
+    mask: none;
+  }
+
+  .stubTitle {
+    font-size: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shake,
+  .nudge,
+  .cta {
+    animation: none;
+  }
+
+  .stub {
+    transition: opacity 0.15s;
+  }
+
+  .torn {
+    transform: none;
+  }
+}
