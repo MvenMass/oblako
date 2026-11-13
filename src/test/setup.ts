@@ -14,3 +14,7 @@ if (typeof window.matchMedia !== 'function') {
       dispatchEvent: () => false,
     }) as MediaQueryList;
 }
+
+// jsdom не рисует на canvas — без заглушки getContext пишет ошибки в консоль
+HTMLCanvasElement.prototype.getContext = (() =>
+  null) as typeof HTMLCanvasElement.prototype.getContext;

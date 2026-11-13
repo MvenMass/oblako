@@ -1,5 +1,7 @@
-import { PageStub } from '../PageStub';
+import { Hero } from '@/components/home/Hero';
+import { usePageTitle } from '@/lib/usePageTitle';
 
 export default function Home() {
-  return <PageStub eyebrow="OBLAKO" title="Путь начинается" accent={'в облаке'} />;
+  usePageTitle();
+  return <Hero />;
 }

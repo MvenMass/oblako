@@ -1,0 +1,167 @@
+/* Фон уходит под шапку: начинается выше секции */
+.backdrop {
+  position: absolute;
+  top: -120px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  will-change: transform;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: hero-aurora 20s ease-in-out infinite;
+}
+
+.b1 {
+  top: -220px;
+  right: -80px;
+  width: 760px;
+  height: 760px;
+  background: var(--aurora-1);
+}
+
+.b2 {
+  top: 420px;
+  left: -200px;
+  width: 600px;
+  height: 600px;
+  background: var(--sky-light);
+  animation-delay: -5s;
+}
+
+.b3 {
+  top: 300px;
+  right: 300px;
+  width: 520px;
+  height: 520px;
+  background: var(--aurora-2);
+  opacity: 0.8;
+  animation-delay: -8s;
+}
+
+.b4 {
+  right: -120px;
+  bottom: -260px;
+  width: 620px;
+  height: 620px;
+  background: var(--aurora-3);
+  opacity: 0.85;
+  animation-delay: -13s;
+}
+
+@keyframes hero-aurora {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(60px, -40px) scale(1.15);
+  }
+  66% {
+    transform: translate(-50px, 30px) scale(0.92);
+  }
+}
+
+.svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+.ribbon {
+  fill: none;
+  stroke-dasharray: 420 780;
+  animation: hero-flow 10s linear infinite;
+}
+
+@keyframes hero-flow {
+  to {
+    stroke-dashoffset: -1200;
+  }
+}
+
+.sail {
+  animation: hero-sail 38s ease-in-out infinite;
+}
+
+@keyframes hero-sail {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(90px);
+  }
+}
+
+.cloudStop0 {
+  stop-color: var(--cloud);
+}
+
+.cloudStop1 {
+  stop-color: var(--cloud);
+  stop-opacity: 0.95;
+}
+
+.cloudStop2 {
+  stop-color: var(--cloud-edge);
+  stop-opacity: 0.9;
+}
+
+.cloudShadow {
+  fill: var(--cloud-shadow);
+  opacity: 0.35;
+}
+
+.cloudBase {
+  fill: var(--cloud-base);
+  opacity: 0.6;
+}
+
+.grain {
+  opacity: 0.07;
+  mix-blend-mode: multiply;
+}
+
+@media (max-width: 767px) {
+  .backdrop {
+    top: -90px;
+  }
+
+  .b1 {
+    width: 420px;
+    height: 420px;
+    top: -120px;
+    right: -160px;
+  }
+
+  .b3 {
+    width: 300px;
+    height: 300px;
+    right: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob,
+  .ribbon,
+  .sail {
+    animation: none;
+  }
+}

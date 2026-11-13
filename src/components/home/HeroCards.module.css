@@ -1,0 +1,108 @@
+.card {
+  position: absolute;
+  display: flex;
+  padding: 16px 18px;
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+  animation: hero-bob 6s ease-in-out infinite;
+}
+
+@keyframes hero-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.flight {
+  top: 40px;
+  left: 0;
+  align-items: center;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-right: 14px;
+  border-radius: 12px;
+  background: var(--grad-badge);
+  color: var(--white);
+}
+
+.flightText,
+.weather {
+  flex-direction: column;
+}
+
+.flightText {
+  display: flex;
+}
+
+.route {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.weather {
+  right: 0;
+  bottom: 70px;
+  animation-delay: -2s;
+}
+
+.temp {
+  margin: 4px 0;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.hint {
+  bottom: 10px;
+  left: 30px;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 16px;
+  animation-delay: -4s;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: var(--pink);
+}
+
+.hintText {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .card {
+    background: var(--glass-bg-solid);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    animation: none;
+  }
+}

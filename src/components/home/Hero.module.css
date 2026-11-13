@@ -1,0 +1,193 @@
+.hero {
+  position: relative;
+}
+
+.grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  grid-template-areas: 'text visual';
+  grid-gap: 40px;
+  gap: 40px;
+  align-items: center;
+  padding-top: 80px;
+  padding-bottom: 96px;
+}
+
+.text {
+  grid-area: text;
+  display: grid;
+  justify-items: start;
+  grid-gap: 26px;
+  gap: 26px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 14px 0 6px;
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.pillTag {
+  margin-right: 10px;
+  padding: 5px 10px;
+  border-radius: var(--r-badge);
+  background: var(--ink);
+  color: var(--white);
+  font-weight: 600;
+}
+
+.title {
+  font-size: 80px;
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+.lead {
+  max-width: 500px;
+  color: var(--muted);
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+.leadShort {
+  display: none;
+}
+
+.formWrap {
+  justify-self: stretch;
+}
+
+.visual {
+  grid-area: visual;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 560px;
+}
+
+.globe {
+  max-width: 520px;
+}
+
+/* Появление: подъём с задержками */
+.rise {
+  animation: hero-rise 0.9s var(--ease-out) both;
+}
+
+.text > :nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.text > :nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.text > :nth-child(4) {
+  animation-delay: 0.24s;
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+@media (max-width: 1279px) {
+  .title {
+    font-size: 68px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      'text'
+      'visual';
+    padding-top: 56px;
+  }
+
+  .visual {
+    min-height: 0;
+  }
+
+  .globe {
+    max-width: 440px;
+  }
+}
+
+/* Телефон: заголовок, глобус, форма (порядок как в Mobile.dc.html) */
+@media (max-width: 767px) {
+  .grid {
+    grid-template-areas: none;
+    grid-gap: 16px;
+    gap: 16px;
+    padding-top: 30px;
+    padding-bottom: 48px;
+  }
+
+  .text {
+    display: contents;
+  }
+
+  .pill {
+    display: none;
+  }
+
+  .title {
+    grid-row: 1;
+    font-size: 46px;
+  }
+
+  .lead {
+    grid-row: 2;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .leadLong {
+    display: none;
+  }
+
+  .leadShort {
+    display: inline;
+  }
+
+  .visual {
+    grid-area: auto;
+    grid-row: 3;
+  }
+
+  .formWrap {
+    grid-row: 4;
+  }
+
+  .globe {
+    max-width: 300px;
+  }
+
+  .cards {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+  }
+}
