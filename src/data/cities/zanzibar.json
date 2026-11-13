@@ -1,0 +1,318 @@
+{
+  "id": "zanzibar",
+  "name": "Занзибар",
+  "country": "Танзания",
+  "region": "Индийский океан",
+  "iata": "ZNZ",
+  "hit": true,
+  "utc": 3,
+  "coords": {
+    "lat": -6.16,
+    "lon": 39.19
+  },
+  "theme": {
+    "bg": "#F0FAF8",
+    "ink": "#0B2A2A",
+    "muted": "#3D5E5C",
+    "accent": "#00939A",
+    "accent2": "#F28C28",
+    "folder": [
+      "#00939A",
+      "#F28C28"
+    ],
+    "font": null
+  },
+  "greeting": {
+    "native": "Jambo",
+    "translit": "джамбо",
+    "ru": "Привет",
+    "lang": "sw"
+  },
+  "lead": "Белый песок, бирюзовый океан и доу под парусом на закате. Стоун-Таун пахнет гвоздикой и кофе, а на севере острова — лучшие пляжи для купания.",
+  "facts": {
+    "flight": "9 ч 30 мин",
+    "flightMinutes": 570,
+    "visa": "E-visa*",
+    "language": "Суахили",
+    "languageNote": "английский — в отелях",
+    "timeDiff": "0 ч",
+    "plugs": "230 В, тип D/G",
+    "currency": {
+      "code": "TZS",
+      "name": "Шиллинг, принимают доллары",
+      "demoRateRub": 90,
+      "rateCode": "USD"
+    }
+  },
+  "climate": {
+    "avgHighC": [
+      32,
+      32,
+      32,
+      30,
+      29,
+      28,
+      28,
+      28,
+      29,
+      30,
+      31,
+      32
+    ],
+    "bestMonths": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      12,
+      1,
+      2
+    ],
+    "note": "ориентир; в продукте — климат Open-Meteo"
+  },
+  "quiz": {
+    "moods": [
+      "sea",
+      "exotic"
+    ],
+    "dailyRub": 10000,
+    "flightRub": 70000
+  },
+  "know": [
+    {
+      "title": "Дресс-код",
+      "text": "Остров мусульманский: в Стоун-Тауне плечи и колени лучше закрывать."
+    },
+    {
+      "title": "Приливы",
+      "text": "На востоке вода уходит далеко. Купаться удобнее в Нунгви и Кендве."
+    },
+    {
+      "title": "Деньги",
+      "text": "Доллары принимают, сдачу часто дают в шиллингах."
+    },
+    {
+      "title": "Здоровье",
+      "text": "Уточните медицинские требования и прививки перед поездкой."
+    }
+  ],
+  "places": [
+    {
+      "id": "stonetown",
+      "name": "Стоун-Таун",
+      "category": "see",
+      "district": "Запад острова",
+      "duration": "3 ч",
+      "price": "Бесплатно",
+      "description": "Старый город из коралла с резными дверями.",
+      "photo": "/photos/zanzibar/stonetown.jpg",
+      "map": {
+        "x": 60,
+        "y": 50
+      }
+    },
+    {
+      "id": "alley",
+      "name": "Переулки Стоун-Тауна",
+      "category": "see",
+      "district": "Стоун-Таун",
+      "duration": "1 ч",
+      "price": "Бесплатно",
+      "description": "Белые стены, тень и запах специй.",
+      "photo": "/photos/zanzibar/alley.jpg",
+      "map": {
+        "x": 157,
+        "y": 111
+      }
+    },
+    {
+      "id": "market",
+      "name": "Рыбный рынок",
+      "category": "eat",
+      "district": "Дараджани",
+      "duration": "1 ч",
+      "price": "Бесплатно",
+      "description": "Утром — торг за свежий улов.",
+      "photo": "/photos/zanzibar/market.jpg",
+      "map": {
+        "x": 254,
+        "y": 172
+      }
+    },
+    {
+      "id": "nungwi",
+      "name": "Пляж Нунгви",
+      "category": "nature",
+      "district": "Север острова",
+      "duration": "день",
+      "price": "Бесплатно",
+      "description": "Купаться можно в любой прилив.",
+      "photo": "/photos/zanzibar/nungwi.jpg",
+      "map": {
+        "x": 351,
+        "y": 233
+      }
+    },
+    {
+      "id": "dhow",
+      "name": "Доу у берега",
+      "category": "nature",
+      "district": "Северо-восток",
+      "duration": "полдня",
+      "price": "от 30 $",
+      "description": "Прогулка под парусом на традиционной лодке.",
+      "photo": "/photos/zanzibar/dhow.jpg",
+      "map": {
+        "x": 128,
+        "y": 94
+      }
+    },
+    {
+      "id": "seaweed",
+      "name": "Водорослевые фермы",
+      "category": "nature",
+      "district": "Восточное побережье",
+      "duration": "1 ч",
+      "price": "Бесплатно",
+      "description": "Женщины выращивают водоросли на отмели.",
+      "photo": "/photos/zanzibar/seaweed.jpg",
+      "map": {
+        "x": 225,
+        "y": 155
+      }
+    },
+    {
+      "id": "kizimkazi",
+      "name": "Кизимкази",
+      "category": "nature",
+      "district": "Юг острова",
+      "duration": "полдня",
+      "price": "Бесплатно",
+      "description": "Тихие бухты и хижины под пальмами.",
+      "photo": "/photos/zanzibar/kizimkazi.jpg",
+      "map": {
+        "x": 322,
+        "y": 216
+      }
+    },
+    {
+      "id": "sunset",
+      "name": "Закат у лодок",
+      "category": "evening",
+      "district": "Запад острова",
+      "duration": "1 ч",
+      "price": "Бесплатно",
+      "description": "Солнце садится прямо в океан.",
+      "photo": "/photos/zanzibar/sunset.jpg",
+      "map": {
+        "x": 99,
+        "y": 77
+      }
+    }
+  ],
+  "dishes": [
+    {
+      "name": "Пицца Занзибара",
+      "text": "Тонкое тесто с начинкой, жарят на ночном рынке"
+    },
+    {
+      "name": "Пилау",
+      "text": "Рис со специями острова"
+    },
+    {
+      "name": "Морепродукты",
+      "text": "Свежий улов на рынке Фородхани"
+    },
+    {
+      "name": "Сок сахарного тростника",
+      "text": "Выжимают прямо при вас"
+    }
+  ],
+  "itinerary": [
+    [
+      "Стоун-Таун",
+      "Рынок Дараджани",
+      "Ночной рынок Фородхани"
+    ],
+    [
+      "Тур по специям",
+      "Лес Джозани",
+      "Закат на доу"
+    ],
+    [
+      "Пляж Нунгви",
+      "Снорклинг",
+      "Ужин на берегу"
+    ]
+  ],
+  "phrases": {
+    "speechLang": "sw-TZ",
+    "items": [
+      {
+        "native": "Jambo",
+        "translit": "джамбо",
+        "ru": "Привет"
+      },
+      {
+        "native": "Asante",
+        "translit": "асанте",
+        "ru": "Спасибо"
+      },
+      {
+        "native": "Kwaheri",
+        "translit": "кваэри",
+        "ru": "До свидания"
+      },
+      {
+        "native": "Bei gani?",
+        "translit": "бэй гани?",
+        "ru": "Сколько стоит?"
+      },
+      {
+        "native": "Hakuna matata",
+        "translit": "хакуна матата",
+        "ru": "Без проблем"
+      },
+      {
+        "native": "Pole pole",
+        "translit": "поле поле",
+        "ru": "Не спеша"
+      }
+    ]
+  },
+  "prices": {
+    "demo": true,
+    "items": [
+      {
+        "item": "Кофе",
+        "local": 3,
+        "moscowRub": 300
+      },
+      {
+        "item": "Такси, 5 км",
+        "local": 8,
+        "moscowRub": 450
+      },
+      {
+        "item": "Обед в кафе",
+        "local": 12,
+        "moscowRub": 900
+      },
+      {
+        "item": "Тур по специям",
+        "local": 25,
+        "moscowRub": 500
+      },
+      {
+        "item": "Маршрутка дала-дала",
+        "local": 0.5,
+        "moscowRub": 80
+      }
+    ]
+  },
+  "scene": {
+    "description": "Дальний план: линия горизонта, небо от бирюзы к оранжевому. Средний: белые дома Стоун-Тауна, минарет. Вода: бирюзовый океан с отмелью, доу с треугольным парусом. Передний план: пальмы и гибискус. Анимация: доу медленно плывёт, пальмы качаются.",
+    "todPalettes": null
+  }
+}

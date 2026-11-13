@@ -1,0 +1,46 @@
+{
+  "order": [
+    "istanbul",
+    "sochi",
+    "zanzibar",
+    "tbilisi",
+    "kazan",
+    "yerevan",
+    "beijing",
+    "hanoi",
+    "shanghai",
+    "altai",
+    "kaliningrad"
+  ],
+  "hits": [
+    "istanbul",
+    "sochi",
+    "zanzibar"
+  ],
+  "moods": [
+    {
+      "id": "sea",
+      "label": "Море и солнце"
+    },
+    {
+      "id": "mountains",
+      "label": "Горы и воздух"
+    },
+    {
+      "id": "food",
+      "label": "Еда и вино"
+    },
+    {
+      "id": "history",
+      "label": "История и храмы"
+    },
+    {
+      "id": "city",
+      "label": "Мегаполис"
+    },
+    {
+      "id": "exotic",
+      "label": "Экзотика"
+    }
+  ]
+}

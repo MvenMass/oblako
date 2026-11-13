@@ -1,0 +1,392 @@
+{
+  "id": "istanbul",
+  "name": "Стамбул",
+  "country": "Турция",
+  "region": "Босфор",
+  "iata": "IST",
+  "hit": true,
+  "utc": 3,
+  "coords": {
+    "lat": 41.01,
+    "lon": 28.98
+  },
+  "theme": {
+    "bg": "#F2F7FB",
+    "ink": "#0B1F45",
+    "muted": "#3E5478",
+    "accent": "#1B3F8B",
+    "accent2": "#C2364B",
+    "folder": [
+      "#0B6E8A",
+      "#C8A24A"
+    ],
+    "font": null,
+    "gradient": "linear-gradient(90deg,#1B3F8B,#2BA3A8 35%,#C2364B 65%,#1B3F8B)"
+  },
+  "greeting": {
+    "native": "Merhaba",
+    "translit": "мерхаба",
+    "ru": "здравствуйте",
+    "lang": "tr"
+  },
+  "lead": "Город на двух континентах: византийские купола, базары, паромы через Босфор и чай в стаканчиках-тюльпанах на каждом углу.",
+  "facts": {
+    "flight": "3 ч 40 мин",
+    "flightMinutes": 220,
+    "visa": "Не нужна до 60 дней",
+    "language": "Турецкий",
+    "languageNote": "в центре понимают английский",
+    "timeDiff": "0 ч",
+    "plugs": "230 В, тип C/F",
+    "currency": {
+      "code": "TRY",
+      "name": "Лира",
+      "demoRateRub": 2.2,
+      "rateCode": "TRY"
+    }
+  },
+  "climate": {
+    "avgHighC": [
+      6,
+      6,
+      8,
+      12,
+      17,
+      22,
+      25,
+      25,
+      21,
+      17,
+      12,
+      8
+    ],
+    "bestMonths": [
+      4,
+      5,
+      6,
+      9,
+      10,
+      11
+    ],
+    "note": "ориентир; в продукте — климат Open-Meteo"
+  },
+  "quiz": {
+    "moods": [
+      "history",
+      "food",
+      "city",
+      "sea"
+    ],
+    "dailyRub": 8000,
+    "flightRub": 28000
+  },
+  "know": [
+    {
+      "title": "Мечети и дресс-код",
+      "text": "Обувь снимают у входа, женщины покрывают голову, плечи и колени закрыты у всех. Во время намаза туристов не пускают — сверяйтесь с расписанием."
+    },
+    {
+      "title": "Истанбулкарт",
+      "text": "Одна карта на метро, трамвай, автобусы и паромы. Покупается и пополняется в автоматах на станциях."
+    },
+    {
+      "title": "Базары и торг",
+      "text": "На базарах торговаться нормально и даже ожидаемо. В магазинах с ценниками — нет."
+    },
+    {
+      "title": "Чаевые",
+      "text": "В кафе и ресторанах обычно оставляют 5–10%, если обслуживание не включено в счёт."
+    }
+  ],
+  "places": [
+    {
+      "id": "sophia",
+      "name": "Айя-София",
+      "category": "see",
+      "district": "Султанахмет",
+      "duration": "1 ч",
+      "price": "≈ 25 €",
+      "description": "Купол VI века: собор, мечеть, музей и снова мечеть.",
+      "photo": "/photos/istanbul/sophia.jpg",
+      "map": {
+        "x": 136,
+        "y": 196
+      }
+    },
+    {
+      "id": "balat",
+      "name": "Балат",
+      "category": "see",
+      "district": "Фатих",
+      "duration": "2 ч",
+      "price": "Бесплатно",
+      "description": "Цветные дома на крутых улочках — снимать лучше утром.",
+      "photo": "/photos/istanbul/balat.jpg",
+      "map": {
+        "x": 110,
+        "y": 120
+      }
+    },
+    {
+      "id": "bazaar",
+      "name": "Гранд-базар",
+      "category": "see",
+      "district": "Беязыт",
+      "duration": "2–3 ч",
+      "price": "Вход бесплатный",
+      "description": "Десятки крытых улиц и тысячи лавок под одной крышей. Торговаться — нормально.",
+      "photo": "/photos/istanbul/bazaar.jpg",
+      "map": {
+        "x": 150,
+        "y": 170
+      }
+    },
+    {
+      "id": "simit",
+      "name": "Симит и чай",
+      "category": "eat",
+      "district": "На любой улице",
+      "duration": "15 мин",
+      "price": "Недорого",
+      "description": "Бублик с кунжутом из уличной тележки — главный завтрак города.",
+      "photo": "/photos/istanbul/simit.jpg",
+      "map": {
+        "x": 188,
+        "y": 150
+      }
+    },
+    {
+      "id": "ferry",
+      "name": "Паром через Босфор",
+      "category": "nature",
+      "district": "Эминёню → Кадыкёй",
+      "duration": "25 мин",
+      "price": "По Istanbulkart",
+      "description": "Самая дешёвая экскурсия: Европа, Азия и чайки за кормой.",
+      "photo": "/photos/istanbul/ferry.jpg",
+      "map": {
+        "x": 262,
+        "y": 176
+      }
+    },
+    {
+      "id": "galata",
+      "name": "Галатская башня",
+      "category": "evening",
+      "district": "Бейоглу",
+      "duration": "1 ч",
+      "price": "≈ 30 €",
+      "description": "Смотровая на закате — весь Золотой Рог как на ладони.",
+      "photo": "/photos/istanbul/galata.jpg",
+      "map": {
+        "x": 196,
+        "y": 92
+      }
+    },
+    {
+      "id": "lamps",
+      "name": "Лавки мозаичных ламп",
+      "category": "evening",
+      "district": "Гранд-базар",
+      "duration": "30 мин",
+      "price": "от 15 €",
+      "description": "Вечером лампы светятся всеми цветами — лучшие кадры здесь.",
+      "photo": "/photos/istanbul/lamps.jpg",
+      "map": {
+        "x": 160,
+        "y": 182
+      }
+    },
+    {
+      "id": "night",
+      "name": "Айя-София ночью",
+      "category": "evening",
+      "district": "Султанахмет",
+      "duration": "30 мин",
+      "price": "Бесплатно",
+      "description": "Подсвеченные минареты и площадь с фонтаном после заката.",
+      "photo": "/photos/istanbul/night.jpg",
+      "map": {
+        "x": 128,
+        "y": 214
+      }
+    }
+  ],
+  "dishes": [
+    {
+      "name": "Симит",
+      "text": "Бублик с кунжутом — завтрак на ходу"
+    },
+    {
+      "name": "Кюнефе",
+      "text": "Горячий десерт из теста-катаиф с сыром и сиропом"
+    },
+    {
+      "name": "Балык-экмек",
+      "text": "Жареная скумбрия в булке с луком и зеленью"
+    },
+    {
+      "name": "Турецкий чай",
+      "text": "Крепкий, в стаканчике-тюльпане, без молока"
+    }
+  ],
+  "itinerary": [
+    [
+      "Айя-София и Голубая мечеть",
+      "Цистерна Базилика",
+      "Гранд-базар"
+    ],
+    [
+      "Паром в Кадыкёй",
+      "Обед на азиатском берегу",
+      "Закат у Галатской башни"
+    ],
+    [
+      "Дворец Долмабахче",
+      "Прогулка вдоль Босфора",
+      "Ужин в Бейоглу"
+    ]
+  ],
+  "phrases": {
+    "speechLang": "tr-TR",
+    "items": [
+      {
+        "native": "Merhaba",
+        "translit": "мерхаба",
+        "ru": "Здравствуйте"
+      },
+      {
+        "native": "Teşekkürler",
+        "translit": "тешеккюрлер",
+        "ru": "Спасибо"
+      },
+      {
+        "native": "Ne kadar?",
+        "translit": "не кадар?",
+        "ru": "Сколько стоит?"
+      },
+      {
+        "native": "Hesap lütfen",
+        "translit": "хесап лютфен",
+        "ru": "Счёт, пожалуйста"
+      },
+      {
+        "native": "Afiyet olsun",
+        "translit": "афиет олсун",
+        "ru": "Приятного аппетита"
+      },
+      {
+        "native": "Güle güle",
+        "translit": "гюле гюле",
+        "ru": "Счастливо (говорит остающийся)"
+      }
+    ]
+  },
+  "prices": {
+    "demo": true,
+    "items": [
+      {
+        "item": "Чай в стаканчике",
+        "local": 25,
+        "moscowRub": 150
+      },
+      {
+        "item": "Такси, 5 км",
+        "local": 250,
+        "moscowRub": 450
+      },
+      {
+        "item": "Обед в локанте",
+        "local": 450,
+        "moscowRub": 900
+      },
+      {
+        "item": "Билет в музей",
+        "local": 1200,
+        "moscowRub": 500
+      },
+      {
+        "item": "Проезд по карте",
+        "local": 30,
+        "moscowRub": 80
+      }
+    ]
+  },
+  "scene": {
+    "description": "Дальний план: азиатский берег и Босфорский мост. Средний: мечети с куполами и минаретами, Галатская башня. Вода: Босфор, паром, чайки. Передний план: мозаичные лампы и тюльпаны. Анимация: паром, чайки, качание ламп. Эталон — CityIstanbul.dc.html.",
+    "todPalettes": [
+      {
+        "far": "#A9C4DC",
+        "snow": "#FFFFFF",
+        "mid": "#7C98B8",
+        "mid2": "#6A86A8",
+        "city": "#F1E6D2",
+        "city2": "#DCCBB0",
+        "roof": "#C2694E",
+        "wood": "#8A5A3A",
+        "winBase": "#6F8AA6",
+        "win": 0,
+        "water": "#2E8EC0",
+        "near": "#3E7A4A",
+        "grape": "#6B2A5A",
+        "sun": "#FFE29A",
+        "stars": 0,
+        "cloud": 0.9,
+        "wire": "#E7EEF5",
+        "gull": "#2A3B55",
+        "sky": "linear-gradient(180deg,#7CC8EE,#DDF2FB 75%)",
+        "sx": 1060,
+        "sy": 170,
+        "ink": "#0B1F45"
+      },
+      {
+        "far": "#C99AB4",
+        "snow": "#FFFFFF",
+        "mid": "#5B4778",
+        "mid2": "#4A3A66",
+        "city": "#E6A88E",
+        "city2": "#C98A78",
+        "roof": "#8E4A4A",
+        "wood": "#5E3326",
+        "winBase": "#5A4766",
+        "win": 0.6,
+        "water": "#D9897A",
+        "near": "#34503A",
+        "grape": "#4A1838",
+        "sun": "#FF8E6E",
+        "stars": 0.2,
+        "cloud": 0.55,
+        "wire": "#F5D7C8",
+        "gull": "#3A2440",
+        "sky": "linear-gradient(180deg,#4F5FB8 0%,#B07CB8 40%,#F49A84 72%,#FFC978)",
+        "sx": 1180,
+        "sy": 470,
+        "ink": "#FFFFFF"
+      },
+      {
+        "far": "#20305A",
+        "snow": "#FFFFFF",
+        "mid": "#121B3C",
+        "mid2": "#0E1632",
+        "city": "#262A54",
+        "city2": "#1E2148",
+        "roof": "#1C1E3C",
+        "wood": "#3A2A3E",
+        "winBase": "#171A36",
+        "win": 1,
+        "water": "#0B1E44",
+        "near": "#0F1D33",
+        "grape": "#2A1430",
+        "sun": "#F4F1E0",
+        "stars": 1,
+        "cloud": 0.1,
+        "wire": "#9FB0D6",
+        "gull": "#C9D6EA",
+        "sky": "linear-gradient(180deg,#040F24,#13265A 72%,#2A3D78)",
+        "sx": 1010,
+        "sy": 150,
+        "ink": "#FFFFFF"
+      }
+    ]
+  }
+}

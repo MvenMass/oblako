@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>OBLAKO — стиль</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap">
+<style>
+body{margin:0}
+@keyframes aur{0%{transform:translate(0,0) scale(1)}33%{transform:translate(60px,-40px) scale(1.15)}66%{transform:translate(-50px,30px) scale(.92)}100%{transform:translate(0,0) scale(1)}}
+@keyframes shift{to{background-position:300% 0}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-12px) rotate(6deg)}}
+@keyframes flow{to{stroke-dashoffset:-1200}}
+.aur{position:absolute;border-radius:50%;filter:blur(70px);animation:aur 20s ease-in-out infinite}
+.grad{background:linear-gradient(90deg,#0A79A8,#E8288E 33%,#8B6CF0 66%,#0A79A8);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shift 8s linear infinite}
+.lg{position:relative;background:rgba(255,255,255,.3);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,.6);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),inset 0 -10px 30px rgba(255,255,255,.2),0 24px 60px rgba(11,37,64,.12)}
+.icon3d{animation:float 5s ease-in-out infinite}
+.ribbon{stroke-dasharray:420 780;animation:flow 9s linear infinite}
+@media (prefers-reduced-motion: reduce){.aur,.grad,.icon3d,.ribbon{animation:none}}
+</style>
+</helmet>
+<div style="position: relative; width: 1440px; height: 1120px; overflow: hidden; box-sizing: border-box; padding: 64px 72px; background: #F4FAFE; font-family: 'Onest', system-ui, sans-serif; color: #0B2540">
+
+<div aria-hidden="true" class="aur" style="top: -200px; right: -100px; width: 640px; height: 640px; background: #7FD3F2"></div>
+<div aria-hidden="true" class="aur" style="top: 380px; right: 280px; width: 460px; height: 460px; background: #FF8CC6; animation-delay: -7s"></div>
+<div aria-hidden="true" class="aur" style="bottom: -220px; left: 120px; width: 560px; height: 560px; background: #B9A8FF; animation-delay: -13s"></div>
+<svg aria-hidden="true" viewBox="0 0 1440 1120" preserveAspectRatio="none" style="position: absolute; inset: 0; width: 100%; height: 100%">
+<defs><linearGradient id="rb" x1="0" x2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0"></stop><stop offset=".5" stop-color="#FFFFFF" stop-opacity=".9"></stop><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop></linearGradient><filter id="soft"><feGaussianBlur stdDeviation="6"></feGaussianBlur></filter></defs>
+<path class="ribbon" d="M-100 760 C 300 600, 600 980, 1000 700 S 1500 500, 1600 640" fill="none" stroke="url(#rb)" stroke-width="26" filter="url(#soft)"></path>
+<path class="ribbon" d="M-100 820 C 320 680, 640 1020, 1040 760 S 1520 580, 1600 700" fill="none" stroke="url(#rb)" stroke-width="10" style="animation-delay: -3s"></path>
+</svg>
+<svg aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: .07; mix-blend-mode: multiply"><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"></feTurbulence></filter><rect width="100%" height="100%" filter="url(#grain)"></rect></svg>
+
+<div style="position: relative; display: flex; flex-direction: column; gap: 40px">
+
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 12px">
+<svg aria-hidden="true" width="44" height="30" viewBox="0 0 44 30"><defs><linearGradient id="lg1" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#BDEBFA"></stop><stop offset=".55" stop-color="#38BDE8"></stop><stop offset="1" stop-color="#0A79A8"></stop></linearGradient></defs><path d="M12 28h22a9 9 0 0 0 1-17.9A12 12 0 0 0 12.4 8 10 10 0 0 0 12 28z" fill="url(#lg1)"></path></svg>
+<span style="font-size: 28px; font-weight: 800; letter-spacing: 0.18em">OBLAKO</span>
+</div>
+<h1 style="margin: 0; font-size: 68px; font-weight: 700; line-height: 1; letter-spacing: -0.04em">Путь начинается <span class="grad">в&nbsp;облаке</span></h1>
+</div>
+<p style="margin: 0; max-width: 420px; font-size: 16px; line-height: 1.6; color: #45607A">Небо&nbsp;— основа палитры. Акцент&nbsp;— не&nbsp;цвет кнопки, а&nbsp;живой градиент голубой → розовый → сиреневый: в&nbsp;словах, фоне, лентах света и&nbsp;3D-иконках.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 8px"><div style="height: 104px; border-radius: 18px; background: #0B2540"></div><span style="font-size: 13px; font-weight: 600">Ночь</span><span style="font-size: 12px; color: #45607A">#0B2540 · текст</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><div style="height: 104px; border-radius: 18px; background: #0A79A8"></div><span style="font-size: 13px; font-weight: 600">Глубина</span><span style="font-size: 12px; color: #45607A">#0A79A8 · ссылки</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><div style="height: 104px; border-radius: 18px; background: #38BDE8"></div><span style="font-size: 13px; font-weight: 600">Небо</span><span style="font-size: 12px; color: #45607A">#38BDE8 · аврора</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><div style="height: 104px; border-radius: 18px; background: #E3F6FD"></div><span style="font-size: 13px; font-weight: 600">Утро</span><span style="font-size: 12px; color: #45607A">#E3F6FD · поверхности</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><div style="height: 104px; border-radius: 18px; background: #C8146F"></div><span style="font-size: 13px; font-weight: 600">Закат</span><span style="font-size: 12px; color: #45607A">#C8146F · главная кнопка</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><div style="height: 104px; border-radius: 18px; background: #E8288E"></div><span style="font-size: 13px; font-weight: 600">Фламинго</span><span style="font-size: 12px; color: #45607A">#E8288E · градиент</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><div style="height: 104px; border-radius: 18px; background: #8B6CF0"></div><span style="font-size: 13px; font-weight: 600">Сумерки</span><span style="font-size: 12px; color: #45607A">#8B6CF0 · градиент</span></div>
+</div>
+
+<div style="height: 56px; border-radius: 18px; background: linear-gradient(90deg, #38BDE8, #E8288E 45%, #8B6CF0 80%, #38BDE8); display: flex; align-items: center; padding: 0 22px; color: #FFFFFF; font-size: 14px; font-weight: 600">Фирменный градиент: небо → фламинго → сумерки</div>
+
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px">
+
+<div class="lg" style="padding: 28px; border-radius: 28px; display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #0A79A8">Шрифт · Onest</p>
+<p style="margin: 0; font-size: 42px; font-weight: 700; letter-spacing: -0.04em; line-height: 1">Один шрифт, <span class="grad">живой акцент</span></p>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #45607A">Заголовки Onest 700 с&nbsp;плотным трекингом, текст Onest 400. Акцентное слово&nbsp;— не&nbsp;другой шрифт, а&nbsp;переливающаяся заливка.</p>
+</div>
+
+<div class="lg" style="padding: 28px; border-radius: 28px; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #0A79A8">Кнопки · скругление 14</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<button type="button" style="min-height: 52px; padding: 0 22px; border: 0; border-radius: 14px; background: #C8146F; color: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 600; box-shadow: 0 12px 30px rgba(200,20,111,.32); cursor: pointer">Спланировать поездку</button>
+<button type="button" class="lg" style="min-height: 52px; padding: 0 22px; border-radius: 14px; color: #0B2540; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer">Стекло</button>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<span style="display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; border-radius: 10px; background: #0B2540; color: #FFFFFF; font-size: 13px; font-weight: 500">Выбрано</span>
+<span class="lg" style="display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; border-radius: 10px; font-size: 13px; font-weight: 500">Море</span>
+<span class="lg" style="display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; border-radius: 10px; font-size: 13px; font-weight: 500">Горы</span>
+</div>
+</div>
+
+<div class="lg" style="padding: 28px; border-radius: 28px; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #0A79A8">3D-иконки · 3dicons.co</p>
+<div style="display: flex; gap: 22px; align-items: center; height: 96px">
+<span aria-hidden="true" class="icon3d" style="width: 72px; height: 72px; border-radius: 50%; background: radial-gradient(circle at 32% 28%, #FFFFFF 0%, #9BE3F8 22%, #38BDE8 58%, #0A79A8 100%); box-shadow: 0 16px 28px rgba(10,121,168,.3)"></span>
+<span aria-hidden="true" class="icon3d" style="width: 64px; height: 80px; border-radius: 22px; background: radial-gradient(circle at 34% 24%, #FFFFFF 0%, #FFC2E0 24%, #E8288E 62%, #9A0E55 100%); box-shadow: 0 16px 28px rgba(200,20,111,.3); animation-delay: -1.6s"></span>
+<span aria-hidden="true" class="icon3d" style="width: 74px; height: 74px; border-radius: 24px; background: radial-gradient(circle at 30% 26%, #FFFFFF 0%, #D9CFFF 26%, #8B6CF0 66%, #4B2FB8 100%); box-shadow: 0 16px 28px rgba(139,108,240,.3); animation-delay: -3.2s"></span>
+</div>
+<p style="margin: 0; font-size: 13px; line-height: 1.55; color: #45607A">Самолёт, чемодан, компас, билет, камера&nbsp;— в&nbsp;цветах градиента, плавают и&nbsp;поворачиваются за&nbsp;курсором.</p>
+</div>
+
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; font-size: 13px; color: #45607A">
+<span>Фон: аврора из&nbsp;трёх пятен, тянется за&nbsp;курсором</span><span>·</span><span>Ленты света поверх</span><span>·</span><span>Зерно 7%</span><span>·</span><span>Liquid glass: белый 30% + blur 24 + saturate 180% + блик сверху</span>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1120}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

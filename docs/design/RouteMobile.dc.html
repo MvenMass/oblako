@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>OBLAKO — маршрут</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap">
+<style>
+body{margin:0}
+@keyframes aur{0%{transform:translate(0,0) scale(1)}50%{transform:translate(24px,-18px) scale(1.12)}100%{transform:translate(0,0) scale(1)}}
+@keyframes shift{to{background-position:300% 0}}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.aur{position:absolute;border-radius:50%;filter:blur(60px);animation:aur 16s ease-in-out infinite;pointer-events:none}
+.grad{background:linear-gradient(90deg,#0A79A8,#E8288E 33%,#8B6CF0 66%,#0A79A8);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shift 8s linear infinite}
+.lg{position:relative;background:rgba(255,255,255,.45);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);border:1px solid rgba(255,255,255,.7);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 18px 44px rgba(11,37,64,.1)}
+.lgd{position:relative;background:rgba(255,255,255,.07);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);border:1px solid rgba(255,255,255,.14)}
+.rise{animation:rise .7s cubic-bezier(.2,.8,.2,1) both}
+.scr{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.scr::-webkit-scrollbar,.hs::-webkit-scrollbar{display:none}
+.hs{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.hs>*{scroll-snap-align:start;flex:none}
+button:focus-visible,a:focus-visible{outline:3px solid #C8146F;outline-offset:3px}
+@keyframes draw{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}.draw{stroke-dasharray:100;animation:draw 1.4s ease-out both}
+@keyframes pin{0%{opacity:0;transform:translateY(-30px)}70%{opacity:1;transform:translateY(4px)}100%{transform:none}}.pin{animation:pin .6s cubic-bezier(.3,1.3,.4,1) both}
+@media (prefers-reduced-motion: reduce){.aur,.grad,.rise,.draw,.pin{animation:none !important}}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; overflow: hidden; background: #F4FAFE; font-family: 'Onest', system-ui, sans-serif; color: #0B2540">
+<div class="scr">
+<div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 0; height: 520px; overflow: hidden; background: linear-gradient(180deg, #DDF1FA, #F4FAFE)">
+<div style="position: absolute; left: -10px; top: 70px; width: 410px; height: 460px; transform: perspective(700px) rotateX(38deg); transform-origin: 50% 0">
+<svg viewBox="0 0 400 440" width="410" height="460">
+<path d="M0 270 C 120 240, 200 300, 400 250 L400 440 L0 440Z" fill="#9BDDF2" opacity=".7"></path>
+<path d="M230 0 C 250 120, 240 200, 260 270" stroke="#9BDDF2" stroke-width="26" fill="none" opacity=".8"></path>
+<rect x="20" y="40" width="60" height="40" rx="4" fill="#FFFFFF" opacity="0.7"></rect><rect x="100" y="30" width="80" height="30" rx="4" fill="#FFFFFF" opacity="0.6"></rect><rect x="200" y="60" width="60" height="50" rx="4" fill="#FFFFFF" opacity="0.7"></rect><rect x="40" y="170" width="50" height="60" rx="4" fill="#FFFFFF" opacity="0.6"></rect><rect x="210" y="220" width="70" height="40" rx="4" fill="#FFFFFF" opacity="0.65"></rect><rect x="330" y="60" width="40" height="70" rx="4" fill="#FFFFFF" opacity="0.6"></rect><rect x="20" y="330" width="70" height="50" rx="4" fill="#FFFFFF" opacity="0.65"></rect><rect x="150" y="360" width="60" height="40" rx="4" fill="#FFFFFF" opacity="0.6"></rect><rect x="340" y="230" width="40" height="40" rx="4" fill="#FFFFFF" opacity="0.6"></rect>
+<g stroke="#FFFFFF" stroke-width="6" opacity=".9" fill="none"><path d="M0 140h400M60 0v440M180 0v440M0 300h400"></path></g>
+<path class="draw" d="{{routeD}}" fill="none" stroke="url(#rgm)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" pathLength="100"></path>
+<defs><linearGradient id="rgm" x1="0" x2="1"><stop offset="0" stop-color="#38BDE8"></stop><stop offset="1" stop-color="#E8288E"></stop></linearGradient></defs>
+</svg>
+</div>
+<sc-for list="{{pins}}" as="p" hint-placeholder-count="4"><span class="pin" style="{{p.s}}"><span style="display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50% 50% 50% 4px; transform: rotate(-45deg); background: #C8146F; box-shadow: 0 8px 16px rgba(200,20,111,.35)"><b style="transform: rotate(45deg); color: #FFFFFF; font-size: 13px">{{p.n}}</b></span></span></sc-for>
+</div>
+<header style="position: relative; z-index: 5; padding: 14px 14px 0">
+<div class="lg" style="display: flex; align-items: center; gap: 10px; padding: 6px; border-radius: 18px">
+<a href="QuizResultMobile.dc.html" aria-label="Назад" style="width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #0B2540"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M15 6l-6 6 6 6"></path></svg></a>
+<span style="flex: 1 1 auto; font-size: 16px; font-weight: 700; color: #0B2540">Маршрут · Стамбул</span>
+<span style="display: flex; align-items: center; padding-right: 8px"><svg aria-hidden="true" width="30" height="21" viewBox="0 0 44 30"><defs><linearGradient id="lgm" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#BDEBFA"></stop><stop offset=".55" stop-color="#38BDE8"></stop><stop offset="1" stop-color="#0A79A8"></stop></linearGradient></defs><path d="M12 28h22a9 9 0 0 0 1-17.9A12 12 0 0 0 12.4 8 10 10 0 0 0 12 28z" fill="url(#lgm)"></path></svg></span>
+</div>
+</header>
+<div style="height: {{gap}}px; transition: height .5s cubic-bezier(.3,1.1,.4,1)"></div>
+<section class="lg" style="position: relative; z-index: 4; min-height: 520px; margin: 0 6px; border-radius: 28px 28px 0 0; padding: 8px 16px 0; display: flex; flex-direction: column; gap: 14px; background: rgba(255,255,255,.8)">
+<button type="button" onClick="{{toggle}}" aria-expanded="{{open}}" aria-label="Развернуть список" style="align-self: center; width: 80px; height: 26px; border: 0; background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer"><span style="width: 44px; height: 5px; border-radius: 3px; background: rgba(11,37,64,.25)"></span></button>
+<div role="tablist" aria-label="Дни" style="display: flex; gap: 6px; padding: 4px; border-radius: 14px; background: rgba(11,37,64,.06)">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="3"><button type="button" role="tab" aria-selected="{{t.on}}" onClick="{{t.pick}}" style="{{t.s}}">{{t.name}}</button></sc-for>
+</div>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column">
+<sc-for list="{{stops}}" as="s" hint-placeholder-count="4"><li class="rise" style="{{s.s}}"><span style="flex: none; width: 48px; font-size: 14px; font-weight: 700; color: #0A79A8">{{s.time}}</span><span style="position: relative; flex: none; width: 26px; display: flex; justify-content: center"><span style="width: 26px; height: 26px; border-radius: 50%; background: #C8146F; color: #FFFFFF; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center">{{s.n}}</span></span><span style="display: flex; flex-direction: column; gap: 2px"><b style="font-size: 16px">{{s.name}}</b><span style="font-size: 13px; color: #45607A">{{s.note}}</span></span></li></sc-for>
+</ol>
+<div style="display: flex; gap: 8px"><span class="lg" style="flex: 1 1 0; padding: 10px 12px; border-radius: 14px; font-size: 12px; color: #45607A">Пешком<br><b style="font-size: 16px; color: #0B2540">{{walk}}</b></span><span class="lg" style="flex: 1 1 0; padding: 10px 12px; border-radius: 14px; font-size: 12px; color: #45607A">Точек<br><b style="font-size: 16px; color: #0B2540">{{count}}</b></span><span class="lg" style="flex: 1 1 0; padding: 10px 12px; border-radius: 14px; font-size: 12px; color: #45607A">Погода<br><b style="font-size: 16px; color: #0B2540">+21°</b></span></div>
+</section>
+<div style="height: 110px"></div>
+</div>
+<nav aria-label="Нижнее меню" style="position: absolute; left: 12px; right: 12px; bottom: 14px; z-index: 50; display: flex; justify-content: space-around; align-items: center; height: 66px; border-radius: 24px; background: rgba(255,255,255,.72); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border: 1px solid rgba(255,255,255,.8); box-shadow: 0 14px 34px rgba(11,37,64,.18)"><a href="Mobile.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 52px; font-size: 11px; font-weight: 500; color: #0B2540; opacity: 0.75"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"></path></svg>Главная</a><a href="RouteMobile.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 52px; font-size: 11px; font-weight: 700; color: #C8146F; opacity: 1"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="2.5"></circle><circle cx="18" cy="6" r="2.5"></circle><path d="M8.5 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.5"></path></svg>Маршрут</a><a href="QuizMobile.dc.html" aria-label="Подбор" style="width: 58px; height: 58px; margin-top: -26px; border-radius: 20px; background: linear-gradient(135deg, #38BDE8, #C8146F); display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 26px rgba(200,20,111,.35)"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"></path></svg></a><a href="PackingMobile.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 52px; font-size: 11px; font-weight: 500; color: #0B2540; opacity: 0.75"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="13" rx="3"></rect><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path></svg>Сборы</a><a href="ProfileMobile.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 52px; font-size: 11px; font-weight: 500; color: #0B2540; opacity: 0.75"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Профиль</a></nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+const R = [[["09:00", "Айя-София", "Музей · 1,5 ч", 120, 210], ["11:00", "Цистерна Базилика", "Подземелье · 40 мин", 170, 250], ["13:00", "Гранд-базар", "Обед и&nbsp;шопинг", 90, 300], ["18:30", "Закат у&nbsp;Галаты", "Смотровая", 250, 150]], [["10:00", "Паром в&nbsp;Кадыкёй", "Азиатский берег", 300, 300], ["12:30", "Рынок Кадыкёя", "Уличная еда", 330, 350], ["16:00", "Мода", "Набережная", 280, 390]], [["10:00", "Балат", "Цветные дома", 70, 120], ["12:00", "Фенер", "Греческий лицей", 120, 90], ["19:00", "Круиз по&nbsp;Босфору", "Ужин на&nbsp;воде", 300, 170]]];
+class Component extends DCLogic {
+  state = { day: 0, open: false };
+  renderVals() {
+    const st = this.state, d = R[st.day];
+    const sx = (x) => x * 410 / 400 - 10, sy = (y) => 70 + y * 0.82;
+    return {
+      gap: st.open ? 120 : 330, open: st.open ? 'true' : 'false', toggle: () => this.setState({ open: !st.open }),
+      routeD: 'M' + d.map((p) => p[3] + ' ' + p[4]).join(' L'),
+      pins: d.map((p, i) => ({ n: i + 1, s: 'position: absolute; left: ' + (sx(p[3]) - 15) + 'px; top: ' + (sy(p[4]) - 34) + 'px; animation-delay: ' + (i * 0.12) + 's' })),
+      tabs: ['День 1', 'День 2', 'День 3'].map((n, i) => ({ name: n, on: i === st.day ? 'true' : 'false', pick: () => this.setState({ day: i }),
+        s: 'flex: 1 1 0; min-height: 40px; border: 0; border-radius: 10px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: background .3s, color .3s; ' + (i === st.day ? 'background: #0B2540; color: #FFFFFF' : 'background: transparent; color: #0B2540') })),
+      stops: d.map((p, i) => ({ n: i + 1, time: p[0], name: p[1], note: p[2], s: 'display: flex; gap: 10px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid rgba(11,37,64,.08); animation-delay: ' + (i * 0.07) + 's' })),
+      walk: ['6,2 км', '4,8 км', '5,5 км'][st.day], count: d.length
+    };
+  }
+}
+</script>
+</body>
+</html>

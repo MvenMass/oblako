@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>OBLAKO — табло</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap">
+<style>
+body{margin:0}
+@keyframes aur{0%{transform:translate(0,0) scale(1)}50%{transform:translate(24px,-18px) scale(1.12)}100%{transform:translate(0,0) scale(1)}}
+@keyframes shift{to{background-position:300% 0}}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.aur{position:absolute;border-radius:50%;filter:blur(60px);animation:aur 16s ease-in-out infinite;pointer-events:none}
+.grad{background:linear-gradient(90deg,#0A79A8,#E8288E 33%,#8B6CF0 66%,#0A79A8);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shift 8s linear infinite}
+.lg{position:relative;background:rgba(255,255,255,.45);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);border:1px solid rgba(255,255,255,.7);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 18px 44px rgba(11,37,64,.1)}
+.lgd{position:relative;background:rgba(255,255,255,.07);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);border:1px solid rgba(255,255,255,.14)}
+.rise{animation:rise .7s cubic-bezier(.2,.8,.2,1) both}
+.scr{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.scr::-webkit-scrollbar,.hs::-webkit-scrollbar{display:none}
+.hs{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.hs>*{scroll-snap-align:start;flex:none}
+button:focus-visible,a:focus-visible{outline:3px solid #C8146F;outline-offset:3px}
+@keyframes flipA{from{transform:rotateX(-90deg)}to{transform:rotateX(0)}}@keyframes flipB{from{transform:rotateX(-90deg)}to{transform:rotateX(0)}}
+.flipA{animation:flipA .12s ease-out}.flipB{animation:flipB .12s ease-out}
+@keyframes sweep{to{transform:rotate(360deg)}}.sweep{animation:sweep 4s linear infinite}
+@keyframes blip{0%{opacity:1;transform:scale(1.6)}35%{opacity:.6;transform:scale(1)}100%{opacity:.08;transform:scale(1)}}.blip{animation:blip 4s linear infinite}
+@keyframes fly{0%{transform:translateX(-80px)}25%{transform:translateX(440px)}100%{transform:translateX(440px)}}.fly{animation:fly 20s linear infinite 2s}
+@keyframes blink{50%{opacity:.35}}
+@media (prefers-reduced-motion: reduce){.aur,.grad,.rise,.flipA,.flipB,.sweep,.blip,.fly{animation:none !important}}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; overflow: hidden; background: #06172F; font-family: 'Onest', system-ui, sans-serif; color: #EAF4FB">
+<div class="scr">
+<div aria-hidden="true" class="aur" style="top: -140px; right: -160px; width: 420px; height: 420px; background: #1D4F86; opacity: .8"></div>
+<div aria-hidden="true" class="aur" style="top: 560px; left: -160px; width: 380px; height: 380px; background: #5B2A86; opacity: .55; animation-delay: -6s"></div>
+<header style="position: relative; z-index: 5; padding: 14px 14px 0">
+<div class="lgd" style="display: flex; align-items: center; gap: 10px; padding: 6px; border-radius: 18px">
+<a href="Mobile.dc.html" aria-label="Назад" style="width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #EAF4FB"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M15 6l-6 6 6 6"></path></svg></a>
+<span style="flex: 1 1 auto; font-size: 16px; font-weight: 700; color: #EAF4FB">Табло вылетов</span>
+<span style="display: flex; align-items: center; padding-right: 8px"><svg aria-hidden="true" width="30" height="21" viewBox="0 0 44 30"><defs><linearGradient id="lgm" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#BDEBFA"></stop><stop offset=".55" stop-color="#38BDE8"></stop><stop offset="1" stop-color="#0A79A8"></stop></linearGradient></defs><path d="M12 28h22a9 9 0 0 0 1-17.9A12 12 0 0 0 12.4 8 10 10 0 0 0 12 28z" fill="url(#lgm)"></path></svg></span>
+</div>
+</header>
+<section style="position: relative; padding: 16px 16px 0; display: flex; gap: 14px; align-items: center">
+<div aria-hidden="true" style="position: relative; flex: none; width: 116px; height: 116px; border-radius: 50%; background: radial-gradient(circle, rgba(56,189,232,.12), rgba(56,189,232,.02)); box-shadow: inset 0 0 0 1px rgba(56,189,232,.35); overflow: hidden">
+<span style="position: absolute; inset: 22px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(56,189,232,.25)"></span><span style="position: absolute; inset: 44px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(56,189,232,.2)"></span>
+<span class="sweep" style="position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 0deg, rgba(56,189,232,.55), rgba(56,189,232,0) 60deg, rgba(56,189,232,0))"></span>
+<span class="blip" style="position: absolute; left: 30px; top: 40px; width: 6px; height: 6px; border-radius: 50%; background: #FF8CC6"></span><span class="blip" style="position: absolute; left: 76px; top: 70px; width: 6px; height: 6px; border-radius: 50%; background: #7FD3A6; animation-delay: -1.3s"></span><span class="blip" style="position: absolute; left: 60px; top: 24px; width: 6px; height: 6px; border-radius: 50%; background: #38BDE8; animation-delay: -2.4s"></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: .14em; color: #38BDE8">ШЕРЕМЕТЬЕВО · SVO</span>
+<b style="font-family: 'IBM Plex Mono', monospace; font-size: 40px; letter-spacing: .02em">{{clock}}</b>
+<span style="font-size: 13px; opacity: .75">В&nbsp;воздухе рядом: 3&nbsp;борта</span>
+</div>
+</section>
+<div role="table" aria-label="Вылеты" class="lgd" style="position: relative; margin: 18px 10px 0; border-radius: 22px; padding: 6px 10px">
+<div role="row" style="display: grid; grid-template-columns: 56px 1fr 92px; gap: 8px; padding: 8px 4px; font-size: 11px; font-weight: 700; letter-spacing: .1em; opacity: .6"><span role="columnheader">ВРЕМЯ</span><span role="columnheader">НАПРАВЛЕНИЕ</span><span role="columnheader" style="text-align: right">СТАТУС</span></div>
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="7"><div role="row" style="display: grid; grid-template-columns: 56px 1fr 92px; gap: 8px; align-items: center; padding: 10px 4px; border-top: 1px solid rgba(255,255,255,.08)">
+<span role="cell" style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 500; color: #FFE08A">{{r.time}}</span>
+<span role="cell" style="display: flex; flex-direction: column; gap: 3px; min-width: 0"><span style="display: flex; gap: 2px"><sc-for list="{{r.city}}" as="c"><span class="{{c.cls}}" style="display: inline-flex; justify-content: center; width: 15px; height: 22px; align-items: center; border-radius: 3px; background: #0F2A4A; font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 500; box-shadow: inset 0 -11px 0 rgba(0,0,0,.18)">{{c.c}}</span></sc-for></span><span style="font-size: 11px; opacity: .6">{{r.no}} · выход {{r.gate}}</span></span>
+<span role="cell" style="{{r.st}}">{{r.status}}</span>
+</div></sc-for>
+</div>
+<div aria-hidden="true" class="fly" style="position: absolute; top: 152px; left: 0; z-index: 3"><svg width="44" height="44" viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z" fill="#EAF4FB" transform="rotate(90 12 12)"></path></svg></div>
+<div style="height: 110px"></div>
+</div>
+<nav aria-label="Нижнее меню" style="position: absolute; left: 12px; right: 12px; bottom: 14px; z-index: 50; display: flex; justify-content: space-around; align-items: center; height: 66px; border-radius: 24px; background: rgba(6,23,47,.72); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border: 1px solid rgba(255,255,255,.14); box-shadow: 0 14px 34px rgba(11,37,64,.18)"><a href="Mobile.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 52px; font-size: 11px; font-weight: 500; color: #EAF4FB; opacity: 0.75"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"></path></svg>Главная</a><a href="RouteMobile.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 52px; font-size: 11px; font-weight: 500; color: #EAF4FB; opacity: 0.75"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="2.5"></circle><circle cx="18" cy="6" r="2.5"></circle><path d="M8.5 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.5"></path></svg>Маршрут</a><a href="QuizMobile.dc.html" aria-label="Подбор" style="width: 58px; height: 58px; margin-top: -26px; border-radius: 20px; background: linear-gradient(135deg, #38BDE8, #C8146F); display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 26px rgba(200,20,111,.35)"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"></path></svg></a><a href="PackingMobile.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 52px; font-size: 11px; font-weight: 500; color: #EAF4FB; opacity: 0.75"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="13" rx="3"></rect><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path></svg>Сборы</a><a href="ProfileMobile.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 52px; font-size: 11px; font-weight: 500; color: #EAF4FB; opacity: 0.75"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Профиль</a></nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+const F = [["07:40", "СТАМБУЛ", "TK414", "G14"], ["08:15", "ТБИЛИСИ", "A4851", "B03"], ["09:05", "ЕРЕВАН", "SU1866", "C11"], ["10:30", "СОЧИ", "SU1120", "D02"], ["11:10", "КАЗАНЬ", "SU1190", "D09"], ["12:45", "ПЕКИН", "SU204", "E21"], ["14:20", "АЛТАЙ", "S75317", "A05"]];
+const S = [["ПОСАДКА", "#7FD3A6"], ["ПО ПЛАНУ", "#EAF4FB"], ["ЗАДЕРЖАН", "#FF8CC6"], ["РЕГИСТРАЦИЯ", "#38BDE8"], ["ВЫЛЕТЕЛ", "#9FB3C2"]];
+const ABC = 'АБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЭЮЯ';
+class Component extends DCLogic {
+  state = { st: [0, 1, 3, 1, 1, 2, 1], flip: -1, step: 0, now: Date.now() };
+  componentDidMount() {
+    this.reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.tick = setInterval(() => this.setState({ now: Date.now() }), 1000);
+    if (this.reduce) return;
+    this.cyc = setInterval(() => { const i = Math.floor(Math.random() * F.length), s = this.state.st.slice(); s[i] = (s[i] + 1) % S.length; this.setState({ st: s, flip: i, step: 0 }); this.run(); }, 4000);
+  }
+  run() { clearInterval(this.fl); this.fl = setInterval(() => { const n = this.state.step + 1; this.setState({ step: n }); if (n > 10) { clearInterval(this.fl); this.setState({ flip: -1 }); } }, 70); }
+  componentWillUnmount() { clearInterval(this.tick); clearInterval(this.cyc); clearInterval(this.fl); }
+  renderVals() {
+    const st = this.state, d = new Date(st.now);
+    return {
+      clock: String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0'),
+      rows: F.map((f, i) => { const s = S[st.st[i]], scr = st.flip === i;
+        return { time: f[0], no: f[2], gate: f[3], status: s[0],
+          city: f[1].split('').map((ch, k) => ({ c: scr && k >= st.step ? ABC[(k * 7 + st.step * 3) % ABC.length] : ch, cls: scr && k >= st.step - 1 ? (st.step % 2 ? 'flipA' : 'flipB') : '' })),
+          st: 'text-align: right; font-size: 11px; font-weight: 800; letter-spacing: .06em; color: ' + s[1] + (st.st[i] === 0 ? '; animation: blink 1.2s steps(2) infinite' : '') }; })
+    };
+  }
+}
+</script>
+</body>
+</html>

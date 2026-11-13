@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>OBLAKO — конструктор маршрута</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#F4FAFE}
+a{color:#0B2540;text-decoration:none}a:hover{color:#0A79A8}
+@keyframes aur{0%{transform:translate(0,0) scale(1)}33%{transform:translate(50px,-40px) scale(1.15)}66%{transform:translate(-40px,30px) scale(.92)}100%{transform:translate(0,0) scale(1)}}
+@keyframes shift{to{background-position:300% 0}}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.aur{position:absolute;border-radius:50%;filter:blur(80px);animation:aur 22s ease-in-out infinite;pointer-events:none}
+.grad{background:linear-gradient(90deg,#0A79A8,#E8288E 33%,#8B6CF0 66%,#0A79A8);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shift 8s linear infinite}
+.lg{position:relative;background:rgba(255,255,255,.42);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,.7);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 24px 60px rgba(11,37,64,.1)}
+.rise{animation:rise .8s cubic-bezier(.2,.8,.2,1) both}
+@keyframes sail{0%,100%{transform:translateX(0)}50%{transform:translateX(80px)}}
+@keyframes flow{to{stroke-dashoffset:-1200}}
+@keyframes enterL{0%{transform:translateX(0);opacity:1}100%{transform:translateX(-95%);opacity:0}}
+@keyframes enterR{0%{transform:translateX(0);opacity:1}100%{transform:translateX(95%);opacity:0}}
+@keyframes twinkle{0%,100%{opacity:.25}50%{opacity:1}}
+.sail{animation:sail 40s ease-in-out infinite}
+.ribbon{stroke-dasharray:420 780;animation:flow 11s linear infinite}
+.enterL{animation:enterL 1.5s cubic-bezier(.6,0,.2,1) both .15s}
+.enterR{animation:enterR 1.5s cubic-bezier(.6,0,.2,1) both .15s}
+.tw{animation:twinkle 3s ease-in-out infinite}
+@keyframes drawA{from{stroke-dashoffset:2400}to{stroke-dashoffset:0}}
+@keyframes drawB{from{stroke-dashoffset:2400}to{stroke-dashoffset:0}}
+.drawA{stroke-dasharray:2400;animation:drawA 1.6s cubic-bezier(.4,0,.2,1) both}
+.drawB{stroke-dasharray:2400;animation:drawB 1.6s cubic-bezier(.4,0,.2,1) both}
+@keyframes tiltIn{from{transform:rotateX(0) rotateZ(0) scale(.9)}to{transform:rotateX(52deg) rotateZ(-14deg) scale(.95)}}
+.tilt{transform:rotateX(52deg) rotateZ(-14deg) scale(.95);animation:tiltIn 1.8s cubic-bezier(.2,.8,.2,1) both .3s}
+
+@media (prefers-reduced-motion: reduce){.aur,.grad,.rise,.sail,.ribbon,.tw,.drawA,.drawB,.tilt{animation:none !important}.enterL,.enterR{display:none}}
+</style>
+</helmet>
+<div style="position: relative; overflow: hidden; min-height: 1220px; background: #F4FAFE; font-family: 'Onest', system-ui, sans-serif; color: #0B2540">
+<svg aria-hidden="true" viewBox="0 0 1440 1000" preserveAspectRatio="xMidYMid slice" style="position: absolute; top: 0; left: 0; width: 100%; height: 1000px; pointer-events: none">
+<defs><radialGradient id="pcf" cx="45%" cy="35%" r="70%"><stop offset="0" stop-color="#FFFFFF"></stop><stop offset="1" stop-color="#EAF6FC" stop-opacity=".9"></stop></radialGradient><filter id="pcs" x="-40%" y="-60%" width="180%" height="220%"><feGaussianBlur stdDeviation="14"></feGaussianBlur></filter>
+<g id="pcloud"><g fill="url(#pcf)" filter="url(#pcs)"><ellipse cx="150" cy="92" rx="138" ry="26"></ellipse><circle cx="88" cy="76" r="40"></circle><circle cx="150" cy="58" r="56"></circle><circle cx="214" cy="72" r="44"></circle><circle cx="256" cy="86" r="26"></circle></g></g></defs><g transform="translate(-60 120) scale(1.2)" opacity="0.8"><g class="sail" style="animation-delay: -0s"><use href="#pcloud"></use></g></g><g transform="translate(980 60) scale(1.4)" opacity="0.85"><g class="sail" style="animation-delay: -14s"><use href="#pcloud"></use></g></g><g transform="translate(520 520) scale(1.6)" opacity="0.7"><g class="sail" style="animation-delay: -7s"><use href="#pcloud"></use></g></g><g transform="translate(1180 640) scale(1.2)" opacity="0.75"><g class="sail" style="animation-delay: -22s"><use href="#pcloud"></use></g></g></svg><svg aria-hidden="true" viewBox="0 0 1440 1000" preserveAspectRatio="none" style="position: absolute; top: 0; left: 0; width: 100%; height: 1000px; pointer-events: none"><defs><linearGradient id="prb" x1="0" x2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0"></stop><stop offset=".5" stop-color="#FFFFFF" stop-opacity=".9"></stop><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop></linearGradient><filter id="prs"><feGaussianBlur stdDeviation="7"></feGaussianBlur></filter></defs><path class="ribbon" d="M-100 300 C 300 160, 620 480, 980 260 S 1480 120, 1600 220" fill="none" stroke="url(#prb)" stroke-width="26" filter="url(#prs)"></path><path class="ribbon" d="M-100 360 C 320 220, 660 540, 1020 320 S 1500 180, 1600 280" fill="none" stroke="url(#prb)" stroke-width="8" style="animation-delay: -4s"></path></svg><svg aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: .06; mix-blend-mode: multiply; pointer-events: none"><filter id="pgr"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"></feTurbulence></filter><rect width="100%" height="100%" filter="url(#pgr)"></rect></svg><div aria-hidden="true" style="position: fixed; inset: 0; z-index: 100; pointer-events: none; overflow: hidden">
+<div class="enterL" style="position: absolute; top: -20%; bottom: -20%; left: -10%; width: 70%; background: radial-gradient(circle at 70% 30%, #FFFFFF 0 30%, rgba(255,255,255,0) 60%), radial-gradient(circle at 80% 75%, #F2FAFE 0 30%, rgba(255,255,255,0) 60%), linear-gradient(90deg, #FFFFFF 55%, rgba(255,255,255,0)); filter: blur(24px)"></div>
+<div class="enterR" style="position: absolute; top: -20%; bottom: -20%; right: -10%; width: 70%; background: radial-gradient(circle at 30% 40%, #FFFFFF 0 30%, rgba(255,255,255,0) 60%), radial-gradient(circle at 20% 80%, #EAF6FC 0 30%, rgba(255,255,255,0) 60%), linear-gradient(270deg, #FFFFFF 55%, rgba(255,255,255,0)); filter: blur(24px)"></div>
+</div>
+<header style="position: relative; max-width: 1280px; margin: 0 auto; padding: 22px 24px 0">
+<div class="lg" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 10px 10px 20px; border-radius: 20px">
+<a href="Hero.dc.html" style="display: flex; align-items: center; gap: 10px; color: #0B2540"><svg aria-hidden="true" width="34" height="24" viewBox="0 0 44 30"><defs><linearGradient id="lgo" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#BDEBFA"></stop><stop offset=".55" stop-color="#38BDE8"></stop><stop offset="1" stop-color="#0A79A8"></stop></linearGradient></defs><path d="M12 28h22a9 9 0 0 0 1-17.9A12 12 0 0 0 12.4 8 10 10 0 0 0 12 28z" fill="url(#lgo)"></path></svg><span style="font-size: 18px; font-weight: 800; letter-spacing: 0.18em">OBLAKO</span></a>
+<nav aria-label="Основная навигация" style="display: flex; flex-wrap: wrap; gap: 24px; font-size: 15px; font-weight: 500"><a href="Cards.dc.html" style="color: #0B2540; opacity: .85">Направления</a><a href="Route.dc.html" aria-current="page" style="color: #0B2540; font-weight: 700; box-shadow: inset 0 -2px 0 #E8288E; padding-bottom: 4px">Маршрут</a><a href="Data.dc.html" style="color: #0B2540; opacity: .85">Бюджет</a><a href="Board.dc.html" style="color: #0B2540; opacity: .85">Табло</a><a href="Packing.dc.html" style="color: #0B2540; opacity: .85">Сборы</a><a href="Journal.dc.html" style="color: #0B2540; opacity: .85">Дневник</a></nav>
+<a href="Profile.dc.html" aria-label="Профиль" style="width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #38BDE8, #8B6CF0); color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800">[И]</a>
+</div>
+</header>
+
+<div aria-hidden="true" class="aur" style="top: -200px; right: -160px; width: 700px; height: 700px; background: #9BDDF2"></div>
+<div aria-hidden="true" class="aur" style="bottom: -240px; left: -120px; width: 620px; height: 620px; background: #FFB3D6; opacity: .6; animation-delay: -9s"></div>
+<section style="position: relative; max-width: 1280px; margin: 0 auto; padding: 48px 24px 80px; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #0A79A8">Конструктор маршрута</span>
+<h1 style="margin: 0; font-size: 56px; font-weight: 700; line-height: 1; letter-spacing: -0.04em">Тбилиси, <span class="grad">3&nbsp;дня</span></h1>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<button type="button" onClick="{{optimize}}" class="lg" style="display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 18px; border-radius: 14px; color: #0B2540; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C8146F" stroke-width="2"><path d="M4 17c4 0 4-10 8-10s4 10 8 10"></path><circle cx="4" cy="17" r="2"></circle><circle cx="20" cy="17" r="2"></circle></svg>Оптимизировать порядок</button>
+<button type="button" style="min-height: 48px; padding: 0 20px; border: 0; border-radius: 14px; background: #C8146F; color: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 600; box-shadow: 0 12px 30px rgba(200,20,111,.3); cursor: pointer">Сохранить</button>
+</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch">
+<div class="lg" style="flex: 1 1 380px; max-width: 440px; border-radius: 28px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<div role="tablist" aria-label="Дни поездки" style="display: flex; gap: 6px">
+<sc-for list="{{dayTabs}}" as="t" hint-placeholder-count="3"><button type="button" role="tab" aria-selected="{{t.sel}}" onClick="{{t.pick}}" style="{{t.s}}"><span style="font-weight: 800">{{t.label}}</span><span style="font-size: 12px; opacity: .8">{{t.count}}</span></button></sc-for>
+</div>
+<p style="margin: 0; font-size: 12px; color: #45607A">Тяните точку за&nbsp;ручку или используйте стрелки на&nbsp;клавиатуре</p>
+<div role="list" aria-label="Точки дня" style="{{listS}}">
+<sc-for list="{{stops}}" as="s" hint-placeholder-count="4">
+<div role="listitem" style="{{s.s}}">
+<button type="button" aria-label="{{s.handleLabel}}" onPointerDown="{{s.down}}" onPointerMove="{{s.move}}" onPointerUp="{{s.up}}" onPointerCancel="{{s.up}}" onKeyDown="{{s.key}}" style="flex: none; width: 36px; height: 52px; border: 0; border-radius: 10px; background: transparent; color: #9FC4D6; cursor: grab; touch-action: none; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="14" height="20" viewBox="0 0 14 20" fill="currentColor"><circle cx="4" cy="4" r="2"></circle><circle cx="10" cy="4" r="2"></circle><circle cx="4" cy="10" r="2"></circle><circle cx="10" cy="10" r="2"></circle><circle cx="4" cy="16" r="2"></circle><circle cx="10" cy="16" r="2"></circle></svg></button>
+<span style="{{s.badge}}">{{s.n}}</span>
+<span style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 700">{{s.name}}</span><span style="font-size: 12px; color: #45607A">{{s.time}} · {{s.dur}}</span><span style="font-size: 11px; color: #0A79A8">{{s.walk}}</span></span>
+<button type="button" aria-label="{{s.rmLabel}}" onClick="{{s.rm}}" style="flex: none; width: 36px; height: 36px; border: 0; border-radius: 10px; background: transparent; color: #45607A; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; padding-top: 6px; border-top: 1px solid rgba(11,37,64,.08)">
+<span style="font-size: 13px; font-weight: 600; color: #45607A">Добавить в&nbsp;день</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{suggest}}" as="g" hint-placeholder-count="4"><button type="button" onClick="{{g.add}}" style="display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 12px; border: 1px dashed #9BD8EE; border-radius: 10px; background: rgba(255,255,255,.6); color: #0B2540; font-family: inherit; font-size: 13px; font-weight: 500; cursor: pointer"><span aria-hidden="true" style="color: #C8146F; font-weight: 800">+</span>{{g.name}}</button></sc-for>
+</div>
+</div>
+</div>
+
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<div class="lg" style="position: relative; border-radius: 28px; overflow: hidden; height: 480px; background: linear-gradient(180deg, #E9F6FC, #F8FCFE)">
+<div style="position: absolute; left: 50%; top: 52%; width: 640px; height: 520px; margin: -260px 0 0 -320px; perspective: 1200px">
+<div class="tilt" style="position: relative; width: 640px; height: 520px; transform-style: preserve-3d; -webkit-transform-style: preserve-3d">
+<svg role="img" aria-label="Наклонная 3D-карта маршрута дня" viewBox="0 0 640 520" width="640" height="520" style="position: absolute; inset: 0; border-radius: 24px; background: #F3F9FC; box-shadow: 0 40px 80px rgba(11,37,64,.18)">
+<ellipse cx="380" cy="440" rx="150" ry="70" fill="#DDEFD9"></ellipse>
+<path d="M90 520 C 200 440 300 380 420 330 S 540 210 580 120 S 620 40 640 20" fill="none" stroke="#B5DFEE" stroke-width="28" stroke-linecap="round"></path>
+<rect x="6" y="58" width="30" height="34" rx="3" fill="#C9DCE7"></rect><rect x="6" y="50" width="30" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="6" y="97" width="26" height="34" rx="3" fill="#C9DCE7"></rect><rect x="6" y="94" width="26" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="6" y="149" width="30" height="30" rx="3" fill="#C9DCE7"></rect><rect x="6" y="138" width="30" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="6" y="237" width="30" height="34" rx="3" fill="#C9DCE7"></rect><rect x="6" y="226" width="30" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="6" y="274" width="34" height="26" rx="3" fill="#C9DCE7"></rect><rect x="6" y="270" width="34" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="6" y="317" width="34" height="30" rx="3" fill="#C9DCE7"></rect><rect x="6" y="314" width="34" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="6" y="369" width="26" height="26" rx="3" fill="#C9DCE7"></rect><rect x="6" y="358" width="26" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="6" y="457" width="30" height="30" rx="3" fill="#C9DCE7"></rect><rect x="6" y="446" width="30" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="6" y="498" width="30" height="34" rx="3" fill="#C9DCE7"></rect><rect x="6" y="490" width="30" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="50" y="10" width="34" height="30" rx="3" fill="#C9DCE7"></rect><rect x="50" y="6" width="34" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="50" y="54" width="26" height="26" rx="3" fill="#C9DCE7"></rect><rect x="50" y="50" width="26" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="50" y="102" width="30" height="34" rx="3" fill="#C9DCE7"></rect><rect x="50" y="94" width="30" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="50" y="149" width="30" height="30" rx="3" fill="#C9DCE7"></rect><rect x="50" y="138" width="30" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="50" y="193" width="34" height="30" rx="3" fill="#C9DCE7"></rect><rect x="50" y="182" width="34" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="50" y="232" width="34" height="26" rx="3" fill="#C9DCE7"></rect><rect x="50" y="226" width="34" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="50" y="281" width="26" height="30" rx="3" fill="#C9DCE7"></rect><rect x="50" y="270" width="26" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="50" y="320" width="26" height="34" rx="3" fill="#C9DCE7"></rect><rect x="50" y="314" width="26" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="50" y="361" width="34" height="34" rx="3" fill="#C9DCE7"></rect><rect x="50" y="358" width="34" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="50" y="413" width="26" height="34" rx="3" fill="#C9DCE7"></rect><rect x="50" y="402" width="26" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="50" y="454" width="26" height="26" rx="3" fill="#C9DCE7"></rect><rect x="50" y="446" width="26" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="94" y="12" width="30" height="26" rx="3" fill="#C9DCE7"></rect><rect x="94" y="6" width="30" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="94" y="53" width="30" height="26" rx="3" fill="#C9DCE7"></rect><rect x="94" y="50" width="30" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="94" y="97" width="30" height="26" rx="3" fill="#C9DCE7"></rect><rect x="94" y="94" width="30" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="94" y="149" width="26" height="30" rx="3" fill="#C9DCE7"></rect><rect x="94" y="138" width="26" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="94" y="186" width="30" height="34" rx="3" fill="#C9DCE7"></rect><rect x="94" y="182" width="30" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="94" y="229" width="30" height="26" rx="3" fill="#C9DCE7"></rect><rect x="94" y="226" width="30" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="94" y="320" width="26" height="30" rx="3" fill="#C9DCE7"></rect><rect x="94" y="314" width="26" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="94" y="361" width="26" height="34" rx="3" fill="#C9DCE7"></rect><rect x="94" y="358" width="26" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="94" y="408" width="30" height="30" rx="3" fill="#C9DCE7"></rect><rect x="94" y="402" width="30" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="138" y="14" width="30" height="30" rx="3" fill="#C9DCE7"></rect><rect x="138" y="6" width="30" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="138" y="61" width="30" height="34" rx="3" fill="#C9DCE7"></rect><rect x="138" y="50" width="30" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="138" y="105" width="26" height="34" rx="3" fill="#C9DCE7"></rect><rect x="138" y="94" width="26" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="138" y="142" width="34" height="34" rx="3" fill="#C9DCE7"></rect><rect x="138" y="138" width="34" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="138" y="193" width="30" height="30" rx="3" fill="#C9DCE7"></rect><rect x="138" y="182" width="30" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="138" y="234" width="30" height="26" rx="3" fill="#C9DCE7"></rect><rect x="138" y="226" width="30" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="138" y="278" width="30" height="26" rx="3" fill="#C9DCE7"></rect><rect x="138" y="270" width="30" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="138" y="317" width="34" height="26" rx="3" fill="#C9DCE7"></rect><rect x="138" y="314" width="34" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="138" y="364" width="30" height="30" rx="3" fill="#C9DCE7"></rect><rect x="138" y="358" width="30" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="138" y="408" width="30" height="34" rx="3" fill="#C9DCE7"></rect><rect x="138" y="402" width="30" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="182" y="9" width="26" height="34" rx="3" fill="#C9DCE7"></rect><rect x="182" y="6" width="26" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="182" y="56" width="26" height="30" rx="3" fill="#C9DCE7"></rect><rect x="182" y="50" width="26" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="182" y="149" width="30" height="34" rx="3" fill="#C9DCE7"></rect><rect x="182" y="138" width="30" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="182" y="188" width="30" height="26" rx="3" fill="#C9DCE7"></rect><rect x="182" y="182" width="30" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="182" y="232" width="34" height="30" rx="3" fill="#C9DCE7"></rect><rect x="182" y="226" width="34" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="182" y="325" width="26" height="26" rx="3" fill="#C9DCE7"></rect><rect x="182" y="314" width="26" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="182" y="369" width="26" height="30" rx="3" fill="#C9DCE7"></rect><rect x="182" y="358" width="26" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="226" y="10" width="26" height="30" rx="3" fill="#C9DCE7"></rect><rect x="226" y="6" width="26" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="226" y="53" width="34" height="34" rx="3" fill="#C9DCE7"></rect><rect x="226" y="50" width="34" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="226" y="142" width="30" height="34" rx="3" fill="#C9DCE7"></rect><rect x="226" y="138" width="30" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="226" y="188" width="26" height="26" rx="3" fill="#C9DCE7"></rect><rect x="226" y="182" width="26" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="226" y="234" width="26" height="34" rx="3" fill="#C9DCE7"></rect><rect x="226" y="226" width="26" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="226" y="281" width="26" height="26" rx="3" fill="#C9DCE7"></rect><rect x="226" y="270" width="26" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="226" y="318" width="30" height="34" rx="3" fill="#C9DCE7"></rect><rect x="226" y="314" width="30" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="226" y="449" width="30" height="34" rx="3" fill="#C9DCE7"></rect><rect x="226" y="446" width="30" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="226" y="494" width="30" height="34" rx="3" fill="#C9DCE7"></rect><rect x="226" y="490" width="30" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="270" y="14" width="34" height="30" rx="3" fill="#C9DCE7"></rect><rect x="270" y="6" width="34" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="270" y="58" width="30" height="30" rx="3" fill="#C9DCE7"></rect><rect x="270" y="50" width="30" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="270" y="142" width="26" height="30" rx="3" fill="#C9DCE7"></rect><rect x="270" y="138" width="26" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="270" y="234" width="34" height="34" rx="3" fill="#C9DCE7"></rect><rect x="270" y="226" width="34" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="270" y="273" width="34" height="26" rx="3" fill="#C9DCE7"></rect><rect x="270" y="270" width="34" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="270" y="457" width="34" height="34" rx="3" fill="#C9DCE7"></rect><rect x="270" y="446" width="34" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="270" y="494" width="34" height="30" rx="3" fill="#C9DCE7"></rect><rect x="270" y="490" width="34" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="314" y="9" width="34" height="30" rx="3" fill="#C9DCE7"></rect><rect x="314" y="6" width="34" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="314" y="61" width="26" height="26" rx="3" fill="#C9DCE7"></rect><rect x="314" y="50" width="26" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="314" y="97" width="30" height="34" rx="3" fill="#C9DCE7"></rect><rect x="314" y="94" width="30" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="314" y="276" width="26" height="34" rx="3" fill="#C9DCE7"></rect><rect x="314" y="270" width="26" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="358" y="9" width="26" height="34" rx="3" fill="#C9DCE7"></rect><rect x="358" y="6" width="26" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="358" y="58" width="30" height="34" rx="3" fill="#C9DCE7"></rect><rect x="358" y="50" width="30" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="358" y="98" width="26" height="30" rx="3" fill="#C9DCE7"></rect><rect x="358" y="94" width="26" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="358" y="186" width="26" height="26" rx="3" fill="#C9DCE7"></rect><rect x="358" y="182" width="26" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="358" y="366" width="26" height="26" rx="3" fill="#C9DCE7"></rect><rect x="358" y="358" width="26" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="358" y="452" width="30" height="26" rx="3" fill="#C9DCE7"></rect><rect x="358" y="446" width="30" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="402" y="9" width="34" height="30" rx="3" fill="#C9DCE7"></rect><rect x="402" y="6" width="34" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="402" y="54" width="26" height="26" rx="3" fill="#C9DCE7"></rect><rect x="402" y="50" width="26" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="402" y="185" width="26" height="34" rx="3" fill="#C9DCE7"></rect><rect x="402" y="182" width="26" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="402" y="362" width="30" height="30" rx="3" fill="#C9DCE7"></rect><rect x="402" y="358" width="30" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="402" y="410" width="30" height="30" rx="3" fill="#C9DCE7"></rect><rect x="402" y="402" width="30" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="402" y="450" width="30" height="30" rx="3" fill="#C9DCE7"></rect><rect x="402" y="446" width="30" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="402" y="494" width="30" height="26" rx="3" fill="#C9DCE7"></rect><rect x="402" y="490" width="30" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="446" y="14" width="34" height="34" rx="3" fill="#C9DCE7"></rect><rect x="446" y="6" width="34" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="446" y="53" width="34" height="26" rx="3" fill="#C9DCE7"></rect><rect x="446" y="50" width="34" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="446" y="105" width="34" height="34" rx="3" fill="#C9DCE7"></rect><rect x="446" y="94" width="34" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="446" y="146" width="26" height="34" rx="3" fill="#C9DCE7"></rect><rect x="446" y="138" width="26" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="446" y="322" width="34" height="30" rx="3" fill="#C9DCE7"></rect><rect x="446" y="314" width="34" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="446" y="405" width="30" height="30" rx="3" fill="#C9DCE7"></rect><rect x="446" y="402" width="30" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="446" y="493" width="34" height="34" rx="3" fill="#C9DCE7"></rect><rect x="446" y="490" width="34" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="490" y="10" width="26" height="30" rx="3" fill="#C9DCE7"></rect><rect x="490" y="6" width="26" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="490" y="61" width="30" height="30" rx="3" fill="#C9DCE7"></rect><rect x="490" y="50" width="30" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="490" y="102" width="30" height="26" rx="3" fill="#C9DCE7"></rect><rect x="490" y="94" width="30" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="490" y="237" width="34" height="34" rx="3" fill="#C9DCE7"></rect><rect x="490" y="226" width="34" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="490" y="320" width="34" height="26" rx="3" fill="#C9DCE7"></rect><rect x="490" y="314" width="34" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="490" y="361" width="26" height="34" rx="3" fill="#C9DCE7"></rect><rect x="490" y="358" width="26" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="490" y="405" width="26" height="30" rx="3" fill="#C9DCE7"></rect><rect x="490" y="402" width="26" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="490" y="454" width="34" height="26" rx="3" fill="#C9DCE7"></rect><rect x="490" y="446" width="34" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="534" y="185" width="26" height="26" rx="3" fill="#C9DCE7"></rect><rect x="534" y="182" width="26" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="534" y="237" width="34" height="30" rx="3" fill="#C9DCE7"></rect><rect x="534" y="226" width="34" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="534" y="281" width="26" height="26" rx="3" fill="#C9DCE7"></rect><rect x="534" y="270" width="26" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="534" y="317" width="34" height="26" rx="3" fill="#C9DCE7"></rect><rect x="534" y="314" width="34" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="534" y="361" width="26" height="34" rx="3" fill="#C9DCE7"></rect><rect x="534" y="358" width="26" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="534" y="405" width="34" height="26" rx="3" fill="#C9DCE7"></rect><rect x="534" y="402" width="34" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="578" y="188" width="30" height="30" rx="3" fill="#C9DCE7"></rect><rect x="578" y="182" width="30" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="578" y="234" width="30" height="34" rx="3" fill="#C9DCE7"></rect><rect x="578" y="226" width="30" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="578" y="274" width="30" height="34" rx="3" fill="#C9DCE7"></rect><rect x="578" y="270" width="30" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="578" y="318" width="30" height="34" rx="3" fill="#C9DCE7"></rect><rect x="578" y="314" width="30" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="578" y="369" width="34" height="34" rx="3" fill="#C9DCE7"></rect><rect x="578" y="358" width="34" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="578" y="410" width="26" height="34" rx="3" fill="#C9DCE7"></rect><rect x="578" y="402" width="26" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="578" y="449" width="26" height="26" rx="3" fill="#C9DCE7"></rect><rect x="578" y="446" width="26" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="578" y="501" width="30" height="34" rx="3" fill="#C9DCE7"></rect><rect x="578" y="490" width="30" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="622" y="98" width="34" height="34" rx="3" fill="#C9DCE7"></rect><rect x="622" y="94" width="34" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="622" y="193" width="26" height="34" rx="3" fill="#C9DCE7"></rect><rect x="622" y="182" width="26" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="622" y="237" width="26" height="34" rx="3" fill="#C9DCE7"></rect><rect x="622" y="226" width="26" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="622" y="278" width="30" height="34" rx="3" fill="#C9DCE7"></rect><rect x="622" y="270" width="30" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="622" y="320" width="34" height="34" rx="3" fill="#C9DCE7"></rect><rect x="622" y="314" width="34" height="34" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="622" y="364" width="30" height="26" rx="3" fill="#C9DCE7"></rect><rect x="622" y="358" width="30" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="622" y="406" width="30" height="26" rx="3" fill="#C9DCE7"></rect><rect x="622" y="402" width="30" height="26" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="622" y="454" width="26" height="30" rx="3" fill="#C9DCE7"></rect><rect x="622" y="446" width="26" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect><rect x="622" y="498" width="26" height="30" rx="3" fill="#C9DCE7"></rect><rect x="622" y="490" width="26" height="30" rx="3" fill="#FFFFFF" stroke="#DCEAF2"></rect>
+<defs><linearGradient id="rg" x1="0" x2="1"><stop offset="0" stop-color="#38BDE8"></stop><stop offset=".6" stop-color="#E8288E"></stop><stop offset="1" stop-color="#8B6CF0"></stop></linearGradient></defs>
+<path d="{{pathD}}" fill="none" stroke="#0B2540" stroke-opacity=".12" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"></path>
+<path class="{{drawCls}}" d="{{pathD}}" fill="none" stroke="url(#rg)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+<circle r="7" fill="#FFFFFF" stroke="#C8146F" stroke-width="3"><animateMotion dur="9s" repeatCount="indefinite" path="{{pathD}}"></animateMotion></circle>
+<sc-for list="{{pins}}" as="p" hint-placeholder-count="4"><ellipse cx="{{p.x}}" cy="{{p.y}}" rx="12" ry="6" fill="#0B2540" opacity=".25"></ellipse></sc-for>
+</svg>
+<sc-for list="{{pins}}" as="p" hint-placeholder-count="4">
+<span aria-hidden="true" style="{{p.marker}}"><span style="{{p.head}}">{{p.n}}</span><span style="width: 3px; height: 26px; background: #0B2540; border-radius: 2px"></span></span>
+</sc-for>
+</div>
+</div>
+<span class="lg" style="position: absolute; left: 16px; top: 16px; padding: 8px 12px; border-radius: 12px; font-size: 12px; font-weight: 600">3D-вид · Кура и&nbsp;старый город</span>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch">
+<div class="lg" style="flex: 0 1 300px; border-radius: 28px; padding: 18px; display: flex; flex-direction: column; align-items: center; gap: 8px">
+<svg role="img" aria-label="{{dialLabel}}" viewBox="0 0 240 240" width="240" height="240">
+<circle cx="120" cy="120" r="92" fill="none" stroke="#E3F1F8" stroke-width="22"></circle>
+<path d="{{nightD}}" fill="none" stroke="#0B2540" stroke-opacity=".75" stroke-width="22"></path>
+<sc-for list="{{segs}}" as="g" hint-placeholder-count="4"><path d="{{g.d}}" fill="none" stroke="{{g.c}}" stroke-width="{{g.w}}" stroke-linecap="butt"></path></sc-for>
+<g font-family="Onest" font-size="10" font-weight="700" fill="#45607A" text-anchor="middle"><text x="120" y="16">0</text><text x="228" y="124">6</text><text x="120" y="236">12</text><text x="12" y="124">18</text></g>
+<circle cx="{{sunX}}" cy="{{sunY}}" r="9" fill="#FFB347" stroke="#FFFFFF" stroke-width="3"></circle>
+<circle cx="{{moonX}}" cy="{{moonY}}" r="8" fill="#C3B5FF" stroke="#FFFFFF" stroke-width="3"></circle>
+<text x="120" y="112" text-anchor="middle" font-family="Onest" font-size="13" fill="#45607A">с 10:00 до</text>
+<text x="120" y="140" text-anchor="middle" font-family="Onest" font-size="28" font-weight="800" fill="#0B2540">{{endTime}}</text>
+</svg>
+<span style="font-size: 12px; color: #45607A">Рассвет 06:50 · закат 19:20 · демо</span>
+</div>
+<div style="flex: 1 1 360px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<div class="lg" style="border-radius: 22px; padding: 18px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 12px; color: #45607A">Точек</span><span style="font-size: 32px; font-weight: 800">{{count}}</span></div>
+<div class="lg" style="border-radius: 22px; padding: 18px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 12px; color: #45607A">Пешком</span><span style="font-size: 32px; font-weight: 800">{{km}}&nbsp;км</span></div>
+<div class="lg" style="border-radius: 22px; padding: 18px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 12px; color: #45607A">В&nbsp;пути</span><span style="font-size: 32px; font-weight: 800">{{walkMin}}&nbsp;мин</span></div>
+<div class="lg" style="border-radius: 22px; padding: 18px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 12px; color: #45607A">Успеете до&nbsp;заката</span><span style="font-size: 32px; font-weight: 800">{{beforeSunset}}</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1220}}'>
+class Component extends DCLogic {
+  state = { day: 0, days: [[0, 1, 2, 3], [5, 4, 6, 7], [8, 9]], ver: 0, drag: null };
+  renderVals() {
+    const P = [["Площадь Свободы", 330, 200, 30], ["Проспект Руставели", 270, 130, 45], ["Сухой мост", 350, 250, 60], ["Мост Мира", 410, 315, 20], ["Абанотубани", 445, 372, 90], ["Нарикала", 380, 410, 60], ["Метехи", 505, 290, 30], ["Ботанический сад", 330, 470, 75], ["Фабрика", 210, 92, 60], ["Дезертирский рынок", 190, 286, 45]];
+    const ROW = 84;
+    const st = this.state;
+    const cur = st.days[st.day];
+    const set = (list, keepDrag) => { const d = st.days.map((x) => x.slice()); d[st.day] = list; this.setState({ days: d, ver: keepDrag ? st.ver : st.ver + 1 }); };
+    const move = (id, to) => { const l = cur.filter((x) => x !== id); l.splice(Math.max(0, Math.min(l.length, to)), 0, id); return l; };
+    const dist = (a, b) => Math.hypot(P[a][1] - P[b][1], P[a][2] - P[b][2]) * 6;
+    const pad = (n) => (n < 10 ? '0' : '') + n;
+    const hm = (m) => pad(Math.floor(m / 60) % 24) + ':' + pad(Math.round(m % 60));
+    let t = 600, total = 0;
+    const times = {};
+    cur.forEach((id, i) => {
+      const start = t; t += P[id][3];
+      let walk = '', w = 0;
+      if (i < cur.length - 1) { const d = dist(id, cur[i + 1]); total += d; w = Math.max(3, Math.round(d / 80)); walk = '→ ' + Math.round(d) + '\u00a0м · ' + w + '\u00a0мин'; }
+      times[id] = { start, end: start + P[id][3], walk, w, pos: i };
+      t += w;
+    });
+    const ordered = cur.slice().sort((a, b) => a - b);
+    const dr = st.drag;
+    const stops = ordered.map((id) => {
+      const info = times[id], isDrag = dr && dr.id === id;
+      const top = isDrag ? dr.startPos * ROW + dr.dy : info.pos * ROW;
+      return {
+        n: info.pos + 1, name: P[id][0], time: hm(info.start), dur: P[id][3] + '\u00a0мин', walk: info.walk,
+        handleLabel: 'Переместить: ' + P[id][0] + ', позиция ' + (info.pos + 1),
+        rmLabel: 'Убрать: ' + P[id][0],
+        s: 'position: absolute; left: 0; right: 0; top: ' + top + 'px; height: 76px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 0 8px 0 2px; border-radius: 18px; background: rgba(255,255,255,' + (isDrag ? '.98' : '.72') + '); ' +
+          (isDrag ? 'z-index: 5; transform: scale(1.03); box-shadow: 0 20px 40px rgba(11,37,64,.18); transition: transform .2s' : 'transition: top .35s cubic-bezier(.2,.8,.2,1)'),
+        badge: 'flex: none; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #FFFFFF; background: ' + (info.pos === 0 ? '#C8146F' : '#0B2540'),
+        down: (e) => { if (e.currentTarget.setPointerCapture) e.currentTarget.setPointerCapture(e.pointerId); this.setState({ drag: { id, y0: e.clientY, dy: 0, startPos: info.pos } }); },
+        move: (e) => {
+          const d = this.state.drag; if (!d || d.id !== id) return;
+          const dy = e.clientY - d.y0;
+          const to = Math.round((d.startPos * ROW + dy) / ROW);
+          const curPos = this.state.days[this.state.day].indexOf(id);
+          const nd = Object.assign({}, d, { dy });
+          if (to !== curPos && to >= 0 && to < cur.length) { const days = this.state.days.map((x) => x.slice()); const l = days[this.state.day].filter((x) => x !== id); l.splice(to, 0, id); days[this.state.day] = l; this.setState({ drag: nd, days }); }
+          else this.setState({ drag: nd });
+        },
+        up: () => { if (this.state.drag) this.setState({ drag: null, ver: this.state.ver + 1 }); },
+        key: (e) => { if (e.key === 'ArrowUp' && info.pos > 0) { e.preventDefault(); set(move(id, info.pos - 1)); } if (e.key === 'ArrowDown' && info.pos < cur.length - 1) { e.preventDefault(); set(move(id, info.pos + 1)); } },
+        rm: () => set(cur.filter((x) => x !== id))
+      };
+    });
+    let d = '';
+    const pts = cur.map((id) => [P[id][1], P[id][2]]);
+    if (pts.length) { d = 'M' + pts[0][0] + ' ' + pts[0][1]; for (let i = 1; i < pts.length; i++) { const a = pts[i - 1], b = pts[i]; d += ' Q' + ((a[0] + b[0]) / 2) + ' ' + ((a[1] + b[1]) / 2 - 30) + ' ' + b[0] + ' ' + b[1]; } }
+    const C = 120, Rr = 92;
+    const ang = (m) => (m / 1440) * 2 * Math.PI - Math.PI / 2;
+    const pt = (m, r) => [C + r * Math.cos(ang(m)), C + r * Math.sin(ang(m))];
+    const arc = (m0, m1, r) => { const a = pt(m0, r), b = pt(m1, r); const large = ((m1 - m0 + 1440) % 1440) > 720 ? 1 : 0; return 'M' + a[0].toFixed(1) + ' ' + a[1].toFixed(1) + ' A' + r + ' ' + r + ' 0 ' + large + ' 1 ' + b[0].toFixed(1) + ' ' + b[1].toFixed(1); };
+    const segs = [];
+    const pal = ['#38BDE8', '#E8288E', '#8B6CF0', '#0A79A8', '#FF8CC6'];
+    cur.forEach((id, i) => { const x = times[id]; segs.push({ d: arc(x.start, x.end, Rr), c: pal[i % pal.length], w: 22 }); if (x.w) segs.push({ d: arc(x.end, x.end + x.w, Rr), c: '#BFE3F2', w: 8 }); });
+    const sunset = 19 * 60 + 20, sunrise = 6 * 60 + 50;
+    const sun = pt(sunrise, Rr), moon = pt(sunset, Rr);
+    const used = st.days.reduce((a, x) => a.concat(x), []);
+    const left = sunset - t;
+    return {
+      dayTabs: st.days.map((x, i) => ({ label: 'День ' + (i + 1), count: x.length + ' точ.', sel: i === st.day ? 'true' : 'false', pick: () => this.setState({ day: i, ver: st.ver + 1, drag: null }),
+        s: 'flex: 1 1 0; min-height: 56px; border: 0; border-radius: 14px; font-family: inherit; font-size: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; cursor: pointer; ' + (i === st.day ? 'background: #0B2540; color: #FFFFFF' : 'background: rgba(255,255,255,.6); color: #0B2540') })),
+      listS: 'position: relative; height: ' + Math.max(1, cur.length) * ROW + 'px; transition: height .35s',
+      stops,
+      suggest: P.map((p, id) => ({ id, name: p[0] })).filter((p) => cur.indexOf(p.id) === -1).slice(0, 6).map((p) => ({ name: p.name, add: () => set(cur.concat([p.id])) })),
+      pins: cur.map((id, i) => ({ n: i + 1, x: P[id][1], y: P[id][2],
+        marker: 'position: absolute; left: ' + P[id][1] + 'px; top: ' + P[id][2] + 'px; display: flex; flex-direction: column; align-items: center; transform-origin: 50% 100%; transform: translate(-50%, -100%) rotateZ(14deg) rotateX(-52deg); transition: left .4s, top .4s',
+        head: 'width: 34px; height: 34px; border-radius: 12px 12px 12px 4px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #FFFFFF; box-shadow: 0 10px 20px rgba(11,37,64,.25); background: ' + (i === 0 ? '#C8146F' : '#0B2540') })),
+      pathD: d || 'M0 0', drawCls: st.ver % 2 ? 'drawA' : 'drawB',
+      count: cur.length, km: (total / 1000).toFixed(1).replace('.', ','), walkMin: Math.round(total / 80), endTime: hm(t),
+      beforeSunset: left >= 0 ? 'Да, ' + Math.floor(left / 60) + '\u00a0ч ' + (left % 60) + '\u00a0м' : 'Нет',
+      dialLabel: 'Циферблат суток: маршрут с 10:00 до ' + hm(t) + ', ночь с 19:20 до 06:50',
+      segs, nightD: arc(sunset, sunrise + 1440, Rr), sunX: sun[0].toFixed(1), sunY: sun[1].toFixed(1), moonX: moon[0].toFixed(1), moonY: moon[1].toFixed(1),
+      optimize: () => {
+        if (cur.length < 3) return;
+        const rest = cur.slice(1), out = [cur[0]];
+        while (rest.length) { const last = out[out.length - 1]; let bi = 0; rest.forEach((id, k) => { if (dist(last, id) < dist(last, rest[bi])) bi = k; }); out.push(rest.splice(bi, 1)[0]); }
+        set(out);
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

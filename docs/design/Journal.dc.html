@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>OBLAKO — дневник</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;family=Caveat:wght@600&amp;display=swap">
+<style>
+body{margin:0;background:#F4FAFE}
+a{color:#0B2540;text-decoration:none}a:hover{color:#0A79A8}
+@keyframes aur{0%{transform:translate(0,0) scale(1)}33%{transform:translate(50px,-40px) scale(1.15)}66%{transform:translate(-40px,30px) scale(.92)}100%{transform:translate(0,0) scale(1)}}
+@keyframes shift{to{background-position:300% 0}}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.aur{position:absolute;border-radius:50%;filter:blur(80px);animation:aur 22s ease-in-out infinite;pointer-events:none}
+.grad{background:linear-gradient(90deg,#0A79A8,#E8288E 33%,#8B6CF0 66%,#0A79A8);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shift 8s linear infinite}
+.lg{position:relative;background:rgba(255,255,255,.42);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,.7);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 24px 60px rgba(11,37,64,.1)}
+.rise{animation:rise .8s cubic-bezier(.2,.8,.2,1) both}
+@keyframes sail{0%,100%{transform:translateX(0)}50%{transform:translateX(80px)}}
+@keyframes flow{to{stroke-dashoffset:-1200}}
+@keyframes enterL{0%{transform:translateX(0);opacity:1}100%{transform:translateX(-95%);opacity:0}}
+@keyframes enterR{0%{transform:translateX(0);opacity:1}100%{transform:translateX(95%);opacity:0}}
+@keyframes twinkle{0%,100%{opacity:.25}50%{opacity:1}}
+.sail{animation:sail 40s ease-in-out infinite}
+.ribbon{stroke-dasharray:420 780;animation:flow 11s linear infinite}
+.enterL{animation:enterL 1.5s cubic-bezier(.6,0,.2,1) both .15s}
+.enterR{animation:enterR 1.5s cubic-bezier(.6,0,.2,1) both .15s}
+.tw{animation:twinkle 3s ease-in-out infinite}
+.pola{position:absolute;padding:12px 12px 16px;border:0;border-radius:6px;background:#FFFFFF;cursor:grab;touch-action:none;transition:box-shadow .3s,transform .3s}
+.pola:hover{box-shadow:0 30px 60px rgba(11,37,64,.25)}
+@keyframes lineA{from{stroke-dashoffset:900;opacity:0}to{stroke-dashoffset:0;opacity:1}}
+@keyframes lineB{from{stroke-dashoffset:600}to{stroke-dashoffset:0}}
+.lineA{animation:lineA 2.4s ease both}
+@keyframes storyIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
+.storyIn{animation:storyIn .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes dropIn{from{opacity:0;transform:translateY(-60px) rotate(0)}}
+
+@media (prefers-reduced-motion: reduce){.aur,.grad,.rise,.sail,.ribbon,.tw,.lineA,.lineB,.storyIn{animation:none !important}.enterL,.enterR{display:none}}
+</style>
+</helmet>
+<div style="position: relative; overflow: hidden; min-height: 1900px; background: #F4FAFE; font-family: 'Onest', system-ui, sans-serif; color: #0B2540">
+<svg aria-hidden="true" viewBox="0 0 1440 1000" preserveAspectRatio="xMidYMid slice" style="position: absolute; top: 0; left: 0; width: 100%; height: 1000px; pointer-events: none">
+<defs><radialGradient id="pcf" cx="45%" cy="35%" r="70%"><stop offset="0" stop-color="#FFFFFF"></stop><stop offset="1" stop-color="#EAF6FC" stop-opacity=".9"></stop></radialGradient><filter id="pcs" x="-40%" y="-60%" width="180%" height="220%"><feGaussianBlur stdDeviation="14"></feGaussianBlur></filter>
+<g id="pcloud"><g fill="url(#pcf)" filter="url(#pcs)"><ellipse cx="150" cy="92" rx="138" ry="26"></ellipse><circle cx="88" cy="76" r="40"></circle><circle cx="150" cy="58" r="56"></circle><circle cx="214" cy="72" r="44"></circle><circle cx="256" cy="86" r="26"></circle></g></g></defs><g transform="translate(-60 120) scale(1.2)" opacity="0.8"><g class="sail" style="animation-delay: -0s"><use href="#pcloud"></use></g></g><g transform="translate(980 60) scale(1.4)" opacity="0.85"><g class="sail" style="animation-delay: -14s"><use href="#pcloud"></use></g></g><g transform="translate(520 520) scale(1.6)" opacity="0.7"><g class="sail" style="animation-delay: -7s"><use href="#pcloud"></use></g></g><g transform="translate(1180 640) scale(1.2)" opacity="0.75"><g class="sail" style="animation-delay: -22s"><use href="#pcloud"></use></g></g></svg><svg aria-hidden="true" viewBox="0 0 1440 1000" preserveAspectRatio="none" style="position: absolute; top: 0; left: 0; width: 100%; height: 1000px; pointer-events: none"><defs><linearGradient id="prb" x1="0" x2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0"></stop><stop offset=".5" stop-color="#FFFFFF" stop-opacity=".9"></stop><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop></linearGradient><filter id="prs"><feGaussianBlur stdDeviation="7"></feGaussianBlur></filter></defs><path class="ribbon" d="M-100 300 C 300 160, 620 480, 980 260 S 1480 120, 1600 220" fill="none" stroke="url(#prb)" stroke-width="26" filter="url(#prs)"></path><path class="ribbon" d="M-100 360 C 320 220, 660 540, 1020 320 S 1500 180, 1600 280" fill="none" stroke="url(#prb)" stroke-width="8" style="animation-delay: -4s"></path></svg><svg aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: .06; mix-blend-mode: multiply; pointer-events: none"><filter id="pgr"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"></feTurbulence></filter><rect width="100%" height="100%" filter="url(#pgr)"></rect></svg><div aria-hidden="true" style="position: fixed; inset: 0; z-index: 100; pointer-events: none; overflow: hidden">
+<div class="enterL" style="position: absolute; top: -20%; bottom: -20%; left: -10%; width: 70%; background: radial-gradient(circle at 70% 30%, #FFFFFF 0 30%, rgba(255,255,255,0) 60%), radial-gradient(circle at 80% 75%, #F2FAFE 0 30%, rgba(255,255,255,0) 60%), linear-gradient(90deg, #FFFFFF 55%, rgba(255,255,255,0)); filter: blur(24px)"></div>
+<div class="enterR" style="position: absolute; top: -20%; bottom: -20%; right: -10%; width: 70%; background: radial-gradient(circle at 30% 40%, #FFFFFF 0 30%, rgba(255,255,255,0) 60%), radial-gradient(circle at 20% 80%, #EAF6FC 0 30%, rgba(255,255,255,0) 60%), linear-gradient(270deg, #FFFFFF 55%, rgba(255,255,255,0)); filter: blur(24px)"></div>
+</div>
+<header style="position: relative; max-width: 1280px; margin: 0 auto; padding: 22px 24px 0">
+<div class="lg" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 10px 10px 20px; border-radius: 20px">
+<a href="Hero.dc.html" style="display: flex; align-items: center; gap: 10px; color: #0B2540"><svg aria-hidden="true" width="34" height="24" viewBox="0 0 44 30"><defs><linearGradient id="lgo" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#BDEBFA"></stop><stop offset=".55" stop-color="#38BDE8"></stop><stop offset="1" stop-color="#0A79A8"></stop></linearGradient></defs><path d="M12 28h22a9 9 0 0 0 1-17.9A12 12 0 0 0 12.4 8 10 10 0 0 0 12 28z" fill="url(#lgo)"></path></svg><span style="font-size: 18px; font-weight: 800; letter-spacing: 0.18em">OBLAKO</span></a>
+<nav aria-label="Основная навигация" style="display: flex; flex-wrap: wrap; gap: 24px; font-size: 15px; font-weight: 500"><a href="Cards.dc.html" style="color: #0B2540; opacity: .85">Направления</a><a href="Route.dc.html" style="color: #0B2540; opacity: .85">Маршрут</a><a href="Data.dc.html" style="color: #0B2540; opacity: .85">Бюджет</a><a href="Board.dc.html" style="color: #0B2540; opacity: .85">Табло</a><a href="Packing.dc.html" style="color: #0B2540; opacity: .85">Сборы</a><a href="Journal.dc.html" aria-current="page" style="color: #0B2540; font-weight: 700; box-shadow: inset 0 -2px 0 #E8288E; padding-bottom: 4px">Дневник</a></nav>
+<a href="Profile.dc.html" aria-label="Профиль" style="width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #38BDE8, #8B6CF0); color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800">[И]</a>
+</div>
+</header>
+
+<div aria-hidden="true" class="aur" style="top: -200px; right: -120px; width: 640px; height: 640px; background: #9BDDF2"></div>
+<div aria-hidden="true" class="aur" style="top: 700px; left: -200px; width: 620px; height: 620px; background: #FFB3D6; opacity: .55; animation-delay: -9s"></div>
+<section style="position: relative; max-width: 1280px; margin: 0 auto; padding: 48px 24px 80px; display: flex; flex-direction: column; gap: 28px">
+<div class="lg" style="border-radius: 32px; padding: 28px 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 32px">
+<div aria-hidden="true" style="position: relative; width: 220px; height: 170px; flex: none">
+<span style="position: absolute; left: 10px; top: 20px; width: 130px; height: 150px; border-radius: 16px; border: 6px solid #FFFFFF; background: linear-gradient(160deg, #E2A587, #8E2C48); transform: rotate(-10deg); box-shadow: 0 16px 30px rgba(11,37,64,.15)"></span>
+<span style="position: absolute; left: 80px; top: 6px; width: 130px; height: 150px; border-radius: 16px; border: 6px solid #FFFFFF; background: linear-gradient(160deg, #F2BE96, #C9643F); transform: rotate(8deg); box-shadow: 0 16px 30px rgba(11,37,64,.15)"></span>
+<span style="position: absolute; left: 44px; top: 14px; width: 130px; height: 150px; border-radius: 16px; border: 6px solid #FFFFFF; background: linear-gradient(160deg, #EDB1BD, #8E2C48); box-shadow: 0 20px 40px rgba(11,37,64,.2)"></span>
+</div>
+<div style="flex: 1 1 360px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #0A79A8">Воспоминание дня</span>
+<h1 style="margin: 0; font-size: 48px; font-weight: 700; line-height: 1.02; letter-spacing: -0.04em">Год назад вы&nbsp;были <span class="grad">в&nbsp;Тбилиси</span></h1>
+<p style="margin: 0; font-size: 16px; color: #45607A">4&nbsp;фото из&nbsp;той поездки</p>
+</div>
+<button type="button" onClick="{{openMemory}}" style="display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 22px; border: 0; border-radius: 14px; background: #C8146F; color: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 600; box-shadow: 0 12px 30px rgba(200,20,111,.3); cursor: pointer"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>Смотреть как историю</button>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px">
+<h2 style="margin: 0; font-size: 40px; font-weight: 700; letter-spacing: -0.035em">Стол с&nbsp;фотографиями</h2>
+<div role="group" aria-label="Фильтр поездок" style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{filters}}" as="f" hint-placeholder-count="4"><button type="button" aria-pressed="{{f.on}}" onClick="{{f.pick}}" style="{{f.s}}">{{f.label}}</button></sc-for>
+</div>
+</div>
+<p style="margin: -14px 0 0; font-size: 14px; color: #45607A">Фото можно двигать по&nbsp;столу. Нажмите на&nbsp;снимок, чтобы открыть историю.</p>
+<div class="lg" style="position: relative; height: 660px; border-radius: 32px; overflow: hidden; background: rgba(255,255,255,.3)">
+<sc-for list="{{polas}}" as="p" hint-placeholder-count="12">
+<button type="button" class="pola" aria-label="{{p.label}}" onPointerDown="{{p.down}}" onPointerMove="{{p.move}}" onPointerUp="{{p.up}}" onPointerCancel="{{p.up}}" onClick="{{p.open}}" style="{{p.s}}">
+<span style="{{p.img}}"><span style="position: absolute; top: 10px; left: 10px; font-family: 'Onest', sans-serif; font-size: 11px; font-weight: 600; color: rgba(255,255,255,.85)">[Фото]</span></span>
+<span style="display: block; padding: 10px 4px 0; font-family: 'Caveat', cursive; font-size: 24px; line-height: 1; color: #0B2540; text-align: left">{{p.title}}</span>
+</button>
+</sc-for>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch">
+<div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 10px; justify-content: center">
+<h2 style="margin: 0; font-size: 40px; font-weight: 700; line-height: 1.04; letter-spacing: -0.035em">Маршрут <span class="grad">по&nbsp;фото</span></h2>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #45607A">Снимки по&nbsp;порядку, линия&nbsp;— ваш путь по&nbsp;городу. Карта сменится при выборе другой поездки.</p>
+<span style="font-size: 14px; font-weight: 700">{{mapTrip}}</span>
+</div>
+<div class="lg" style="flex: 999 1 640px; min-width: 0; border-radius: 28px; overflow: hidden">
+<svg role="img" aria-label="Карта: фото поездки соединены линией в порядке съёмки" viewBox="0 0 640 340" style="display: block; width: 100%; height: auto">
+<sc-if value="{{isIst}}" hint-placeholder-val="{{ true }}"><rect width="640" height="340" fill="#F3F9FC"></rect><path d="M420 0 C 380 120 340 200 360 340" fill="none" stroke="#B5DFEE" stroke-width="56"></path><path d="M200 140 C 260 120 320 110 380 104" fill="none" stroke="#B5DFEE" stroke-width="16" stroke-linecap="round"></path><text x="40" y="40" font-family="Onest" font-size="12" font-weight="700" fill="#45607A">ЕВРОПА</text><text x="540" y="40" font-family="Onest" font-size="12" font-weight="700" fill="#45607A">АЗИЯ</text><path class="lineA" d="{{lineD}}" fill="none" stroke="url(#jl)" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 10"></path></sc-if>
+<sc-if value="{{isTbs}}" hint-placeholder-val="{{ false }}"><rect width="640" height="340" fill="#FBF4EE"></rect><path d="M60 340 C 200 280 300 240 380 180 S 540 60 640 30" fill="none" stroke="#B5DFEE" stroke-width="22" stroke-linecap="round"></path><ellipse cx="420" cy="290" rx="140" ry="50" fill="#EBD9CC"></ellipse><text x="560" y="70" font-family="Onest" font-size="12" font-weight="700" fill="#6B4A50">Кура</text><path class="lineA" d="{{lineD}}" fill="none" stroke="url(#jl)" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 10"></path></sc-if>
+<sc-if value="{{isAlt}}" hint-placeholder-val="{{ false }}"><rect width="640" height="340" fill="#F1F7F2"></rect><g fill="none" stroke="#B9D4BE" stroke-width="2"><path d="M0 300 C 120 220 220 260 320 200 S 520 120 640 160"></path><path d="M0 260 C 120 180 220 220 320 160 S 520 80 640 120"></path><path d="M0 220 C 120 140 220 180 320 120 S 520 40 640 80"></path><path d="M60 340 C 180 290 300 300 420 260 S 600 240 640 250"></path></g><path d="M100 340 C 160 300 200 280 260 250 S 380 200 460 190" fill="none" stroke="#9FD6D8" stroke-width="10" stroke-linecap="round"></path><path class="lineA" d="{{lineD}}" fill="none" stroke="url(#jl)" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 10"></path></sc-if>
+<defs><linearGradient id="jl" x1="0" x2="1"><stop offset="0" stop-color="#38BDE8"></stop><stop offset=".6" stop-color="#E8288E"></stop><stop offset="1" stop-color="#8B6CF0"></stop></linearGradient><clipPath id="jc"><circle r="26"></circle></clipPath></defs>
+<sc-for list="{{mapPins}}" as="m" hint-placeholder-count="4">
+<g transform="{{m.t}}"><circle r="30" fill="#FFFFFF"></circle><circle r="26" fill="{{m.c}}"></circle><circle cx="18" cy="-18" r="11" fill="#0B2540" stroke="#FFFFFF" stroke-width="2"></circle><text x="18" y="-14" text-anchor="middle" font-family="Onest" font-size="11" font-weight="800" fill="#FFFFFF">{{m.n}}</text></g>
+</sc-for>
+</svg>
+</div>
+</div>
+</section>
+
+<sc-if value="{{storyOpen}}" hint-placeholder-val="{{ false }}">
+<div role="dialog" aria-modal="true" aria-label="История поездки" style="position: absolute; inset: 0; z-index: 30; display: flex; justify-content: center; padding: 110px 24px; background: rgba(6,23,47,.55); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px)">
+<div class="storyIn" style="{{storyBg}}">
+<div style="position: absolute; left: 14px; right: 14px; top: 14px; display: flex; gap: 4px">
+<sc-for list="{{bars}}" as="b"><span style="flex: 1 1 0; height: 4px; border-radius: 4px; background: rgba(255,255,255,.35); overflow: hidden"><span style="{{b.s}}"></span></span></sc-for>
+</div>
+<div style="position: absolute; left: 16px; right: 16px; top: 30px; display: flex; justify-content: space-between; align-items: center; color: #FFFFFF"><span style="font-size: 14px; font-weight: 700">{{story.trip}}</span><button type="button" aria-label="Закрыть историю" onClick="{{closeStory}}" style="width: 44px; height: 44px; border: 0; border-radius: 12px; background: rgba(255,255,255,.2); color: #FFFFFF; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+<span style="position: absolute; left: 20px; top: 92px; font-size: 13px; font-weight: 600; color: rgba(255,255,255,.85)">[Фото]</span>
+<button type="button" aria-label="Предыдущее фото" onClick="{{prevStory}}" style="position: absolute; left: 0; top: 80px; bottom: 140px; width: 40%; border: 0; background: transparent; cursor: pointer"></button>
+<button type="button" aria-label="Следующее фото" onClick="{{nextStory}}" style="position: absolute; right: 0; top: 80px; bottom: 140px; width: 60%; border: 0; background: transparent; cursor: pointer"></button>
+<div class="lg" style="position: absolute; left: 14px; right: 14px; bottom: 14px; padding: 16px 18px; border-radius: 20px; background: rgba(255,255,255,.7)">
+<span style="display: block; font-family: 'Caveat', cursive; font-size: 32px; line-height: 1; color: #0B2540">{{story.title}}</span>
+<span style="display: block; margin-top: 6px; font-size: 14px; line-height: 1.5; color: #45607A">{{story.note}}</span>
+</div>
+</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1900}}'>
+class Component extends DCLogic {
+  state = { filter: 'all', pos: null, z: [], drag: null, story: null, prog: 0 };
+  componentDidMount() {
+    const P = this.P();
+    const pos = P.map((p, i) => ({ x: 30 + (i % 6) * 190 + ((i * 37) % 40), y: 30 + Math.floor(i / 6) * 300 + ((i * 53) % 60), r: ((i * 47) % 17) - 8 }));
+    this.setState({ pos, z: P.map((_, i) => i) });
+    this.timer = setInterval(() => {
+      const s = this.state.story; if (!s) return;
+      const p = this.state.prog + 0.025;
+      if (p >= 1) { if (s.i < s.list.length - 1) this.setState({ story: { list: s.list, i: s.i + 1 }, prog: 0 }); else this.setState({ story: null, prog: 0 }); }
+      else this.setState({ prog: p });
+    }, 110);
+  }
+  componentWillUnmount() { clearInterval(this.timer); }
+  P() { return [["ist", "Паром на закате", "Плыли в Кадыкёй, чайки летели вровень с палубой.", 360, 210], ["tbs", "Старый Тбилиси", "Балконы, лоза и запах хлеба из тоне.", 250, 230], ["alt", "Катунь утром", "Вода бирюзовая, как на открытках.", 170, 250], ["ist", "Изразцы", "Узоры, которые хочется перерисовать в блокнот.", 170, 250], ["tbs", "Мцхета", "Джвари над слиянием двух рек.", 470, 90], ["alt", "Перевал", "Облака ниже дороги.", 330, 150], ["ist", "Чай на Босфоре", "Третий стакан за час.", 300, 120], ["tbs", "Хинкальная", "Бульон сначала, всё по правилам.", 330, 270], ["alt", "Ночное небо", "Млечный путь без единой засветки.", 470, 110], ["ist", "Галатская башня", "Очередь на закат того стоила.", 230, 100], ["tbs", "Серные бани", "Кирпичные купола и пар.", 390, 300], ["alt", "Юрта у озера", "Ночёвка у воды, утром туман.", 560, 220]]; }
+  renderVals() {
+    const T = {"ist": ["Стамбул", "май", ["#2BA3A8", "#1B3F8B"]], "tbs": ["Тбилиси", "сентябрь", ["#E2A587", "#8E2C48"]], "alt": ["Алтай", "июль", ["#A3BF9E", "#2A9D96"]]};
+    const P = this.P();
+    const st = this.state;
+    const g = (k) => 'linear-gradient(160deg,' + T[k][2][0] + ',' + T[k][2][1] + ')';
+    const visible = P.map((p, i) => i).filter((i) => st.filter === 'all' || P[i][0] === st.filter);
+    const openStory = (list, i) => this.setState({ story: { list, i }, prog: 0 });
+    const mapKey = st.filter === 'all' ? 'ist' : st.filter;
+    const mapIdx = P.map((p, i) => i).filter((i) => P[i][0] === mapKey);
+    let lineD = '';
+    mapIdx.forEach((i, k) => { lineD += (k ? ' Q' + ((P[mapIdx[k - 1]][3] + P[i][3]) / 2) + ' ' + ((P[mapIdx[k - 1]][4] + P[i][4]) / 2 - 40) + ' ' : 'M') + P[i][3] + ' ' + P[i][4]; });
+    const s = st.story;
+    const cur = s ? P[s.list[s.i]] : null;
+    return {
+      filters: [['all', 'Все']].concat(Object.keys(T).map((k) => [k, T[k][0] + ' · ' + T[k][1]])).map((f) => ({ label: f[1], on: st.filter === f[0] ? 'true' : 'false', pick: () => this.setState({ filter: f[0] }),
+        s: 'min-height: 40px; padding: 0 16px; border-radius: 12px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; ' + (st.filter === f[0] ? 'border: 0; background: #0B2540; color: #FFFFFF' : 'border: 1px solid rgba(255,255,255,.8); background: rgba(255,255,255,.45); color: #0B2540') })),
+      polas: st.pos ? visible.map((i) => {
+        const p = P[i], ps = st.pos[i], isD = st.drag && st.drag.i === i;
+        return {
+          title: p[1], label: p[1] + ', ' + T[p[0]][0] + '. Открыть историю',
+          img: 'position: relative; display: block; width: 176px; height: 176px; border-radius: 2px; background: ' + g(p[0]),
+          s: 'left: ' + ps.x + 'px; top: ' + ps.y + 'px; z-index: ' + (st.z.indexOf(i) + 1) + '; transform: rotate(' + (isD ? 0 : ps.r) + 'deg) scale(' + (isD ? 1.06 : 1) + '); box-shadow: ' + (isD ? '0 40px 70px rgba(11,37,64,.3)' : '0 14px 30px rgba(11,37,64,.16)'),
+          down: (e) => { if (e.currentTarget.setPointerCapture) e.currentTarget.setPointerCapture(e.pointerId); this.moved = false; this.setState({ drag: { i, x0: e.clientX, y0: e.clientY, px: ps.x, py: ps.y }, z: st.z.filter((k) => k !== i).concat([i]) }); },
+          move: (e) => { const d = this.state.drag; if (!d || d.i !== i) return; const dx = e.clientX - d.x0, dy = e.clientY - d.y0; if (Math.abs(dx) + Math.abs(dy) > 6) this.moved = true; const pos = this.state.pos.slice(); pos[i] = Object.assign({}, pos[i], { x: d.px + dx, y: d.py + dy }); this.setState({ pos }); },
+          up: () => { if (this.state.drag) this.setState({ drag: null }); },
+          open: () => { if (this.moved) { this.moved = false; return; } openStory(visible, visible.indexOf(i)); }
+        };
+      }) : [],
+      isIst: mapKey === 'ist', isTbs: mapKey === 'tbs', isAlt: mapKey === 'alt',
+      mapTrip: T[mapKey][0] + ' · ' + T[mapKey][1] + ' · ' + mapIdx.length + ' точки',
+      lineD, lineCls: mapKey === 'tbs' ? 'lineA' : mapKey === 'alt' ? 'lineB' : 'lineA',
+      mapPins: mapIdx.map((i, k) => ({ n: k + 1, t: 'translate(' + P[i][3] + ' ' + P[i][4] + ')', c: k % 2 ? T[mapKey][2][1] : T[mapKey][2][0] })),
+      storyOpen: !!cur,
+      story: cur ? { title: cur[1], note: cur[2], trip: T[cur[0]][0] + ' · ' + T[cur[0]][1] } : { title: '', note: '', trip: '' },
+      storyBg: 'position: relative; width: 100%; max-width: 420px; height: 720px; border-radius: 28px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,.35); background: ' + (cur ? g(cur[0]) : '#0B2540'),
+      bars: s ? s.list.map((_, k) => ({ s: 'display: block; height: 100%; background: #FFFFFF; width: ' + (k < s.i ? 100 : k === s.i ? Math.round(st.prog * 100) : 0) + '%' })) : [],
+      closeStory: () => this.setState({ story: null, prog: 0 }),
+      nextStory: () => { if (!s) return; if (s.i < s.list.length - 1) this.setState({ story: { list: s.list, i: s.i + 1 }, prog: 0 }); else this.setState({ story: null, prog: 0 }); },
+      prevStory: () => { if (!s) return; this.setState({ story: { list: s.list, i: Math.max(0, s.i - 1) }, prog: 0 }); },
+      openMemory: () => openStory(P.map((p, i) => i).filter((i) => P[i][0] === 'tbs'), 0)
+    };
+  }
+}
+</script>
+</body>
+</html>

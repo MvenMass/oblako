@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>OBLAKO — бронирование</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#F4FAFE}
+a{color:#0B2540;text-decoration:none}a:hover{color:#0A79A8}
+@keyframes aur{0%{transform:translate(0,0) scale(1)}33%{transform:translate(50px,-40px) scale(1.15)}66%{transform:translate(-40px,30px) scale(.92)}100%{transform:translate(0,0) scale(1)}}
+@keyframes shift{to{background-position:300% 0}}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.aur{position:absolute;border-radius:50%;filter:blur(80px);animation:aur 22s ease-in-out infinite;pointer-events:none}
+.grad{background:linear-gradient(90deg,#0A79A8,#E8288E 33%,#8B6CF0 66%,#0A79A8);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shift 8s linear infinite}
+.lg{position:relative;background:rgba(255,255,255,.42);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,.7);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 24px 60px rgba(11,37,64,.1)}
+.rise{animation:rise .8s cubic-bezier(.2,.8,.2,1) both}
+@keyframes sail{0%,100%{transform:translateX(0)}50%{transform:translateX(80px)}}
+@keyframes flow{to{stroke-dashoffset:-1200}}
+@keyframes enterL{0%{transform:translateX(0);opacity:1}100%{transform:translateX(-95%);opacity:0}}
+@keyframes enterR{0%{transform:translateX(0);opacity:1}100%{transform:translateX(95%);opacity:0}}
+@keyframes twinkle{0%,100%{opacity:.25}50%{opacity:1}}
+.sail{animation:sail 40s ease-in-out infinite}
+.ribbon{stroke-dasharray:420 780;animation:flow 11s linear infinite}
+.enterL{animation:enterL 1.5s cubic-bezier(.6,0,.2,1) both .15s}
+.enterR{animation:enterR 1.5s cubic-bezier(.6,0,.2,1) both .15s}
+.tw{animation:twinkle 3s ease-in-out infinite}
+button:disabled{cursor:default}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(-120px)}}
+.under{animation:drift 9s linear infinite alternate}
+@keyframes toWallet{0%{transform:none;opacity:1}35%{transform:translate(20px,30px) rotate(6deg);opacity:1}100%{transform:translate(0,240px) rotate(-4deg) scale(.35);opacity:0}}
+.stubFly{animation:toWallet 1.1s cubic-bezier(.5,0,.3,1) both}
+@keyframes slideIn{from{opacity:0;transform:translateY(-30px) scale(.9)}to{opacity:1;transform:none}}
+.inWallet{animation:slideIn .5s cubic-bezier(.2,1.3,.4,1) both .9s}
+@keyframes bump{0%,100%{transform:scale(1)}40%{transform:scale(1.04)}}
+.bump{animation:bump .5s ease 1s}
+
+@media (prefers-reduced-motion: reduce){.aur,.grad,.rise,.sail,.ribbon,.tw,.under,.stubFly,.bump{animation:none !important}.enterL,.enterR{display:none}}
+</style>
+</helmet>
+<div style="position: relative; overflow: hidden; min-height: 1500px; background: #F4FAFE; font-family: 'Onest', system-ui, sans-serif; color: #0B2540">
+<svg aria-hidden="true" viewBox="0 0 1440 1000" preserveAspectRatio="xMidYMid slice" style="position: absolute; top: 0; left: 0; width: 100%; height: 1000px; pointer-events: none">
+<defs><radialGradient id="pcf" cx="45%" cy="35%" r="70%"><stop offset="0" stop-color="#FFFFFF"></stop><stop offset="1" stop-color="#EAF6FC" stop-opacity=".9"></stop></radialGradient><filter id="pcs" x="-40%" y="-60%" width="180%" height="220%"><feGaussianBlur stdDeviation="14"></feGaussianBlur></filter>
+<g id="pcloud"><g fill="url(#pcf)" filter="url(#pcs)"><ellipse cx="150" cy="92" rx="138" ry="26"></ellipse><circle cx="88" cy="76" r="40"></circle><circle cx="150" cy="58" r="56"></circle><circle cx="214" cy="72" r="44"></circle><circle cx="256" cy="86" r="26"></circle></g></g></defs><g transform="translate(-60 120) scale(1.2)" opacity="0.8"><g class="sail" style="animation-delay: -0s"><use href="#pcloud"></use></g></g><g transform="translate(980 60) scale(1.4)" opacity="0.85"><g class="sail" style="animation-delay: -14s"><use href="#pcloud"></use></g></g><g transform="translate(520 520) scale(1.6)" opacity="0.7"><g class="sail" style="animation-delay: -7s"><use href="#pcloud"></use></g></g><g transform="translate(1180 640) scale(1.2)" opacity="0.75"><g class="sail" style="animation-delay: -22s"><use href="#pcloud"></use></g></g></svg><svg aria-hidden="true" viewBox="0 0 1440 1000" preserveAspectRatio="none" style="position: absolute; top: 0; left: 0; width: 100%; height: 1000px; pointer-events: none"><defs><linearGradient id="prb" x1="0" x2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0"></stop><stop offset=".5" stop-color="#FFFFFF" stop-opacity=".9"></stop><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop></linearGradient><filter id="prs"><feGaussianBlur stdDeviation="7"></feGaussianBlur></filter></defs><path class="ribbon" d="M-100 300 C 300 160, 620 480, 980 260 S 1480 120, 1600 220" fill="none" stroke="url(#prb)" stroke-width="26" filter="url(#prs)"></path><path class="ribbon" d="M-100 360 C 320 220, 660 540, 1020 320 S 1500 180, 1600 280" fill="none" stroke="url(#prb)" stroke-width="8" style="animation-delay: -4s"></path></svg><svg aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: .06; mix-blend-mode: multiply; pointer-events: none"><filter id="pgr"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"></feTurbulence></filter><rect width="100%" height="100%" filter="url(#pgr)"></rect></svg><div aria-hidden="true" style="position: fixed; inset: 0; z-index: 100; pointer-events: none; overflow: hidden">
+<div class="enterL" style="position: absolute; top: -20%; bottom: -20%; left: -10%; width: 70%; background: radial-gradient(circle at 70% 30%, #FFFFFF 0 30%, rgba(255,255,255,0) 60%), radial-gradient(circle at 80% 75%, #F2FAFE 0 30%, rgba(255,255,255,0) 60%), linear-gradient(90deg, #FFFFFF 55%, rgba(255,255,255,0)); filter: blur(24px)"></div>
+<div class="enterR" style="position: absolute; top: -20%; bottom: -20%; right: -10%; width: 70%; background: radial-gradient(circle at 30% 40%, #FFFFFF 0 30%, rgba(255,255,255,0) 60%), radial-gradient(circle at 20% 80%, #EAF6FC 0 30%, rgba(255,255,255,0) 60%), linear-gradient(270deg, #FFFFFF 55%, rgba(255,255,255,0)); filter: blur(24px)"></div>
+</div>
+<header style="position: relative; max-width: 1280px; margin: 0 auto; padding: 22px 24px 0">
+<div class="lg" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 10px 10px 20px; border-radius: 20px">
+<a href="Hero.dc.html" style="display: flex; align-items: center; gap: 10px; color: #0B2540"><svg aria-hidden="true" width="34" height="24" viewBox="0 0 44 30"><defs><linearGradient id="lgo" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#BDEBFA"></stop><stop offset=".55" stop-color="#38BDE8"></stop><stop offset="1" stop-color="#0A79A8"></stop></linearGradient></defs><path d="M12 28h22a9 9 0 0 0 1-17.9A12 12 0 0 0 12.4 8 10 10 0 0 0 12 28z" fill="url(#lgo)"></path></svg><span style="font-size: 18px; font-weight: 800; letter-spacing: 0.18em">OBLAKO</span></a>
+<nav aria-label="Основная навигация" style="display: flex; flex-wrap: wrap; gap: 24px; font-size: 15px; font-weight: 500"><a href="Cards.dc.html" style="color: #0B2540; opacity: .85">Направления</a><a href="Route.dc.html" style="color: #0B2540; opacity: .85">Маршрут</a><a href="Data.dc.html" style="color: #0B2540; opacity: .85">Бюджет</a><a href="Board.dc.html" style="color: #0B2540; opacity: .85">Табло</a><a href="Packing.dc.html" style="color: #0B2540; opacity: .85">Сборы</a><a href="Journal.dc.html" style="color: #0B2540; opacity: .85">Дневник</a></nav>
+<a href="Profile.dc.html" aria-label="Профиль" style="width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #38BDE8, #8B6CF0); color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800">[И]</a>
+</div>
+</header>
+
+<div aria-hidden="true" class="aur" style="top: -200px; right: -100px; width: 640px; height: 640px; background: #9BDDF2"></div>
+<div aria-hidden="true" class="aur" style="bottom: -260px; left: 10%; width: 600px; height: 600px; background: #C3B5FF; opacity: .6; animation-delay: -10s"></div>
+<section style="position: relative; max-width: 1280px; margin: 0 auto; padding: 48px 24px 80px; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #0A79A8">Бронирование · OB&nbsp;2120 · Москва → Стамбул</span>
+<h1 style="margin: 0; font-size: 56px; font-weight: 700; line-height: 1; letter-spacing: -0.04em">Выберите <span class="grad">место</span></h1>
+</div>
+<ol aria-label="Шаги бронирования" style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; font-size: 13px; font-weight: 600">
+<sc-for list="{{steps}}" as="s" hint-placeholder-count="5"><li aria-current="{{s.cur}}" style="{{s.s}}"><span style="{{s.dot}}">{{s.mark}}</span>{{s.label}}</li></sc-for>
+</ol>
+
+<div class="lg" style="position: relative; border-radius: 32px; overflow: hidden; background: linear-gradient(180deg, #CBEFFB, #EAF7FD)">
+<div aria-hidden="true" class="under" style="position: absolute; inset: 0; pointer-events: none">
+<span style="position: absolute; top: 60px; left: 10%; width: 260px; height: 70px; border-radius: 50%; background: #FFFFFF; filter: blur(14px); opacity: .9"></span>
+<span style="position: absolute; top: 300px; left: 45%; width: 340px; height: 90px; border-radius: 50%; background: #FFFFFF; filter: blur(16px); opacity: .85"></span>
+<span style="position: absolute; top: 180px; left: 80%; width: 220px; height: 60px; border-radius: 50%; background: #FFFFFF; filter: blur(12px); opacity: .9"></span>
+<span style="position: absolute; top: 380px; left: 5%; width: 300px; height: 70px; border-radius: 50%; background: #FFFFFF; filter: blur(14px); opacity: .8"></span>
+</div>
+<div style="position: relative; overflow-x: auto; padding: 20px 0">
+<div style="position: relative; width: 1080px; height: 440px; margin: 0 auto">
+<svg aria-hidden="true" viewBox="0 0 1080 440" width="1080" height="440" style="position: absolute; inset: 0; filter: drop-shadow(0 30px 40px rgba(11,37,64,.18))">
+<path d="M400 90 L520 -10 L600 -10 L590 90 Z M400 350 L520 450 L600 450 L590 350 Z" fill="#E9F3F8" stroke="#C9DCE7" stroke-width="2"></path>
+<path d="M940 110 L1010 40 L1050 40 L1030 120 Z M940 330 L1010 400 L1050 400 L1030 320 Z" fill="#E9F3F8" stroke="#C9DCE7" stroke-width="2"></path>
+<path d="M130 90 H960 Q1060 110 1060 220 Q1060 330 960 350 H130 Q30 330 20 220 Q30 110 130 90 Z" fill="#FFFFFF" stroke="#C9DCE7" stroke-width="2"></path>
+<path d="M44 196 Q58 176 82 172 L84 196 Z M44 244 Q58 264 82 268 L84 244 Z" fill="#BDEBFA"></path>
+<g fill="#BDEBFA"><circle cx="160" cy="98" r="3"></circle><circle cx="160" cy="342" r="3"></circle></g>
+</svg>
+<div role="grid" aria-label="Схема салона, 20 рядов" style="position: absolute; left: 150px; top: 98px; display: flex; gap: 6px">
+<sc-for list="{{cols}}" as="c" hint-placeholder-count="20">
+<div role="row" style="display: flex; flex-direction: column; gap: 6px; align-items: center">
+<sc-for list="{{c.top}}" as="s"><button type="button" role="gridcell" aria-label="{{s.label}}" aria-pressed="{{s.pressed}}" disabled="{{s.taken}}" onClick="{{s.pick}}" onMouseEnter="{{s.hover}}" onFocus="{{s.hover}}" style="{{s.s}}">{{s.txt}}</button></sc-for>
+<span style="height: 22px; display: flex; align-items: center; font-size: 11px; font-weight: 700; color: #45607A">{{c.n}}</span>
+<sc-for list="{{c.bot}}" as="s"><button type="button" role="gridcell" aria-label="{{s.label}}" aria-pressed="{{s.pressed}}" disabled="{{s.taken}}" onClick="{{s.pick}}" onMouseEnter="{{s.hover}}" onFocus="{{s.hover}}" style="{{s.s}}">{{s.txt}}</button></sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+<div style="position: relative; display: flex; flex-wrap: wrap; gap: 16px; padding: 0 24px 20px; font-size: 13px; color: #45607A">
+<span style="display: flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 6px; background: #FFFFFF; border: 1px solid #BFE3F2"></span>Свободно</span>
+<span style="display: flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 6px; background: #FFFFFF; border: 2px solid #38BDE8"></span>Больше места для&nbsp;ног</span>
+<span style="display: flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 6px; background: repeating-linear-gradient(45deg, #D9E6EE 0 3px, #EEF4F8 3px 6px)"></span>Занято</span>
+<span style="display: flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 6px; background: #C8146F"></span>Ваше место</span>
+</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<div class="lg" style="border-radius: 28px; padding: 22px; display: flex; flex-wrap: wrap; gap: 24px; align-items: center">
+<svg role="img" aria-label="{{viewAria}}" viewBox="0 0 240 320" width="210" height="280" style="flex: none">
+<defs>
+<linearGradient id="wall" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6F8FA"></stop><stop offset="1" stop-color="#E2E8ED"></stop></linearGradient>
+<linearGradient id="bez" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D3DCE3"></stop><stop offset="1" stop-color="#F4F7F9"></stop></linearGradient>
+<linearGradient id="skyv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2C86C9"></stop><stop offset=".55" stop-color="#7FCDF0"></stop><stop offset="1" stop-color="#E3F6FD"></stop></linearGradient>
+<linearGradient id="shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EEF2F5"></stop><stop offset="1" stop-color="#DDE5EB"></stop></linearGradient>
+<linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0"></stop><stop offset=".45" stop-color="#FFFFFF" stop-opacity="0"></stop><stop offset=".5" stop-color="#FFFFFF" stop-opacity=".35"></stop><stop offset=".58" stop-color="#FFFFFF" stop-opacity="0"></stop></linearGradient>
+<clipPath id="pane"><rect x="56" y="44" width="128" height="232" rx="64"></rect></clipPath>
+<filter id="vblur"><feGaussianBlur stdDeviation="{{viewBlur}}"></feGaussianBlur></filter>
+</defs>
+<rect x="0" y="0" width="240" height="320" rx="28" fill="url(#wall)"></rect>
+<rect x="30" y="18" width="180" height="284" rx="90" fill="url(#bez)" stroke="#C7D2DA" stroke-width="2"></rect>
+<rect x="46" y="34" width="148" height="252" rx="74" fill="#C9D4DC"></rect>
+<g clip-path="url(#pane)">
+<g filter="url(#vblur)">
+<rect x="56" y="44" width="128" height="232" fill="url(#skyv)"></rect>
+<circle cx="160" cy="90" r="30" fill="#FFFFFF" opacity=".35"></circle>
+<g class="under"><ellipse cx="80" cy="230" rx="70" ry="18" fill="#FFFFFF"></ellipse><ellipse cx="190" cy="250" rx="80" ry="20" fill="#FFFFFF" opacity=".95"></ellipse><ellipse cx="130" cy="214" rx="46" ry="11" fill="#FFFFFF" opacity=".9"></ellipse><ellipse cx="260" cy="226" rx="60" ry="14" fill="#FFFFFF" opacity=".9"></ellipse></g>
+<sc-if value="{{overWing}}" hint-placeholder-val="{{ false }}"><g><path d="M30 262 L250 196 L250 214 L30 296 Z" fill="#E6EDF2" stroke="#AFC2CF" stroke-width="1.5"></path><path d="M40 284 L250 210" stroke="#B9CAD6" stroke-width="1.2"></path><path d="M120 252 L150 241 M170 234 L200 223" stroke="#9FB3C2" stroke-width="2"></path><path d="M228 202 L244 168 L252 168 L246 200 Z" fill="#E6EDF2" stroke="#AFC2CF" stroke-width="1.5"></path><circle cx="236" cy="198" r="2.4" fill="#E8288E"></circle></g></sc-if>
+</g>
+<rect x="56" y="44" width="128" height="{{shadeH}}" fill="url(#shade)" style="transition: height .8s cubic-bezier(.2,.8,.2,1)"></rect>
+<rect x="56" y="44" width="128" height="232" fill="url(#glass)"></rect>
+</g>
+<rect x="104" y="{{shadeHandle}}" width="32" height="6" rx="3" fill="#9FB3C2" style="transition: y .8s cubic-bezier(.2,.8,.2,1)"></rect>
+<rect x="56" y="44" width="128" height="232" rx="64" fill="none" stroke="#AFC0CC" stroke-width="3"></rect>
+</svg>
+<div style="flex: 1 1 200px; display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #0A79A8">Вид из&nbsp;окна · место {{viewSeat}}</span>
+<span style="font-size: 24px; font-weight: 800; letter-spacing: -0.02em">{{viewTitle}}</span>
+<span style="font-size: 15px; line-height: 1.55; color: #45607A">{{viewText}}</span>
+<button type="button" onClick="{{toggleShade}}" style="align-self: flex-start; margin-top: 4px; min-height: 40px; padding: 0 14px; border: 1px solid #BFE3F2; border-radius: 10px; background: rgba(255,255,255,.7); color: #0B2540; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer">{{shadeLabel}}</button>
+</div>
+</div>
+<div class="lg" style="border-radius: 28px; padding: 22px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px">
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; color: #45607A">Место</span><span style="font-size: 22px; font-weight: 800">{{seat}}</span></span>
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; color: #45607A">Тип</span><span style="font-size: 16px; font-weight: 700">{{seatNote}}</span></span>
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; color: #45607A">Тариф</span><span style="font-size: 16px; font-weight: 700">Эконом</span></span>
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; color: #45607A">Итого</span><span style="font-size: 22px; font-weight: 800">[ЦЕНА]</span></span>
+</div>
+</div>
+
+<aside aria-label="Посадочный талон" style="flex: 0 1 440px; min-width: 300px; display: flex; flex-direction: column; gap: 0">
+<div style="position: relative; z-index: 3; border-radius: 26px; padding: 18px 18px 22px; background: linear-gradient(180deg, #13304F, #0B2540); color: #EAF4FB; box-shadow: 0 24px 50px rgba(11,37,64,.3); display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="font-size: 13px; font-weight: 700; letter-spacing: 0.12em">ТЕРМИНАЛ ПЕЧАТИ</span><span style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: #9DB6CC"><span aria-hidden="true" style="{{ledS}}"></span>{{ledText}}</span></div>
+<button type="button" onClick="{{print}}" disabled="{{done}}" style="min-height: 56px; border: 0; border-radius: 14px; background: {{btnBg}}; color: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 600; box-shadow: 0 12px 30px rgba(200,20,111,.35); cursor: pointer">{{printLabel}}</button>
+<span aria-hidden="true" style="display: block; height: 10px; margin: 0 6px; border-radius: 999px; background: #030C18; box-shadow: inset 0 3px 6px rgba(0,0,0,.6)"></span>
+</div>
+<div style="{{slotS}}">
+<div style="padding: 0 14px 18px; perspective: 1100px">
+<div onPointerMove="{{tilt}}" onPointerLeave="{{untilt}}" style="{{passS}}">
+<div style="position: relative; border-radius: 0; padding: 18px 22px; background: linear-gradient(135deg, #38BDE8, #E8288E 60%, #8B6CF0); color: #FFFFFF; display: flex; justify-content: space-between; align-items: center"><span style="font-size: 15px; font-weight: 800; letter-spacing: 0.18em">OBLAKO</span><span style="font-size: 12px; font-weight: 700; opacity: .9">ПОСАДОЧНЫЙ ТАЛОН</span></div>
+<div style="padding: 20px 22px; background: #FFFFFF; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="font-size: 42px; font-weight: 800; letter-spacing: -0.03em">MOW</span><svg aria-hidden="true" width="90" height="24" viewBox="0 0 90 24"><path d="M2 12 H88" stroke="#BFE3F2" stroke-width="2" stroke-dasharray="4 5"></path><path d="M38 12 h14 M48 7 l5 5 -5 5" stroke="#C8146F" stroke-width="2.4" fill="none" stroke-linecap="round"></path></svg><span style="font-size: 42px; font-weight: 800; letter-spacing: -0.03em">IST</span></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 10px">
+<span style="grid-column: span 3; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 11px; color: #45607A">Пассажир</span><span style="font-size: 16px; font-weight: 700">[ИМЯ ФАМИЛИЯ]</span></span>
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 11px; color: #45607A">Рейс</span><span style="font-size: 16px; font-weight: 700">OB&nbsp;2120</span></span>
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 11px; color: #45607A">Дата</span><span style="font-size: 16px; font-weight: 700">[дата]</span></span>
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 11px; color: #45607A">Посадка</span><span style="font-size: 16px; font-weight: 700">08:00</span></span>
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 11px; color: #45607A">Выход</span><span style="font-size: 16px; font-weight: 700">B12</span></span>
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 11px; color: #45607A">Место</span><span style="font-size: 22px; font-weight: 800; color: #C8146F">{{seat}}</span></span>
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 11px; color: #45607A">Класс</span><span style="font-size: 16px; font-weight: 700">Эконом</span></span>
+</div>
+</div>
+<div aria-hidden="true" style="position: relative; height: 0; border-top: 2px dashed #CFE6F1; margin: 0 14px"><span style="position: absolute; left: -26px; top: -13px; width: 24px; height: 24px; border-radius: 50%; background: #EDF6FB"></span><span style="position: absolute; right: -26px; top: -13px; width: 24px; height: 24px; border-radius: 50%; background: #EDF6FB"></span></div>
+<div class="{{stubCls}}" style="padding: 16px 22px 20px; background: #FFFFFF; border-radius: 0 0 22px 22px; display: flex; flex-direction: column; gap: 10px">
+<span aria-hidden="true" style="display: block; height: 50px; border-radius: 6px; background: repeating-linear-gradient(90deg, #0B2540 0 2px, transparent 2px 4px, #0B2540 4px 7px, transparent 7px 9px, #0B2540 9px 10px, transparent 10px 13px)"></span>
+<span style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 700"><span>OB&nbsp;2120 · {{seat}}</span><span>MOW → IST</span></span>
+</div>
+<span aria-hidden="true" style="{{holoS}}"></span>
+<span aria-hidden="true" style="{{glareS}}"></span>
+</div>
+</div>
+</div>
+
+<div class="{{walletCls}}" style="position: relative; margin-top: 14px; border-radius: 26px; padding: 18px 20px; background: linear-gradient(160deg, #1D4670, #0B2540); color: #EAF4FB; box-shadow: 0 24px 50px rgba(11,37,64,.28); overflow: hidden">
+<span aria-hidden="true" style="position: absolute; inset: 8px; border-radius: 20px; border: 2px dashed rgba(255,255,255,.18); pointer-events: none"></span>
+<div style="position: relative; display: flex; justify-content: space-between; align-items: center">
+<span style="display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 800"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="13" rx="3"></rect><path d="M3 10h18M16 14h2"></path></svg>Кошелёк</span>
+<span style="font-size: 13px; color: #9DB6CC">талонов: {{wallet}}</span>
+</div>
+<div style="position: relative; margin-top: 14px; min-height: 64px; border-radius: 14px; background: rgba(0,0,0,.22); box-shadow: inset 0 4px 10px rgba(0,0,0,.35); padding: 10px; display: flex; align-items: center; gap: 10px">
+<sc-if value="{{hasStub}}" hint-placeholder-val="{{ false }}"><span class="inWallet" style="display: flex; align-items: center; gap: 12px; padding: 8px 12px; border-radius: 10px; background: #FFFFFF; color: #0B2540"><span aria-hidden="true" style="width: 60px; height: 26px; border-radius: 4px; background: repeating-linear-gradient(90deg, #0B2540 0 2px, transparent 2px 4px, #0B2540 4px 6px, transparent 6px 9px)"></span><span style="font-size: 13px; font-weight: 800">OB&nbsp;2120 · {{seat}}</span></span></sc-if>
+<sc-if value="{{noStub}}" hint-placeholder-val="{{ true }}"><span style="font-size: 13px; color: #9DB6CC">Здесь появится корешок талона</span></sc-if>
+</div>
+</div>
+<p style="margin: 14px 0 0; font-size: 12px; line-height: 1.5; color: #45607A; text-align: center">Демо-оплата: деньги не&nbsp;списываются. Наклоните талон курсором&nbsp;— на&nbsp;нём голограмма.</p>
+</aside>
+</div>
+</section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1500}}'>
+class Component extends DCLogic {
+  state = { seat: '7A', hover: null, printed: false, torn: false, rx: 0, ry: 0, px: 50, py: 50, over: false, shade: true };
+  renderVals() {
+    const st = this.state;
+    const taken = ['1C', '2A', '2B', '3D', '4F', '5A', '5B', '6E', '8C', '8D', '9A', '10F', '11B', '13C', '13D', '14A', '15E', '15F', '16B', '17C', '18D', '19A', '19F', '20C'];
+    const extra = [1, 12];
+    const wingRows = [7, 8, 9, 10, 11];
+    const seatBtn = (row, L) => {
+      const id = row + L, isT = taken.indexOf(id) > -1, isS = st.seat === id, isX = extra.indexOf(row) > -1;
+      return {
+        txt: L, taken: isT, pressed: isS ? 'true' : 'false',
+        label: 'Место ' + id + (isT ? ', занято' : isX ? ', больше места для ног' : ''),
+        pick: () => { if (!isT) this.setState({ seat: id, printed: false, torn: false }); },
+        hover: () => this.setState({ hover: id }),
+        s: 'width: 32px; height: 32px; border-radius: 8px; font-family: inherit; font-size: 11px; font-weight: 700; cursor: ' + (isT ? 'default' : 'pointer') + '; transition: transform .2s; ' +
+          (isS ? 'background: #C8146F; color: #FFFFFF; border: 0; transform: scale(1.14); box-shadow: 0 8px 18px rgba(200,20,111,.35)'
+            : isT ? 'background: repeating-linear-gradient(45deg, #D9E6EE 0 3px, #EEF4F8 3px 6px); color: transparent; border: 0'
+            : 'background: #FFFFFF; color: #45607A; border: ' + (isX ? '2px solid #38BDE8' : '1px solid #BFE3F2'))
+      };
+    };
+    const cols = [];
+    for (let r = 1; r <= 20; r++) cols.push({ n: r, top: ['F', 'E', 'D'].map((L) => seatBtn(r, L)), bot: ['C', 'B', 'A'].map((L) => seatBtn(r, L)) });
+    const info = (id) => { const row = parseInt(id, 10), L = id.replace(/[0-9]/g, ''); return { row, L, win: L === 'A' || L === 'F', aisle: L === 'C' || L === 'D' }; };
+    const v = info(st.hover || st.seat), s = info(st.seat);
+    const overWing = v.win && wingRows.indexOf(v.row) > -1;
+    const labels = ['Рейс', 'Пассажир', 'Место', 'Оплата', 'Талон'];
+    const curStep = st.printed ? 4 : 2;
+    const tilt = st.printed && !st.torn;
+    return {
+      cols, seat: st.seat,
+      seatNote: (s.win ? 'у окна' : s.aisle ? 'у прохода' : 'посередине') + (extra.indexOf(s.row) > -1 ? ', место для ног' : ''),
+      viewSeat: st.hover || st.seat, overWing,
+      viewBlur: v.win ? 0 : 3,
+      viewAria: 'Иллюминатор: ' + (!v.win ? 'окно далеко' : overWing ? 'видно крыло и облака' : 'видно облака'),
+      viewTitle: !v.win ? (v.aisle ? 'Окно далеко' : 'Между соседями') : overWing ? 'Вид на крыло' : 'Чистый вид на облака',
+      viewText: !v.win ? (v.aisle ? 'Зато можно встать, не беспокоя соседей.' : 'Небо видно только через плечо соседа.') : overWing ? 'Крыло закрывает часть неба, зато над ним меньше трясёт.' : 'Облака, закат и города внизу — без помех.',
+      shadeH: st.shade ? 46 : 8, shadeHandle: st.shade ? 84 : 46,
+      shadeLabel: st.shade ? 'Поднять шторку' : 'Опустить шторку',
+      toggleShade: () => this.setState({ shade: !st.shade }),
+      steps: labels.map((label, i) => ({ label, cur: i === curStep ? 'step' : 'false', mark: i < curStep ? '✓' : String(i + 1),
+        s: 'display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 14px; ' + (i === curStep ? 'background: #0B2540; color: #FFFFFF' : i < curStep ? 'background: rgba(255,255,255,.7); color: #0B2540' : 'background: rgba(255,255,255,.35); color: #45607A'),
+        dot: 'flex: none; width: 26px; height: 26px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; ' + (i === curStep ? 'background: #C8146F; color: #FFFFFF' : i < curStep ? 'background: #38BDE8; color: #FFFFFF' : 'background: #E3F6FD; color: #45607A') })),
+      slotS: 'position: relative; z-index: 2; margin-top: -16px; padding-top: 16px; overflow: hidden; transition: max-height 1.6s cubic-bezier(.3,.7,.2,1); max-height: ' + (st.printed ? '640px' : '0px'),
+      passS: 'position: relative; border-radius: 0 0 22px 22px; overflow: hidden; box-shadow: 0 30px 60px rgba(11,37,64,.18); background: #FFFFFF; transform-style: preserve-3d; ' +
+        'transition: ' + (st.over ? 'transform .08s' : 'transform 1.6s cubic-bezier(.3,.7,.2,1)') + '; ' +
+        'transform: translateY(' + (st.printed ? '0' : '-100%') + ') rotateX(' + st.rx + 'deg) rotateY(' + st.ry + 'deg)',
+      holoS: 'position: absolute; inset: 0; border-radius: 22px; pointer-events: none; mix-blend-mode: multiply; opacity: ' + (tilt ? (st.over ? '.55' : '.25') : '0') + '; transition: opacity .4s; ' +
+        'background: linear-gradient(115deg, rgba(255,255,255,0) 25%, rgba(255,140,198,.6) 38%, rgba(127,211,242,.6) 48%, rgba(255,230,140,.55) 58%, rgba(185,168,255,.6) 66%, rgba(255,255,255,0) 78%); background-size: 260% 260%; background-position: ' + st.px + '% ' + st.py + '%',
+      glareS: 'position: absolute; inset: 0; border-radius: 22px; pointer-events: none; opacity: ' + (tilt && st.over ? '.7' : '0') + '; transition: opacity .3s; background: radial-gradient(circle at ' + st.px + '% ' + st.py + '%, rgba(255,255,255,.75), rgba(255,255,255,0) 40%)',
+      tilt: (e) => { if (!tilt) return; const r = e.currentTarget.getBoundingClientRect(); const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height; this.setState({ over: true, ry: (x - 0.5) * 22, rx: (0.5 - y) * 16, px: Math.round(x * 100), py: Math.round(y * 100) }); },
+      untilt: () => this.setState({ over: false, rx: 0, ry: 0 }),
+      stubCls: st.torn ? 'stubFly' : '',
+      wallet: st.torn ? 1 : 0, hasStub: st.torn, noStub: !st.torn, done: st.torn,
+      walletCls: st.torn ? 'bump' : '',
+      btnBg: st.torn ? '#2F9D6B' : '#C8146F',
+      ledS: 'width: 8px; height: 8px; border-radius: 50%; background: ' + (st.torn ? '#7FD3A6' : st.printed ? '#FFB347' : '#38BDE8') + '; box-shadow: 0 0 10px currentColor',
+      ledText: st.torn ? 'готово' : st.printed ? 'талон напечатан' : 'ожидает оплату',
+      printLabel: !st.printed ? 'Оплатить и\u00a0получить талон' : (st.torn ? 'Корешок в\u00a0кошельке ✓' : 'Оторвать корешок в\u00a0кошелёк'),
+      print: () => { if (!st.printed) this.setState({ printed: true }); else if (!st.torn) this.setState({ torn: true, over: false, rx: 0, ry: 0 }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

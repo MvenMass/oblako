@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>OBLAKO — сборы</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#F4FAFE}
+a{color:#0B2540;text-decoration:none}a:hover{color:#0A79A8}
+@keyframes aur{0%{transform:translate(0,0) scale(1)}33%{transform:translate(50px,-40px) scale(1.15)}66%{transform:translate(-40px,30px) scale(.92)}100%{transform:translate(0,0) scale(1)}}
+@keyframes shift{to{background-position:300% 0}}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.aur{position:absolute;border-radius:50%;filter:blur(80px);animation:aur 22s ease-in-out infinite;pointer-events:none}
+.grad{background:linear-gradient(90deg,#0A79A8,#E8288E 33%,#8B6CF0 66%,#0A79A8);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shift 8s linear infinite}
+.lg{position:relative;background:rgba(255,255,255,.42);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,.7);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 24px 60px rgba(11,37,64,.1)}
+.rise{animation:rise .8s cubic-bezier(.2,.8,.2,1) both}
+@keyframes sail{0%,100%{transform:translateX(0)}50%{transform:translateX(80px)}}
+@keyframes flow{to{stroke-dashoffset:-1200}}
+@keyframes enterL{0%{transform:translateX(0);opacity:1}100%{transform:translateX(-95%);opacity:0}}
+@keyframes enterR{0%{transform:translateX(0);opacity:1}100%{transform:translateX(95%);opacity:0}}
+@keyframes twinkle{0%,100%{opacity:.25}50%{opacity:1}}
+.sail{animation:sail 40s ease-in-out infinite}
+.ribbon{stroke-dasharray:420 780;animation:flow 11s linear infinite}
+.enterL{animation:enterL 1.5s cubic-bezier(.6,0,.2,1) both .15s}
+.enterR{animation:enterR 1.5s cubic-bezier(.6,0,.2,1) both .15s}
+.tw{animation:twinkle 3s ease-in-out infinite}
+@keyframes fall{0%{transform:translateY(-40px) rotate(0)}100%{transform:translateY(1300px) rotate(720deg)}}
+.conf{position:absolute;top:0;width:10px;height:14px;border-radius:3px;animation:fall 3.2s cubic-bezier(.3,.6,.4,1) both}
+@keyframes drop{0%{transform:translateY(-3px);opacity:0}40%{opacity:1}100%{transform:translateY(4px);opacity:0}}
+.drop{animation:drop 1.1s ease-in infinite}
+.kn{position:absolute;padding:0;border:0;background:transparent;cursor:pointer;transition:left .85s cubic-bezier(.45,0,.25,1),top .85s cubic-bezier(.3,-0.55,.4,1.1),transform .85s cubic-bezier(.3,1.25,.4,1)}
+.kn:hover{filter:brightness(1.04)}
+.kn:focus-visible{outline:3px solid #C8146F;outline-offset:6px;border-radius:10px}
+summary::-webkit-details-marker{display:none}
+.strap{transition:opacity .6s, transform .6s cubic-bezier(.3,1.3,.4,1)}
+@keyframes sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+.tagSway{animation:sway 4s ease-in-out infinite;transform-origin:50% -30px}
+
+@media (prefers-reduced-motion: reduce){.aur,.grad,.rise,.sail,.ribbon,.tw,.conf,.drop,.kn,.strap{animation:none !important}.enterL,.enterR{display:none}}
+</style>
+</helmet>
+<div style="position: relative; overflow: hidden; min-height: 1260px; background: #F4FAFE; font-family: 'Onest', system-ui, sans-serif; color: #0B2540">
+<svg aria-hidden="true" viewBox="0 0 1440 1000" preserveAspectRatio="xMidYMid slice" style="position: absolute; top: 0; left: 0; width: 100%; height: 1000px; pointer-events: none">
+<defs><radialGradient id="pcf" cx="45%" cy="35%" r="70%"><stop offset="0" stop-color="#FFFFFF"></stop><stop offset="1" stop-color="#EAF6FC" stop-opacity=".9"></stop></radialGradient><filter id="pcs" x="-40%" y="-60%" width="180%" height="220%"><feGaussianBlur stdDeviation="14"></feGaussianBlur></filter>
+<g id="pcloud"><g fill="url(#pcf)" filter="url(#pcs)"><ellipse cx="150" cy="92" rx="138" ry="26"></ellipse><circle cx="88" cy="76" r="40"></circle><circle cx="150" cy="58" r="56"></circle><circle cx="214" cy="72" r="44"></circle><circle cx="256" cy="86" r="26"></circle></g></g></defs><g transform="translate(-60 120) scale(1.2)" opacity="0.8"><g class="sail" style="animation-delay: -0s"><use href="#pcloud"></use></g></g><g transform="translate(980 60) scale(1.4)" opacity="0.85"><g class="sail" style="animation-delay: -14s"><use href="#pcloud"></use></g></g><g transform="translate(520 520) scale(1.6)" opacity="0.7"><g class="sail" style="animation-delay: -7s"><use href="#pcloud"></use></g></g><g transform="translate(1180 640) scale(1.2)" opacity="0.75"><g class="sail" style="animation-delay: -22s"><use href="#pcloud"></use></g></g></svg><svg aria-hidden="true" viewBox="0 0 1440 1000" preserveAspectRatio="none" style="position: absolute; top: 0; left: 0; width: 100%; height: 1000px; pointer-events: none"><defs><linearGradient id="prb" x1="0" x2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0"></stop><stop offset=".5" stop-color="#FFFFFF" stop-opacity=".9"></stop><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop></linearGradient><filter id="prs"><feGaussianBlur stdDeviation="7"></feGaussianBlur></filter></defs><path class="ribbon" d="M-100 300 C 300 160, 620 480, 980 260 S 1480 120, 1600 220" fill="none" stroke="url(#prb)" stroke-width="26" filter="url(#prs)"></path><path class="ribbon" d="M-100 360 C 320 220, 660 540, 1020 320 S 1500 180, 1600 280" fill="none" stroke="url(#prb)" stroke-width="8" style="animation-delay: -4s"></path></svg><svg aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: .06; mix-blend-mode: multiply; pointer-events: none"><filter id="pgr"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"></feTurbulence></filter><rect width="100%" height="100%" filter="url(#pgr)"></rect></svg><div aria-hidden="true" style="position: fixed; inset: 0; z-index: 100; pointer-events: none; overflow: hidden">
+<div class="enterL" style="position: absolute; top: -20%; bottom: -20%; left: -10%; width: 70%; background: radial-gradient(circle at 70% 30%, #FFFFFF 0 30%, rgba(255,255,255,0) 60%), radial-gradient(circle at 80% 75%, #F2FAFE 0 30%, rgba(255,255,255,0) 60%), linear-gradient(90deg, #FFFFFF 55%, rgba(255,255,255,0)); filter: blur(24px)"></div>
+<div class="enterR" style="position: absolute; top: -20%; bottom: -20%; right: -10%; width: 70%; background: radial-gradient(circle at 30% 40%, #FFFFFF 0 30%, rgba(255,255,255,0) 60%), radial-gradient(circle at 20% 80%, #EAF6FC 0 30%, rgba(255,255,255,0) 60%), linear-gradient(270deg, #FFFFFF 55%, rgba(255,255,255,0)); filter: blur(24px)"></div>
+</div>
+<header style="position: relative; max-width: 1280px; margin: 0 auto; padding: 22px 24px 0">
+<div class="lg" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 10px 10px 20px; border-radius: 20px">
+<a href="Hero.dc.html" style="display: flex; align-items: center; gap: 10px; color: #0B2540"><svg aria-hidden="true" width="34" height="24" viewBox="0 0 44 30"><defs><linearGradient id="lgo" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#BDEBFA"></stop><stop offset=".55" stop-color="#38BDE8"></stop><stop offset="1" stop-color="#0A79A8"></stop></linearGradient></defs><path d="M12 28h22a9 9 0 0 0 1-17.9A12 12 0 0 0 12.4 8 10 10 0 0 0 12 28z" fill="url(#lgo)"></path></svg><span style="font-size: 18px; font-weight: 800; letter-spacing: 0.18em">OBLAKO</span></a>
+<nav aria-label="Основная навигация" style="display: flex; flex-wrap: wrap; gap: 24px; font-size: 15px; font-weight: 500"><a href="Cards.dc.html" style="color: #0B2540; opacity: .85">Направления</a><a href="Route.dc.html" style="color: #0B2540; opacity: .85">Маршрут</a><a href="Data.dc.html" style="color: #0B2540; opacity: .85">Бюджет</a><a href="Board.dc.html" style="color: #0B2540; opacity: .85">Табло</a><a href="Packing.dc.html" aria-current="page" style="color: #0B2540; font-weight: 700; box-shadow: inset 0 -2px 0 #E8288E; padding-bottom: 4px">Сборы</a><a href="Journal.dc.html" style="color: #0B2540; opacity: .85">Дневник</a></nav>
+<a href="Profile.dc.html" aria-label="Профиль" style="width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #38BDE8, #8B6CF0); color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800">[И]</a>
+</div>
+</header>
+
+<div aria-hidden="true" class="aur" style="top: -200px; left: -140px; width: 640px; height: 640px; background: #9BDDF2"></div>
+<div aria-hidden="true" class="aur" style="top: 300px; right: -200px; width: 600px; height: 600px; background: #FFB3D6; opacity: .6; animation-delay: -9s"></div>
+<section style="position: relative; max-width: 1280px; margin: 0 auto; padding: 48px 24px 80px; display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #0A79A8">Сборы · Стамбул, 7&nbsp;дней, май</span>
+<h1 style="margin: 0; font-size: 56px; font-weight: 700; line-height: 1; letter-spacing: -0.04em">Разложите и&nbsp;<span class="grad">соберите</span></h1>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<span class="lg" style="display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 16px; border-radius: 14px; font-size: 15px; font-weight: 700">Уложено {{done}} из&nbsp;{{total}}<span style="width: 90px; height: 8px; border-radius: 999px; background: rgba(11,37,64,.1); overflow: hidden"><span style="{{progS}}"></span></span></span>
+<button type="button" onClick="{{packAll}}" style="min-height: 48px; padding: 0 18px; border: 0; border-radius: 14px; background: #C8146F; color: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 600; box-shadow: 0 12px 30px rgba(200,20,111,.3); cursor: pointer">Собрать всё</button>
+<button type="button" onClick="{{unpackAll}}" class="lg" style="min-height: 48px; padding: 0 16px; border-radius: 14px; color: #0B2540; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer">Вытряхнуть</button>
+</div>
+</div>
+
+<div style="display: flex; gap: 8px; overflow-x: auto"><div style="flex: 1 1 0; min-width: 92px; padding: 12px 8px; border-radius: 16px; background: rgba(255,255,255,.65); color: #0B2540; display: flex; align-items: center; justify-content: center; gap: 8px"><svg aria-hidden="true" width="36" height="36" viewBox="0 0 48 48"><circle cx="24" cy="24" r="9" fill="#FFB347"></circle><g stroke="#FFB347" stroke-width="2.5" stroke-linecap="round"><path d="M24 6v5M24 37v5M6 24h5M37 24h5M11 11l3.5 3.5M33.5 33.5L37 37M11 37l3.5-3.5M33.5 14.5L37 11"></path></g></svg><span style="display: flex; flex-direction: column"><span style="font-size: 12px; font-weight: 700; opacity: .8">Пн</span><span style="font-size: 16px; font-weight: 800">+21°</span></span></div><div style="flex: 1 1 0; min-width: 92px; padding: 12px 8px; border-radius: 16px; background: rgba(255,255,255,.65); color: #0B2540; display: flex; align-items: center; justify-content: center; gap: 8px"><svg aria-hidden="true" width="36" height="36" viewBox="0 0 48 48"><circle cx="24" cy="24" r="9" fill="#FFB347"></circle><g stroke="#FFB347" stroke-width="2.5" stroke-linecap="round"><path d="M24 6v5M24 37v5M6 24h5M37 24h5M11 11l3.5 3.5M33.5 33.5L37 37M11 37l3.5-3.5M33.5 14.5L37 11"></path></g></svg><span style="display: flex; flex-direction: column"><span style="font-size: 12px; font-weight: 700; opacity: .8">Вт</span><span style="font-size: 16px; font-weight: 800">+22°</span></span></div><div style="flex: 1 1 0; min-width: 92px; padding: 12px 8px; border-radius: 16px; background: rgba(255,255,255,.65); color: #0B2540; display: flex; align-items: center; justify-content: center; gap: 8px"><svg aria-hidden="true" width="36" height="36" viewBox="0 0 48 48"><circle cx="20" cy="18" r="8" fill="#FFB347"></circle><path d="M14 36h20a7 7 0 0 0 0-14 9 9 0 0 0-17 3 6 6 0 0 0-3 11z" fill="#FFFFFF" stroke="#9FC4D6" stroke-width="2"></path></svg><span style="display: flex; flex-direction: column"><span style="font-size: 12px; font-weight: 700; opacity: .8">Ср</span><span style="font-size: 16px; font-weight: 800">+20°</span></span></div><div style="flex: 1 1 0; min-width: 92px; padding: 12px 8px; border-radius: 16px; background: #0B2540; color: #FFFFFF; display: flex; align-items: center; justify-content: center; gap: 8px"><svg aria-hidden="true" width="36" height="36" viewBox="0 0 48 48"><path d="M12 28h22a7 7 0 0 0 0-14 9 9 0 0 0-17 3 6 6 0 0 0-5 11z" fill="#FFFFFF" stroke="#9FC4D6" stroke-width="2"></path><g stroke="#38BDE8" stroke-width="2.5" stroke-linecap="round"><path class="drop" d="M17 33l-2 6"></path><path class="drop" d="M25 33l-2 6" style="animation-delay: .3s"></path><path class="drop" d="M33 33l-2 6" style="animation-delay: .6s"></path></g></svg><span style="display: flex; flex-direction: column"><span style="font-size: 12px; font-weight: 700; opacity: .8">Чт</span><span style="font-size: 16px; font-weight: 800">+17°</span></span></div><div style="flex: 1 1 0; min-width: 92px; padding: 12px 8px; border-radius: 16px; background: rgba(255,255,255,.65); color: #0B2540; display: flex; align-items: center; justify-content: center; gap: 8px"><svg aria-hidden="true" width="36" height="36" viewBox="0 0 48 48"><circle cx="20" cy="18" r="8" fill="#FFB347"></circle><path d="M14 36h20a7 7 0 0 0 0-14 9 9 0 0 0-17 3 6 6 0 0 0-3 11z" fill="#FFFFFF" stroke="#9FC4D6" stroke-width="2"></path></svg><span style="display: flex; flex-direction: column"><span style="font-size: 12px; font-weight: 700; opacity: .8">Пт</span><span style="font-size: 16px; font-weight: 800">+19°</span></span></div><div style="flex: 1 1 0; min-width: 92px; padding: 12px 8px; border-radius: 16px; background: rgba(255,255,255,.65); color: #0B2540; display: flex; align-items: center; justify-content: center; gap: 8px"><svg aria-hidden="true" width="36" height="36" viewBox="0 0 48 48"><circle cx="24" cy="24" r="9" fill="#FFB347"></circle><g stroke="#FFB347" stroke-width="2.5" stroke-linecap="round"><path d="M24 6v5M24 37v5M6 24h5M37 24h5M11 11l3.5 3.5M33.5 33.5L37 37M11 37l3.5-3.5M33.5 14.5L37 11"></path></g></svg><span style="display: flex; flex-direction: column"><span style="font-size: 12px; font-weight: 700; opacity: .8">Сб</span><span style="font-size: 16px; font-weight: 800">+23°</span></span></div><div style="flex: 1 1 0; min-width: 92px; padding: 12px 8px; border-radius: 16px; background: rgba(255,255,255,.65); color: #0B2540; display: flex; align-items: center; justify-content: center; gap: 8px"><svg aria-hidden="true" width="36" height="36" viewBox="0 0 48 48"><circle cx="24" cy="24" r="9" fill="#FFB347"></circle><g stroke="#FFB347" stroke-width="2.5" stroke-linecap="round"><path d="M24 6v5M24 37v5M6 24h5M37 24h5M11 11l3.5 3.5M33.5 33.5L37 37M11 37l3.5-3.5M33.5 14.5L37 11"></path></g></svg><span style="display: flex; flex-direction: column"><span style="font-size: 12px; font-weight: 700; opacity: .8">Вс</span><span style="font-size: 16px; font-weight: 800">+24°</span></span></div></div>
+
+<div class="lg" style="position: relative; border-radius: 32px; overflow: hidden; background: repeating-linear-gradient(90deg, rgba(255,255,255,.35) 0 2px, transparent 2px 6px), linear-gradient(160deg, #EEF6FA, #E2EFF6)">
+<div style="position: relative; overflow-x: auto">
+<div style="position: relative; width: 1232px; height: 720px; margin: 0 auto">
+<span aria-hidden="true" style="position: absolute; left: 320px; top: 590px; width: 600px; height: 70px; border-radius: 50%; background: rgba(11,37,64,.18); filter: blur(22px)"></span>
+<svg aria-hidden="true" viewBox="0 0 560 520" width="560" height="520" style="position: absolute; left: 336px; top: 112px">
+<defs>
+<linearGradient id="shell" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1D4F86"></stop><stop offset="1" stop-color="#0B2540"></stop></linearGradient>
+<linearGradient id="lining" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E7F4FA"></stop><stop offset="1" stop-color="#CFE6F1"></stop></linearGradient>
+<pattern id="mesh" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 0L8 8M8 0L0 8" stroke="#9FC4D6" stroke-width=".8"></path></pattern>
+<linearGradient id="gcard" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#38BDE8"></stop><stop offset="1" stop-color="#E8288E"></stop></linearGradient>
+</defs>
+<rect x="222" y="0" width="12" height="70" rx="5" fill="#9FB3C2"></rect><rect x="326" y="0" width="12" height="70" rx="5" fill="#9FB3C2"></rect><rect x="214" y="0" width="132" height="20" rx="10" fill="#2E4A6B"></rect>
+<rect x="20" y="66" width="250" height="420" rx="34" fill="url(#shell)"></rect>
+<rect x="290" y="66" width="250" height="420" rx="34" fill="url(#shell)"></rect>
+<rect x="268" y="120" width="24" height="60" rx="6" fill="#0F2C4C"></rect><rect x="268" y="372" width="24" height="60" rx="6" fill="#0F2C4C"></rect>
+<rect x="36" y="82" width="218" height="388" rx="24" fill="url(#lining)"></rect>
+<rect x="306" y="82" width="218" height="388" rx="24" fill="url(#lining)"></rect>
+<rect x="36" y="82" width="218" height="388" rx="24" fill="none" stroke="#E9C77E" stroke-width="3" stroke-dasharray="7 5"></rect>
+<rect x="306" y="82" width="218" height="388" rx="24" fill="none" stroke="#E9C77E" stroke-width="3" stroke-dasharray="7 5"></rect>
+<rect x="48" y="96" width="194" height="240" rx="16" fill="url(#mesh)" opacity=".7"></rect>
+<rect x="48" y="96" width="194" height="240" rx="16" fill="none" stroke="#9FC4D6" stroke-width="2"></rect>
+<path d="M48 336h194" stroke="#E9C77E" stroke-width="3" stroke-dasharray="6 4"></path>
+<circle cx="240" cy="336" r="6" fill="#E9C77E"></circle>
+<g opacity=".9"><path d="M306 230 L524 140" stroke="#0F2C4C" stroke-width="16" stroke-linecap="round" opacity=".18"></path></g>
+<g fill="#0B2540"><rect x="40" y="484" width="30" height="20" rx="8"></rect><rect x="220" y="484" width="30" height="20" rx="8"></rect><rect x="310" y="484" width="30" height="20" rx="8"></rect><rect x="490" y="484" width="30" height="20" rx="8"></rect></g>
+<g fill="#2E4A6B"><circle cx="55" cy="508" r="8"></circle><circle cx="235" cy="508" r="8"></circle><circle cx="325" cy="508" r="8"></circle><circle cx="505" cy="508" r="8"></circle></g>
+</svg>
+<span aria-hidden="true" class="strap" style="{{strapL}}"></span>
+<span aria-hidden="true" class="strap" style="{{strapR}}"></span>
+<div class="lg" style="{{tagS}}">
+<span aria-hidden="true" style="position: absolute; left: 50%; top: -30px; width: 2px; height: 30px; background: #0B2540"></span>
+<span style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; opacity: .8">БАГАЖ · лимит 23&nbsp;кг</span>
+<span style="font-size: 28px; font-weight: 800; letter-spacing: -0.03em">{{kg}}&nbsp;кг</span>
+<span style="font-size: 11px; opacity: .85">{{tagNote}}</span>
+</div>
+<button type="button" class="kn" aria-pressed="{{i0.on}}" aria-label="{{i0.label}}" onClick="{{i0.toggle}}" style="{{i0.s}}">
+<svg aria-hidden="true" viewBox="0 0 70 96" width="70" height="96" style="display: block; filter: drop-shadow(0 8px 10px rgba(11,37,64,.18))"><rect x="2" y="2" width="66" height="92" rx="7" fill="#1E3F6E"></rect><rect x="6" y="6" width="58" height="84" rx="4" fill="none" stroke="#E9C77E" stroke-opacity=".5"></rect><circle cx="35" cy="40" r="13" fill="none" stroke="#E9C77E" stroke-width="2"></circle><path d="M27 42h16M29 37h12" stroke="#E9C77E" stroke-width="1.5"></path><rect x="18" y="64" width="34" height="4" rx="2" fill="#E9C77E"></rect><rect x="22" y="72" width="26" height="3" rx="1.5" fill="#E9C77E" opacity=".7"></rect></svg>
+<span style="{{i0.tag}}">Паспорт</span>
+<sc-if value="{{i0.tip}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: -10px; right: -12px; padding: 3px 7px; border-radius: 6px; background: #C8146F; color: #FFFFFF; font-size: 10px; font-weight: 800; letter-spacing: .04em">совет</span></sc-if>
+</button>
+<button type="button" class="kn" aria-pressed="{{i1.on}}" aria-label="{{i1.label}}" onClick="{{i1.toggle}}" style="{{i1.s}}">
+<svg aria-hidden="true" viewBox="0 0 80 100" width="80" height="100" style="display: block; filter: drop-shadow(0 8px 10px rgba(11,37,64,.18))"><path d="M4 4h54l18 18v74H4z" fill="#FFFFFF" stroke="#C9DCE7" stroke-width="2"></path><path d="M58 4v18h18" fill="#E3F1F8" stroke="#C9DCE7" stroke-width="2"></path><rect x="12" y="14" width="36" height="8" rx="3" fill="#38BDE8"></rect><g stroke="#C9DCE7" stroke-width="3" stroke-linecap="round"><path d="M12 36h52M12 46h52M12 56h40M12 66h48M12 76h30"></path></g></svg>
+<span style="{{i1.tag}}">Страховка</span>
+<sc-if value="{{i1.tip}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: -10px; right: -12px; padding: 3px 7px; border-radius: 6px; background: #C8146F; color: #FFFFFF; font-size: 10px; font-weight: 800; letter-spacing: .04em">совет</span></sc-if>
+</button>
+<button type="button" class="kn" aria-pressed="{{i2.on}}" aria-label="{{i2.label}}" onClick="{{i2.toggle}}" style="{{i2.s}}">
+<svg aria-hidden="true" viewBox="0 0 90 58" width="90" height="58" style="display: block; filter: drop-shadow(0 8px 10px rgba(11,37,64,.18))"><rect x="2" y="2" width="86" height="54" rx="9" fill="url(#gcard)"></rect><rect x="12" y="18" width="16" height="12" rx="3" fill="#E9C77E"></rect><rect x="12" y="40" width="44" height="4" rx="2" fill="#FFFFFF" opacity=".8"></rect><circle cx="70" cy="42" r="7" fill="#FFFFFF" opacity=".55"></circle><circle cx="78" cy="42" r="7" fill="#FFFFFF" opacity=".35"></circle></svg>
+<span style="{{i2.tag}}">Банковская карта</span>
+<sc-if value="{{i2.tip}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: -10px; right: -12px; padding: 3px 7px; border-radius: 6px; background: #C8146F; color: #FFFFFF; font-size: 10px; font-weight: 800; letter-spacing: .04em">совет</span></sc-if>
+</button>
+<button type="button" class="kn" aria-pressed="{{i3.on}}" aria-label="{{i3.label}}" onClick="{{i3.toggle}}" style="{{i3.s}}">
+<svg aria-hidden="true" viewBox="0 0 92 70" width="92" height="70" style="display: block; filter: drop-shadow(0 8px 10px rgba(11,37,64,.18))"><circle cx="58" cy="38" r="24" fill="none" stroke="#FFFFFF" stroke-width="5"></circle><circle cx="58" cy="38" r="16" fill="none" stroke="#FFFFFF" stroke-width="5"></circle><circle cx="58" cy="38" r="24" fill="none" stroke="#C9DCE7" stroke-width="1"></circle><rect x="4" y="16" width="32" height="38" rx="8" fill="#FFFFFF" stroke="#C9DCE7" stroke-width="2"></rect><rect x="12" y="8" width="4" height="10" rx="1" fill="#9FB3C2"></rect><rect x="24" y="8" width="4" height="10" rx="1" fill="#9FB3C2"></rect><path d="M36 36 Q44 36 46 30" stroke="#FFFFFF" stroke-width="5" fill="none"></path></svg>
+<span style="{{i3.tag}}">Зарядка</span>
+<sc-if value="{{i3.tip}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: -10px; right: -12px; padding: 3px 7px; border-radius: 6px; background: #C8146F; color: #FFFFFF; font-size: 10px; font-weight: 800; letter-spacing: .04em">совет</span></sc-if>
+</button>
+<button type="button" class="kn" aria-pressed="{{i4.on}}" aria-label="{{i4.label}}" onClick="{{i4.toggle}}" style="{{i4.s}}">
+<svg aria-hidden="true" viewBox="0 0 58 100" width="58" height="100" style="display: block; filter: drop-shadow(0 8px 10px rgba(11,37,64,.18))"><rect x="4" y="4" width="50" height="92" rx="12" fill="#0B2540"></rect><g fill="#38BDE8"><circle cx="17" cy="80" r="3"></circle><circle cx="25" cy="80" r="3"></circle><circle cx="33" cy="80" r="3"></circle></g><circle cx="41" cy="80" r="3" fill="#2E4A6B"></circle><rect x="20" y="14" width="18" height="5" rx="2" fill="#2E4A6B"></rect></svg>
+<span style="{{i4.tag}}">Пауэрбанк</span>
+<sc-if value="{{i4.tip}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: -10px; right: -12px; padding: 3px 7px; border-radius: 6px; background: #C8146F; color: #FFFFFF; font-size: 10px; font-weight: 800; letter-spacing: .04em">совет</span></sc-if>
+</button>
+<button type="button" class="kn" aria-pressed="{{i5.on}}" aria-label="{{i5.label}}" onClick="{{i5.toggle}}" style="{{i5.s}}">
+<svg aria-hidden="true" viewBox="0 0 80 80" width="80" height="80" style="display: block; filter: drop-shadow(0 8px 10px rgba(11,37,64,.18))"><circle cx="40" cy="40" r="34" fill="#FFFFFF" stroke="#C9DCE7" stroke-width="2"></circle><path d="M8 34h64" stroke="#C9DCE7" stroke-width="2"></path><circle cx="40" cy="56" r="3" fill="#7FD3A6"></circle></svg>
+<span style="{{i5.tag}}">Наушники</span>
+<sc-if value="{{i5.tip}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: -10px; right: -12px; padding: 3px 7px; border-radius: 6px; background: #C8146F; color: #FFFFFF; font-size: 10px; font-weight: 800; letter-spacing: .04em">совет</span></sc-if>
+</button>
+<button type="button" class="kn" aria-pressed="{{i6.on}}" aria-label="{{i6.label}}" onClick="{{i6.toggle}}" style="{{i6.s}}">
+<svg aria-hidden="true" viewBox="0 0 22 112" width="22" height="112" style="display: block; filter: drop-shadow(0 8px 10px rgba(11,37,64,.18))"><rect x="6" y="30" width="10" height="78" rx="5" fill="#38BDE8"></rect><rect x="4" y="4" width="14" height="30" rx="4" fill="#FFFFFF" stroke="#C9DCE7" stroke-width="1.5"></rect><g stroke="#C9DCE7"><path d="M6 10h10M6 16h10M6 22h10"></path></g></svg>
+<span style="{{i6.tag}}">Зубная щётка</span>
+<sc-if value="{{i6.tip}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: -10px; right: -12px; padding: 3px 7px; border-radius: 6px; background: #C8146F; color: #FFFFFF; font-size: 10px; font-weight: 800; letter-spacing: .04em">совет</span></sc-if>
+</button>
+<button type="button" class="kn" aria-pressed="{{i7.on}}" aria-label="{{i7.label}}" onClick="{{i7.toggle}}" style="{{i7.s}}">
+<svg aria-hidden="true" viewBox="0 0 32 92" width="32" height="92" style="display: block; filter: drop-shadow(0 8px 10px rgba(11,37,64,.18))"><path d="M6 4h20l-2 70H8z" fill="#FFB347"></path><rect x="8" y="72" width="16" height="16" rx="3" fill="#0B2540"></rect><rect x="9" y="20" width="14" height="24" rx="3" fill="#FFFFFF" opacity=".8"></rect><text x="16" y="36" text-anchor="middle" font-family="Onest" font-size="8" font-weight="800" fill="#F08A24">SPF</text></svg>
+<span style="{{i7.tag}}">Солнцезащитный крем</span>
+<sc-if value="{{i7.tip}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: -10px; right: -12px; padding: 3px 7px; border-radius: 6px; background: #C8146F; color: #FFFFFF; font-size: 10px; font-weight: 800; letter-spacing: .04em">совет</span></sc-if>
+</button>
+<button type="button" class="kn" aria-pressed="{{i8.on}}" aria-label="{{i8.label}}" onClick="{{i8.toggle}}" style="{{i8.s}}">
+<svg aria-hidden="true" viewBox="0 0 110 92" width="110" height="92" style="display: block; filter: drop-shadow(0 8px 10px rgba(11,37,64,.18))"><rect x="6" y="40" width="98" height="46" rx="8" fill="#F7A9CF"></rect><rect x="6" y="24" width="98" height="46" rx="8" fill="#FFC2E0"></rect><rect x="6" y="8" width="98" height="46" rx="8" fill="#FF8CC6"></rect><path d="M40 8 Q55 22 70 8" fill="none" stroke="#C8146F" stroke-width="3"></path><path d="M14 30h82" stroke="#E8288E" stroke-opacity=".4" stroke-width="2"></path></svg>
+<span style="{{i8.tag}}">Футболки ×5</span>
+<sc-if value="{{i8.tip}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: -10px; right: -12px; padding: 3px 7px; border-radius: 6px; background: #C8146F; color: #FFFFFF; font-size: 10px; font-weight: 800; letter-spacing: .04em">совет</span></sc-if>
+</button>
+<button type="button" class="kn" aria-pressed="{{i9.on}}" aria-label="{{i9.label}}" onClick="{{i9.toggle}}" style="{{i9.s}}">
+<svg aria-hidden="true" viewBox="0 0 116 100" width="116" height="100" style="display: block; filter: drop-shadow(0 8px 10px rgba(11,37,64,.18))"><rect x="6" y="10" width="104" height="84" rx="12" fill="#7FD3F2"></rect><path d="M58 10v84" stroke="#0A79A8" stroke-width="3" stroke-dasharray="4 3"></path><path d="M36 10 Q58 30 80 10" fill="#5BBFE6"></path><rect x="20" y="58" width="22" height="16" rx="4" fill="#5BBFE6"></rect><rect x="74" y="58" width="22" height="16" rx="4" fill="#5BBFE6"></rect></svg>
+<span style="{{i9.tag}}">Лёгкая куртка</span>
+<sc-if value="{{i9.tip}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: -10px; right: -12px; padding: 3px 7px; border-radius: 6px; background: #C8146F; color: #FFFFFF; font-size: 10px; font-weight: 800; letter-spacing: .04em">совет</span></sc-if>
+</button>
+<button type="button" class="kn" aria-pressed="{{i10.on}}" aria-label="{{i10.label}}" onClick="{{i10.toggle}}" style="{{i10.s}}">
+<svg aria-hidden="true" viewBox="0 0 96 108" width="96" height="108" style="display: block; filter: drop-shadow(0 8px 10px rgba(11,37,64,.18))"><rect x="6" y="6" width="84" height="96" rx="10" fill="#3E5C86"></rect><rect x="6" y="6" width="84" height="16" rx="6" fill="#2F4A70"></rect><path d="M48 22v80" stroke="#2F4A70" stroke-width="3"></path><rect x="44" y="9" width="8" height="10" rx="2" fill="#E9C77E"></rect></svg>
+<span style="{{i10.tag}}">Одежда, закрывающая колени</span>
+<sc-if value="{{i10.tip}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: -10px; right: -12px; padding: 3px 7px; border-radius: 6px; background: #C8146F; color: #FFFFFF; font-size: 10px; font-weight: 800; letter-spacing: .04em">совет</span></sc-if>
+</button>
+<button type="button" class="kn" aria-pressed="{{i11.on}}" aria-label="{{i11.label}}" onClick="{{i11.toggle}}" style="{{i11.s}}">
+<svg aria-hidden="true" viewBox="0 0 98 98" width="98" height="98" style="display: block; filter: drop-shadow(0 8px 10px rgba(11,37,64,.18))"><rect x="6" y="6" width="86" height="86" rx="10" fill="#C3B5FF"></rect><g stroke="#8B6CF0" stroke-width="4" opacity=".6"><path d="M6 30h86M6 54h86M6 78h86"></path></g><path d="M6 6l86 86" stroke="#FFFFFF" stroke-opacity=".4" stroke-width="3"></path><g fill="#8B6CF0"><circle cx="20" cy="94" r="3"></circle><circle cx="32" cy="94" r="3"></circle><circle cx="44" cy="94" r="3"></circle></g></svg>
+<span style="{{i11.tag}}">Платок для мечетей</span>
+<sc-if value="{{i11.tip}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: -10px; right: -12px; padding: 3px 7px; border-radius: 6px; background: #C8146F; color: #FFFFFF; font-size: 10px; font-weight: 800; letter-spacing: .04em">совет</span></sc-if>
+</button>
+<button type="button" class="kn" aria-pressed="{{i12.on}}" aria-label="{{i12.label}}" onClick="{{i12.toggle}}" style="{{i12.s}}">
+<svg aria-hidden="true" viewBox="0 0 130 92" width="130" height="92" style="display: block; filter: drop-shadow(0 8px 10px rgba(11,37,64,.18))"><g><ellipse cx="34" cy="46" rx="26" ry="42" fill="#FFFFFF" stroke="#C9DCE7" stroke-width="2"></ellipse><ellipse cx="34" cy="60" rx="16" ry="20" fill="#EAF6FC"></ellipse><path d="M24 22h20M24 30h20M24 38h20" stroke="#E8288E" stroke-width="3" stroke-linecap="round"></path></g><g><ellipse cx="96" cy="46" rx="26" ry="42" fill="#FFFFFF" stroke="#C9DCE7" stroke-width="2"></ellipse><ellipse cx="96" cy="60" rx="16" ry="20" fill="#EAF6FC"></ellipse><path d="M86 22h20M86 30h20M86 38h20" stroke="#E8288E" stroke-width="3" stroke-linecap="round"></path></g></svg>
+<span style="{{i12.tag}}">Удобная обувь</span>
+<sc-if value="{{i12.tip}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: -10px; right: -12px; padding: 3px 7px; border-radius: 6px; background: #C8146F; color: #FFFFFF; font-size: 10px; font-weight: 800; letter-spacing: .04em">совет</span></sc-if>
+</button>
+<button type="button" class="kn" aria-pressed="{{i13.on}}" aria-label="{{i13.label}}" onClick="{{i13.toggle}}" style="{{i13.s}}">
+<svg aria-hidden="true" viewBox="0 0 80 66" width="80" height="66" style="display: block; filter: drop-shadow(0 8px 10px rgba(11,37,64,.18))"><rect x="4" y="12" width="72" height="50" rx="10" fill="#FFFFFF" stroke="#C9DCE7" stroke-width="2"></rect><rect x="28" y="4" width="24" height="12" rx="4" fill="none" stroke="#C9DCE7" stroke-width="3"></rect><path d="M40 24v26M27 37h26" stroke="#E8288E" stroke-width="8" stroke-linecap="round"></path></svg>
+<span style="{{i13.tag}}">Аптечка</span>
+<sc-if value="{{i13.tip}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: -10px; right: -12px; padding: 3px 7px; border-radius: 6px; background: #C8146F; color: #FFFFFF; font-size: 10px; font-weight: 800; letter-spacing: .04em">совет</span></sc-if>
+</button>
+<button type="button" class="kn" aria-pressed="{{i14.on}}" aria-label="{{i14.label}}" onClick="{{i14.toggle}}" style="{{i14.s}}">
+<svg aria-hidden="true" viewBox="0 0 30 140" width="30" height="140" style="display: block; filter: drop-shadow(0 8px 10px rgba(11,37,64,.18))"><path d="M15 4 L26 100 Q15 108 4 100 Z" fill="#8B6CF0"></path><path d="M15 4 L15 104" stroke="#6E4FE0" stroke-width="2"></path><rect x="11" y="100" width="8" height="18" fill="#0B2540"></rect><path d="M15 118 v10 a8 8 0 0 1 -14 0" fill="none" stroke="#0B2540" stroke-width="5" stroke-linecap="round"></path></svg>
+<span style="{{i14.tag}}">Компактный зонт</span>
+<sc-if value="{{i14.tip}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: -10px; right: -12px; padding: 3px 7px; border-radius: 6px; background: #C8146F; color: #FFFFFF; font-size: 10px; font-weight: 800; letter-spacing: .04em">совет</span></sc-if>
+</button>
+<span aria-hidden="true" style="position: absolute; left: 24px; bottom: 18px; font-size: 13px; color: #45607A">Нажмите на&nbsp;вещь&nbsp;— она уложится в&nbsp;чемодан. Ещё раз&nbsp;— вернётся на&nbsp;пол.</span>
+</div>
+</div>
+</div>
+
+<details class="lg" style="border-radius: 24px; padding: 0 22px">
+<summary style="display: flex; align-items: center; justify-content: space-between; min-height: 64px; font-size: 18px; font-weight: 800; cursor: pointer; list-style: none">Списком<span style="font-size: 14px; font-weight: 600; color: #45607A">{{done}}/{{total}}</span></summary>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; padding-bottom: 20px">
+<sc-for list="{{list}}" as="i" hint-placeholder-count="15"><button type="button" role="checkbox" aria-checked="{{i.on}}" onClick="{{i.toggle}}" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 6px 10px; border: 0; border-radius: 12px; background: rgba(255,255,255,.6); font-family: inherit; font-size: 15px; color: #0B2540; text-align: left; cursor: pointer"><span style="{{i.box}}"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.4"><path d="M5 12l5 5 9-10"></path></svg></span>{{i.name}}</button></sc-for>
+</div>
+</details>
+
+<sc-if value="{{allDone}}" hint-placeholder-val="{{ false }}">
+<div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; overflow: hidden"><sc-for list="{{confetti}}" as="f"><span class="conf" style="{{f.s}}"></span></sc-for></div>
+<div role="status" class="lg" style="position: absolute; left: 50%; top: 140px; transform: translateX(-50%); padding: 16px 24px; border-radius: 18px; font-size: 18px; font-weight: 800; z-index: 40">Чемодан собран&nbsp;— хорошей поездки!</div>
+</sc-if>
+</section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1260}}'>
+class Component extends DCLogic {
+  state = { packed: [1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0], last: -1 };
+  renderVals() {
+    const I = [["passport", "Паспорт", 0, 0.1, [120, 120, -8], [420, 262, 0]], ["insurance", "Страховка", 0, 0, [252, 112, 6], [530, 258, -4]], ["card", "Банковская карта", 0, 0, [112, 258, -12], [432, 352, 8]], ["charger", "Зарядка", 0, 0.2, [246, 268, 4], [540, 356, 0]], ["powerbank", "Пауэрбанк", 0, 0.3, [118, 404, 10], [430, 452, 0]], ["headphones", "Наушники", 0, 0.1, [250, 412, -6], [538, 458, 0]], ["toothbrush", "Зубная щётка", 0, 0.05, [150, 560, -24], [486, 548, 90]], ["cream", "Солнцезащитный крем", 1, 0.2, [262, 566, 12], [842, 548, 0]], ["tees", "Футболки ×5", 0, 1.0, [1000, 118, 6], [690, 262, 0]], ["jacket", "Лёгкая куртка", 1, 0.7, [1140, 138, -8], [806, 266, 0]], ["trousers", "Одежда, закрывающая колени", 1, 0.6, [990, 296, -4], [690, 366, 0]], ["scarf", "Платок для мечетей", 1, 0.1, [1142, 302, 10], [806, 372, 0]], ["shoes", "Удобная обувь", 0, 1.1, [1062, 456, -6], [746, 470, 0]], ["aid", "Аптечка", 0, 0.3, [980, 604, 8], [664, 548, 0]], ["umbrella", "Компактный зонт", 1, 0.4, [1132, 600, -30], [752, 548, 90]]];
+    const st = this.state;
+    let done = 0, kg = 3.2;
+    I.forEach((it, i) => { if (st.packed[i]) { done++; kg += it[3]; } });
+    const total = I.length;
+    const toggle = (i) => () => { const p = st.packed.slice(); p[i] = p[i] ? 0 : 1; this.setState({ packed: p, last: i }); };
+    const out = {
+      done, total, kg: kg.toFixed(1).replace('.', ','),
+      tagNote: kg > 21 ? 'почти лимит!' : 'запас ' + Math.max(0, 23 - kg).toFixed(1).replace('.', ',') + '\u00a0кг',
+      tagS: 'position: absolute; left: 556px; top: 20px; width: 120px; padding: 10px 12px; border-radius: 12px; display: flex; flex-direction: column; gap: 2px; z-index: 30; color: ' + (kg > 21 ? '#FFFFFF' : '#0B2540') + '; transition: background .4s; background: ' + (kg > 21 ? '#C8146F' : 'rgba(255,255,255,.75)'),
+      progS: 'display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg,#38BDE8,#E8288E); transition: width .6s; width: ' + Math.round(done / total * 100) + '%',
+      strapL: 'position: absolute; left: 366px; top: 330px; width: 230px; height: 14px; border-radius: 7px; background: #0F2C4C; opacity: ' + (done > 6 ? '.9' : '0') + '; transform: rotate(-14deg) scaleX(' + (done > 6 ? 1 : .4) + ')',
+      strapR: 'position: absolute; left: 636px; top: 330px; width: 230px; height: 14px; border-radius: 7px; background: #0F2C4C; opacity: ' + (done > 6 ? '.9' : '0') + '; transform: rotate(14deg) scaleX(' + (done > 6 ? 1 : .4) + ')',
+      allDone: done === total,
+      packAll: () => this.setState({ packed: I.map(() => 1), last: -1 }),
+      unpackAll: () => this.setState({ packed: I.map(() => 0), last: -1 }),
+      list: I.map((it, i) => ({ name: it[1], on: st.packed[i] ? 'true' : 'false', toggle: toggle(i),
+        box: 'flex: none; width: 24px; height: 24px; border-radius: 8px; display: flex; align-items: center; justify-content: center; ' + (st.packed[i] ? 'background: #C8146F' : 'background: #FFFFFF; box-shadow: inset 0 0 0 2px #9FC4D6') })),
+      confetti: Array.from({ length: 40 }, (_, k) => ({ s: 'left: ' + ((k * 37) % 100) + '%; background: ' + ['#38BDE8', '#E8288E', '#8B6CF0', '#FFB347', '#0A79A8'][k % 5] + '; animation-delay: ' + ((k % 10) * 0.12) + 's' }))
+    };
+    I.forEach((it, i) => {
+      const on = !!st.packed[i], p = on ? it[5] : it[4];
+      out['i' + i] = {
+        on: on ? 'true' : 'false', tip: !!it[2],
+        label: it[1] + (on ? ': в чемодане, нажмите, чтобы достать' : ': на полу, нажмите, чтобы уложить'),
+        toggle: toggle(i),
+        s: 'left: ' + p[0] + 'px; top: ' + p[1] + 'px; z-index: ' + (st.last === i ? 25 : on ? 10 + i : 2) + '; transform: translate(-50%, -50%) rotate(' + p[2] + 'deg) scale(' + (on ? 0.72 : 1) + ')',
+        tag: 'position: absolute; left: 50%; bottom: -26px; transform: translateX(-50%) rotate(' + (-p[2]) + 'deg); white-space: nowrap; padding: 3px 8px; border-radius: 6px; background: rgba(255,255,255,.85); font-size: 12px; font-weight: 600; color: #0B2540; transition: opacity .3s; opacity: ' + (on ? 0 : 1)
+      };
+    });
+    return out;
+  }
+}
+</script>
+</body>
+</html>

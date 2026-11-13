@@ -1,0 +1,284 @@
+{
+  "id": "kaliningrad",
+  "name": "Калининград",
+  "country": "Россия",
+  "region": "Балтика",
+  "iata": "KGD",
+  "hit": false,
+  "utc": 2,
+  "coords": {
+    "lat": 54.71,
+    "lon": 20.51
+  },
+  "theme": {
+    "bg": "#F3F6FA",
+    "ink": "#10203A",
+    "muted": "#45566F",
+    "accent": "#3E5C86",
+    "accent2": "#E9A43C",
+    "folder": [
+      "#3E5C86",
+      "#E9A43C"
+    ],
+    "font": null
+  },
+  "greeting": {
+    "native": "Добро пожаловать",
+    "translit": "на Балтику",
+    "ru": "янтарь, дюны и готика",
+    "lang": "ru"
+  },
+  "lead": "Кирпичная готика, янтарь и самые высокие дюны Европы. Из Калининграда за час — на Куршскую косу, в Светлогорск или Зеленоградск к морю и чайкам.",
+  "facts": {
+    "flight": "2 ч",
+    "flightMinutes": 120,
+    "visa": "Не нужна",
+    "language": "Русский",
+    "languageNote": "",
+    "timeDiff": "−1 ч",
+    "plugs": "230 В, тип C/F",
+    "currency": {
+      "code": "RUB",
+      "name": "Рубль",
+      "demoRateRub": 1,
+      "rateCode": "RUB"
+    }
+  },
+  "climate": {
+    "avgHighC": [
+      1,
+      2,
+      6,
+      12,
+      17,
+      21,
+      23,
+      23,
+      18,
+      12,
+      6,
+      2
+    ],
+    "bestMonths": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "note": "ориентир; в продукте — климат Open-Meteo"
+  },
+  "quiz": {
+    "moods": [
+      "sea",
+      "history"
+    ],
+    "dailyRub": 5500,
+    "flightRub": 10000
+  },
+  "know": [
+    {
+      "title": "Куршская коса",
+      "text": "Нацпарк — за въезд берут экологический сбор."
+    },
+    {
+      "title": "Дорога",
+      "text": "На машине по суше путь лежит через ЕС и требует виз — проще лететь."
+    },
+    {
+      "title": "Море",
+      "text": "Балтика прохладная, купаются обычно с июля."
+    },
+    {
+      "title": "Янтарь",
+      "text": "Покупайте в магазинах с чеком и сертификатом."
+    }
+  ],
+  "places": [
+    {
+      "id": "tram",
+      "name": "Фахверк в центре",
+      "category": "see",
+      "district": "Центр",
+      "duration": "1 ч",
+      "price": "Бесплатно",
+      "description": "Островерхие дома в немецком стиле.",
+      "photo": "/photos/kaliningrad/tram.jpg",
+      "map": {
+        "x": 60,
+        "y": 50
+      }
+    },
+    {
+      "id": "cliffs",
+      "name": "Обрывы Куршской косы",
+      "category": "nature",
+      "district": "Нацпарк",
+      "duration": "день",
+      "price": "экосбор",
+      "description": "Дюны и сосны обрываются прямо к морю.",
+      "photo": "/photos/kaliningrad/cliffs.jpg",
+      "map": {
+        "x": 157,
+        "y": 111
+      }
+    },
+    {
+      "id": "dunes",
+      "name": "Дюны",
+      "category": "nature",
+      "district": "Куршская коса",
+      "duration": "2 ч",
+      "price": "экосбор",
+      "description": "Песчаные холмы над заливом и морем.",
+      "photo": "/photos/kaliningrad/dunes.jpg",
+      "map": {
+        "x": 254,
+        "y": 172
+      }
+    },
+    {
+      "id": "dunes_air",
+      "name": "Пляж у маяка",
+      "category": "nature",
+      "district": "Маяк",
+      "duration": "1 ч",
+      "price": "Бесплатно",
+      "description": "Высокий берег и пустой пляж.",
+      "photo": "/photos/kaliningrad/dunes_air.jpg",
+      "map": {
+        "x": 351,
+        "y": 233
+      }
+    },
+    {
+      "id": "beach",
+      "name": "Балтийский пляж",
+      "category": "nature",
+      "district": "Побережье",
+      "duration": "полдня",
+      "price": "Бесплатно",
+      "description": "Широкий песок и холодное море.",
+      "photo": "/photos/kaliningrad/beach.jpg",
+      "map": {
+        "x": 128,
+        "y": 94
+      }
+    },
+    {
+      "id": "svetl",
+      "name": "Шторм в Светлогорске",
+      "category": "nature",
+      "district": "Светлогорск",
+      "duration": "1 ч",
+      "price": "Бесплатно",
+      "description": "Чайки над волнами и волнорезы.",
+      "photo": "/photos/kaliningrad/svetl.jpg",
+      "map": {
+        "x": 225,
+        "y": 155
+      }
+    },
+    {
+      "id": "pier",
+      "name": "Пирс Светлогорска",
+      "category": "evening",
+      "district": "Светлогорск",
+      "duration": "1 ч",
+      "price": "Бесплатно",
+      "description": "Вечерняя прогулка над морем.",
+      "photo": "/photos/kaliningrad/pier.jpg",
+      "map": {
+        "x": 322,
+        "y": 216
+      }
+    },
+    {
+      "id": "zeleno",
+      "name": "Зеленоградск",
+      "category": "evening",
+      "district": "Зеленоградск",
+      "duration": "2 ч",
+      "price": "Бесплатно",
+      "description": "Город кошек и набережная с чайками.",
+      "photo": "/photos/kaliningrad/zeleno.jpg",
+      "map": {
+        "x": 99,
+        "y": 77
+      }
+    }
+  ],
+  "dishes": [
+    {
+      "name": "Копчёная рыба",
+      "text": "Угорь и салака — с рыбных рынков"
+    },
+    {
+      "name": "Кёнигсбергский марципан",
+      "text": "Сладость с историей"
+    },
+    {
+      "name": "Клопсы",
+      "text": "Тефтели в сливочном соусе с каперсами"
+    },
+    {
+      "name": "Балтийские шпроты",
+      "text": "Лучше всего — на хлебе с огурцом"
+    }
+  ],
+  "itinerary": [
+    [
+      "Остров Канта и собор",
+      "Рыбная деревня",
+      "Музей Мирового океана"
+    ],
+    [
+      "Куршская коса",
+      "Танцующий лес",
+      "Высота Эфа"
+    ],
+    [
+      "Светлогорск",
+      "Зеленоградск",
+      "Закат над Балтикой"
+    ]
+  ],
+  "phrases": {
+    "speechLang": "ru-RU",
+    "items": []
+  },
+  "prices": {
+    "demo": true,
+    "items": [
+      {
+        "item": "Капучино",
+        "local": 250,
+        "moscowRub": 300
+      },
+      {
+        "item": "Такси, 5 км",
+        "local": 300,
+        "moscowRub": 450
+      },
+      {
+        "item": "Обед в кафе",
+        "local": 700,
+        "moscowRub": 900
+      },
+      {
+        "item": "Музей Мирового океана",
+        "local": 500,
+        "moscowRub": 500
+      },
+      {
+        "item": "Проезд в автобусе",
+        "local": 45,
+        "moscowRub": 80
+      }
+    ]
+  },
+  "scene": {
+    "description": "Дальний план: дюны Куршской косы и маяк. Средний: Кафедральный собор на острове Канта, шпили. Город: фахверковые дома Рыбной деревни. Вода: Преголя и Балтика, чайки. Передний план: сосновые ветки и капля янтаря. Анимация: чайки, вращается луч маяка ночью.",
+    "todPalettes": null
+  }
+}

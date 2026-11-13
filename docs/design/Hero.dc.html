@@ -1,0 +1,721 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>OBLAKO — главная</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;family=Caveat:wght@600&amp;display=swap">
+<style>
+body{margin:0;background:#F4FAFE}
+a{color:#0B2540;text-decoration:none}a:hover{color:#0A79A8}
+@keyframes aur{0%{transform:translate(0,0) scale(1)}33%{transform:translate(60px,-40px) scale(1.15)}66%{transform:translate(-50px,30px) scale(.92)}100%{transform:translate(0,0) scale(1)}}
+@keyframes shift{to{background-position:300% 0}}
+@keyframes flow{to{stroke-dashoffset:-1200}}
+@keyframes spin{0%{transform:scaleX(1)}50%{transform:scaleX(.08)}100%{transform:scaleX(1)}}
+@keyframes arc{0%{stroke-dashoffset:400}60%,100%{stroke-dashoffset:0}}
+@keyframes pulse{0%{r:4;opacity:1}100%{r:18;opacity:0}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.aur{position:absolute;border-radius:50%;filter:blur(80px);animation:aur 20s ease-in-out infinite}
+.aur-wrap{transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
+.grad{background:linear-gradient(90deg,#0A79A8,#E8288E 33%,#8B6CF0 66%,#0A79A8);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shift 8s linear infinite}
+.lg{position:relative;background:rgba(255,255,255,.3);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,.6);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),inset 0 -10px 30px rgba(255,255,255,.2),0 24px 60px rgba(11,37,64,.12)}
+.ribbon{stroke-dasharray:420 780;animation:flow 10s linear infinite}
+.mer{transform-box:fill-box;transform-origin:center;animation:spin 7s ease-in-out infinite}
+.arcl{stroke-dasharray:400;animation:arc 4s ease-in-out infinite}
+.ping{animation:pulse 2s ease-out infinite}
+.bob{animation:bob 6s ease-in-out infinite}
+.rise{animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+@keyframes sail{0%,100%{transform:translateX(0)}50%{transform:translateX(90px)}}
+.sail{animation:sail 38s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.25}50%{opacity:1}}
+.tw{animation:tw 3s ease-in-out infinite}
+@keyframes bob3d{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-10px) rotate(6deg)}}
+.bob3d{animation:bob3d 5s ease-in-out infinite}
+.tool{transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s}
+.tool .pv{transition:transform .5s cubic-bezier(.2,1.3,.4,1)}
+.tool:hover,.tool:focus-visible{transform:translateY(-8px)}
+.tool:hover .pv,.tool:focus-visible .pv{transform:scale(1.1) rotate(-3deg)}
+@keyframes rise2{from{transform:translate(-50%,40px);opacity:.4}to{transform:translate(-50%,0);opacity:1}}
+.wordmark{animation:rise2 2.4s cubic-bezier(.2,.8,.2,1) both}
+@keyframes popIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}.popIn{animation:popIn .45s cubic-bezier(.2,1.2,.4,1) both}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.14)}}.kb{animation:kb 9s ease-out both}
+@keyframes bar{from{width:0}to{width:100%}}.barRun{animation:bar 3.2s linear both}
+@keyframes txt{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}.txtA,.txtB{animation:txt .5s ease-out both}
+@keyframes msgIn{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}.msgIn{animation:msgIn .35s cubic-bezier(.2,1.2,.4,1) both}
+@keyframes dot{0%,80%,100%{transform:translateY(0);opacity:.4}40%{transform:translateY(-5px);opacity:1}}.dot{width:8px;height:8px;border-radius:50%;background:#45607A;animation:dot 1s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(8px)}}.nudge{animation:nudge 1.2s ease-in-out infinite}
+@keyframes shake{0%,100%{transform:none}20%{transform:rotate(-1deg)}40%{transform:rotate(1deg)}60%{transform:rotate(-.5deg)}}.shake{animation:shake .5s ease-out}
+select:focus-visible,input:focus-visible{outline:3px solid #C8146F;outline-offset:2px}
+@media (prefers-reduced-motion: reduce){.aur,.grad,.ribbon,.mer,.arcl,.ping,.bob,.rise,.sail,.tw,.bob3d,.wordmark,.popIn,.kb,.barRun,.txtA,.txtB,.msgIn,.dot,.nudge,.shake{animation:none}.aur-wrap{transition:none}}
+</style>
+</helmet>
+<div onMouseMove="{{move}}" style="position: relative; overflow: hidden; min-height: 7600px; background: #F4FAFE; font-family: 'Onest', system-ui, sans-serif; color: #0B2540">
+
+<div aria-hidden="true" class="aur-wrap" style="position: absolute; inset: 0; transform: {{shiftA}}">
+<div class="aur" style="top: -220px; right: -80px; width: 760px; height: 760px; background: #7FD3F2"></div>
+<div class="aur" style="top: 420px; left: -200px; width: 600px; height: 600px; background: #BDEBFA; animation-delay: -5s"></div>
+</div>
+<div aria-hidden="true" class="aur-wrap" style="position: absolute; inset: 0; transform: {{shiftB}}">
+<div class="aur" style="top: 300px; right: 300px; width: 520px; height: 520px; background: #FF8CC6; opacity: .8; animation-delay: -8s"></div>
+<div class="aur" style="bottom: -260px; right: -120px; width: 620px; height: 620px; background: #B9A8FF; opacity: .85; animation-delay: -13s"></div>
+</div>
+<svg aria-hidden="true" viewBox="0 0 1440 1000" preserveAspectRatio="none" style="position: absolute; inset: 0; width: 100%; height: 100%">
+<defs><linearGradient id="rb" x1="0" x2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0"></stop><stop offset=".5" stop-color="#FFFFFF" stop-opacity=".95"></stop><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop></linearGradient><filter id="soft"><feGaussianBlur stdDeviation="7"></feGaussianBlur></filter></defs>
+<path class="ribbon" d="M-100 820 C 280 640, 620 1000, 980 760 S 1480 560, 1600 700" fill="none" stroke="url(#rb)" stroke-width="30" filter="url(#soft)"></path>
+<path class="ribbon" d="M-100 880 C 320 720, 660 1040, 1020 820 S 1500 640, 1600 760" fill="none" stroke="url(#rb)" stroke-width="10" style="animation-delay: -4s"></path>
+</svg>
+<div aria-hidden="true" class="aur-wrap" style="position: absolute; inset: 0; transform: {{shiftC}}">
+<svg viewBox="0 0 1440 1000" preserveAspectRatio="xMidYMid slice" style="position: absolute; inset: 0; width: 100%; height: 100%">
+<defs>
+<radialGradient id="cf" cx="45%" cy="35%" r="70%"><stop offset="0" stop-color="#FFFFFF"></stop><stop offset=".7" stop-color="#FFFFFF" stop-opacity=".95"></stop><stop offset="1" stop-color="#EAF6FC" stop-opacity=".9"></stop></radialGradient>
+<filter id="cs" x="-40%" y="-60%" width="180%" height="220%"><feGaussianBlur stdDeviation="13"></feGaussianBlur></filter>
+<filter id="csh" x="-50%" y="-80%" width="200%" height="260%"><feGaussianBlur stdDeviation="26"></feGaussianBlur></filter>
+<g id="cloud">
+<ellipse cx="150" cy="112" rx="132" ry="18" fill="#7FBFDD" opacity=".35" filter="url(#csh)"></ellipse>
+<g fill="url(#cf)" filter="url(#cs)"><ellipse cx="150" cy="92" rx="138" ry="26"></ellipse><circle cx="88" cy="76" r="40"></circle><circle cx="150" cy="58" r="56"></circle><circle cx="214" cy="72" r="44"></circle><circle cx="256" cy="86" r="26"></circle></g>
+<ellipse cx="150" cy="100" rx="120" ry="12" fill="#CFE9F6" opacity=".6" filter="url(#cs)"></ellipse>
+</g>
+</defs>
+<g transform="translate(-40 150) scale(1.1)" opacity=".9"><g class="sail"><use href="#cloud"></use></g></g>
+<g transform="translate(520 40) scale(.7)" opacity=".85"><g class="sail" style="animation-delay: -12s; animation-duration: 46s"><use href="#cloud"></use></g></g>
+<g transform="translate(1040 120) scale(1.35)" opacity=".95"><g class="sail" style="animation-delay: -20s"><use href="#cloud"></use></g></g>
+<g transform="translate(780 640) scale(1.6)" opacity=".9"><g class="sail" style="animation-delay: -6s; animation-duration: 52s"><use href="#cloud"></use></g></g>
+<g transform="translate(-120 760) scale(1.5)" opacity=".85"><g class="sail" style="animation-delay: -28s"><use href="#cloud"></use></g></g>
+</svg>
+</div>
+<svg aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: .07; mix-blend-mode: multiply"><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"></feTurbulence></filter><rect width="100%" height="100%" filter="url(#grain)"></rect></svg>
+
+<header style="position: relative; max-width: 1280px; margin: 0 auto; padding: 22px 24px 0">
+<div class="lg" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 10px 10px 20px; border-radius: 20px">
+<a href="#top" style="display: flex; align-items: center; gap: 10px">
+<svg aria-hidden="true" width="34" height="24" viewBox="0 0 44 30"><defs><linearGradient id="lgo" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#BDEBFA"></stop><stop offset=".55" stop-color="#38BDE8"></stop><stop offset="1" stop-color="#0A79A8"></stop></linearGradient></defs><path d="M12 28h22a9 9 0 0 0 1-17.9A12 12 0 0 0 12.4 8 10 10 0 0 0 12 28z" fill="url(#lgo)"></path></svg>
+<span style="font-size: 18px; font-weight: 800; letter-spacing: 0.18em">OBLAKO</span>
+</a>
+<nav aria-label="Основная навигация" style="display: flex; flex-wrap: wrap; gap: 26px; font-size: 15px; font-weight: 500">
+<a href="#top">Направления</a><a href="#top">Маршрут</a><a href="#top">Бюджет</a><a href="#top">Табло</a><a href="#top">Дневник</a>
+</nav>
+<a href="#top" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 12px; background: #0B2540; color: #FFFFFF; font-size: 14px; font-weight: 600">Войти</a>
+</div>
+</header>
+
+<section id="top" style="position: relative; max-width: 1280px; margin: 0 auto; padding: 80px 24px 96px; display: flex; flex-wrap: wrap; align-items: center; gap: 40px">
+
+<div style="flex: 1 1 540px; min-width: 0; display: flex; flex-direction: column; gap: 26px">
+<span class="rise lg" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 38px; padding: 0 14px 0 6px; border-radius: 12px; font-size: 13px; font-weight: 500"><span style="padding: 5px 10px; border-radius: 8px; background: #0B2540; color: #FFFFFF; font-weight: 600">Новое</span>Табло вылетов в&nbsp;реальном времени</span>
+<h1 class="rise" style="margin: 0; font-size: 84px; font-weight: 700; line-height: .98; letter-spacing: -0.045em; animation-delay: .08s">Путь начинается <span class="grad">в&nbsp;облаке</span></h1>
+<p class="rise" style="margin: 0; max-width: 500px; font-size: 19px; line-height: 1.6; color: #45607A; animation-delay: .16s">Найдите направление, соберите маршрут по&nbsp;дням, посчитайте бюджет и&nbsp;следите за&nbsp;рейсом&nbsp;— в&nbsp;одном месте.</p>
+
+<form class="rise lg" aria-label="Поиск поездки" style="display: flex; flex-wrap: wrap; align-items: stretch; gap: 6px; padding: 8px; border-radius: 20px; animation-delay: .24s">
+<label style="flex: 1 1 140px; display: flex; flex-direction: column; gap: 2px; padding: 8px 14px; border-radius: 14px; background: rgba(255,255,255,.55); font-size: 12px; color: #45607A">Откуда<input type="text" value="Москва" style="border: 0; padding: 0; background: transparent; font-family: inherit; font-size: 16px; font-weight: 600; color: #0B2540"></label>
+<label style="flex: 1 1 140px; display: flex; flex-direction: column; gap: 2px; padding: 8px 14px; border-radius: 14px; background: rgba(255,255,255,.55); font-size: 12px; color: #45607A">Куда<input type="text" placeholder="Куда угодно" style="border: 0; padding: 0; background: transparent; font-family: inherit; font-size: 16px; font-weight: 600; color: #0B2540"></label>
+<label style="flex: 1 1 120px; display: flex; flex-direction: column; gap: 2px; padding: 8px 14px; border-radius: 14px; background: rgba(255,255,255,.55); font-size: 12px; color: #45607A">Когда<input type="text" placeholder="Даты" style="border: 0; padding: 0; background: transparent; font-family: inherit; font-size: 16px; font-weight: 600; color: #0B2540"></label>
+<button type="button" style="flex: 0 0 auto; min-height: 56px; padding: 0 22px; border: 0; border-radius: 14px; background: #C8146F; color: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 600; display: flex; align-items: center; gap: 8px; box-shadow: 0 12px 30px rgba(200,20,111,.32); cursor: pointer"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>Найти</button>
+</form>
+</div>
+
+<div style="flex: 1 1 480px; min-width: 0; position: relative; height: 560px; display: flex; align-items: center; justify-content: center">
+<canvas ref="{{cv}}" width="1040" height="1040" role="img" aria-label="Точечный глобус с маршрутами из Москвы, его можно вращать" onPointerDown="{{down}}" onPointerMove="{{drag}}" onPointerUp="{{up}}" onPointerCancel="{{up}}" style="width: 520px; max-width: 100%; height: auto; touch-action: pan-y; cursor: grab"></canvas>
+
+<div class="lg bob" style="position: absolute; top: 40px; left: 0; padding: 16px 18px; border-radius: 20px; display: flex; align-items: center; gap: 14px">
+<span aria-hidden="true" style="width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #38BDE8, #8B6CF0); display: flex; align-items: center; justify-content: center; color: #FFFFFF"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"></path></svg></span>
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 16px; font-weight: 700; letter-spacing: 0.04em">MOW → IST</span><span style="font-size: 12px; color: #45607A">в&nbsp;пути [время] · демо</span></span>
+</div>
+<div class="lg bob" style="position: absolute; bottom: 70px; right: 0; padding: 16px 18px; border-radius: 20px; display: flex; flex-direction: column; gap: 6px; animation-delay: -2s">
+<span style="font-size: 12px; color: #45607A">Погода в&nbsp;Стамбуле</span>
+<span style="font-size: 30px; font-weight: 700; letter-spacing: -0.03em">[+°C]</span>
+<span style="font-size: 12px; color: #45607A">данные Open-Meteo</span>
+</div>
+<div class="lg bob" style="position: absolute; bottom: 10px; left: 30px; padding: 12px 16px; border-radius: 16px; display: flex; align-items: center; gap: 10px; animation-delay: -4s">
+<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #C8146F"></span>
+<span style="font-size: 14px; font-weight: 600">11&nbsp;маршрутов из&nbsp;Москвы · потяните глобус</span>
+</div>
+</div>
+
+</section>
+<section aria-label="Инструменты" style="position: relative; padding: 40px 0 96px">
+<div style="max-width: 1280px; margin: 0 auto; padding: 0 24px 28px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 12px"><span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #0A79A8">Инструменты</span><h2 style="margin: 0; font-size: 56px; font-weight: 700; line-height: 1; letter-spacing: -0.04em">Всё для&nbsp;поездки&nbsp;— <span class="grad">в&nbsp;одном облаке</span></h2></div>
+<div style="display: flex; gap: 10px">
+<button type="button" aria-label="Прокрутить назад" onClick="{{toolsPrev}}" class="lg" style="width: 56px; height: 56px; border-radius: 16px; color: #0B2540; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"></path></svg></button>
+<button type="button" aria-label="Прокрутить вперёд" onClick="{{toolsNext}}" style="width: 56px; height: 56px; border-radius: 16px; border: 0; background: #0B2540; color: #FFFFFF; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"></path></svg></button>
+</div>
+</div>
+<div ref="{{toolsRef}}" style="display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 10px max(24px, calc((100% - 1232px) / 2)) 24px; scrollbar-width: none">
+<a href="Cards.dc.html" class="tool lg" style="flex: 0 0 280px; scroll-snap-align: start; border-radius: 28px; padding: 22px; display: flex; flex-direction: column; gap: 18px; color: #0B2540">
+<span style="height: 130px; border-radius: 20px; background: rgba(255,255,255,.6); display: flex; align-items: center; justify-content: center"><span class="pv" style="position: relative; width: 150px; height: 110px"><span style="position: absolute; left: 0; top: 24px; width: 110px; height: 80px; border-radius: 0 12px 12px 12px; background: #DDF0F8"></span><span style="position: absolute; left: 20px; top: 14px; width: 110px; height: 80px; border-radius: 0 12px 12px 12px; background: #BDEBFA"></span><span style="position: absolute; left: 40px; top: 4px; width: 110px; height: 80px; border-radius: 0 12px 12px 12px; background: linear-gradient(150deg, #38BDE8, #E8288E 60%, #8B6CF0)"></span><span style="position: absolute; left: 40px; top: -8px; width: 44px; height: 14px; border-radius: 8px 8px 0 0; background: #C8146F"></span></span></span>
+<span style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 22px; font-weight: 800; letter-spacing: -0.02em">Направления</span><span style="font-size: 14px; line-height: 1.45; color: #45607A">Папки с&nbsp;досье на&nbsp;11 городов</span></span>
+<span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: #C8146F">Открыть <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a><a href="Route.dc.html" class="tool lg" style="flex: 0 0 280px; scroll-snap-align: start; border-radius: 28px; padding: 22px; display: flex; flex-direction: column; gap: 18px; color: #0B2540">
+<span style="height: 130px; border-radius: 20px; background: rgba(255,255,255,.6); display: flex; align-items: center; justify-content: center"><svg class="pv" width="150" height="110" viewBox="0 0 150 110"><g transform="skewX(-14) translate(14 0)"><rect x="6" y="10" width="130" height="90" rx="12" fill="#E9F6FC"></rect><path d="M20 84 Q50 30 76 60 T128 24" fill="none" stroke="url(#tlr)" stroke-width="4" stroke-linecap="round" stroke-dasharray="6 6"></path></g><defs><linearGradient id="tlr" x1="0" x2="1"><stop offset="0" stop-color="#38BDE8"></stop><stop offset="1" stop-color="#E8288E"></stop></linearGradient></defs><circle cx="34" cy="84" r="7" fill="#0B2540"></circle><circle cx="140" cy="24" r="7" fill="#C8146F"></circle></svg></span>
+<span style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 22px; font-weight: 800; letter-spacing: -0.02em">Маршрут</span><span style="font-size: 14px; line-height: 1.45; color: #45607A">Дни поездки на&nbsp;3D-карте</span></span>
+<span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: #C8146F">Открыть <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a><a href="Data.dc.html" class="tool lg" style="flex: 0 0 280px; scroll-snap-align: start; border-radius: 28px; padding: 22px; display: flex; flex-direction: column; gap: 18px; color: #0B2540">
+<span style="height: 130px; border-radius: 20px; background: rgba(255,255,255,.6); display: flex; align-items: center; justify-content: center"><svg class="pv" width="110" height="110" viewBox="0 0 120 120"><g transform="rotate(-90 60 60)" fill="none" stroke-width="18"><circle cx="60" cy="60" r="44" stroke="#38BDE8" stroke-dasharray="104 277"></circle><circle cx="60" cy="60" r="44" stroke="#E8288E" stroke-dasharray="80 277" stroke-dashoffset="-106"></circle><circle cx="60" cy="60" r="44" stroke="#8B6CF0" stroke-dasharray="52 277" stroke-dashoffset="-188"></circle><circle cx="60" cy="60" r="44" stroke="#0B2540" stroke-dasharray="33 277" stroke-dashoffset="-242"></circle></g></svg></span>
+<span style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 22px; font-weight: 800; letter-spacing: -0.02em">Бюджет</span><span style="font-size: 14px; line-height: 1.45; color: #45607A">Траты по&nbsp;категориям и&nbsp;дням</span></span>
+<span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: #C8146F">Открыть <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a><a href="Board.dc.html" class="tool lg" style="flex: 0 0 280px; scroll-snap-align: start; border-radius: 28px; padding: 22px; display: flex; flex-direction: column; gap: 18px; color: #0B2540">
+<span style="height: 130px; border-radius: 20px; background: rgba(255,255,255,.6); display: flex; align-items: center; justify-content: center"><span class="pv" style="display: flex; gap: 4px"><span style="width: 40px; height: 56px; border-radius: 8px; background: linear-gradient(180deg, #16365A 0 49%, #06172F 49% 51%, #0C2440 51% 100%); color: #FFFFFF; font-size: 30px; font-weight: 800; display: flex; align-items: center; justify-content: center">I</span><span style="width: 40px; height: 56px; border-radius: 8px; background: linear-gradient(180deg, #16365A 0 49%, #06172F 49% 51%, #0C2440 51% 100%); color: #FFFFFF; font-size: 30px; font-weight: 800; display: flex; align-items: center; justify-content: center">S</span><span style="width: 40px; height: 56px; border-radius: 8px; background: linear-gradient(180deg, #16365A 0 49%, #06172F 49% 51%, #0C2440 51% 100%); color: #FFFFFF; font-size: 30px; font-weight: 800; display: flex; align-items: center; justify-content: center">T</span></span></span>
+<span style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 22px; font-weight: 800; letter-spacing: -0.02em">Табло</span><span style="font-size: 14px; line-height: 1.45; color: #45607A">Живое табло вылетов</span></span>
+<span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: #C8146F">Открыть <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a><a href="Booking.dc.html" class="tool lg" style="flex: 0 0 280px; scroll-snap-align: start; border-radius: 28px; padding: 22px; display: flex; flex-direction: column; gap: 18px; color: #0B2540">
+<span style="height: 130px; border-radius: 20px; background: rgba(255,255,255,.6); display: flex; align-items: center; justify-content: center"><span class="pv" style="position: relative; width: 150px; height: 84px; border-radius: 14px; background: #FFFFFF; box-shadow: 0 10px 24px rgba(11,37,64,.12); overflow: hidden; display: flex"><span style="width: 100px; background: linear-gradient(135deg, #38BDE8, #E8288E 60%, #8B6CF0)"></span><span style="flex: 1 1 auto; border-left: 2px dashed #CFE6F1; background: repeating-linear-gradient(0deg, #0B2540 0 2px, transparent 2px 5px); margin: 12px 10px; border-radius: 3px"></span></span></span>
+<span style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 22px; font-weight: 800; letter-spacing: -0.02em">Бронирование</span><span style="font-size: 14px; line-height: 1.45; color: #45607A">Место у&nbsp;окна и&nbsp;талон</span></span>
+<span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: #C8146F">Открыть <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a><a href="Packing.dc.html" class="tool lg" style="flex: 0 0 280px; scroll-snap-align: start; border-radius: 28px; padding: 22px; display: flex; flex-direction: column; gap: 18px; color: #0B2540">
+<span style="height: 130px; border-radius: 20px; background: rgba(255,255,255,.6); display: flex; align-items: center; justify-content: center"><svg class="pv" width="110" height="110" viewBox="0 0 110 110"><path d="M40 26 V16 a6 6 0 0 1 6 -6 h18 a6 6 0 0 1 6 6 V26" fill="none" stroke="#0B2540" stroke-width="6"></path><rect x="18" y="26" width="74" height="70" rx="14" fill="url(#tcs)"></rect><path d="M38 30 V92 M72 30 V92" stroke="#FFFFFF" stroke-opacity=".5" stroke-width="4"></path><circle cx="32" cy="102" r="5" fill="#0B2540"></circle><circle cx="78" cy="102" r="5" fill="#0B2540"></circle><defs><linearGradient id="tcs" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#38BDE8"></stop><stop offset="1" stop-color="#8B6CF0"></stop></linearGradient></defs></svg></span>
+<span style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 22px; font-weight: 800; letter-spacing: -0.02em">Сборы</span><span style="font-size: 14px; line-height: 1.45; color: #45607A">Чемодан, вес и&nbsp;погода</span></span>
+<span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: #C8146F">Открыть <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a><a href="Journal.dc.html" class="tool lg" style="flex: 0 0 280px; scroll-snap-align: start; border-radius: 28px; padding: 22px; display: flex; flex-direction: column; gap: 18px; color: #0B2540">
+<span style="height: 130px; border-radius: 20px; background: rgba(255,255,255,.6); display: flex; align-items: center; justify-content: center"><span class="pv" style="position: relative; width: 150px; height: 110px"><span style="position: absolute; left: 10px; top: 10px; width: 76px; height: 90px; padding: 6px 6px 18px; box-sizing: border-box; background: #FFFFFF; box-shadow: 0 8px 18px rgba(11,37,64,.15); transform: rotate(-8deg)"><span style="display: block; height: 100%; background: linear-gradient(160deg, #E2A587, #8E2C48)"></span></span><span style="position: absolute; left: 62px; top: 6px; width: 76px; height: 90px; padding: 6px 6px 18px; box-sizing: border-box; background: #FFFFFF; box-shadow: 0 8px 18px rgba(11,37,64,.15); transform: rotate(7deg)"><span style="display: block; height: 100%; background: linear-gradient(160deg, #2BA3A8, #1B3F8B)"></span></span></span></span>
+<span style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 22px; font-weight: 800; letter-spacing: -0.02em">Дневник</span><span style="font-size: 14px; line-height: 1.45; color: #45607A">Фото и&nbsp;истории поездок</span></span>
+<span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: #C8146F">Открыть <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a><a href="Profile.dc.html" class="tool lg" style="flex: 0 0 280px; scroll-snap-align: start; border-radius: 28px; padding: 22px; display: flex; flex-direction: column; gap: 18px; color: #0B2540">
+<span style="height: 130px; border-radius: 20px; background: rgba(255,255,255,.6); display: flex; align-items: center; justify-content: center"><svg class="pv" width="110" height="110" viewBox="0 0 140 140"><g transform="rotate(-12 70 70)" opacity=".9"><circle cx="70" cy="70" r="60" fill="none" stroke="#8E2C48" stroke-width="5"></circle><circle cx="70" cy="70" r="50" fill="none" stroke="#8E2C48" stroke-width="2"></circle><text x="70" y="64" text-anchor="middle" font-family="Onest" font-size="14" font-weight="800" fill="#8E2C48">ГРУЗИЯ</text><text x="70" y="92" text-anchor="middle" font-family="Onest" font-size="26" font-weight="800" fill="#8E2C48">TBS</text></g></svg></span>
+<span style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 22px; font-weight: 800; letter-spacing: -0.02em">Профиль</span><span style="font-size: 14px; line-height: 1.45; color: #45607A">Паспорт со&nbsp;штампами</span></span>
+<span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: #C8146F">Открыть <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+</div>
+</section>
+
+<section id="how" ref="{{howRef}}" aria-labelledby="how-title" style="position: relative; max-width: 1280px; margin: 0 auto; padding: 72px 24px 104px; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 12px"><span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #0A79A8">О&nbsp;проекте</span><h2 id="how-title" style="margin: 0; font-size: 56px; font-weight: 700; line-height: 1; letter-spacing: -0.04em">Как работает <span class="grad">OBLAKO</span></h2><p style="margin: 0; max-width: 620px; font-size: 18px; line-height: 1.6; color: #45607A">Четыре шага от&nbsp;«куда бы&nbsp;поехать?» до&nbsp;штампа в&nbsp;паспорте. Самолётик пролетает маршрут&nbsp;— на&nbsp;каждой остановке оживает настоящий инструмент.</p></div>
+<div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: center">
+<div style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 10px"><button type="button" onClick="{{hs0.go}}" aria-current="{{hs0.cur}}" style="{{hs0.s}}">
+<span style="{{hs0.num}}">01</span>
+<span style="display: flex; flex-direction: column; gap: 4px; text-align: left"><span style="font-size: 22px; font-weight: 800; letter-spacing: -0.02em">Подобрать</span><span style="font-size: 15px; line-height: 1.5; color: #45607A">Три вопроса&nbsp;— и&nbsp;готовый тур под&nbsp;настроение, даты и&nbsp;бюджет.</span></span>
+</button><button type="button" onClick="{{hs1.go}}" aria-current="{{hs1.cur}}" style="{{hs1.s}}">
+<span style="{{hs1.num}}">02</span>
+<span style="display: flex; flex-direction: column; gap: 4px; text-align: left"><span style="font-size: 22px; font-weight: 800; letter-spacing: -0.02em">Собрать маршрут</span><span style="font-size: 15px; line-height: 1.5; color: #45607A">Точки на&nbsp;карте по&nbsp;дням, время в&nbsp;пути и&nbsp;погода.</span></span>
+</button><button type="button" onClick="{{hs2.go}}" aria-current="{{hs2.cur}}" style="{{hs2.s}}">
+<span style="{{hs2.num}}">03</span>
+<span style="display: flex; flex-direction: column; gap: 4px; text-align: left"><span style="font-size: 22px; font-weight: 800; letter-spacing: -0.02em">Забронировать</span><span style="font-size: 15px; line-height: 1.5; color: #45607A">Место у&nbsp;окна и&nbsp;посадочный талон в&nbsp;кошельке.</span></span>
+</button><button type="button" onClick="{{hs3.go}}" aria-current="{{hs3.cur}}" style="{{hs3.s}}">
+<span style="{{hs3.num}}">04</span>
+<span style="display: flex; flex-direction: column; gap: 4px; text-align: left"><span style="font-size: 22px; font-weight: 800; letter-spacing: -0.02em">Сохранить</span><span style="font-size: 15px; line-height: 1.5; color: #45607A">Фото, истории и&nbsp;штамп в&nbsp;паспорте путешественника.</span></span>
+</button></div>
+<div class="lg" style="position: relative; flex: 0 1 700px; height: 500px; border-radius: 36px; overflow: hidden">
+<div style="position: absolute; left: 10px; top: 10px; width: 680px; height: 480px">
+<svg aria-hidden="true" viewBox="0 0 680 480" width="680" height="480" style="position: absolute; inset: 0">
+<path d="M40 430 C70 405 80 392 90 380 C150 320 200 250 260 250 C330 250 380 340 440 330 C510 318 540 170 600 130 C625 114 650 100 670 92" fill="none" stroke="rgba(11,37,64,.16)" stroke-width="3" stroke-dasharray="8 9" stroke-linecap="round"></path>
+<path ref="{{howPath}}" d="M40 430 C70 405 80 392 90 380 C150 320 200 250 260 250 C330 250 380 340 440 330 C510 318 540 170 600 130 C625 114 650 100 670 92" fill="none" stroke="url(#hwg)" stroke-width="4" stroke-linecap="round" pathLength="100" style="{{howTrail}}"></path>
+<defs><linearGradient id="hwg" x1="0" x2="1"><stop offset="0" stop-color="#38BDE8"></stop><stop offset="1" stop-color="#E8288E"></stop></linearGradient></defs>
+<g><circle cx="90" cy="380" r="16" fill="#FFFFFF" stroke="rgba(11,37,64,.12)" stroke-width="2"></circle><circle cx="90" cy="380" r="7" style="{{hs0.dot}}"></circle></g><g><circle cx="260" cy="250" r="16" fill="#FFFFFF" stroke="rgba(11,37,64,.12)" stroke-width="2"></circle><circle cx="260" cy="250" r="7" style="{{hs1.dot}}"></circle></g><g><circle cx="440" cy="330" r="16" fill="#FFFFFF" stroke="rgba(11,37,64,.12)" stroke-width="2"></circle><circle cx="440" cy="330" r="7" style="{{hs2.dot}}"></circle></g><g><circle cx="600" cy="130" r="16" fill="#FFFFFF" stroke="rgba(11,37,64,.12)" stroke-width="2"></circle><circle cx="600" cy="130" r="7" style="{{hs3.dot}}"></circle></g>
+</svg>
+<div class="lg" style="position: absolute; left: 4px; top: 196px; width: 196px; padding: 12px; border-radius: 16px; display: flex; flex-direction: column; gap: 8px; box-sizing: border-box; {{hm0}}"><span style="font-size: 11px; font-weight: 700; letter-spacing: .12em; color: #0A79A8">ПОДБОР</span>
+<span style="display: flex; gap: 6px; flex-wrap: wrap"><span style="padding: 5px 9px; border-radius: 8px; background: #C8146F; color: #FFFFFF; font-size: 12px; font-weight: 700">Море</span><span style="padding: 5px 9px; border-radius: 8px; background: #C8146F; color: #FFFFFF; font-size: 12px; font-weight: 700">Еда</span><span style="padding: 5px 9px; border-radius: 8px; background: rgba(11,37,64,.08); font-size: 12px; font-weight: 600">Горы</span></span>
+<span style="display: flex; align-items: center; gap: 10px"><svg width="44" height="44" viewBox="0 0 44 44" style="transform: rotate(-90deg)"><circle cx="22" cy="22" r="18" fill="none" stroke="rgba(11,37,64,.1)" stroke-width="5"></circle><circle cx="22" cy="22" r="18" fill="none" stroke="#C8146F" stroke-width="5" stroke-linecap="round" pathLength="100" stroke-dasharray="98 100"></circle></svg><b style="font-size: 18px">Стамбул · 98%</b></span></div><div class="lg" style="position: absolute; left: 176px; top: 22px; width: 190px; padding: 12px; border-radius: 16px; display: flex; flex-direction: column; gap: 8px; box-sizing: border-box; {{hm1}}"><span style="font-size: 11px; font-weight: 700; letter-spacing: .12em; color: #0A79A8">МАРШРУТ · ДЕНЬ 1</span>
+<svg viewBox="0 0 170 90" style="width: 100%; height: auto"><rect width="170" height="90" rx="10" fill="#E3F6FD"></rect><path d="M0 60 Q60 40 170 70" stroke="#9BDDF2" stroke-width="14" fill="none"></path><path d="M24 70 L60 30 L110 52 L146 22" fill="none" stroke="#C8146F" stroke-width="3" stroke-dasharray="5 4"></path><g fill="#C8146F"><circle cx="24" cy="70" r="6"></circle><circle cx="60" cy="30" r="6"></circle><circle cx="110" cy="52" r="6"></circle><circle cx="146" cy="22" r="6"></circle></g></svg></div><div class="lg" style="position: absolute; left: 330px; top: 360px; width: 230px; padding: 12px; border-radius: 16px; display: flex; flex-direction: column; gap: 8px; box-sizing: border-box; {{hm2}}"><span style="display: flex; justify-content: space-between; align-items: center"><span style="font-size: 11px; font-weight: 700; letter-spacing: .12em; color: #0A79A8">ПОСАДОЧНЫЙ</span><b style="font-size: 13px; color: #C8146F">12A</b></span>
+<span style="display: flex; justify-content: space-between; align-items: baseline"><b style="font-size: 26px; letter-spacing: -0.03em">MOW</b><svg width="22" height="22" viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z" fill="#C8146F" transform="rotate(90 12 12)"></path></svg><b style="font-size: 26px; letter-spacing: -0.03em">IST</b></span>
+<span style="height: 18px; background: repeating-linear-gradient(90deg, #0B2540 0 2px, transparent 2px 4px, #0B2540 4px 5px, transparent 5px 8px)"></span></div><div style="position: absolute; left: 528px; top: 172px; width: 138px; padding: 8px 8px 14px; border-radius: 6px; background: #FFFFFF; transform-origin: 50% 0; display: flex; flex-direction: column; gap: 6px; box-sizing: border-box; box-shadow: 0 16px 34px rgba(11,37,64,.2); {{hm3}}"><img src="/_blob/f5fb1cafe25fea83b99c3378e9b233e0" alt="" style="display: block; width: 100%; height: 96px; object-fit: cover; border-radius: 3px">
+<span style="font-family: 'Caveat', cursive; font-size: 18px; text-align: center">Балат, май</span>
+<svg viewBox="0 0 60 60" width="46" height="46" style="position: absolute; right: -14px; bottom: -14px; transform: rotate(-14deg)"><circle cx="30" cy="30" r="26" fill="none" stroke="#8E2C48" stroke-width="3"></circle><text x="30" y="35" text-anchor="middle" font-family="Onest" font-size="13" font-weight="800" fill="#8E2C48">IST</text></svg></div>
+<span style="{{planeS}}"><svg width="40" height="40" viewBox="0 0 24 24" style="filter: drop-shadow(0 6px 8px rgba(200,20,111,.35))"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z" fill="#C8146F" transform="rotate(90 12 12)"></path></svg></span>
+</div>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px"><div style="display: flex; align-items: center; gap: 16px; padding: 18px; border-radius: 24px; background: linear-gradient(160deg, #183F66, #0B2540); color: #EAF4FB; box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 20px 40px rgba(11,37,64,.2)">
+<svg aria-hidden="true" width="120" height="76" viewBox="0 0 120 76" style="flex: none"><path d="M10 62 A50 50 0 0 1 110 62" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="10" stroke-linecap="round"></path><path d="M16.0 62.0 L24.0 62.0" stroke="#EAF4FB" stroke-width="2" opacity=".8"></path><path d="M18.2 48.4 L22.0 49.6" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M24.4 36.1 L27.6 38.5" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M34.1 26.4 L36.5 29.6" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M46.4 20.2 L47.6 24.0" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M60.0 18.0 L60.0 26.0" stroke="#EAF4FB" stroke-width="2" opacity=".8"></path><path d="M73.6 20.2 L72.4 24.0" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M85.9 26.4 L83.5 29.6" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M95.6 36.1 L92.4 38.5" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M101.8 48.4 L98.0 49.6" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M104.0 62.0 L96.0 62.0" stroke="#EAF4FB" stroke-width="2" opacity=".8"></path><g style="{{gg0}}"><path d="M60 62 L60 22" stroke="#FF5FA8" stroke-width="3.5" stroke-linecap="round"></path></g><circle cx="60" cy="62" r="7" fill="#EAF4FB"></circle></svg>
+<span style="display: flex; flex-direction: column; gap: 2px"><b style="font-size: 40px; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums">{{gv0}}</b><span style="font-size: 13px; color: #B8CCDD">направлений</span></span>
+</div><div style="display: flex; align-items: center; gap: 16px; padding: 18px; border-radius: 24px; background: linear-gradient(160deg, #183F66, #0B2540); color: #EAF4FB; box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 20px 40px rgba(11,37,64,.2)">
+<svg aria-hidden="true" width="120" height="76" viewBox="0 0 120 76" style="flex: none"><path d="M10 62 A50 50 0 0 1 110 62" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="10" stroke-linecap="round"></path><path d="M16.0 62.0 L24.0 62.0" stroke="#EAF4FB" stroke-width="2" opacity=".8"></path><path d="M18.2 48.4 L22.0 49.6" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M24.4 36.1 L27.6 38.5" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M34.1 26.4 L36.5 29.6" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M46.4 20.2 L47.6 24.0" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M60.0 18.0 L60.0 26.0" stroke="#EAF4FB" stroke-width="2" opacity=".8"></path><path d="M73.6 20.2 L72.4 24.0" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M85.9 26.4 L83.5 29.6" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M95.6 36.1 L92.4 38.5" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M101.8 48.4 L98.0 49.6" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M104.0 62.0 L96.0 62.0" stroke="#EAF4FB" stroke-width="2" opacity=".8"></path><g style="{{gg1}}"><path d="M60 62 L60 22" stroke="#FF5FA8" stroke-width="3.5" stroke-linecap="round"></path></g><circle cx="60" cy="62" r="7" fill="#EAF4FB"></circle></svg>
+<span style="display: flex; flex-direction: column; gap: 2px"><b style="font-size: 40px; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums">{{gv1}}</b><span style="font-size: 13px; color: #B8CCDD">инструментов</span></span>
+</div><div style="display: flex; align-items: center; gap: 16px; padding: 18px; border-radius: 24px; background: linear-gradient(160deg, #183F66, #0B2540); color: #EAF4FB; box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 20px 40px rgba(11,37,64,.2)">
+<svg aria-hidden="true" width="120" height="76" viewBox="0 0 120 76" style="flex: none"><path d="M10 62 A50 50 0 0 1 110 62" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="10" stroke-linecap="round"></path><path d="M16.0 62.0 L24.0 62.0" stroke="#EAF4FB" stroke-width="2" opacity=".8"></path><path d="M18.2 48.4 L22.0 49.6" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M24.4 36.1 L27.6 38.5" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M34.1 26.4 L36.5 29.6" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M46.4 20.2 L47.6 24.0" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M60.0 18.0 L60.0 26.0" stroke="#EAF4FB" stroke-width="2" opacity=".8"></path><path d="M73.6 20.2 L72.4 24.0" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M85.9 26.4 L83.5 29.6" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M95.6 36.1 L92.4 38.5" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M101.8 48.4 L98.0 49.6" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M104.0 62.0 L96.0 62.0" stroke="#EAF4FB" stroke-width="2" opacity=".8"></path><g style="{{gg2}}"><path d="M60 62 L60 22" stroke="#FF5FA8" stroke-width="3.5" stroke-linecap="round"></path></g><circle cx="60" cy="62" r="7" fill="#EAF4FB"></circle></svg>
+<span style="display: flex; flex-direction: column; gap: 2px"><b style="font-size: 40px; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums">{{gv2}}</b><span style="font-size: 13px; color: #B8CCDD">источника живых данных</span></span>
+</div><div style="display: flex; align-items: center; gap: 16px; padding: 18px; border-radius: 24px; background: linear-gradient(160deg, #183F66, #0B2540); color: #EAF4FB; box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 20px 40px rgba(11,37,64,.2)">
+<svg aria-hidden="true" width="120" height="76" viewBox="0 0 120 76" style="flex: none"><path d="M10 62 A50 50 0 0 1 110 62" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="10" stroke-linecap="round"></path><path d="M16.0 62.0 L24.0 62.0" stroke="#EAF4FB" stroke-width="2" opacity=".8"></path><path d="M18.2 48.4 L22.0 49.6" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M24.4 36.1 L27.6 38.5" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M34.1 26.4 L36.5 29.6" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M46.4 20.2 L47.6 24.0" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M60.0 18.0 L60.0 26.0" stroke="#EAF4FB" stroke-width="2" opacity=".8"></path><path d="M73.6 20.2 L72.4 24.0" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M85.9 26.4 L83.5 29.6" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M95.6 36.1 L92.4 38.5" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M101.8 48.4 L98.0 49.6" stroke="#EAF4FB" stroke-width="1" opacity=".8"></path><path d="M104.0 62.0 L96.0 62.0" stroke="#EAF4FB" stroke-width="2" opacity=".8"></path><g style="{{gg3}}"><path d="M60 62 L60 22" stroke="#FF5FA8" stroke-width="3.5" stroke-linecap="round"></path></g><circle cx="60" cy="62" r="7" fill="#EAF4FB"></circle></svg>
+<span style="display: flex; flex-direction: column; gap: 2px"><b style="font-size: 40px; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums">{{gv3}}</b><span style="font-size: 13px; color: #B8CCDD">рублей стоит пользоваться</span></span>
+</div></div>
+</section>
+<section ref="{{cloudRef}}" aria-labelledby="cloud-title" style="position: relative; overflow: hidden; padding: 40px 0 104px">
+<div aria-hidden="true" class="aur" style="top: 80px; right: 10%; width: 560px; height: 560px; background: #C3B5FF; opacity: .55"></div>
+<div style="position: relative; max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
+<div style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 16px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #0A79A8">Подбор по&nbsp;словам</span>
+<h2 id="cloud-title" style="margin: 0; font-size: 56px; font-weight: 700; line-height: 1; letter-spacing: -0.04em">Облако <span class="grad">настроений</span></h2>
+<p style="margin: 0; max-width: 460px; font-size: 18px; line-height: 1.6; color: #45607A">Поймайте слово, которое отзывается,&nbsp;— и&nbsp;мы покажем, куда с&nbsp;ним лететь. Облако крутится и&nbsp;слушается курсора.</p>
+<span aria-live="polite" style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; min-height: 44px; font-size: 15px; color: #45607A">{{cloudNote}}</span>
+</div>
+<div role="group" aria-label="Слова-настроения" onMouseMove="{{cloudMove}}" onMouseLeave="{{cloudLeave}}" style="position: relative; flex: 0 0 600px; max-width: 100%; height: 600px">
+<span aria-hidden="true" style="position: absolute; left: 50%; top: 50%; width: 470px; height: 470px; margin: -235px 0 0 -235px; border-radius: 50%; background: radial-gradient(circle at 38% 32%, rgba(255,255,255,.9), rgba(227,246,253,.5) 55%, rgba(195,181,255,.25)); box-shadow: inset 0 0 0 1px rgba(255,255,255,.8), 0 40px 80px rgba(139,108,240,.18)"></span>
+<button type="button" aria-pressed="{{tg0.on}}" onClick="{{tg0.pick}}" style="{{tg0.s}}">море</button><button type="button" aria-pressed="{{tg1.on}}" onClick="{{tg1.pick}}" style="{{tg1.s}}">вино</button><button type="button" aria-pressed="{{tg2.on}}" onClick="{{tg2.pick}}" style="{{tg2.s}}">горы</button><button type="button" aria-pressed="{{tg3.on}}" onClick="{{tg3.pick}}" style="{{tg3.s}}">храмы</button><button type="button" aria-pressed="{{tg4.on}}" onClick="{{tg4.pick}}" style="{{tg4.s}}">мегаполис</button><button type="button" aria-pressed="{{tg5.on}}" onClick="{{tg5.pick}}" style="{{tg5.s}}">экзотика</button><button type="button" aria-pressed="{{tg6.on}}" onClick="{{tg6.pick}}" style="{{tg6.s}}">базары</button><button type="button" aria-pressed="{{tg7.on}}" onClick="{{tg7.pick}}" style="{{tg7.s}}">канатка</button><button type="button" aria-pressed="{{tg8.on}}" onClick="{{tg8.pick}}" style="{{tg8.s}}">чай</button><button type="button" aria-pressed="{{tg9.on}}" onClick="{{tg9.pick}}" style="{{tg9.s}}">стрит-фуд</button><button type="button" aria-pressed="{{tg10.on}}" onClick="{{tg10.pick}}" style="{{tg10.s}}">пляж</button><button type="button" aria-pressed="{{tg11.on}}" onClick="{{tg11.pick}}" style="{{tg11.s}}">архитектура</button><button type="button" aria-pressed="{{tg12.on}}" onClick="{{tg12.pick}}" style="{{tg12.s}}">ночная жизнь</button><button type="button" aria-pressed="{{tg13.on}}" onClick="{{tg13.pick}}" style="{{tg13.s}}">история</button><button type="button" aria-pressed="{{tg14.on}}" onClick="{{tg14.pick}}" style="{{tg14.s}}">природа</button><button type="button" aria-pressed="{{tg15.on}}" onClick="{{tg15.pick}}" style="{{tg15.s}}">острова</button><button type="button" aria-pressed="{{tg16.on}}" onClick="{{tg16.pick}}" style="{{tg16.s}}">специи</button><button type="button" aria-pressed="{{tg17.on}}" onClick="{{tg17.pick}}" style="{{tg17.s}}">небоскрёбы</button><button type="button" aria-pressed="{{tg18.on}}" onClick="{{tg18.pick}}" style="{{tg18.s}}">дюны</button><button type="button" aria-pressed="{{tg19.on}}" onClick="{{tg19.pick}}" style="{{tg19.s}}">озёра</button><button type="button" aria-pressed="{{tg20.on}}" onClick="{{tg20.pick}}" style="{{tg20.s}}">кухня</button><button type="button" aria-pressed="{{tg21.on}}" onClick="{{tg21.pick}}" style="{{tg21.s}}">снег</button>
+</div>
+</div>
+<div style="position: relative; max-width: 1280px; margin: 24px auto 0; padding: 0 24px; display: flex; flex-wrap: wrap; gap: 18px; min-height: 150px">
+<sc-for list="{{cloudHits}}" as="c" hint-placeholder-count="4"><a href="{{c.href}}" class="rise" style="{{c.s}}"><span style="{{c.tab}}"></span><span style="font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; opacity: .85">{{c.country}}</span><span style="font-size: 30px; font-weight: 800; letter-spacing: -0.03em">{{c.name}}</span><span style="font-size: 13px; opacity: .9">{{c.note}}</span></a></sc-for>
+</div>
+</section>
+<section aria-labelledby="cmp-title" style="position: relative; max-width: 1280px; margin: 0 auto; padding: 0 24px 104px; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 12px"><span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #0A79A8">Сравнение</span><h2 id="cmp-title" style="margin: 0; font-size: 56px; font-weight: 700; line-height: 1; letter-spacing: -0.04em">Сравни <span class="grad">города</span></h2></div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<label class="lg" style="display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 8px 0 16px; border-radius: 14px; font-size: 14px; color: #45607A">Слева<select ref="{{selA}}" onChange="{{pickA}}" style="min-height: 40px; padding: 0 10px; border: 0; border-radius: 10px; background: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 700; color: #0B2540"><option value="tbilisi">Тбилиси</option><option value="kazan">Казань</option><option value="yerevan">Ереван</option><option value="beijing">Пекин</option><option value="istanbul">Стамбул</option><option value="sochi">Сочи</option><option value="hanoi">Ханой</option><option value="zanzibar">Занзибар</option><option value="shanghai">Шанхай</option><option value="altai">Алтай</option><option value="kaliningrad">Калининград</option></select></label>
+<span aria-hidden="true" style="font-size: 18px; font-weight: 800; color: #C8146F">vs</span>
+<label class="lg" style="display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 8px 0 16px; border-radius: 14px; font-size: 14px; color: #45607A">Справа<select ref="{{selB}}" onChange="{{pickB}}" style="min-height: 40px; padding: 0 10px; border: 0; border-radius: 10px; background: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 700; color: #0B2540"><option value="tbilisi">Тбилиси</option><option value="kazan">Казань</option><option value="yerevan">Ереван</option><option value="beijing">Пекин</option><option value="istanbul">Стамбул</option><option value="sochi">Сочи</option><option value="hanoi">Ханой</option><option value="zanzibar">Занзибар</option><option value="shanghai">Шанхай</option><option value="altai">Алтай</option><option value="kaliningrad">Калининград</option></select></label>
+</div>
+</div>
+<div ref="{{cmpRef}}" onPointerMove="{{cmpMove}}" onPointerUp="{{cmpUp}}" onPointerLeave="{{cmpUp}}" style="position: relative; height: 560px; border-radius: 36px; overflow: hidden; box-shadow: 0 40px 80px rgba(11,37,64,.2); touch-action: pan-y">
+<div aria-hidden="false" style="{{bLayer}}">
+<div style="position: absolute; inset: 0; padding: 44px 56px; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; text-align: right; color: #FFFFFF">
+<span style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px"><span style="font-size: 14px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; opacity: .85">{{bc.country}}</span><span style="font-size: 96px; font-weight: 800; line-height: .9; letter-spacing: -0.06em">{{bc.name}}</span></span>
+<span style="display: flex; flex-direction: column; align-items: flex-end; gap: 16px"><span style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px"><span style="font-size: 12px; font-weight: 600; opacity: .75; text-transform: uppercase; letter-spacing: .1em">Перелёт</span><span style="display: flex; align-items: center; gap: 8px; font-size: 22px; font-weight: 800; letter-spacing: -0.02em">{{br0.v}}<span style="{{br0.badge}}">лучше</span></span></span><span style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px"><span style="font-size: 12px; font-weight: 600; opacity: .75; text-transform: uppercase; letter-spacing: .1em">День в городе</span><span style="display: flex; align-items: center; gap: 8px; font-size: 22px; font-weight: 800; letter-spacing: -0.02em">{{br1.v}}<span style="{{br1.badge}}">лучше</span></span></span><span style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px"><span style="font-size: 12px; font-weight: 600; opacity: .75; text-transform: uppercase; letter-spacing: .1em">В пути</span><span style="display: flex; align-items: center; gap: 8px; font-size: 22px; font-weight: 800; letter-spacing: -0.02em">{{br2.v}}<span style="{{br2.badge}}">лучше</span></span></span><span style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px"><span style="font-size: 12px; font-weight: 600; opacity: .75; text-transform: uppercase; letter-spacing: .1em">Виза</span><span style="display: flex; align-items: center; gap: 8px; font-size: 22px; font-weight: 800; letter-spacing: -0.02em">{{br3.v}}<span style="{{br3.badge}}">лучше</span></span></span><span style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px"><span style="font-size: 12px; font-weight: 600; opacity: .75; text-transform: uppercase; letter-spacing: .1em">Лучшие месяцы</span><span style="display: flex; align-items: center; gap: 8px; font-size: 22px; font-weight: 800; letter-spacing: -0.02em">{{br4.v}}<span style="{{br4.badge}}">лучше</span></span></span></span>
+</div>
+</div>
+<div aria-hidden="false" style="{{aLayer}}">
+<div style="position: absolute; inset: 0; padding: 44px 56px; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; text-align: left; color: #FFFFFF">
+<span style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px"><span style="font-size: 14px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; opacity: .85">{{ac.country}}</span><span style="font-size: 96px; font-weight: 800; line-height: .9; letter-spacing: -0.06em">{{ac.name}}</span></span>
+<span style="display: flex; flex-direction: column; align-items: flex-start; gap: 16px"><span style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px"><span style="font-size: 12px; font-weight: 600; opacity: .75; text-transform: uppercase; letter-spacing: .1em">Перелёт</span><span style="display: flex; align-items: center; gap: 8px; font-size: 22px; font-weight: 800; letter-spacing: -0.02em">{{ar0.v}}<span style="{{ar0.badge}}">лучше</span></span></span><span style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px"><span style="font-size: 12px; font-weight: 600; opacity: .75; text-transform: uppercase; letter-spacing: .1em">День в городе</span><span style="display: flex; align-items: center; gap: 8px; font-size: 22px; font-weight: 800; letter-spacing: -0.02em">{{ar1.v}}<span style="{{ar1.badge}}">лучше</span></span></span><span style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px"><span style="font-size: 12px; font-weight: 600; opacity: .75; text-transform: uppercase; letter-spacing: .1em">В пути</span><span style="display: flex; align-items: center; gap: 8px; font-size: 22px; font-weight: 800; letter-spacing: -0.02em">{{ar2.v}}<span style="{{ar2.badge}}">лучше</span></span></span><span style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px"><span style="font-size: 12px; font-weight: 600; opacity: .75; text-transform: uppercase; letter-spacing: .1em">Виза</span><span style="display: flex; align-items: center; gap: 8px; font-size: 22px; font-weight: 800; letter-spacing: -0.02em">{{ar3.v}}<span style="{{ar3.badge}}">лучше</span></span></span><span style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px"><span style="font-size: 12px; font-weight: 600; opacity: .75; text-transform: uppercase; letter-spacing: .1em">Лучшие месяцы</span><span style="display: flex; align-items: center; gap: 8px; font-size: 22px; font-weight: 800; letter-spacing: -0.02em">{{ar4.v}}<span style="{{ar4.badge}}">лучше</span></span></span></span>
+</div>
+</div>
+<div style="{{cmpLine}}">
+<button type="button" role="slider" aria-label="Граница сравнения" aria-valuemin="10" aria-valuemax="90" aria-valuenow="{{cmpSplit}}" onPointerDown="{{cmpDown}}" onKeyDown="{{cmpKey}}" style="position: absolute; left: 50%; top: 50%; width: 60px; height: 60px; margin: -30px 0 0 -30px; border: 0; border-radius: 50%; background: #FFFFFF; color: #0B2540; box-shadow: 0 12px 30px rgba(11,37,64,.3); cursor: ew-resize; display: flex; align-items: center; justify-content: center; touch-action: none"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"></path></svg></button>
+</div>
+</div>
+<span style="font-size: 13px; color: #45607A">Тяните ручку или&nbsp;используйте стрелки. Цены ориентировочные, на&nbsp;человека; * визовые правила&nbsp;— демо, в&nbsp;продукте с&nbsp;датой проверки.</span>
+</section>
+<section aria-labelledby="st-title" style="position: relative; overflow: hidden; padding: 0 0 104px">
+<div style="max-width: 1280px; margin: 0 auto; padding: 0 24px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 12px"><span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #0A79A8">Сообщество</span><h2 id="st-title" style="margin: 0; font-size: 56px; font-weight: 700; line-height: 1; letter-spacing: -0.04em">Истории <span class="grad">путешественников</span></h2></div>
+<div style="display: flex; gap: 10px">
+<button type="button" aria-label="Предыдущая история" onClick="{{stPrev}}" class="lg" style="width: 56px; height: 56px; border-radius: 16px; color: #0B2540; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"></path></svg></button>
+<button type="button" aria-label="Следующая история" onClick="{{stNext}}" style="width: 56px; height: 56px; border-radius: 16px; border: 0; background: #0B2540; color: #FFFFFF; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"></path></svg></button>
+</div>
+</div>
+<div style="position: relative; height: 500px; perspective: 1400px"><button type="button" onClick="{{sc0.go}}" aria-label="История «Неделя в&nbsp;Стамбуле»" style="{{sc0.s}}">
+<img src="/_blob/f5fb1cafe25fea83b99c3378e9b233e0" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+<span aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,23,47,0) 40%, rgba(6,23,47,.8))"></span>
+<span style="position: absolute; left: 20px; right: 20px; bottom: 20px; display: flex; flex-direction: column; gap: 6px; color: #FFFFFF; text-align: left"><span style="align-self: flex-start; padding: 4px 9px; border-radius: 8px; background: rgba(255,255,255,.22); font-size: 12px; font-weight: 700">Стамбул · 7 дней</span><span style="font-size: 24px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1">Неделя в&nbsp;Стамбуле</span><span style="display: flex; align-items: center; gap: 8px; font-size: 13px; opacity: .9"><span style="width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(135deg, #38BDE8, #C8146F); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800">[А]</span>[Автор]</span></span>
+</button><button type="button" onClick="{{sc1.go}}" aria-label="История «Тбилиси на&nbsp;выходные»" style="{{sc1.s}}">
+<img src="/_blob/6eccd596b470867da8e7ab7601906a32" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+<span aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,23,47,0) 40%, rgba(6,23,47,.8))"></span>
+<span style="position: absolute; left: 20px; right: 20px; bottom: 20px; display: flex; flex-direction: column; gap: 6px; color: #FFFFFF; text-align: left"><span style="align-self: flex-start; padding: 4px 9px; border-radius: 8px; background: rgba(255,255,255,.22); font-size: 12px; font-weight: 700">Тбилиси · 3 дня</span><span style="font-size: 24px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1">Тбилиси на&nbsp;выходные</span><span style="display: flex; align-items: center; gap: 8px; font-size: 13px; opacity: .9"><span style="width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(135deg, #38BDE8, #C8146F); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800">[А]</span>[Автор]</span></span>
+</button><button type="button" onClick="{{sc2.go}}" aria-label="История «Закат на&nbsp;Босфоре»" style="{{sc2.s}}">
+<img src="/_blob/c4e26d8535e7682a54e1116ca47431df" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+<span aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,23,47,0) 40%, rgba(6,23,47,.8))"></span>
+<span style="position: absolute; left: 20px; right: 20px; bottom: 20px; display: flex; flex-direction: column; gap: 6px; color: #FFFFFF; text-align: left"><span style="align-self: flex-start; padding: 4px 9px; border-radius: 8px; background: rgba(255,255,255,.22); font-size: 12px; font-weight: 700">Стамбул · 1 вечер</span><span style="font-size: 24px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1">Закат на&nbsp;Босфоре</span><span style="display: flex; align-items: center; gap: 8px; font-size: 13px; opacity: .9"><span style="width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(135deg, #38BDE8, #C8146F); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800">[А]</span>[Автор]</span></span>
+</button><button type="button" onClick="{{sc3.go}}" aria-label="История «Хинкали-тур»" style="{{sc3.s}}">
+<img src="/_blob/f36d75cbf875974fc771b37e276bb574" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+<span aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,23,47,0) 40%, rgba(6,23,47,.8))"></span>
+<span style="position: absolute; left: 20px; right: 20px; bottom: 20px; display: flex; flex-direction: column; gap: 6px; color: #FFFFFF; text-align: left"><span style="align-self: flex-start; padding: 4px 9px; border-radius: 8px; background: rgba(255,255,255,.22); font-size: 12px; font-weight: 700">Тбилиси · 2 дня</span><span style="font-size: 24px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1">Хинкали-тур</span><span style="display: flex; align-items: center; gap: 8px; font-size: 13px; opacity: .9"><span style="width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(135deg, #38BDE8, #C8146F); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800">[А]</span>[Автор]</span></span>
+</button><button type="button" onClick="{{sc4.go}}" aria-label="История «Мцхета за&nbsp;полдня»" style="{{sc4.s}}">
+<img src="/_blob/8f6d80ebac69464f790a6fe6fa744986" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+<span aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,23,47,0) 40%, rgba(6,23,47,.8))"></span>
+<span style="position: absolute; left: 20px; right: 20px; bottom: 20px; display: flex; flex-direction: column; gap: 6px; color: #FFFFFF; text-align: left"><span style="align-self: flex-start; padding: 4px 9px; border-radius: 8px; background: rgba(255,255,255,.22); font-size: 12px; font-weight: 700">Мцхета · полдня</span><span style="font-size: 24px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1">Мцхета за&nbsp;полдня</span><span style="display: flex; align-items: center; gap: 8px; font-size: 13px; opacity: .9"><span style="width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(135deg, #38BDE8, #C8146F); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800">[А]</span>[Автор]</span></span>
+</button><button type="button" onClick="{{sc5.go}}" aria-label="История «Базары и&nbsp;лампы»" style="{{sc5.s}}">
+<img src="/_blob/559a8080aeb6c1001181d08b61d7be26" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+<span aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,23,47,0) 40%, rgba(6,23,47,.8))"></span>
+<span style="position: absolute; left: 20px; right: 20px; bottom: 20px; display: flex; flex-direction: column; gap: 6px; color: #FFFFFF; text-align: left"><span style="align-self: flex-start; padding: 4px 9px; border-radius: 8px; background: rgba(255,255,255,.22); font-size: 12px; font-weight: 700">Стамбул · 1 день</span><span style="font-size: 24px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1">Базары и&nbsp;лампы</span><span style="display: flex; align-items: center; gap: 8px; font-size: 13px; opacity: .9"><span style="width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(135deg, #38BDE8, #C8146F); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800">[А]</span>[Автор]</span></span>
+</button><button type="button" onClick="{{sc6.go}}" aria-label="История «Ночной Тбилиси»" style="{{sc6.s}}">
+<img src="/_blob/69208a051058c0007649b2798eddbb0b" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+<span aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,23,47,0) 40%, rgba(6,23,47,.8))"></span>
+<span style="position: absolute; left: 20px; right: 20px; bottom: 20px; display: flex; flex-direction: column; gap: 6px; color: #FFFFFF; text-align: left"><span style="align-self: flex-start; padding: 4px 9px; border-radius: 8px; background: rgba(255,255,255,.22); font-size: 12px; font-weight: 700">Тбилиси · 1 вечер</span><span style="font-size: 24px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1">Ночной Тбилиси</span><span style="display: flex; align-items: center; gap: 8px; font-size: 13px; opacity: .9"><span style="width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(135deg, #38BDE8, #C8146F); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800">[А]</span>[Автор]</span></span>
+</button></div>
+<p style="max-width: 1280px; margin: 8px auto 0; padding: 0 24px; text-align: center; font-size: 13px; color: #45607A">Пример раздела: здесь появятся рассказы пользователей. Нажмите на&nbsp;центральную карточку, чтобы открыть историю. Фото: Pexels.</p>
+<sc-if value="{{stOpen}}" hint-placeholder-val="{{ false }}">
+<div role="dialog" aria-modal="true" aria-label="{{stTitle}}" style="position: absolute; inset: 0; z-index: 30; display: flex; align-items: center; justify-content: center; background: rgba(6,23,47,.55); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px)">
+<div class="popIn" style="position: relative; width: 380px; height: 640px; max-height: 92%; border-radius: 28px; overflow: hidden; background: #06172F; box-shadow: 0 40px 80px rgba(0,0,0,.4)">
+<sc-if value="{{so0}}" hint-placeholder-val="{{ false }}"><img src="/_blob/f5fb1cafe25fea83b99c3378e9b233e0" alt="" class="kb" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover"></sc-if><sc-if value="{{so1}}" hint-placeholder-val="{{ false }}"><img src="/_blob/6eccd596b470867da8e7ab7601906a32" alt="" class="kb" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover"></sc-if><sc-if value="{{so2}}" hint-placeholder-val="{{ false }}"><img src="/_blob/c4e26d8535e7682a54e1116ca47431df" alt="" class="kb" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover"></sc-if><sc-if value="{{so3}}" hint-placeholder-val="{{ false }}"><img src="/_blob/f36d75cbf875974fc771b37e276bb574" alt="" class="kb" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover"></sc-if><sc-if value="{{so4}}" hint-placeholder-val="{{ false }}"><img src="/_blob/8f6d80ebac69464f790a6fe6fa744986" alt="" class="kb" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover"></sc-if><sc-if value="{{so5}}" hint-placeholder-val="{{ false }}"><img src="/_blob/559a8080aeb6c1001181d08b61d7be26" alt="" class="kb" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover"></sc-if><sc-if value="{{so6}}" hint-placeholder-val="{{ false }}"><img src="/_blob/69208a051058c0007649b2798eddbb0b" alt="" class="kb" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover"></sc-if>
+<span aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,23,47,.5), rgba(6,23,47,0) 30%, rgba(6,23,47,0) 55%, rgba(6,23,47,.85))"></span>
+<div style="position: absolute; left: 14px; right: 14px; top: 14px; display: flex; gap: 6px"><sc-for list="{{stBars}}" as="b" hint-placeholder-count="3"><span style="flex: 1 1 0; height: 4px; border-radius: 2px; background: rgba(255,255,255,.3); overflow: hidden"><span class="{{b.cls}}" style="{{b.s}}"></span></span></sc-for></div>
+<span style="position: absolute; left: 18px; top: 30px; color: #FFFFFF; font-size: 14px; font-weight: 700">{{stTitle}}</span>
+<button type="button" onClick="{{stClose}}" aria-label="Закрыть историю" style="position: absolute; right: 10px; top: 24px; width: 44px; height: 44px; border: 0; border-radius: 12px; background: rgba(255,255,255,.15); color: #FFFFFF; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+<button type="button" onClick="{{stBack}}" aria-label="Назад" style="position: absolute; left: 0; top: 80px; bottom: 140px; width: 35%; border: 0; background: transparent; cursor: pointer"></button>
+<button type="button" onClick="{{stFwd}}" aria-label="Дальше" style="position: absolute; right: 0; top: 80px; bottom: 140px; width: 65%; border: 0; background: transparent; cursor: pointer"></button>
+<p aria-live="polite" class="{{stTextCls}}" style="position: absolute; left: 22px; right: 22px; bottom: 30px; margin: 0; color: #FFFFFF; font-size: 24px; font-weight: 700; line-height: 1.25; letter-spacing: -0.01em">{{stText}}</p>
+</div>
+</div>
+</sc-if>
+</section>
+<section id="faq" aria-labelledby="faq-title" style="position: relative; max-width: 1280px; margin: 0 auto; padding: 0 24px 120px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
+<div style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 18px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #0A79A8">Частые вопросы</span>
+<h2 id="faq-title" style="margin: 0; font-size: 56px; font-weight: 700; line-height: 1; letter-spacing: -0.04em">Спросите <span class="grad">Облако</span></h2>
+<p style="margin: 0; max-width: 440px; font-size: 17px; line-height: 1.6; color: #45607A">Выберите вопрос&nbsp;— Облако ответит в&nbsp;чате. Ответы короткие, по&nbsp;делу.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><button type="button" onClick="{{fq0.ask}}" aria-disabled="{{fq0.done}}" style="{{fq0.s}}">Это бесплатно?</button><button type="button" onClick="{{fq1.ask}}" aria-disabled="{{fq1.done}}" style="{{fq1.s}}">Можно купить билет прямо здесь?</button><button type="button" onClick="{{fq2.ask}}" aria-disabled="{{fq2.done}}" style="{{fq2.s}}">Откуда погода и&nbsp;курсы?</button><button type="button" onClick="{{fq3.ask}}" aria-disabled="{{fq3.done}}" style="{{fq3.s}}">Как работает подбор поездки?</button><button type="button" onClick="{{fq4.ask}}" aria-disabled="{{fq4.done}}" style="{{fq4.s}}">Где хранятся маршруты?</button><button type="button" onClick="{{fq5.ask}}" aria-disabled="{{fq5.done}}" style="{{fq5.s}}">Насколько свежая информация о&nbsp;визах?</button></div>
+</div>
+<div class="lg" style="flex: 1 1 480px; max-width: 560px; height: 600px; border-radius: 36px; display: flex; flex-direction: column; overflow: hidden">
+<div style="display: flex; align-items: center; gap: 12px; padding: 18px 22px; border-bottom: 1px solid rgba(11,37,64,.08)">
+<span style="position: relative; width: 48px; height: 48px; border-radius: 16px; background: linear-gradient(135deg, #E3F6FD, #FFFFFF); display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 0 1px rgba(11,37,64,.06)"><svg aria-hidden="true" width="32" height="22" viewBox="0 0 44 30"><path d="M12 28h22a9 9 0 0 0 1-17.9A12 12 0 0 0 12.4 8 10 10 0 0 0 12 28z" fill="#38BDE8"></path></svg><span style="position: absolute; right: -2px; bottom: -2px; width: 14px; height: 14px; border-radius: 50%; background: #3FB98C; border: 3px solid #FFFFFF"></span></span>
+<span style="display: flex; flex-direction: column"><b style="font-size: 17px">Облако</b><span style="font-size: 13px; color: #45607A">{{chatStatus}}</span></span>
+</div>
+<div ref="{{chatRef}}" role="log" aria-live="polite" style="flex: 1 1 auto; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{msgs}}" as="m" hint-placeholder-count="3"><span class="msgIn" style="{{m.s}}">{{m.t}}</span></sc-for>
+<sc-if value="{{typing}}" hint-placeholder-val="{{ false }}"><span aria-label="Облако печатает" style="align-self: flex-start; display: flex; gap: 5px; padding: 14px 16px; border-radius: 18px 18px 18px 6px; background: #FFFFFF"><span class="dot"></span><span class="dot" style="animation-delay: .15s"></span><span class="dot" style="animation-delay: .3s"></span></span></sc-if>
+</div>
+<form onSubmit="{{chatSend}}" style="display: flex; gap: 8px; padding: 14px; border-top: 1px solid rgba(11,37,64,.08)">
+<label style="flex: 1 1 auto; display: flex"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Свой вопрос</span><input type="text" name="q" placeholder="Свой вопрос…" style="flex: 1 1 auto; min-width: 0; min-height: 48px; padding: 0 16px; border: 1px solid rgba(11,37,64,.12); border-radius: 14px; background: #FFFFFF; font-family: inherit; font-size: 15px; color: #0B2540"></label>
+<button type="submit" aria-label="Отправить" style="width: 48px; height: 48px; border: 0; border-radius: 14px; background: #C8146F; color: #FFFFFF; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l16-8-6 16-3-7z"></path></svg></button>
+</form>
+</div>
+</section>
+<section aria-labelledby="tk-title" style="position: relative; max-width: 1280px; margin: 0 auto; padding: 0 24px 140px; display: flex; flex-direction: column; align-items: center; gap: 26px">
+<h2 id="tk-title" style="margin: 0; font-size: 56px; font-weight: 700; line-height: 1; letter-spacing: -0.04em; text-align: center">Куда <span class="grad">угодно</span></h2>
+<div style="position: relative; display: flex; width: 100%; max-width: 1080px; filter: drop-shadow(0 34px 50px rgba(11,37,64,.2))">
+<div class="{{tkMainCls}}" style="position: relative; flex: 1 1 auto; min-height: 300px; padding: 34px 40px; border-radius: 28px 0 0 28px; background: linear-gradient(120deg, #FFFFFF 55%, #E3F6FD); display: flex; flex-direction: column; justify-content: space-between; gap: 20px; -webkit-mask: radial-gradient(circle at 100% 0, transparent 16px, #000 17px) top/100% 51% no-repeat, radial-gradient(circle at 100% 100%, transparent 16px, #000 17px) bottom/100% 51% no-repeat">
+<span style="display: flex; justify-content: space-between; align-items: center"><span style="display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 800; letter-spacing: .18em"><svg aria-hidden="true" width="30" height="20" viewBox="0 0 44 30"><path d="M12 28h22a9 9 0 0 0 1-17.9A12 12 0 0 0 12.4 8 10 10 0 0 0 12 28z" fill="#38BDE8"></path></svg>OBLAKO · BOARDING PASS</span><span style="font-size: 13px; font-weight: 700; color: #C8146F">РЕЙС OB&nbsp;001</span></span>
+<span style="display: flex; align-items: center; gap: 28px"><span style="display: flex; flex-direction: column"><span style="font-size: 13px; color: #45607A">Москва</span><b style="font-size: 84px; letter-spacing: -0.05em; line-height: .9">MOW</b></span><svg aria-hidden="true" width="160" height="40" viewBox="0 0 160 40"><path d="M4 30 Q80 -6 150 26" fill="none" stroke="#38BDE8" stroke-width="2" stroke-dasharray="5 6"></path><g transform="translate(130 6)"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z" fill="#C8146F" transform="rotate(90 12 12)"></path></svg></g></svg><span style="display: flex; flex-direction: column"><span style="font-size: 13px; color: #45607A">Куда угодно</span><b class="grad" style="font-size: 84px; letter-spacing: -0.05em; line-height: .9">???</b></span></span>
+<span style="display: flex; flex-wrap: wrap; gap: 32px; font-size: 13px; color: #45607A"><span>Пассажир<br><b style="font-size: 18px; color: #0B2540">Вы</b></span><span>Когда<br><b style="font-size: 18px; color: #0B2540">Когда захотите</b></span><span>Выход<br><b style="font-size: 18px; color: #0B2540">OBLAKO</b></span><span>Место<br><b style="font-size: 18px; color: #0B2540">У&nbsp;окна</b></span></span>
+</div>
+<span aria-hidden="true" style="position: relative; width: 0; border-left: 3px dashed rgba(11,37,64,.25); margin: 18px 0"></span>
+<div style="position: relative; flex: 0 0 280px">
+<sc-if value="{{tkTorn}}" hint-placeholder-val="{{ false }}"><a href="Quiz.dc.html" class="popIn" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 20px; text-align: center; color: #0B2540"><span style="font-size: 15px; color: #45607A">Посадка открыта</span><span style="display: inline-flex; align-items: center; min-height: 56px; padding: 0 24px; border-radius: 14px; background: #C8146F; color: #FFFFFF; font-size: 17px; font-weight: 600; box-shadow: 0 14px 34px rgba(200,20,111,.35)">Начать подбор</span></a></sc-if>
+<button type="button" onPointerDown="{{tkDown}}" onPointerMove="{{tkMove}}" onPointerUp="{{tkUp}}" onClick="{{tkClick}}" aria-label="Оторвать корешок и&nbsp;начать подбор" style="{{tkStub}}">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: .14em; color: #0A79A8">КОРЕШОК</span>
+<b style="font-size: 30px; letter-spacing: -0.03em; line-height: 1.05">Оторвите, чтобы начать</b>
+<span style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #45607A"><svg aria-hidden="true" class="nudge" width="34" height="18" viewBox="0 0 34 18" fill="none" stroke="#C8146F" stroke-width="2.4" stroke-linecap="round"><path d="M2 9h28M22 2l8 7-8 7"></path></svg>тяните вправо</span>
+<span aria-hidden="true" style="height: 34px; background: repeating-linear-gradient(90deg, #0B2540 0 2px, transparent 2px 5px, #0B2540 5px 6px, transparent 6px 9px)"></span>
+</button>
+</div>
+</div>
+</section>
+
+<footer style="position: relative; overflow: hidden; background: linear-gradient(180deg, #F4FAFE 0%, #9BD8F0 14%, #3C7FBF 34%, #142E5C 56%, #06132A 100%); color: #EAF4FB">
+<svg aria-hidden="true" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" style="position: absolute; inset: 0; width: 100%; height: 100%"><circle class="tw" cx="1275" cy="521" r="1.4" fill="#FFFFFF" style="animation-delay: -1.1s"></circle><circle class="tw" cx="1414" cy="802" r="0.8" fill="#FFFFFF" style="animation-delay: -2.5s"></circle><circle class="tw" cx="510" cy="313" r="0.8" fill="#FFFFFF" style="animation-delay: -0.3s"></circle><circle class="tw" cx="960" cy="512" r="1" fill="#FFFFFF" style="animation-delay: -1.6s"></circle><circle class="tw" cx="1175" cy="515" r="0.8" fill="#FFFFFF" style="animation-delay: -2.2s"></circle><circle class="tw" cx="835" cy="546" r="0.8" fill="#FFFFFF" style="animation-delay: -2.7s"></circle><circle class="tw" cx="797" cy="423" r="0.8" fill="#FFFFFF" style="animation-delay: -0.4s"></circle><circle class="tw" cx="1264" cy="715" r="0.8" fill="#FFFFFF" style="animation-delay: -0.4s"></circle><circle class="tw" cx="10" cy="474" r="0.8" fill="#FFFFFF" style="animation-delay: -2.9s"></circle><circle class="tw" cx="339" cy="430" r="1" fill="#FFFFFF" style="animation-delay: -0.9s"></circle><circle class="tw" cx="407" cy="812" r="1.4" fill="#FFFFFF" style="animation-delay: -1.9s"></circle><circle class="tw" cx="372" cy="461" r="1" fill="#FFFFFF" style="animation-delay: -0.9s"></circle><circle class="tw" cx="739" cy="684" r="0.8" fill="#FFFFFF" style="animation-delay: -2.8s"></circle><circle class="tw" cx="540" cy="326" r="1" fill="#FFFFFF" style="animation-delay: -0.9s"></circle><circle class="tw" cx="1235" cy="860" r="0.8" fill="#FFFFFF" style="animation-delay: -1.8s"></circle><circle class="tw" cx="692" cy="327" r="1" fill="#FFFFFF" style="animation-delay: -1.1s"></circle><circle class="tw" cx="626" cy="752" r="1.4" fill="#FFFFFF" style="animation-delay: -0.9s"></circle><circle class="tw" cx="985" cy="743" r="1.4" fill="#FFFFFF" style="animation-delay: -0.5s"></circle><circle class="tw" cx="524" cy="283" r="1.4" fill="#FFFFFF" style="animation-delay: -1.1s"></circle><circle class="tw" cx="827" cy="278" r="1.4" fill="#FFFFFF" style="animation-delay: -2.4s"></circle><circle class="tw" cx="749" cy="645" r="1.4" fill="#FFFFFF" style="animation-delay: -2.5s"></circle><circle class="tw" cx="927" cy="307" r="1.4" fill="#FFFFFF" style="animation-delay: -0.5s"></circle><circle class="tw" cx="402" cy="381" r="0.8" fill="#FFFFFF" style="animation-delay: -2.8s"></circle><circle class="tw" cx="946" cy="612" r="1.4" fill="#FFFFFF" style="animation-delay: -1.1s"></circle><circle class="tw" cx="1074" cy="516" r="1" fill="#FFFFFF" style="animation-delay: -0.3s"></circle><circle class="tw" cx="752" cy="562" r="0.8" fill="#FFFFFF" style="animation-delay: -1.3s"></circle><circle class="tw" cx="186" cy="473" r="1" fill="#FFFFFF" style="animation-delay: -1.5s"></circle><circle class="tw" cx="742" cy="411" r="1" fill="#FFFFFF" style="animation-delay: -0.8s"></circle><circle class="tw" cx="1438" cy="818" r="0.8" fill="#FFFFFF" style="animation-delay: -0.9s"></circle><circle class="tw" cx="648" cy="573" r="0.8" fill="#FFFFFF" style="animation-delay: -2.4s"></circle><circle class="tw" cx="1283" cy="412" r="1.4" fill="#FFFFFF" style="animation-delay: -2.1s"></circle><circle class="tw" cx="990" cy="425" r="1.4" fill="#FFFFFF" style="animation-delay: -0.1s"></circle><circle class="tw" cx="1230" cy="806" r="1" fill="#FFFFFF" style="animation-delay: -0.1s"></circle><circle class="tw" cx="1216" cy="612" r="1" fill="#FFFFFF" style="animation-delay: -1.4s"></circle><circle class="tw" cx="863" cy="409" r="0.8" fill="#FFFFFF" style="animation-delay: -2.9s"></circle><circle class="tw" cx="1307" cy="293" r="1" fill="#FFFFFF" style="animation-delay: -1.0s"></circle><circle class="tw" cx="424" cy="393" r="1.4" fill="#FFFFFF" style="animation-delay: -1.7s"></circle><circle class="tw" cx="271" cy="683" r="0.8" fill="#FFFFFF" style="animation-delay: -0.5s"></circle><circle class="tw" cx="763" cy="412" r="0.8" fill="#FFFFFF" style="animation-delay: -2.5s"></circle><circle class="tw" cx="603" cy="404" r="1" fill="#FFFFFF" style="animation-delay: -2.8s"></circle><circle class="tw" cx="1270" cy="433" r="1.4" fill="#FFFFFF" style="animation-delay: -1.4s"></circle><circle class="tw" cx="999" cy="585" r="1" fill="#FFFFFF" style="animation-delay: -0.8s"></circle><circle class="tw" cx="962" cy="673" r="0.8" fill="#FFFFFF" style="animation-delay: -0.3s"></circle><circle class="tw" cx="1089" cy="443" r="1.4" fill="#FFFFFF" style="animation-delay: -2.8s"></circle><circle class="tw" cx="693" cy="444" r="0.8" fill="#FFFFFF" style="animation-delay: -1.5s"></circle><circle class="tw" cx="1055" cy="821" r="1.4" fill="#FFFFFF" style="animation-delay: -1.1s"></circle><circle class="tw" cx="728" cy="861" r="1.4" fill="#FFFFFF" style="animation-delay: -0.1s"></circle><circle class="tw" cx="626" cy="632" r="1.4" fill="#FFFFFF" style="animation-delay: -2.1s"></circle><circle class="tw" cx="575" cy="757" r="1" fill="#FFFFFF" style="animation-delay: -2.3s"></circle><circle class="tw" cx="1414" cy="560" r="1" fill="#FFFFFF" style="animation-delay: -1.9s"></circle><circle class="tw" cx="1189" cy="271" r="1" fill="#FFFFFF" style="animation-delay: -1.6s"></circle><circle class="tw" cx="513" cy="593" r="1.4" fill="#FFFFFF" style="animation-delay: -0.8s"></circle><circle class="tw" cx="591" cy="772" r="1.4" fill="#FFFFFF" style="animation-delay: -2.0s"></circle><circle class="tw" cx="730" cy="616" r="1" fill="#FFFFFF" style="animation-delay: -1.9s"></circle><circle class="tw" cx="836" cy="618" r="0.8" fill="#FFFFFF" style="animation-delay: -2.6s"></circle><circle class="tw" cx="1409" cy="720" r="1" fill="#FFFFFF" style="animation-delay: -2.9s"></circle><circle class="tw" cx="1061" cy="405" r="1.4" fill="#FFFFFF" style="animation-delay: -2.9s"></circle><circle class="tw" cx="406" cy="630" r="1" fill="#FFFFFF" style="animation-delay: -0.8s"></circle><circle class="tw" cx="161" cy="686" r="0.8" fill="#FFFFFF" style="animation-delay: -1.9s"></circle><circle class="tw" cx="1189" cy="788" r="1.4" fill="#FFFFFF" style="animation-delay: -2.8s"></circle><circle class="tw" cx="619" cy="898" r="1.4" fill="#FFFFFF" style="animation-delay: -2.3s"></circle><circle class="tw" cx="1304" cy="537" r="1.4" fill="#FFFFFF" style="animation-delay: -3.0s"></circle><circle class="tw" cx="400" cy="423" r="1.4" fill="#FFFFFF" style="animation-delay: -1.3s"></circle><circle class="tw" cx="1331" cy="445" r="0.8" fill="#FFFFFF" style="animation-delay: -2.3s"></circle><circle class="tw" cx="369" cy="302" r="1" fill="#FFFFFF" style="animation-delay: -2.9s"></circle><circle class="tw" cx="339" cy="315" r="0.8" fill="#FFFFFF" style="animation-delay: -0.3s"></circle><circle class="tw" cx="371" cy="754" r="0.8" fill="#FFFFFF" style="animation-delay: -1.6s"></circle><circle class="tw" cx="850" cy="736" r="1" fill="#FFFFFF" style="animation-delay: -1.1s"></circle><circle class="tw" cx="1252" cy="333" r="1.4" fill="#FFFFFF" style="animation-delay: -0.6s"></circle><circle class="tw" cx="765" cy="260" r="1" fill="#FFFFFF" style="animation-delay: -1.2s"></circle><circle class="tw" cx="570" cy="679" r="0.8" fill="#FFFFFF" style="animation-delay: -2.1s"></circle><circle class="tw" cx="1120" cy="642" r="0.8" fill="#FFFFFF" style="animation-delay: -1.6s"></circle><circle class="tw" cx="617" cy="357" r="1" fill="#FFFFFF" style="animation-delay: -1.6s"></circle><circle class="tw" cx="695" cy="854" r="1" fill="#FFFFFF" style="animation-delay: -2.9s"></circle><circle class="tw" cx="264" cy="689" r="1" fill="#FFFFFF" style="animation-delay: -2.4s"></circle><circle class="tw" cx="1315" cy="811" r="1" fill="#FFFFFF" style="animation-delay: -1.4s"></circle><circle class="tw" cx="321" cy="870" r="1" fill="#FFFFFF" style="animation-delay: -1.7s"></circle><circle class="tw" cx="407" cy="396" r="1.4" fill="#FFFFFF" style="animation-delay: -0.3s"></circle><circle class="tw" cx="1355" cy="260" r="1" fill="#FFFFFF" style="animation-delay: -0.3s"></circle><circle class="tw" cx="1158" cy="889" r="1.4" fill="#FFFFFF" style="animation-delay: -0.4s"></circle><circle class="tw" cx="1289" cy="837" r="1" fill="#FFFFFF" style="animation-delay: -1.3s"></circle><circle class="tw" cx="463" cy="765" r="1" fill="#FFFFFF" style="animation-delay: -1.4s"></circle><circle class="tw" cx="777" cy="653" r="0.8" fill="#FFFFFF" style="animation-delay: -1.8s"></circle><circle class="tw" cx="532" cy="568" r="1" fill="#FFFFFF" style="animation-delay: -0.8s"></circle><circle class="tw" cx="40" cy="586" r="1" fill="#FFFFFF" style="animation-delay: -1.5s"></circle><circle class="tw" cx="586" cy="406" r="1" fill="#FFFFFF" style="animation-delay: -0.1s"></circle><circle class="tw" cx="1351" cy="896" r="1" fill="#FFFFFF" style="animation-delay: -0.7s"></circle><circle class="tw" cx="81" cy="399" r="1" fill="#FFFFFF" style="animation-delay: -0.0s"></circle><circle class="tw" cx="1090" cy="833" r="1" fill="#FFFFFF" style="animation-delay: -0.7s"></circle><circle class="tw" cx="971" cy="297" r="0.8" fill="#FFFFFF" style="animation-delay: -1.5s"></circle><circle class="tw" cx="316" cy="552" r="1" fill="#FFFFFF" style="animation-delay: -1.5s"></circle><circle class="tw" cx="972" cy="790" r="1.4" fill="#FFFFFF" style="animation-delay: -2.6s"></circle><circle class="tw" cx="242" cy="276" r="0.8" fill="#FFFFFF" style="animation-delay: -0.9s"></circle><circle class="tw" cx="1092" cy="604" r="1.4" fill="#FFFFFF" style="animation-delay: -0.9s"></circle><circle class="tw" cx="1085" cy="287" r="1" fill="#FFFFFF" style="animation-delay: -1.0s"></circle><circle class="tw" cx="1396" cy="864" r="0.8" fill="#FFFFFF" style="animation-delay: -0.1s"></circle><circle class="tw" cx="516" cy="826" r="1" fill="#FFFFFF" style="animation-delay: -2.1s"></circle><circle class="tw" cx="220" cy="818" r="0.8" fill="#FFFFFF" style="animation-delay: -0.0s"></circle><circle class="tw" cx="875" cy="869" r="1.4" fill="#FFFFFF" style="animation-delay: -2.1s"></circle><circle class="tw" cx="1294" cy="753" r="1" fill="#FFFFFF" style="animation-delay: -1.4s"></circle><circle class="tw" cx="1397" cy="461" r="1" fill="#FFFFFF" style="animation-delay: -1.4s"></circle><circle class="tw" cx="135" cy="570" r="0.8" fill="#FFFFFF" style="animation-delay: -2.1s"></circle><circle class="tw" cx="886" cy="856" r="1" fill="#FFFFFF" style="animation-delay: -1.9s"></circle><circle class="tw" cx="967" cy="578" r="0.8" fill="#FFFFFF" style="animation-delay: -0.5s"></circle><circle class="tw" cx="1423" cy="822" r="1" fill="#FFFFFF" style="animation-delay: -2.9s"></circle><circle class="tw" cx="1101" cy="417" r="1" fill="#FFFFFF" style="animation-delay: -1.8s"></circle><circle class="tw" cx="99" cy="330" r="1.4" fill="#FFFFFF" style="animation-delay: -0.7s"></circle><circle class="tw" cx="174" cy="324" r="1.4" fill="#FFFFFF" style="animation-delay: -2.8s"></circle><circle class="tw" cx="682" cy="699" r="0.8" fill="#FFFFFF" style="animation-delay: -3.0s"></circle><circle class="tw" cx="1436" cy="758" r="0.8" fill="#FFFFFF" style="animation-delay: -0.4s"></circle></svg>
+<div style="position: relative; max-width: 1280px; margin: 0 auto; padding: 320px 24px 0; display: flex; flex-direction: column; gap: 56px">
+<div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start">
+<div style="flex: 1.4 1 320px; display: flex; flex-direction: column; gap: 16px">
+<span style="font-size: 30px; font-weight: 800; letter-spacing: -0.02em">Письма о&nbsp;новых направлениях</span>
+<span style="font-size: 15px; line-height: 1.6; color: #B8CCDD">Раз в&nbsp;месяц: новые города, сезонные подсказки и&nbsp;готовые маршруты.</span>
+<form onSubmit="{{subscribe}}" style="display: flex; gap: 8px; padding: 6px; border-radius: 16px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2)">
+<label style="flex: 1 1 auto; display: flex"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Электронная почта</span><input type="email" placeholder="name@example.ru" style="flex: 1 1 auto; min-width: 0; min-height: 48px; padding: 0 12px; border: 0; background: transparent; color: #FFFFFF; font-family: inherit; font-size: 15px"></label>
+<button type="submit" style="min-height: 48px; padding: 0 18px; border: 0; border-radius: 12px; background: #C8146F; color: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer">{{subLabel}}</button>
+</form>
+</div>
+<nav aria-label="Сервис" style="flex: 1 1 160px; display: flex; flex-direction: column; gap: 12px"><span style="font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #7FD3F2">Сервис</span><a href="Quiz.dc.html" style="color: #D7E6F2; font-size: 15px">Подбор поездки</a><a href="Route.dc.html" style="color: #D7E6F2; font-size: 15px">Маршрут</a><a href="Data.dc.html" style="color: #D7E6F2; font-size: 15px">Бюджет</a><a href="Board.dc.html" style="color: #D7E6F2; font-size: 15px">Табло</a><a href="Packing.dc.html" style="color: #D7E6F2; font-size: 15px">Сборы</a></nav><nav aria-label="Направления" style="flex: 1 1 160px; display: flex; flex-direction: column; gap: 12px"><span style="font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #7FD3F2">Направления</span><a href="CityIstanbul.dc.html" style="color: #D7E6F2; font-size: 15px">Стамбул</a><a href="CityTbilisi.dc.html" style="color: #D7E6F2; font-size: 15px">Тбилиси</a><a href="Cards.dc.html" style="color: #D7E6F2; font-size: 15px">Ереван</a><a href="Cards.dc.html" style="color: #D7E6F2; font-size: 15px">Пекин</a><a href="Cards.dc.html" style="color: #D7E6F2; font-size: 15px">Занзибар</a></nav><nav aria-label="Проект" style="flex: 1 1 160px; display: flex; flex-direction: column; gap: 12px"><span style="font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #7FD3F2">Проект</span><a href="#how" style="color: #D7E6F2; font-size: 15px">Как это работает</a><a href="#faq" style="color: #D7E6F2; font-size: 15px">Частые вопросы</a><a href="Journal.dc.html" style="color: #D7E6F2; font-size: 15px">Дневник</a><a href="Profile.dc.html" style="color: #D7E6F2; font-size: 15px">Профиль</a><a href="#top" style="color: #D7E6F2; font-size: 15px">GitHub</a></nav>
+</div>
+</div>
+<div aria-hidden="true" style="position: relative; margin-top: 64px; height: 300px">
+<span class="wordmark" style="position: absolute; left: 50%; bottom: -36px; transform: translateX(-50%); font-size: 300px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; white-space: nowrap; background: linear-gradient(180deg, rgba(234,244,251,.95), rgba(127,211,242,.55) 60%, rgba(232,40,142,.35)); -webkit-background-clip: text; background-clip: text; color: transparent">OBLAKO</span>
+<svg viewBox="0 0 1440 300" preserveAspectRatio="none" style="position: absolute; inset: 0; width: 100%; height: 100%"><defs><filter id="fcl"><feGaussianBlur stdDeviation="18"></feGaussianBlur></filter></defs>
+<g filter="url(#fcl)" fill="#0B1F3F" opacity=".95"><g class="sail"><ellipse cx="160" cy="300" rx="260" ry="70"></ellipse><ellipse cx="620" cy="310" rx="320" ry="80"></ellipse></g><g class="sail" style="animation-delay: -12s"><ellipse cx="1100" cy="300" rx="300" ry="74"></ellipse><ellipse cx="1420" cy="310" rx="220" ry="60"></ellipse></g></g></svg>
+</div>
+<div style="position: relative; border-top: 1px solid rgba(255,255,255,.12); background: #06132A">
+<div style="max-width: 1280px; margin: 0 auto; padding: 22px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px; color: #9DB6CC"><span>Проект для&nbsp;портфолио · данные демонстрационные</span><span>Дизайн и&nbsp;разработка&nbsp;— [Имя] · <a href="#top" style="color: #EAF4FB">[GitHub]</a></span></div>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":7600}}'>
+const HD = {"tags": [["море", ["sochi", "zanzibar", "istanbul", "kaliningrad"]], ["вино", ["tbilisi", "yerevan"]], ["горы", ["altai", "sochi", "tbilisi", "yerevan"]], ["храмы", ["tbilisi", "yerevan", "kazan", "beijing"]], ["мегаполис", ["shanghai", "beijing", "istanbul"]], ["экзотика", ["zanzibar", "hanoi"]], ["базары", ["istanbul", "hanoi", "yerevan"]], ["канатка", ["tbilisi", "sochi"]], ["чай", ["sochi", "istanbul", "shanghai"]], ["стрит-фуд", ["hanoi", "istanbul", "shanghai"]], ["пляж", ["zanzibar", "sochi", "kaliningrad"]], ["архитектура", ["kazan", "beijing", "shanghai", "istanbul"]], ["ночная жизнь", ["shanghai", "istanbul", "tbilisi"]], ["история", ["beijing", "yerevan", "kazan", "kaliningrad"]], ["природа", ["altai", "zanzibar", "sochi"]], ["острова", ["zanzibar", "istanbul"]], ["специи", ["zanzibar", "istanbul"]], ["небоскрёбы", ["shanghai"]], ["дюны", ["kaliningrad"]], ["озёра", ["altai", "yerevan"]], ["кухня", ["tbilisi", "yerevan", "kazan", "hanoi"]], ["снег", ["altai", "sochi", "kazan"]]], "cities": {"tbilisi": {"id": "tbilisi", "name": "Тбилиси", "country": "Грузия", "daily": 6000, "flight": 25000, "c1": "#8E1B3A", "c2": "#E9A07E", "ft": "2 ч 45 мин", "ftm": 165, "visa": "Не нужна", "best": "апр, май, июн, сен"}, "kazan": {"id": "kazan", "name": "Казань", "country": "Россия", "daily": 5000, "flight": 8000, "c1": "#1F7A4D", "c2": "#D9B44A", "ft": "1 ч 30 мин", "ftm": 90, "visa": "Не нужна", "best": "янв, фев, май, июн"}, "yerevan": {"id": "yerevan", "name": "Ереван", "country": "Армения", "daily": 5500, "flight": 22000, "c1": "#C2551F", "c2": "#7A2E2E", "ft": "3 ч", "ftm": 180, "visa": "Не нужна", "best": "апр, май, июн, сен"}, "beijing": {"id": "beijing", "name": "Пекин", "country": "Китай", "daily": 9000, "flight": 45000, "c1": "#B71C1C", "c2": "#E9C77E", "ft": "7 ч 30 мин", "ftm": 450, "visa": "Безвиз*", "best": "апр, май, сен, окт"}, "istanbul": {"id": "istanbul", "name": "Стамбул", "country": "Турция", "daily": 8000, "flight": 28000, "c1": "#0B6E8A", "c2": "#C8A24A", "ft": "3 ч 40 мин", "ftm": 220, "visa": "Не нужна до 60 дней", "best": "апр, май, июн, сен"}, "sochi": {"id": "sochi", "name": "Сочи", "country": "Россия", "daily": 7000, "flight": 12000, "c1": "#0A79A8", "c2": "#3FB98C", "ft": "2 ч 30 мин", "ftm": 150, "visa": "Не нужна", "best": "янв, фев, мар, июн"}, "hanoi": {"id": "hanoi", "name": "Ханой", "country": "Вьетнам", "daily": 5000, "flight": 55000, "c1": "#2E7D32", "c2": "#E0A82E", "ft": "9 ч", "ftm": 540, "visa": "Безвиз до 45 дней*", "best": "янв, фев, мар, апр"}, "zanzibar": {"id": "zanzibar", "name": "Занзибар", "country": "Танзания", "daily": 10000, "flight": 70000, "c1": "#00939A", "c2": "#F28C28", "ft": "9 ч 30 мин", "ftm": 570, "visa": "E-visa*", "best": "янв, фев, июн, июл"}, "shanghai": {"id": "shanghai", "name": "Шанхай", "country": "Китай", "daily": 10000, "flight": 48000, "c1": "#2B2D6E", "c2": "#E8288E", "ft": "9 ч", "ftm": 540, "visa": "Безвиз*", "best": "мар, апр, май, окт"}, "altai": {"id": "altai", "name": "Алтай", "country": "Россия", "daily": 5000, "flight": 18000, "c1": "#2F6B4F", "c2": "#6FA8D6", "ft": "4 ч 30 мин", "ftm": 270, "visa": "Не нужна", "best": "июн, июл, авг, сен"}, "kaliningrad": {"id": "kaliningrad", "name": "Калининград", "country": "Россия", "daily": 5500, "flight": 10000, "c1": "#3E5C86", "c2": "#E9A43C", "ft": "2 ч", "ftm": 120, "visa": "Не нужна", "best": "май, июн, июл, авг"}}, "stories": [["Неделя в Стамбуле", ["Начали с Балата: цветные дома лучше снимать утром", "Паром в Кадыкёй — самая дешёвая экскурсия по Босфору", "Итог: хотим вернуться осенью"]], ["Тбилиси на выходные", ["Поселились в Сололаки — всё пешком", "Канатка к Нарикале на закате", "Серные бани — обязательно"]], ["Закат на Босфоре", ["Паром отходит от Эминёню каждые 20 минут", "Чай на палубе и чайки за кормой", "Лучший вид — с верхней палубы"]], ["Хинкали-тур", ["Пять хинкальных за два дня", "Едят руками, хвостик оставляют", "Победила маленькая в Сололаки"]], ["Мцхета за полдня", ["Маршрутка от Дидубе — 40 минут", "Джвари на холме над слиянием рек", "Обратно — через Светицховели"]], ["Базары и лампы", ["Гранд-базар: 60 улиц под одной крышей", "Торговаться — нормально", "Лампу везли в ручной клади"]], ["Ночной Тбилиси", ["Подсветка крепости видна отовсюду", "Мост Мира сияет после заката", "Ужин на набережной Куры"]]], "faq": [["Это бесплатно?", "Да. Все инструменты бесплатны, регистрация не нужна."], ["Можно купить билет прямо здесь?", "Нет. Бронирование в OBLAKO демонстрационное: показывает, как мог бы выглядеть процесс."], ["Откуда погода и курсы?", "Погода — из открытого сервиса Open-Meteo, курсы валют — с сайта Банка России."], ["Как работает подбор поездки?", "Три вопроса: настроение, даты, бюджет и компания. Алгоритм сравнивает ответы с данными 11 направлений и собирает готовый тур."], ["Где хранятся маршруты?", "В вашем браузере. На сервер ничего не уходит, поэтому на другом устройстве маршрутов не будет."], ["Насколько свежая информация о визах?", "На каждой странице направления указана дата проверки. Перед поездкой сверяйтесь с официальными источниками."]], "gauges": [[11, 12], [8, 10], [2, 4], [0, 10]], "stopsX": [90, 260, 440, 600]};
+class Component extends DCLogic {
+  state = { mx: 0.5, my: 0.5, sub: false, hp: 0, gOn: false, tag: 0, ca: 'istanbul', cb: 'tbilisi', split: 50, si: 0, stOpen: false, ss: 0, msgs: [[0, 'Привет! Я\u00a0Облако. Спросите что-нибудь из\u00a0списка слева\u00a0— отвечу за\u00a0секунду.']], typing: false, asked: [], torn: false, tkDx: 0, };
+  setupGlobe() {
+    const hex = '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002ff4fffee0000002000000000000000000033fcfffff000780000000c00000000000010bb00fffff80000000e002f8000000000003c0b4003fff00000006003fe80080008040007c6ff03ffe000000041dfffff7f80003ffffd45b781ff80003fe15ebfffffffffff0fffffffe3e1fc04003fd3fffffffffffff00fffffff51c1f00801f7fffffffffffffff03ffffffc0600600003e7ffffffffffffeb800607fffe07e0000003e3fffffffffff80c000801ffff8fe00000214fffffffffffe038004000ffffeff8000091fffffffffffff0300000007ffffffc00001ffffffffffffff0000000003fffff4400001ffffffffffffff0000000001fffffd000000fff5fffffffffe8000000003fffff0000001ebe0fffffffffc4000000003ffffe000000786f6fffffffff08000000001ffffc000000f029ffffffffe208000000001ffffc0000000f007ffffffff1300000000007fff00000007f003ffffffff0400000000005ffe0000000ffcebffffffff8000000000003fc10000000fffffefffffff8000000000000f810000003ffffdf1ffffff00000000000007800000003ffffdfe1ffffe80000000000003880000007ffffeff0fe7e000000000000003d81800003ffffefe07c7d000000000000000780100007fffff780701e0800000000000000e0000007fffffe00301f0c0000000000000002800007fffff9003007040000000000000017f00001ffffff000010000000000000000007f80000fbffff000808000000000000000007ff000001fffe00001860000000000000000fff000000fffc000008e0000000000000000fff400000fff800001ce8c00000000000000ffff80000fff0000004283c0000000000000ffffc00007ff0000002001e0000000000000ffffc00007ff00000002a0800000000000007fff800003ff0000000008000000000000003fff000007ff100000000c000000000000001fff000007ff300000007e400000000000000fff000007fe300000007fe00000000000000fff000007fc20000003fff00000000000000ffc000003fc60000007fff80000000000000ff0000003f800000003fff80000000000001ff0000001f800000003fff80000000000001fe0000001f000000003fff80000000000001fe0000001e00000000383f80000000000001f80000000000000000000f00000000000001f00000000000000000000000200000000003c00000000000000000000200440000000001c00000000000000000000000800000000003800000000000000000000001000000000003800000000000000000000000000000000003000000000000000000000000000000000001800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000200000000000c0000cc0c00000000000000060000000004fff1fffffffc0000000000001e000004ffffffe7ffffffffe000000400febf00003fffffffffffffffffe00003fffffff80007ffffffffffffffffff80003ffffffe880c7fffffffffffffffffff80007ffffffff800ffffffffffffffffffff0001fffffffffffffffffffffffffffffffff8ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff';
+    const W = 144, H = 72;
+    const bits = new Uint8Array(W * H);
+    for (let i = 0; i < hex.length; i++) {
+      const v = parseInt(hex[i], 16);
+      for (let b = 0; b < 4; b++) bits[i * 4 + b] = (v >> (3 - b)) & 1;
+    }
+    const isLand = (lat, lon) => {
+      const j = Math.min(H - 1, Math.floor((90 - lat) / 180 * H));
+      const i = Math.min(W - 1, Math.floor((lon + 180) / 360 * W));
+      return bits[j * W + i] === 1;
+    };
+    const N = 5200;
+    const pts = [];
+    const ga = Math.PI * (3 - Math.sqrt(5));
+    for (let k = 0; k < N; k++) {
+      const y = 1 - (k / (N - 1)) * 2;
+      const r = Math.sqrt(1 - y * y);
+      const th = ga * k;
+      const x = Math.cos(th) * r, z = Math.sin(th) * r;
+      const lat = Math.asin(y) * 180 / Math.PI;
+      const lon = Math.atan2(x, z) * 180 / Math.PI;
+      pts.push({ x, y, z, land: isLand(lat, lon) });
+    }
+    const v3 = (lat, lon) => {
+      const a = lat * Math.PI / 180, o = lon * Math.PI / 180;
+      return { x: Math.cos(a) * Math.sin(o), y: Math.sin(a), z: Math.cos(a) * Math.cos(o) };
+    };
+    const home = v3(55.75, 37.62);
+    const dests = [[41.01, 28.98], [41.72, 44.79], [40.18, 44.51], [43.6, 39.73], [54.71, 20.51], [55.79, 49.12], [51.96, 85.96], [39.9, 116.4], [31.23, 121.47], [-6.16, 39.19], [21.03, 105.85]].map((d) => v3(d[0], d[1]));
+    const arcs = dests.map((d) => {
+      const dot = Math.max(-1, Math.min(1, home.x * d.x + home.y * d.y + home.z * d.z));
+      const om = Math.acos(dot);
+      const lift = 0.06 + om * 0.22;
+      const P = [];
+      for (let s = 0; s <= 48; s++) {
+        const t = s / 48;
+        const a = Math.sin((1 - t) * om) / Math.sin(om), b = Math.sin(t * om) / Math.sin(om);
+        const h = 1 + lift * Math.sin(Math.PI * t);
+        P.push({ x: (a * home.x + b * d.x) * h, y: (a * home.y + b * d.y) * h, z: (a * home.z + b * d.z) * h });
+      }
+      return P;
+    });
+    this.g = { pts, home, dests, arcs, rot: -0.62, tilt: 0.42, last: 0, time: 0 };
+  }
+  drawGlobe(now) {
+    const cv = this.canvas;
+    if (!cv || !this.g) return;
+    const g = this.g;
+    const dt = g.last ? Math.min(0.05, (now - g.last) / 1000) : 0;
+    g.last = now;
+    if (!this.reduce) { g.time += dt; if (!this.dragging) g.rot += dt * 0.16; }
+    const ctx = cv.getContext('2d');
+    const S = cv.width, cx = S / 2, cy = S / 2, R = S * 0.36;
+    ctx.clearRect(0, 0, S, S);
+    const cr = Math.cos(g.rot), sr = Math.sin(g.rot), ct = Math.cos(g.tilt), st = Math.sin(g.tilt);
+    const proj = (p) => {
+      const x1 = p.x * cr + p.z * sr, z1 = -p.x * sr + p.z * cr;
+      const y2 = p.y * ct - z1 * st, z2 = p.y * st + z1 * ct;
+      return { x: cx + x1 * R, y: cy - y2 * R, z: z2, d: Math.sqrt(x1 * x1 + y2 * y2) };
+    };
+    let grd = ctx.createRadialGradient(cx, cy, R * 0.92, cx, cy, R * 1.34);
+    grd.addColorStop(0, 'rgba(56,189,232,0.42)');
+    grd.addColorStop(0.45, 'rgba(139,108,240,0.14)');
+    grd.addColorStop(1, 'rgba(56,189,232,0)');
+    ctx.fillStyle = grd; ctx.beginPath(); ctx.arc(cx, cy, R * 1.34, 0, Math.PI * 2); ctx.fill();
+    grd = ctx.createRadialGradient(cx - R * 0.35, cy - R * 0.4, R * 0.1, cx, cy, R);
+    grd.addColorStop(0, 'rgba(255,255,255,0.95)');
+    grd.addColorStop(0.55, 'rgba(227,246,253,0.85)');
+    grd.addColorStop(1, 'rgba(160,214,238,0.9)');
+    ctx.fillStyle = grd; ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fill();
+    const ds = S / 520;
+    for (let k = 0; k < g.pts.length; k++) {
+      const p = g.pts[k];
+      const q = proj(p);
+      if (q.z <= 0) continue;
+      if (p.land) {
+        const a = 0.25 + 0.75 * q.z;
+        ctx.fillStyle = 'rgba(' + Math.round(56 - 46 * q.z) + ',' + Math.round(150 - 29 * q.z) + ',' + Math.round(220 - 52 * q.z) + ',' + a + ')';
+        ctx.beginPath(); ctx.arc(q.x, q.y, (1.5 + q.z * 0.9) * ds, 0, Math.PI * 2); ctx.fill();
+      } else {
+        ctx.fillStyle = 'rgba(56,189,232,' + (0.1 + 0.14 * q.z) + ')';
+        ctx.beginPath(); ctx.arc(q.x, q.y, 0.9 * ds, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+    const n = g.arcs.length;
+    for (let i = 0; i < n; i++) {
+      const P = g.arcs[i];
+      const head = this.reduce ? 1 : ((g.time * 0.22 + i / n) % 1) * 1.5;
+      const tail = this.reduce ? 0 : Math.max(0, head - 0.55);
+      const hEnd = Math.min(1, head);
+      let prev = null;
+      for (let s = 0; s < P.length; s++) {
+        const t = s / (P.length - 1);
+        const q = proj(P[s]);
+        const hidden = q.z < 0 && q.d < 1;
+        if (prev && t >= tail && t <= hEnd && !hidden && !prev.hidden) {
+          const f = (t - tail) / Math.max(0.0001, hEnd - tail);
+          ctx.strokeStyle = 'rgba(' + Math.round(232 - 93 * t) + ',' + Math.round(40 + 68 * t) + ',' + Math.round(142 + 98 * t) + ',' + (this.reduce ? 0.85 : 0.15 + 0.85 * f) + ')';
+          ctx.lineWidth = 2.4 * ds; ctx.lineCap = 'round';
+          ctx.beginPath(); ctx.moveTo(prev.x, prev.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+        }
+        prev = { x: q.x, y: q.y, hidden };
+      }
+      if (!this.reduce && head <= 1) {
+        const q = proj(P[Math.round(hEnd * (P.length - 1))]);
+        if (!(q.z < 0 && q.d < 1)) {
+          const gl = ctx.createRadialGradient(q.x, q.y, 0, q.x, q.y, 12 * ds);
+          gl.addColorStop(0, 'rgba(255,255,255,1)'); gl.addColorStop(0.35, 'rgba(232,40,142,0.8)'); gl.addColorStop(1, 'rgba(232,40,142,0)');
+          ctx.fillStyle = gl; ctx.beginPath(); ctx.arc(q.x, q.y, 12 * ds, 0, Math.PI * 2); ctx.fill();
+        }
+      }
+    }
+    for (let i = 0; i < g.dests.length; i++) {
+      const q = proj(g.dests[i]);
+      if (q.z <= 0) continue;
+      ctx.fillStyle = '#8B6CF0'; ctx.strokeStyle = '#FFFFFF'; ctx.lineWidth = 2 * ds;
+      ctx.beginPath(); ctx.arc(q.x, q.y, 4.5 * ds, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    }
+    const h = proj(g.home);
+    if (h.z > 0) {
+      const pr = this.reduce ? 0 : (g.time % 2) / 2;
+      ctx.strokeStyle = 'rgba(200,20,111,' + (1 - pr) + ')'; ctx.lineWidth = 2 * ds;
+      ctx.beginPath(); ctx.arc(h.x, h.y, (6 + pr * 18) * ds, 0, Math.PI * 2); ctx.stroke();
+      ctx.fillStyle = '#C8146F'; ctx.strokeStyle = '#FFFFFF'; ctx.lineWidth = 2.5 * ds;
+      ctx.beginPath(); ctx.arc(h.x, h.y, 6 * ds, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    }
+    grd = ctx.createRadialGradient(cx - R * 0.45, cy - R * 0.5, 0, cx - R * 0.45, cy - R * 0.5, R * 0.9);
+    grd.addColorStop(0, 'rgba(255,255,255,0.55)'); grd.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = grd; ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,0.8)'; ctx.lineWidth = 1.5 * ds;
+    ctx.beginPath(); ctx.arc(cx, cy, R, Math.PI * 0.95, Math.PI * 1.55); ctx.stroke();
+  }
+  componentDidMount() {
+    this.reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    this.setupGlobe();
+    const loop = (t) => { this.drawGlobe(t); if (!this.reduce) this.raf = requestAnimationFrame(loop); };
+    this.raf = requestAnimationFrame(loop);
+    this.homeMount();
+  }
+  componentWillUnmount() { cancelAnimationFrame(this.raf); this.homeUnmount(); }
+
+  homeMount() {
+    this.reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const H = HD;
+    const pts = H.tags.map((t, i) => { const n = H.tags.length, y = 1 - (i + .5) / n * 2, r = Math.sqrt(1 - y * y), th = Math.PI * (3 - Math.sqrt(5)) * i; return [Math.cos(th) * r, y, Math.sin(th) * r]; });
+    this.sph = { pts, ay: 0, ax: -0.25, tx: 0, ty: 0, last: 0 };
+    const loop = (now) => {
+      const s = this.sph, dt = s.last ? Math.min(0.05, (now - s.last) / 1000) : 0; s.last = now;
+      let ch = {};
+      if (this.cloudOn && !this.reduce) { s.ay += dt * (0.28 + s.tx * 1.2); s.ax += (s.ty * 0.8 - 0.25 - s.ax) * Math.min(1, dt * 2); ch.sph = now; }
+      if (this.howOn && !this.reduce && !this.scrollMode && now > (this.howHold || 0)) {
+        const t = ((now - (this.howT0 || (this.howT0 = now))) / 11000) % 1.15; ch.hp = Math.min(1, t);
+      }
+      if (Object.keys(ch).length && now - (this.lastSet || 0) > 32) { this.lastSet = now; this.setState(ch); }
+      this.raf3 = requestAnimationFrame(loop);
+    };
+    this.raf3 = requestAnimationFrame(loop);
+    this.onScroll = () => {
+      const el = this.howEl; if (!el) return;
+      const de = document.documentElement; if (de.scrollHeight <= window.innerHeight + 40) return;
+      this.scrollMode = true;
+      const r = el.getBoundingClientRect(); const p = (window.innerHeight * 0.75 - r.top) / (r.height * 0.75);
+      this.setState({ hp: Math.max(0, Math.min(1, p)) });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    if (this.reduce) this.setState({ hp: 1, gOn: true });
+  }
+  homeUnmount() { cancelAnimationFrame(this.raf3); window.removeEventListener('scroll', this.onScroll); (this.ios || []).forEach((o) => o.disconnect()); clearTimeout(this.chatT); clearInterval(this.stT); }
+  watch(el, key, cb) {
+    if (!el || this['w_' + key]) return; this['w_' + key] = true;
+    if (!('IntersectionObserver' in window)) { cb(true); return; }
+    const io = new IntersectionObserver((en) => cb(en[0].isIntersecting), { threshold: 0.2 });
+    io.observe(el); (this.ios = this.ios || []).push(io);
+  }
+  openStory(i) { clearInterval(this.stT); this.setState({ stOpen: true, si: i, ss: 0 }); if (this.reduce) return; this.stT = setInterval(() => { const n = this.state.ss + 1; if (n > 2) { clearInterval(this.stT); this.setState({ stOpen: false }); } else this.setState({ ss: n }); }, 3200); }
+  ask(i) {
+    const H = HD, st = this.state; if (st.typing) return;
+    const q = typeof i === 'number' ? H.faq[i][0] : i, a = typeof i === 'number' ? H.faq[i][1] : 'Пока я отвечаю на частые вопросы — выберите один слева. Живого оператора подключим в продукте.';
+    this.setState({ msgs: st.msgs.concat([[1, q]]), typing: true, asked: typeof i === 'number' ? st.asked.concat([i]) : st.asked });
+    this.scrollChat();
+    clearTimeout(this.chatT);
+    this.chatT = setTimeout(() => { this.setState({ msgs: this.state.msgs.concat([[0, a]]), typing: false }); this.scrollChat(); }, this.reduce ? 200 : 1100);
+  }
+  scrollChat() { setTimeout(() => { if (this.chatEl) this.chatEl.scrollTop = this.chatEl.scrollHeight; }, 30); }
+  homeVals() {
+    const H = HD, st = this.state, out = {};
+    // how
+    const hp = st.hp;
+    const L = this.howPathEl && this.howPathEl.getTotalLength ? this.howPathEl.getTotalLength() : 0;
+    let px = 40, py = 430, ang = -40;
+    if (L) { const a = this.howPathEl.getPointAtLength(hp * L), b = this.howPathEl.getPointAtLength(Math.min(L, hp * L + 2)); px = a.x; py = a.y; ang = Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI; if (hp >= 1) ang = -30; }
+    const active = H.stopsX.reduce((n, x, i) => (px >= x - 6 ? i : n), -1);
+    out.howRef = (el) => { this.howEl = el; this.watch(el, 'how', (on) => { this.howOn = on; if (on) this.setState({ gOn: true }); }); };
+    out.howPath = (el) => { if (el && !this.howPathEl) { this.howPathEl = el; this.setState({ hp: st.hp + 0.0001 }); } };
+    out.howTrail = 'stroke-dasharray: 100; stroke-dashoffset: ' + (100 - hp * 100);
+    out.planeS = 'position: absolute; left: ' + (px - 20) + 'px; top: ' + (py - 20) + 'px; transform: rotate(' + ang + 'deg); pointer-events: none';
+    for (let i = 0; i < 4; i++) {
+      const on = i <= active, cur = i === Math.max(0, active);
+      out['hs' + i] = { cur: cur ? 'step' : 'false', go: () => { this.howHold = performance.now() + 7000; this.howT0 = 0; this.setState({ hp: [0.08, 0.36, 0.62, 0.93][i] }); },
+        s: 'display: flex; align-items: flex-start; gap: 18px; padding: 18px 20px; border: 0; border-radius: 22px; font-family: inherit; color: #0B2540; cursor: pointer; transition: background .4s, transform .4s, box-shadow .4s; ' + (cur ? 'background: rgba(255,255,255,.85); transform: translateX(8px); box-shadow: 0 18px 40px rgba(11,37,64,.1)' : 'background: transparent'),
+        num: 'flex: none; width: 46px; height: 46px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800; transition: background .4s, color .4s; ' + (on ? 'background: #C8146F; color: #FFFFFF' : 'background: rgba(11,37,64,.07); color: #45607A'),
+        dot: 'transition: fill .4s; fill: ' + (on ? '#C8146F' : 'rgba(11,37,64,.2)') };
+      out['hm' + i] = 'transition: opacity .5s, transform .6s cubic-bezier(.2,1.4,.4,1); opacity: ' + (on ? 1 : 0) + '; transform: ' + (on ? (i === 3 ? 'rotate(5deg)' : 'none') : 'translateY(14px) scale(.85)');
+    }
+    H.gauges.forEach((g, i) => { const v = st.gOn ? g[0] : 0; out['gv' + i] = v; out['gg' + i] = 'transform-origin: 60px 62px; transition: transform 1.8s cubic-bezier(.3,1.4,.4,1) ' + (i * 0.15) + 's; transform: rotate(' + (-90 + 180 * v / g[1]) + 'deg)'; });
+    // cloud
+    const s = this.sph, R = 230;
+    out.cloudRef = (el) => this.watch(el, 'cloud', (on) => { this.cloudOn = on; });
+    out.cloudMove = (e) => { if (!s) return; const r = e.currentTarget.getBoundingClientRect(); s.tx = (e.clientX - r.left) / r.width - .5; s.ty = (e.clientY - r.top) / r.height - .5; };
+    out.cloudLeave = () => { if (s) { s.tx = 0; s.ty = 0; } };
+    H.tags.forEach((t, i) => {
+      let x = 0, y = 0, z = 0;
+      if (s) { const p = s.pts[i], ca = Math.cos(s.ay), sa = Math.sin(s.ay), cx = Math.cos(s.ax), sx = Math.sin(s.ax); const x1 = p[0] * ca + p[2] * sa, z1 = -p[0] * sa + p[2] * ca; x = x1; y = p[1] * cx - z1 * sx; z = p[1] * sx + z1 * cx; }
+      const d = (z + 1) / 2, on = st.tag === i;
+      out['tg' + i] = { on: on ? 'true' : 'false', pick: () => this.setState({ tag: on ? -1 : i }),
+        s: 'position: absolute; left: 50%; top: 50%; padding: 8px 14px; min-height: 40px; border-radius: 12px; white-space: nowrap; font-family: inherit; font-size: ' + Math.round(14 + d * 10) + 'px; font-weight: ' + (d > .6 ? 800 : 600) + '; cursor: pointer; transition: background .3s, color .3s, box-shadow .3s; transform: translate(-50%, -50%) translate(' + (x * R).toFixed(1) + 'px, ' + (y * R).toFixed(1) + 'px) scale(' + (0.7 + d * 0.45).toFixed(3) + '); z-index: ' + Math.round(d * 100) + '; opacity: ' + (on ? 1 : (0.28 + d * 0.72)).toFixed(2) + '; ' + (on ? 'border: 0; background: #C8146F; color: #FFFFFF; box-shadow: 0 12px 26px rgba(200,20,111,.35)' : 'border: 1px solid rgba(255,255,255,.9); background: rgba(255,255,255,.66); color: #0B2540; box-shadow: 0 6px 16px rgba(11,37,64,.06)') };
+    });
+    const tg = st.tag > -1 ? H.tags[st.tag] : null;
+    out.cloudNote = tg ? 'Слово «' + tg[0] + '»: ' + tg[1].length + ' ' + (tg[1].length > 4 ? 'направлений' : tg[1].length > 1 ? 'направления' : 'направление') : 'Нажмите на любое слово в облаке';
+    out.cloudHits = tg ? tg[1].map((id, k) => { const c = H.cities[id]; return { name: c.name, country: c.country, note: 'от ' + String(c.flight).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' ₽ перелёт', href: id === 'istanbul' ? 'CityIstanbul.dc.html' : id === 'tbilisi' ? 'CityTbilisi.dc.html' : 'Cards.dc.html',
+      s: 'position: relative; flex: 0 1 260px; min-height: 140px; box-sizing: border-box; padding: 22px 22px 18px; border-radius: 8px 22px 22px 22px; display: flex; flex-direction: column; justify-content: flex-end; gap: 2px; color: #FFFFFF; background: linear-gradient(135deg, ' + c.c1 + ', ' + c.c2 + '); box-shadow: 0 20px 40px rgba(11,37,64,.18); animation-delay: ' + (k * 0.08) + 's',
+      tab: 'position: absolute; left: 0; top: -14px; width: 90px; height: 16px; border-radius: 8px 12px 0 0; background: ' + c.c1 }; }) : [];
+    // compare
+    const A = H.cities[st.ca], B = H.cities[st.cb], rk = ['flight', 'daily', 'ftm', 'visa', 'best'], fmtR = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' ₽';
+    const val = (c, k) => k === 'flight' || k === 'daily' ? '≈ ' + fmtR(c[k]) : k === 'ftm' ? c.ft : c[k];
+    const better = (k, x, y) => (k === 'flight' || k === 'daily' || k === 'ftm') && x[k] < y[k];
+    const badge = (on) => 'padding: 3px 8px; border-radius: 8px; background: rgba(255,255,255,.25); font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; ' + (on ? '' : 'display: none');
+    out.ac = { name: A.name, country: A.country }; out.bc = { name: B.name, country: B.country };
+    rk.forEach((k, i) => { out['ar' + i] = { v: val(A, k), badge: badge(better(k, A, B)) }; out['br' + i] = { v: val(B, k), badge: badge(better(k, B, A)) }; });
+    out.selA = (el) => { if (el) el.value = st.ca; }; out.selB = (el) => { if (el) el.value = st.cb; }; out.cmpSplit = Math.round(st.split);
+    out.pickA = (e) => this.setState({ ca: e.target.value }); out.pickB = (e) => this.setState({ cb: e.target.value });
+    out.aLayer = 'position: absolute; inset: 0; z-index: 2; background: linear-gradient(135deg, ' + A.c1 + ', ' + A.c2 + '); clip-path: inset(0 ' + (100 - st.split) + '% 0 0); -webkit-clip-path: inset(0 ' + (100 - st.split) + '% 0 0); transition: ' + (this.cmpDrag ? 'none' : 'clip-path .5s, -webkit-clip-path .5s');
+    out.bLayer = 'position: absolute; inset: 0; background: linear-gradient(225deg, ' + B.c1 + ', ' + B.c2 + ')';
+    out.cmpLine = 'position: absolute; top: 0; bottom: 0; z-index: 3; width: 4px; margin-left: -2px; background: #FFFFFF; box-shadow: 0 0 20px rgba(0,0,0,.25); left: ' + st.split + '%; transition: ' + (this.cmpDrag ? 'none' : 'left .5s');
+    out.cmpRef = (el) => { this.cmpEl = el; };
+    out.cmpDown = (e) => { this.cmpDrag = true; if (e.currentTarget.setPointerCapture) e.currentTarget.setPointerCapture(e.pointerId); };
+    out.cmpMove = (e) => { if (!this.cmpDrag || !this.cmpEl) return; const r = this.cmpEl.getBoundingClientRect(); this.setState({ split: Math.max(10, Math.min(90, (e.clientX - r.left) / r.width * 100)) }); };
+    out.cmpUp = () => { if (this.cmpDrag) { this.cmpDrag = false; this.setState({ split: st.split }); } };
+    out.cmpKey = (e) => { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); this.setState({ split: Math.max(10, Math.min(90, st.split + (e.key === 'ArrowLeft' ? -5 : 5))) }); } };
+    // stories
+    const n = H.stories.length;
+    out.stPrev = () => this.setState({ si: (st.si + n - 1) % n }); out.stNext = () => this.setState({ si: (st.si + 1) % n });
+    H.stories.forEach((x, i) => {
+      let d = i - st.si; if (d > n / 2) d -= n; if (d < -n / 2) d += n;
+      const a = Math.abs(d);
+      out['sc' + i] = { go: () => (d === 0 ? this.openStory(i) : this.setState({ si: i })),
+        s: 'position: absolute; left: 50%; top: 10px; width: 320px; height: 460px; margin-left: -160px; padding: 0; border: 0; border-radius: 28px; overflow: hidden; cursor: pointer; background: #0B2540; box-shadow: 0 30px 60px rgba(11,37,64,' + (a ? .15 : .35) + '); transition: transform .7s cubic-bezier(.2,.8,.2,1), opacity .5s, filter .5s; z-index: ' + (10 - a) + '; opacity: ' + (a > 3 ? 0 : 1) + '; filter: ' + (a ? 'saturate(.7) brightness(.85)' : 'none') + '; transform: translateX(' + (d * 250) + 'px) translateZ(' + (-a * 160) + 'px) rotateY(' + (d === 0 ? 0 : d > 0 ? -38 : 38) + 'deg)' };
+      out['so' + i] = st.stOpen && st.si === i;
+    });
+    const S = H.stories[st.si];
+    out.stOpen = st.stOpen; out.stTitle = S[0]; out.stText = S[1][st.ss]; out.stTextCls = st.ss % 2 ? 'txtB' : 'txtA';
+    out.stBars = [0, 1, 2].map((k) => ({ cls: k === st.ss && !this.reduce ? 'barRun' : '', s: 'display: block; height: 100%; background: #FFFFFF; width: ' + (k < st.ss ? '100%' : k === st.ss && this.reduce ? '100%' : '0') }));
+    out.stClose = () => { clearInterval(this.stT); this.setState({ stOpen: false }); };
+    out.stBack = () => this.setState({ ss: Math.max(0, st.ss - 1) });
+    out.stFwd = () => { if (st.ss >= 2) { clearInterval(this.stT); this.setState({ stOpen: false }); } else this.setState({ ss: st.ss + 1 }); };
+    // chat
+    out.chatRef = (el) => { this.chatEl = el; };
+    out.chatStatus = st.typing ? 'печатает…' : 'онлайн · отвечает сразу';
+    out.typing = st.typing;
+    out.msgs = st.msgs.map((m) => ({ t: m[1], s: 'max-width: 82%; padding: 12px 16px; font-size: 15px; line-height: 1.45; ' + (m[0] ? 'align-self: flex-end; border-radius: 18px 18px 6px 18px; background: #0B2540; color: #FFFFFF' : 'align-self: flex-start; border-radius: 18px 18px 18px 6px; background: #FFFFFF; color: #0B2540; box-shadow: 0 6px 16px rgba(11,37,64,.06)') }));
+    H.faq.forEach((f, i) => { const done = st.asked.indexOf(i) > -1; out['fq' + i] = { done: done ? 'true' : 'false', ask: () => { if (!done) this.ask(i); },
+      s: 'min-height: 44px; padding: 0 16px; border-radius: 14px; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; transition: background .3s, opacity .3s; ' + (done ? 'border: 1px solid transparent; background: rgba(11,37,64,.05); color: #45607A; opacity: .6; cursor: default' : 'border: 1px solid rgba(255,255,255,.9); background: rgba(255,255,255,.7); color: #0B2540') }; });
+    out.chatSend = (e) => { e.preventDefault(); const f = e.currentTarget, v = f.q && f.q.value.trim(); if (v) { this.ask(v); f.q.value = ''; } };
+    // ticket
+    const dx = st.tkDx;
+    out.tkTorn = st.torn;
+    out.tkMainCls = st.torn ? 'shake' : '';
+    out.tkDown = (e) => { if (st.torn) return; this.tkX = e.clientX; this.tkMoved = false; if (e.currentTarget.setPointerCapture) e.currentTarget.setPointerCapture(e.pointerId); };
+    out.tkMove = (e) => { if (this.tkX == null || st.torn) return; const d = Math.max(0, e.clientX - this.tkX); if (d > 4) this.tkMoved = true; this.setState({ tkDx: d }); };
+    out.tkUp = () => { if (this.tkX == null) return; this.tkX = null; this.setState(st.tkDx > 110 ? { torn: true, tkDx: 0 } : { tkDx: 0 }); };
+    out.tkClick = () => { if (!this.tkMoved && !st.torn) this.setState({ torn: true }); this.tkMoved = false; };
+    out.tkStub = 'position: absolute; inset: 0; width: 100%; padding: 30px 26px; box-sizing: border-box; border: 0; border-radius: 0 28px 28px 0; background: linear-gradient(160deg, #FFFFFF, #FFE3F1); font-family: inherit; color: #0B2540; text-align: left; display: flex; flex-direction: column; justify-content: space-between; gap: 12px; cursor: grab; touch-action: none; transform-origin: 0 100%; -webkit-mask: radial-gradient(circle at 0 0, transparent 16px, #000 17px) top/100% 51% no-repeat, radial-gradient(circle at 0 100%, transparent 16px, #000 17px) bottom/100% 51% no-repeat; ' + (st.torn ? 'transition: transform .9s cubic-bezier(.4,0,.6,1), opacity .9s; transform: translate(240px, 160px) rotate(28deg); opacity: 0; pointer-events: none' : 'transition: ' + (this.tkX != null ? 'none' : 'transform .5s cubic-bezier(.2,1.4,.4,1)') + '; transform: translateX(' + dx + 'px) rotate(' + (dx / 14) + 'deg)');
+    return out;
+  }
+  globeVals() {
+    return {
+      cv: (el) => { this.canvas = el; },
+      down: (e) => { this.dragging = true; this.dx = e.clientX; if (e.currentTarget.setPointerCapture) e.currentTarget.setPointerCapture(e.pointerId); },
+      drag: (e) => {
+        if (!this.dragging || !this.g) return;
+        this.g.rot += (e.clientX - this.dx) * 0.008; this.dx = e.clientX;
+        if (this.reduce) this.drawGlobe(performance.now());
+      },
+      up: () => { this.dragging = false; }
+    };
+  }
+
+  renderVals() {
+    const st = this.state;
+    const extra = Object.assign(this.homeVals(), {
+      toolsRef: (el) => { this.tools = el; },
+      toolsPrev: () => { if (this.tools) this.tools.scrollBy({ left: -320, behavior: 'smooth' }); },
+      toolsNext: () => { if (this.tools) this.tools.scrollBy({ left: 320, behavior: 'smooth' }); },
+      subLabel: st.sub ? 'Готово ✓' : 'Подписаться',
+      subscribe: (e) => { e.preventDefault(); this.setState({ sub: true }); }
+    });
+    const dx = (this.state.mx - 0.5) * 2;
+    const dy = (this.state.my - 0.5) * 2;
+    return Object.assign(this.globeVals(), extra, {
+      shiftA: 'translate(' + (dx * 60) + 'px,' + (dy * 40) + 'px)',
+      shiftB: 'translate(' + (dx * -50) + 'px,' + (dy * -35) + 'px)',
+      shiftC: 'translate(' + (dx * 24) + 'px,' + (dy * 14) + 'px)',
+      move: (e) => {
+        const r = e.currentTarget.getBoundingClientRect();
+        this.setState({ mx: (e.clientX - r.left) / r.width, my: (e.clientY - r.top) / r.height });
+      }
+    });
+  }
+}
+</script>
+</body>
+</html>

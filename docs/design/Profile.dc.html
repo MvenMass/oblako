@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>OBLAKO — профиль</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap">
+<style>
+body{margin:0;background:#F4FAFE}
+a{color:#0B2540;text-decoration:none}a:hover{color:#0A79A8}
+@keyframes aur{0%{transform:translate(0,0) scale(1)}33%{transform:translate(50px,-40px) scale(1.15)}66%{transform:translate(-40px,30px) scale(.92)}100%{transform:translate(0,0) scale(1)}}
+@keyframes shift{to{background-position:300% 0}}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.aur{position:absolute;border-radius:50%;filter:blur(80px);animation:aur 22s ease-in-out infinite;pointer-events:none}
+.grad{background:linear-gradient(90deg,#0A79A8,#E8288E 33%,#8B6CF0 66%,#0A79A8);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shift 8s linear infinite}
+.lg{position:relative;background:rgba(255,255,255,.42);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,.7);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 24px 60px rgba(11,37,64,.1)}
+.rise{animation:rise .8s cubic-bezier(.2,.8,.2,1) both}
+@keyframes sail{0%,100%{transform:translateX(0)}50%{transform:translateX(80px)}}
+@keyframes flow{to{stroke-dashoffset:-1200}}
+@keyframes enterL{0%{transform:translateX(0);opacity:1}100%{transform:translateX(-95%);opacity:0}}
+@keyframes enterR{0%{transform:translateX(0);opacity:1}100%{transform:translateX(95%);opacity:0}}
+@keyframes twinkle{0%,100%{opacity:.25}50%{opacity:1}}
+.sail{animation:sail 40s ease-in-out infinite}
+.ribbon{stroke-dasharray:420 780;animation:flow 11s linear infinite}
+.enterL{animation:enterL 1.5s cubic-bezier(.6,0,.2,1) both .15s}
+.enterR{animation:enterR 1.5s cubic-bezier(.6,0,.2,1) both .15s}
+.tw{animation:twinkle 3s ease-in-out infinite}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.bar{transform-origin:left;animation:grow 1.6s cubic-bezier(.2,.8,.2,1) both .3s}
+@keyframes thump{0%{opacity:0;transform:rotate(calc(var(--r) - 18deg)) scale(2.4)}55%{opacity:1;transform:rotate(var(--r)) scale(.92)}75%{transform:rotate(var(--r)) scale(1.04)}100%{opacity:1;transform:rotate(var(--r)) scale(1)}}
+.stamp{opacity:0;animation:thump .5s cubic-bezier(.3,.7,.3,1) both}
+@media (prefers-reduced-motion: reduce){.stamp{opacity:1}}
+
+@media (prefers-reduced-motion: reduce){.aur,.grad,.rise,.sail,.ribbon,.tw,.bar,.stamp{animation:none !important}.enterL,.enterR{display:none}}
+</style>
+</helmet>
+<div style="position: relative; overflow: hidden; min-height: 2160px; background: #F4FAFE; font-family: 'Onest', system-ui, sans-serif; color: #0B2540">
+<svg aria-hidden="true" viewBox="0 0 1440 1000" preserveAspectRatio="xMidYMid slice" style="position: absolute; top: 0; left: 0; width: 100%; height: 1000px; pointer-events: none">
+<defs><radialGradient id="pcf" cx="45%" cy="35%" r="70%"><stop offset="0" stop-color="#FFFFFF"></stop><stop offset="1" stop-color="#EAF6FC" stop-opacity=".9"></stop></radialGradient><filter id="pcs" x="-40%" y="-60%" width="180%" height="220%"><feGaussianBlur stdDeviation="14"></feGaussianBlur></filter>
+<g id="pcloud"><g fill="url(#pcf)" filter="url(#pcs)"><ellipse cx="150" cy="92" rx="138" ry="26"></ellipse><circle cx="88" cy="76" r="40"></circle><circle cx="150" cy="58" r="56"></circle><circle cx="214" cy="72" r="44"></circle><circle cx="256" cy="86" r="26"></circle></g></g></defs><g transform="translate(-60 120) scale(1.2)" opacity="0.8"><g class="sail" style="animation-delay: -0s"><use href="#pcloud"></use></g></g><g transform="translate(980 60) scale(1.4)" opacity="0.85"><g class="sail" style="animation-delay: -14s"><use href="#pcloud"></use></g></g><g transform="translate(520 520) scale(1.6)" opacity="0.7"><g class="sail" style="animation-delay: -7s"><use href="#pcloud"></use></g></g><g transform="translate(1180 640) scale(1.2)" opacity="0.75"><g class="sail" style="animation-delay: -22s"><use href="#pcloud"></use></g></g></svg><svg aria-hidden="true" viewBox="0 0 1440 1000" preserveAspectRatio="none" style="position: absolute; top: 0; left: 0; width: 100%; height: 1000px; pointer-events: none"><defs><linearGradient id="prb" x1="0" x2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0"></stop><stop offset=".5" stop-color="#FFFFFF" stop-opacity=".9"></stop><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop></linearGradient><filter id="prs"><feGaussianBlur stdDeviation="7"></feGaussianBlur></filter></defs><path class="ribbon" d="M-100 300 C 300 160, 620 480, 980 260 S 1480 120, 1600 220" fill="none" stroke="url(#prb)" stroke-width="26" filter="url(#prs)"></path><path class="ribbon" d="M-100 360 C 320 220, 660 540, 1020 320 S 1500 180, 1600 280" fill="none" stroke="url(#prb)" stroke-width="8" style="animation-delay: -4s"></path></svg><svg aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: .06; mix-blend-mode: multiply; pointer-events: none"><filter id="pgr"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"></feTurbulence></filter><rect width="100%" height="100%" filter="url(#pgr)"></rect></svg><div aria-hidden="true" style="position: fixed; inset: 0; z-index: 100; pointer-events: none; overflow: hidden">
+<div class="enterL" style="position: absolute; top: -20%; bottom: -20%; left: -10%; width: 70%; background: radial-gradient(circle at 70% 30%, #FFFFFF 0 30%, rgba(255,255,255,0) 60%), radial-gradient(circle at 80% 75%, #F2FAFE 0 30%, rgba(255,255,255,0) 60%), linear-gradient(90deg, #FFFFFF 55%, rgba(255,255,255,0)); filter: blur(24px)"></div>
+<div class="enterR" style="position: absolute; top: -20%; bottom: -20%; right: -10%; width: 70%; background: radial-gradient(circle at 30% 40%, #FFFFFF 0 30%, rgba(255,255,255,0) 60%), radial-gradient(circle at 20% 80%, #EAF6FC 0 30%, rgba(255,255,255,0) 60%), linear-gradient(270deg, #FFFFFF 55%, rgba(255,255,255,0)); filter: blur(24px)"></div>
+</div>
+<header style="position: relative; max-width: 1280px; margin: 0 auto; padding: 22px 24px 0">
+<div class="lg" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 10px 10px 20px; border-radius: 20px">
+<a href="Hero.dc.html" style="display: flex; align-items: center; gap: 10px; color: #0B2540"><svg aria-hidden="true" width="34" height="24" viewBox="0 0 44 30"><defs><linearGradient id="lgo" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#BDEBFA"></stop><stop offset=".55" stop-color="#38BDE8"></stop><stop offset="1" stop-color="#0A79A8"></stop></linearGradient></defs><path d="M12 28h22a9 9 0 0 0 1-17.9A12 12 0 0 0 12.4 8 10 10 0 0 0 12 28z" fill="url(#lgo)"></path></svg><span style="font-size: 18px; font-weight: 800; letter-spacing: 0.18em">OBLAKO</span></a>
+<nav aria-label="Основная навигация" style="display: flex; flex-wrap: wrap; gap: 24px; font-size: 15px; font-weight: 500"><a href="Cards.dc.html" style="color: #0B2540; opacity: .85">Направления</a><a href="Route.dc.html" style="color: #0B2540; opacity: .85">Маршрут</a><a href="Data.dc.html" style="color: #0B2540; opacity: .85">Бюджет</a><a href="Board.dc.html" style="color: #0B2540; opacity: .85">Табло</a><a href="Packing.dc.html" style="color: #0B2540; opacity: .85">Сборы</a><a href="Journal.dc.html" style="color: #0B2540; opacity: .85">Дневник</a></nav>
+<a href="Profile.dc.html" aria-label="Профиль" style="width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #38BDE8, #8B6CF0); color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800">[И]</a>
+</div>
+</header>
+
+<div aria-hidden="true" class="aur" style="top: -220px; right: -120px; width: 700px; height: 700px; background: #9BDDF2"></div>
+<div aria-hidden="true" class="aur" style="top: 700px; left: -220px; width: 620px; height: 620px; background: #C3B5FF; opacity: .6; animation-delay: -9s"></div>
+<div aria-hidden="true" class="aur" style="top: 1500px; right: -200px; width: 560px; height: 560px; background: #FFB3D6; opacity: .5; animation-delay: -15s"></div>
+<svg aria-hidden="true" width="0" height="0" style="position: absolute"><filter id="ink"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3"></feTurbulence><feDisplacementMap in="SourceGraphic" scale="2.4"></feDisplacementMap></filter></svg>
+<section style="position: relative; max-width: 1280px; margin: 0 auto; padding: 48px 24px 80px; display: flex; flex-direction: column; gap: 28px">
+<div class="lg" style="border-radius: 32px; padding: 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 28px">
+<span aria-hidden="true" style="width: 104px; height: 104px; border-radius: 30px; background: linear-gradient(135deg, #38BDE8, #E8288E 60%, #8B6CF0); color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 38px; font-weight: 800; box-shadow: 0 20px 40px rgba(200,20,111,.25)">[И]</span>
+<div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 8px">
+<h1 style="margin: 0; font-size: 44px; font-weight: 700; letter-spacing: -0.04em">[Имя Фамилия]</h1>
+<span style="font-size: 15px; color: #45607A">В&nbsp;OBLAKO с&nbsp;[год] · вылет из&nbsp;Москвы</span>
+</div>
+<div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; font-size: 14px"><span style="font-weight: 800">Штурман</span><span style="color: #45607A">до&nbsp;«Капитана» 3&nbsp;поездки</span></div>
+<div style="height: 12px; border-radius: 999px; background: rgba(255,255,255,.7); overflow: hidden"><div class="bar" style="width: 62%; height: 100%; border-radius: 999px; background: linear-gradient(90deg, #38BDE8, #E8288E, #8B6CF0)"></div></div>
+</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+<h2 style="margin: 0; font-size: 40px; font-weight: 700; letter-spacing: -0.035em">Паспорт <span class="grad">путешественника</span></h2>
+<button type="button" onClick="{{toggleBook}}" aria-expanded="{{bookOpen}}" style="min-height: 52px; padding: 0 22px; border: 0; border-radius: 14px; background: #C8146F; color: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 600; box-shadow: 0 12px 30px rgba(200,20,111,.3); cursor: pointer">{{bookLabel}}</button>
+</div>
+<div style="position: relative; height: 540px; display: flex; justify-content: center; perspective: 2000px">
+<div style="{{bookS}}">
+<div style="position: absolute; left: 50%; top: 0; width: 50%; height: 100%; box-sizing: border-box; border-radius: 6px 22px 22px 6px; background: linear-gradient(90deg, #EFE8DA, #FBF7EE 8%, #FBF7EE); box-shadow: 0 30px 60px rgba(11,37,64,.2); overflow: hidden">
+<svg aria-hidden="true" width="100%" height="100%" style="position: absolute; inset: 0; opacity: .5"><defs><pattern id="guil" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M0 20 Q10 10 20 20 T40 20" fill="none" stroke="#D8CDB6" stroke-width="1"></path></pattern></defs><rect width="100%" height="100%" fill="url(#guil)"></rect></svg>
+<span style="position: absolute; right: 18px; bottom: 14px; font-size: 11px; font-weight: 700; color: #B3A688">ВИЗЫ · 03</span>
+<sc-if value="{{bookOpen}}" hint-placeholder-val="{{ false }}"><span class="stamp" style="position: absolute; left: 40px; top: 40px; --r: -12deg; transform: rotate(-12deg); animation-delay: 1.00s"><svg viewBox="0 0 140 140" width="140" height="140" style="display: block"><g filter="url(#ink)" opacity=".85"><circle cx="70" cy="70" r="62" fill="none" stroke="#8E2C48" stroke-width="4"></circle><circle cx="70" cy="70" r="52" fill="none" stroke="#8E2C48" stroke-width="1.5"></circle><text x="70" y="62" text-anchor="middle" font-family="Onest" font-size="13" font-weight="800" letter-spacing="1.5" fill="#8E2C48">ГРУЗИЯ</text><text x="70" y="88" text-anchor="middle" font-family="Onest" font-size="24" font-weight="800" fill="#8E2C48">TBS</text><text x="70" y="106" text-anchor="middle" font-family="Onest" font-size="10" font-weight="700" fill="#8E2C48">[ДАТА]</text><path d="M48 40 h44 M58 40 l6 -6 6 6" stroke="#8E2C48" stroke-width="2" fill="none"></path></g></svg></span><span class="stamp" style="position: absolute; left: 200px; top: 30px; --r: 8deg; transform: rotate(8deg); animation-delay: 1.32s"><svg viewBox="0 0 140 140" width="140" height="140" style="display: block"><g filter="url(#ink)" opacity=".85"><rect x="6" y="20" width="128" height="100" rx="10" fill="none" stroke="#1B3F8B" stroke-width="4"></rect><rect x="14" y="28" width="112" height="84" rx="6" fill="none" stroke="#1B3F8B" stroke-width="1.5"></rect><text x="70" y="62" text-anchor="middle" font-family="Onest" font-size="13" font-weight="800" letter-spacing="1.5" fill="#1B3F8B">ТУРЦИЯ</text><text x="70" y="88" text-anchor="middle" font-family="Onest" font-size="24" font-weight="800" fill="#1B3F8B">IST</text><text x="70" y="106" text-anchor="middle" font-family="Onest" font-size="10" font-weight="700" fill="#1B3F8B">[ДАТА]</text><path d="M48 40 h44 M58 40 l6 -6 6 6" stroke="#1B3F8B" stroke-width="2" fill="none"></path></g></svg></span><span class="stamp" style="position: absolute; left: 60px; top: 190px; --r: 6deg; transform: rotate(6deg); animation-delay: 1.64s"><svg viewBox="0 0 140 140" width="140" height="140" style="display: block"><g filter="url(#ink)" opacity=".85"><ellipse cx="70" cy="70" rx="66" ry="50" fill="none" stroke="#C2546E" stroke-width="4"></ellipse><ellipse cx="70" cy="70" rx="56" ry="40" fill="none" stroke="#C2546E" stroke-width="1.5"></ellipse><text x="70" y="62" text-anchor="middle" font-family="Onest" font-size="13" font-weight="800" letter-spacing="1.5" fill="#C2546E">АРМЕНИЯ</text><text x="70" y="88" text-anchor="middle" font-family="Onest" font-size="24" font-weight="800" fill="#C2546E">EVN</text><text x="70" y="106" text-anchor="middle" font-family="Onest" font-size="10" font-weight="700" fill="#C2546E">[ДАТА]</text><path d="M48 40 h44 M58 40 l6 -6 6 6" stroke="#C2546E" stroke-width="2" fill="none"></path></g></svg></span><span class="stamp" style="position: absolute; left: 220px; top: 180px; --r: -6deg; transform: rotate(-6deg); animation-delay: 1.96s"><svg viewBox="0 0 140 140" width="140" height="140" style="display: block"><g filter="url(#ink)" opacity=".85"><circle cx="70" cy="70" r="62" fill="none" stroke="#2F8A74" stroke-width="4"></circle><circle cx="70" cy="70" r="52" fill="none" stroke="#2F8A74" stroke-width="1.5"></circle><text x="70" y="62" text-anchor="middle" font-family="Onest" font-size="13" font-weight="800" letter-spacing="1.5" fill="#2F8A74">КАЗАНЬ</text><text x="70" y="88" text-anchor="middle" font-family="Onest" font-size="24" font-weight="800" fill="#2F8A74">KZN</text><text x="70" y="106" text-anchor="middle" font-family="Onest" font-size="10" font-weight="700" fill="#2F8A74">[ДАТА]</text><path d="M48 40 h44 M58 40 l6 -6 6 6" stroke="#2F8A74" stroke-width="2" fill="none"></path></g></svg></span><span class="stamp" style="position: absolute; left: 30px; top: 320px; --r: 10deg; transform: rotate(10deg); animation-delay: 2.28s"><svg viewBox="0 0 140 140" width="140" height="140" style="display: block"><g filter="url(#ink)" opacity=".85"><rect x="6" y="20" width="128" height="100" rx="10" fill="none" stroke="#5C8457" stroke-width="4"></rect><rect x="14" y="28" width="112" height="84" rx="6" fill="none" stroke="#5C8457" stroke-width="1.5"></rect><text x="70" y="62" text-anchor="middle" font-family="Onest" font-size="13" font-weight="800" letter-spacing="1.5" fill="#5C8457">АЛТАЙ</text><text x="70" y="88" text-anchor="middle" font-family="Onest" font-size="24" font-weight="800" fill="#5C8457">RGK</text><text x="70" y="106" text-anchor="middle" font-family="Onest" font-size="10" font-weight="700" fill="#5C8457">[ДАТА]</text><path d="M48 40 h44 M58 40 l6 -6 6 6" stroke="#5C8457" stroke-width="2" fill="none"></path></g></svg></span><span class="stamp" style="position: absolute; left: 200px; top: 320px; --r: -14deg; transform: rotate(-14deg); animation-delay: 2.60s"><svg viewBox="0 0 140 140" width="140" height="140" style="display: block"><g filter="url(#ink)" opacity=".85"><ellipse cx="70" cy="70" rx="66" ry="50" fill="none" stroke="#1E86B3" stroke-width="4"></ellipse><ellipse cx="70" cy="70" rx="56" ry="40" fill="none" stroke="#1E86B3" stroke-width="1.5"></ellipse><text x="70" y="62" text-anchor="middle" font-family="Onest" font-size="13" font-weight="800" letter-spacing="1.5" fill="#1E86B3">СОЧИ</text><text x="70" y="88" text-anchor="middle" font-family="Onest" font-size="24" font-weight="800" fill="#1E86B3">AER</text><text x="70" y="106" text-anchor="middle" font-family="Onest" font-size="10" font-weight="700" fill="#1E86B3">[ДАТА]</text><path d="M48 40 h44 M58 40 l6 -6 6 6" stroke="#1E86B3" stroke-width="2" fill="none"></path></g></svg></span></sc-if>
+</div>
+<div style="{{coverS}}">
+<div style="position: absolute; inset: 0; border-radius: 6px 22px 22px 6px; background: linear-gradient(135deg, #12335A, #0B2540); box-shadow: inset 0 0 0 2px rgba(255,255,255,.06), 0 30px 60px rgba(11,37,64,.3); -webkit-backface-visibility: hidden; backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; color: #E9C77E">
+<svg aria-hidden="true" width="120" height="84" viewBox="0 0 44 30"><path d="M12 28h22a9 9 0 0 0 1-17.9A12 12 0 0 0 12.4 8 10 10 0 0 0 12 28z" fill="none" stroke="#E9C77E" stroke-width="1.4"></path><path d="M14 22h18M16 18h14" stroke="#E9C77E" stroke-width=".8"></path></svg>
+<span style="font-size: 30px; font-weight: 800; letter-spacing: 0.3em">OBLAKO</span>
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.24em">ПАСПОРТ ПУТЕШЕСТВЕННИКА</span>
+</div>
+<div style="position: absolute; inset: 0; border-radius: 22px 6px 6px 22px; transform: rotateY(180deg); -webkit-backface-visibility: hidden; backface-visibility: hidden; background: linear-gradient(270deg, #EFE8DA, #FBF7EE 8%, #FBF7EE); padding: 34px; box-sizing: border-box; display: flex; flex-direction: column; gap: 18px; color: #3B3428">
+<span style="font-size: 12px; font-weight: 800; letter-spacing: 0.2em; color: #8A7B5C">ДАННЫЕ ВЛАДЕЛЬЦА</span>
+<div style="display: flex; gap: 20px">
+<span aria-hidden="true" style="width: 110px; height: 140px; border-radius: 8px; background: linear-gradient(160deg, #BDEBFA, #8B6CF0); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 8px; box-sizing: border-box; font-size: 11px; font-weight: 600; color: #FFFFFF">[Фото]</span>
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px">
+<span style="display: flex; flex-direction: column"><span style="font-size: 10px; color: #8A7B5C">ИМЯ</span><span style="font-size: 17px; font-weight: 800">[Имя Фамилия]</span></span>
+<span style="display: flex; flex-direction: column"><span style="font-size: 10px; color: #8A7B5C">ДОМАШНИЙ АЭРОПОРТ</span><span style="font-size: 17px; font-weight: 800">MOW</span></span>
+<span style="display: flex; flex-direction: column"><span style="font-size: 10px; color: #8A7B5C">УРОВЕНЬ</span><span style="font-size: 17px; font-weight: 800">Штурман</span></span>
+</div>
+</div>
+<span aria-hidden="true" style="margin-top: auto; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.08em; line-height: 1.6; color: #6E6247; word-break: break-all">P&lt;OBLAKO&lt;&lt;[FAMILIYA]&lt;&lt;[IMYA]&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;<br>MOW&lt;&lt;7&lt;STRAN&lt;&lt;8&lt;GORODOV&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+</div>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch">
+<div class="lg" style="flex: 1 1 480px; border-radius: 32px; padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 6px">
+<div style="align-self: stretch; display: flex; justify-content: space-between; align-items: baseline; padding: 4px 8px"><span style="font-size: 22px; font-weight: 800">Где вы&nbsp;побывали</span><span style="font-size: 12px; color: #45607A">потяните глобус</span></div>
+<canvas ref="{{cv}}" width="920" height="920" role="img" aria-label="Глобус: посещённые места подсвечены" onPointerDown="{{gdown}}" onPointerMove="{{gdrag}}" onPointerUp="{{gup}}" onPointerCancel="{{gup}}" style="width: 460px; max-width: 100%; height: auto; touch-action: pan-y; cursor: grab"></canvas>
+</div>
+<div style="flex: 1 1 360px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+<sc-for list="{{stats}}" as="s" hint-placeholder-count="4">
+<div class="lg" style="border-radius: 24px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; gap: 6px"><span style="font-size: 14px; color: #45607A">{{s.label}}</span><span style="font-size: 52px; font-weight: 800; letter-spacing: -0.05em; line-height: 1; font-variant-numeric: tabular-nums">{{s.v}}</span><span style="font-size: 12px; color: #45607A">демо</span></div>
+</sc-for>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: 40px; font-weight: 700; letter-spacing: -0.035em">Достижения</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; perspective: 1000px">
+<sc-for list="{{achs}}" as="a" hint-placeholder-count="8">
+<div class="lg" onPointerMove="{{a.move}}" onPointerLeave="{{a.leave}}" style="{{a.card}}">
+<span aria-hidden="true" style="{{a.icon}}"></span>
+<span style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 18px; font-weight: 800">{{a.name}}</span><span style="font-size: 13px; color: #45607A">{{a.desc}}</span></span>
+<span style="height: 8px; border-radius: 999px; background: rgba(255,255,255,.8); overflow: hidden"><span style="{{a.bar}}"></span></span>
+<span style="font-size: 12px; font-weight: 700; color: #45607A">{{a.state}}</span>
+<span aria-hidden="true" style="{{a.holo}}"></span>
+<span aria-hidden="true" style="{{a.glare}}"></span>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2160}}'>
+class Component extends DCLogic {
+  state = { t: 0, open: false, tilt: null };
+  setupGlobe() {
+    const hex = '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002ff4fffee0000002000000000000000000033fcfffff000780000000c00000000000010bb00fffff80000000e002f8000000000003c0b4003fff00000006003fe80080008040007c6ff03ffe000000041dfffff7f80003ffffd45b781ff80003fe15ebfffffffffff0fffffffe3e1fc04003fd3fffffffffffff00fffffff51c1f00801f7fffffffffffffff03ffffffc0600600003e7ffffffffffffeb800607fffe07e0000003e3fffffffffff80c000801ffff8fe00000214fffffffffffe038004000ffffeff8000091fffffffffffff0300000007ffffffc00001ffffffffffffff0000000003fffff4400001ffffffffffffff0000000001fffffd000000fff5fffffffffe8000000003fffff0000001ebe0fffffffffc4000000003ffffe000000786f6fffffffff08000000001ffffc000000f029ffffffffe208000000001ffffc0000000f007ffffffff1300000000007fff00000007f003ffffffff0400000000005ffe0000000ffcebffffffff8000000000003fc10000000fffffefffffff8000000000000f810000003ffffdf1ffffff00000000000007800000003ffffdfe1ffffe80000000000003880000007ffffeff0fe7e000000000000003d81800003ffffefe07c7d000000000000000780100007fffff780701e0800000000000000e0000007fffffe00301f0c0000000000000002800007fffff9003007040000000000000017f00001ffffff000010000000000000000007f80000fbffff000808000000000000000007ff000001fffe00001860000000000000000fff000000fffc000008e0000000000000000fff400000fff800001ce8c00000000000000ffff80000fff0000004283c0000000000000ffffc00007ff0000002001e0000000000000ffffc00007ff00000002a0800000000000007fff800003ff0000000008000000000000003fff000007ff100000000c000000000000001fff000007ff300000007e400000000000000fff000007fe300000007fe00000000000000fff000007fc20000003fff00000000000000ffc000003fc60000007fff80000000000000ff0000003f800000003fff80000000000001ff0000001f800000003fff80000000000001fe0000001f000000003fff80000000000001fe0000001e00000000383f80000000000001f80000000000000000000f00000000000001f00000000000000000000000200000000003c00000000000000000000200440000000001c00000000000000000000000800000000003800000000000000000000001000000000003800000000000000000000000000000000003000000000000000000000000000000000001800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000200000000000c0000cc0c00000000000000060000000004fff1fffffffc0000000000001e000004ffffffe7ffffffffe000000400febf00003fffffffffffffffffe00003fffffff80007ffffffffffffffffff80003ffffffe880c7fffffffffffffffffff80007ffffffff800ffffffffffffffffffff0001fffffffffffffffffffffffffffffffff8ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff';
+    const W = 144, H = 72, bits = new Uint8Array(W * H);
+    for (let i = 0; i < hex.length; i++) { const v = parseInt(hex[i], 16); for (let b = 0; b < 4; b++) bits[i * 4 + b] = (v >> (3 - b)) & 1; }
+    const isLand = (lat, lon) => bits[Math.min(H - 1, Math.floor((90 - lat) / 180 * H)) * W + Math.min(W - 1, Math.floor((lon + 180) / 360 * W))] === 1;
+    const v3 = (lat, lon) => { const a = lat * Math.PI / 180, o = lon * Math.PI / 180; return { x: Math.cos(a) * Math.sin(o), y: Math.sin(a), z: Math.cos(a) * Math.cos(o) }; };
+    const V = [[41.01, 28.98], [41.72, 44.79], [40.18, 44.51], [43.6, 39.73], [55.79, 49.12], [51.96, 85.96], [54.71, 20.51], [55.75, 37.62]].map((d) => v3(d[0], d[1]));
+    const pts = [], N = 5000, ga = Math.PI * (3 - Math.sqrt(5)), c5 = Math.cos(5 * Math.PI / 180), c9 = Math.cos(9 * Math.PI / 180);
+    for (let k = 0; k < N; k++) {
+      const y = 1 - (k / (N - 1)) * 2, r = Math.sqrt(1 - y * y), th = ga * k, x = Math.cos(th) * r, z = Math.sin(th) * r;
+      const lat = Math.asin(y) * 180 / Math.PI, lon = Math.atan2(x, z) * 180 / Math.PI;
+      if (!isLand(lat, lon)) continue;
+      let best = -1; V.forEach((v) => { const d = v.x * x + v.y * y + v.z * z; if (d > best) best = d; });
+      pts.push({ x, y, z, v: best > c5 ? 2 : best > c9 ? 1 : 0 });
+    }
+    this.g = { pts, V, rot: -0.7, tilt: 0.5, last: 0, time: 0 };
+  }
+  draw(now) {
+    const cv = this.canvas, g = this.g; if (!cv || !g) return;
+    const dt = g.last ? Math.min(0.05, (now - g.last) / 1000) : 0; g.last = now;
+    if (!this.reduce) { g.time += dt; if (!this.dragging) g.rot += dt * 0.14; }
+    const ctx = cv.getContext('2d'), S = cv.width, cx = S / 2, cy = S / 2, R = S * 0.4, ds = S / 460;
+    ctx.clearRect(0, 0, S, S);
+    const cr = Math.cos(g.rot), sr = Math.sin(g.rot), ct = Math.cos(g.tilt), st = Math.sin(g.tilt);
+    const proj = (p, h) => { const x1 = p.x * cr + p.z * sr, z1 = -p.x * sr + p.z * cr, y2 = p.y * ct - z1 * st, z2 = p.y * st + z1 * ct; return { x: cx + x1 * R * h, y: cy - y2 * R * h, z: z2 }; };
+    let grd = ctx.createRadialGradient(cx, cy, R * .92, cx, cy, R * 1.28);
+    grd.addColorStop(0, 'rgba(232,40,142,0.22)'); grd.addColorStop(.5, 'rgba(56,189,232,0.18)'); grd.addColorStop(1, 'rgba(56,189,232,0)');
+    ctx.fillStyle = grd; ctx.beginPath(); ctx.arc(cx, cy, R * 1.28, 0, Math.PI * 2); ctx.fill();
+    grd = ctx.createRadialGradient(cx - R * .35, cy - R * .4, R * .1, cx, cy, R);
+    grd.addColorStop(0, 'rgba(255,255,255,.95)'); grd.addColorStop(.6, 'rgba(227,246,253,.9)'); grd.addColorStop(1, 'rgba(170,218,240,.95)');
+    ctx.fillStyle = grd; ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fill();
+    for (let k = 0; k < g.pts.length; k++) {
+      const p = g.pts[k], h = p.v === 2 ? 1.03 : p.v === 1 ? 1.012 : 1, q = proj(p, h);
+      if (q.z <= 0) continue;
+      if (p.v === 2) { ctx.fillStyle = 'rgba(232,40,142,' + (0.5 + 0.5 * q.z) + ')'; ctx.beginPath(); ctx.arc(q.x, q.y, 3 * ds, 0, Math.PI * 2); ctx.fill(); }
+      else if (p.v === 1) { ctx.fillStyle = 'rgba(139,108,240,' + (0.4 + 0.5 * q.z) + ')'; ctx.beginPath(); ctx.arc(q.x, q.y, 2.4 * ds, 0, Math.PI * 2); ctx.fill(); }
+      else { ctx.fillStyle = 'rgba(10,121,168,' + (0.2 + 0.55 * q.z) + ')'; ctx.beginPath(); ctx.arc(q.x, q.y, 1.7 * ds, 0, Math.PI * 2); ctx.fill(); }
+    }
+    g.V.forEach((v, i) => {
+      const q = proj(v, 1.03); if (q.z <= 0) return;
+      const ph = this.reduce ? 0 : ((g.time * 0.6 + i * 0.13) % 1);
+      ctx.strokeStyle = 'rgba(200,20,111,' + (1 - ph) + ')'; ctx.lineWidth = 2 * ds;
+      ctx.beginPath(); ctx.arc(q.x, q.y, (5 + ph * 16) * ds, 0, Math.PI * 2); ctx.stroke();
+      ctx.fillStyle = '#FFFFFF'; ctx.beginPath(); ctx.arc(q.x, q.y, 3.5 * ds, 0, Math.PI * 2); ctx.fill();
+    });
+    grd = ctx.createRadialGradient(cx - R * .45, cy - R * .5, 0, cx - R * .45, cy - R * .5, R * .9);
+    grd.addColorStop(0, 'rgba(255,255,255,.5)'); grd.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = grd; ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fill();
+  }
+  componentDidMount() {
+    this.reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    this.setupGlobe();
+    const start = performance.now();
+    const loop = (now) => {
+      this.draw(now);
+      if (this.state.t < 1) this.setState({ t: this.reduce ? 1 : 1 - Math.pow(1 - Math.min(1, (now - start) / 1800), 3) });
+      if (!this.reduce) this.raf = requestAnimationFrame(loop);
+    };
+    this.raf = requestAnimationFrame(loop);
+  }
+  componentWillUnmount() { cancelAnimationFrame(this.raf); }
+  renderVals() {
+    const st = this.state, t = st.t;
+    const fmt = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0');
+    const A = [["Первый перелёт", "Вы в небе", 1, 1, ["#9BE3F8", "#0A79A8"]], ["Два континента", "Европа и Азия за один день", 1, 1, ["#FFC2E0", "#C8146F"]], ["Горы", "Поднялись выше 2000 м", 1, 1, ["#C9EBC2", "#3E8C7B"]], ["10 000 км", "Налетали больше 10 тыс. км", 1, 1, ["#D9CFFF", "#6E4FE0"]], ["Гурман", "Попробуйте 20 местных блюд", 0, 0.7, ["#FFE08A", "#F08A24"]], ["Три страны", "Побывайте в трёх странах", 1, 1, ["#BDEBFA", "#38BDE8"]], ["Экватор", "Пересеките экватор", 0, 0, ["#BDEBFA", "#2A9D96"]], ["Ночной рейс", "Вылет после полуночи", 0, 0, ["#C3B5FF", "#3B2A8A"]]];
+    return {
+      cv: (el) => { this.canvas = el; },
+      gdown: (e) => { this.dragging = true; this.dx = e.clientX; if (e.currentTarget.setPointerCapture) e.currentTarget.setPointerCapture(e.pointerId); },
+      gdrag: (e) => { if (!this.dragging || !this.g) return; this.g.rot += (e.clientX - this.dx) * 0.008; this.dx = e.clientX; if (this.reduce) this.draw(performance.now()); },
+      gup: () => { this.dragging = false; },
+      bookOpen: st.open, bookLabel: st.open ? 'Закрыть паспорт' : 'Открыть паспорт',
+      toggleBook: () => this.setState({ open: !st.open }),
+      bookS: 'position: relative; width: 820px; max-width: 100%; height: 540px; transition: transform 1.2s cubic-bezier(.3,.7,.2,1); transform: translateX(' + (st.open ? '0' : '-25%') + ')',
+      coverS: 'position: absolute; left: 50%; top: 0; width: 50%; height: 100%; transform-origin: left center; transform-style: preserve-3d; -webkit-transform-style: preserve-3d; transition: transform 1.2s cubic-bezier(.3,.7,.2,1); transform: rotateY(' + (st.open ? '-180' : '0') + 'deg); z-index: 2',
+      stats: [['Стран', 4], ['Городов', 8], ['Километров', 18400], ['Дней в пути', 46]].map((s) => ({ label: s[0], v: fmt(Math.round(s[1] * t)) })),
+      achs: A.map((a, i) => {
+        const got = a[2] === 1, p = a[3], tl = st.tilt && st.tilt.i === i ? st.tilt : null;
+        return {
+          name: a[0], desc: a[1], state: got ? 'Получено' : (p > 0 ? 'Прогресс ' + Math.round(p * 100) + '%' : 'Закрыто'),
+          move: (e) => { const r = e.currentTarget.getBoundingClientRect(); const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height; this.setState({ tilt: { i, rx: (0.5 - y) * 14, ry: (x - 0.5) * 18, px: Math.round(x * 100), py: Math.round(y * 100) } }); },
+          leave: () => this.setState({ tilt: null }),
+          card: 'position: relative; overflow: hidden; border-radius: 24px; padding: 22px; display: flex; flex-direction: column; gap: 14px; transition: transform ' + (tl ? '.08s' : '.6s cubic-bezier(.2,.8,.2,1)') + '; transform: rotateX(' + (tl ? tl.rx : 0) + 'deg) rotateY(' + (tl ? tl.ry : 0) + 'deg) translateZ(0); ' + (got || p > 0 ? '' : 'opacity: .6'),
+          icon: 'width: 68px; height: 68px; border-radius: ' + (i % 2 ? '22px' : '50%') + '; background: radial-gradient(circle at 32% 26%, #FFFFFF 0%, ' + a[4][0] + ' 32%, ' + a[4][1] + ' 100%); box-shadow: 0 14px 26px rgba(11,37,64,.18); transition: transform .4s; transform: translateY(' + (tl ? -6 : 0) + 'px) rotate(' + (tl ? tl.ry : 0) + 'deg); ' + (got ? '' : 'filter: grayscale(' + (p > 0 ? '.4' : '1') + ')'),
+          bar: 'display: block; height: 100%; border-radius: 999px; width: ' + Math.round(p * 100) + '%; background: ' + (got ? 'linear-gradient(90deg,#38BDE8,#E8288E)' : '#9FC4D6'),
+          holo: 'position: absolute; inset: 0; pointer-events: none; mix-blend-mode: soft-light; transition: opacity .4s; opacity: ' + (got ? (tl ? '1' : '.45') : '0') + '; background: linear-gradient(115deg, rgba(255,255,255,0) 20%, #FF8CC6 34%, #7FD3F2 46%, #FFE08A 58%, #B9A8FF 70%, rgba(255,255,255,0) 84%); background-size: 260% 260%; background-position: ' + (tl ? tl.px : 30) + '% ' + (tl ? tl.py : 30) + '%',
+          glare: 'position: absolute; inset: 0; pointer-events: none; transition: opacity .3s; opacity: ' + (tl && got ? '.8' : '0') + '; background: radial-gradient(circle at ' + (tl ? tl.px : 50) + '% ' + (tl ? tl.py : 50) + '%, rgba(255,255,255,.7), rgba(255,255,255,0) 45%)'
+        };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>
