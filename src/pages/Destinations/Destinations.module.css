@@ -1,0 +1,60 @@
+.page {
+  position: relative;
+  overflow: hidden;
+}
+
+.content {
+  position: relative;
+  display: grid;
+  grid-gap: 28px;
+  gap: 28px;
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+.filters {
+  display: flex;
+  margin: -4px;
+  padding: 4px 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.filters::-webkit-scrollbar {
+  display: none;
+}
+
+.filters > * {
+  flex: none;
+  margin: 4px;
+}
+
+.status {
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .filters {
+    flex-wrap: wrap;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 767px) {
+  .content {
+    padding-top: 40px;
+  }
+
+  .filters {
+    margin-right: calc(-1 * var(--gutter));
+    padding-right: var(--gutter);
+  }
+}

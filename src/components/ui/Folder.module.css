@@ -47,8 +47,10 @@
   top: 16px;
   right: 14px;
   left: 14px;
-  height: 260px;
+  /* Высоту листка и подъём досье можно переопределить снаружи */
+  height: var(--sheet-h, 260px);
   padding: 16px;
+  overflow: hidden;
   border-radius: var(--r-btn);
   background: var(--white);
   box-shadow: var(--shadow-sheet);
@@ -56,7 +58,7 @@
 }
 
 .open .sheet {
-  transform: translateY(-170px);
+  transform: translateY(var(--sheet-lift, -170px));
 }
 
 .front {

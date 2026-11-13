@@ -1,0 +1,63 @@
+.stage {
+  position: relative;
+  /* Без overflow: hidden — досье поднимается над сценой; по горизонтали режет страница */
+  height: 600px;
+  border-radius: var(--r-panel);
+  -webkit-perspective: 1400px;
+  perspective: 1400px;
+  touch-action: pan-y;
+}
+
+.stage:focus-visible {
+  outline-offset: -3px;
+}
+
+.track {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.slot {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  width: 290px;
+  margin-left: -145px;
+  transition:
+    transform 0.8s var(--ease-out),
+    opacity 0.6s;
+}
+
+/* Досье в карусели выше стандартного листка */
+.folder {
+  --sheet-h: 312px;
+  --sheet-lift: -222px;
+  margin-top: 0;
+}
+
+@media (max-width: 767px) {
+  .stage {
+    height: 560px;
+  }
+
+  .track {
+    transform: scale(0.86);
+    transform-origin: 50% 40%;
+  }
+
+  .slot {
+    top: 190px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slot {
+    transition: none;
+  }
+}

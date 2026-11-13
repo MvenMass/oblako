@@ -14,6 +14,8 @@ interface FolderProps {
   /** Подсказка внизу передней стенки */
   hint?: string;
   onSelect?: () => void;
+  /** -1 — убрать кнопку из порядка табуляции (боковые папки карусели) */
+  tabIndex?: number;
   /** Содержимое досье — выезжает при open */
   children?: ReactNode;
   className?: string;
@@ -28,6 +30,7 @@ export function Folder({
   open = false,
   hint,
   onSelect,
+  tabIndex,
   children,
   className,
 }: FolderProps) {
@@ -76,7 +79,8 @@ export function Folder({
           type="button"
           className={styles.front}
           onClick={onSelect}
-          aria-expanded={children ? open : undefined}
+          tabIndex={tabIndex}
+          aria-expanded={children !== undefined ? open : undefined}
         >
           {front}
         </button>
