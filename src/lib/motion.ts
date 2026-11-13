@@ -1,27 +1,28 @@
 import { useEffect, useState, useSyncExternalStore, type RefObject } from 'react';
 
-const QUERY = '(prefers-reduced-motion: reduce)';
-
-function getMedia(): MediaQueryList | null {
+function getMedia(query: string): MediaQueryList | null {
   return typeof window !== 'undefined' && typeof window.matchMedia === 'function'
-    ? window.matchMedia(QUERY)
+    ? window.matchMedia(query)
     : null;
 }
 
-function subscribe(onChange: () => void): () => void {
-  const media = getMedia();
-  if (!media) return () => undefined;
-  media.addEventListener('change', onChange);
-  return () => media.removeEventListener('change', onChange);
-}
-
-function getSnapshot(): boolean {
-  return getMedia()?.matches ?? false;
+/** Подписка на медиазапрос */
+export function useMediaQuery(query: string): boolean {
+  return useSyncExternalStore(
+    (onChange) => {
+      const media = getMedia(query);
+      if (!media) return () => undefined;
+      media.addEventListener('change', onChange);
+      return () => media.removeEventListener('change', onChange);
+    },
+    () => getMedia(query)?.matches ?? false,
+    () => false,
+  );
 }
 
 /** true, если пользователь просит уменьшить движение. Отключает параллакс, автоплеи и сияние. */
 export function useReducedMotion(): boolean {
-  return useSyncExternalStore(subscribe, getSnapshot, () => false);
+  return useMediaQuery('(prefers-reduced-motion: reduce)');
 }
 
 /** Однократно становится true, когда элемент входит в экран. Без IntersectionObserver — сразу true. */

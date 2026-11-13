@@ -155,6 +155,19 @@
   --perforation: #cfe6f1;
   --ticket-stub: linear-gradient(160deg, #ffffff, #ffe3f1);
 
+  /* «Как работает»: сцена и приборы */
+  --line-faint: rgba(11, 37, 64, 0.16);
+  --line-softer: rgba(11, 37, 64, 0.12);
+  --ink-wash: rgba(11, 37, 64, 0.07);
+  --stop-off: rgba(11, 37, 64, 0.2);
+  --river: #9bddf2;
+  --step-active-bg: rgba(255, 255, 255, 0.85);
+  --gauge-bg: linear-gradient(160deg, #183f66, #0b2540);
+  --gauge-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 20px 40px rgba(11, 37, 64, 0.2);
+  --gauge-track: rgba(255, 255, 255, 0.12);
+  --shadow-plane: drop-shadow(0 6px 8px rgba(200, 20, 111, 0.35));
+  --shadow-polaroid: 0 16px 34px rgba(11, 37, 64, 0.2);
+
   /* Первый экран */
   --field-bg: rgba(255, 255, 255, 0.55);
   --grad-badge: linear-gradient(135deg, #38bde8, #8b6cf0);

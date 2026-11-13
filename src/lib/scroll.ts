@@ -35,6 +35,12 @@ export function scrollToTop(): void {
   else window.scrollTo(0, 0);
 }
 
+/** Прокрутка к координате страницы (через Lenis, если он включён) */
+export function scrollToY(y: number, smooth = true): void {
+  if (lenis) lenis.scrollTo(y, { immediate: !smooth, duration: 1.2 });
+  else window.scrollTo({ top: y, behavior: smooth ? 'smooth' : 'auto' });
+}
+
 /** Блокировка прокрутки под модалками */
 export function lockScroll(locked: boolean): void {
   document.documentElement.style.overflow = locked ? 'hidden' : '';

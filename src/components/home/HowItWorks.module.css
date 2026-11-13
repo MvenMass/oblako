@@ -1,0 +1,167 @@
+.section {
+  position: relative;
+  padding: 72px 0 104px;
+}
+
+.body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 700px);
+  grid-gap: 32px;
+  gap: 32px;
+  align-items: center;
+  margin: 40px 0;
+}
+
+.steps {
+  display: grid;
+  grid-gap: 10px;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  padding: 18px 20px;
+  border: 0;
+  border-radius: 22px;
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color 0.4s,
+    transform 0.4s var(--ease-out),
+    box-shadow 0.4s;
+}
+
+.step:hover {
+  background: var(--field-bg);
+}
+
+.current {
+  background: var(--step-active-bg);
+  box-shadow: var(--shadow-card);
+  transform: translateX(8px);
+}
+
+.current:hover {
+  background: var(--step-active-bg);
+}
+
+.num {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  margin-right: 18px;
+  border-radius: 14px;
+  background: var(--ink-wash);
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 800;
+  transition:
+    background-color 0.4s,
+    color 0.4s;
+}
+
+.done .num {
+  background: var(--pink);
+  color: var(--white);
+}
+
+.stepText {
+  display: grid;
+  grid-gap: 4px;
+  gap: 4px;
+}
+
+.stepTitle {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.stepDesc {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.sceneBox {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+}
+
+.scene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 700px;
+  height: 500px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-panel);
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+  transform-origin: 0 0;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .scene {
+    background: var(--glass-bg-solid);
+  }
+}
+
+@media (max-width: 1023px) {
+  .body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .current {
+    transform: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding: 48px 0 72px;
+  }
+
+  .body {
+    margin: 28px 0;
+  }
+
+  .step {
+    padding: 14px;
+  }
+
+  .num {
+    width: 40px;
+    height: 40px;
+    margin-right: 14px;
+  }
+
+  .stepTitle {
+    font-size: 19px;
+  }
+
+  .stepDesc {
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step,
+  .num {
+    transition: none;
+  }
+}

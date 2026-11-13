@@ -1,0 +1,288 @@
+.stage {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 680px;
+  height: 480px;
+}
+
+.svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: visible;
+}
+
+.stopSky {
+  stop-color: var(--sky);
+}
+
+.stopFlamingo {
+  stop-color: var(--flamingo);
+}
+
+.track {
+  fill: none;
+  stroke: var(--line-faint);
+  stroke-width: 3;
+  stroke-dasharray: 8 9;
+  stroke-linecap: round;
+}
+
+.trail {
+  fill: none;
+  stroke: url(#how-trail);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.stopRing {
+  fill: var(--white);
+  stroke: var(--line-softer);
+  stroke-width: 2;
+}
+
+.stopDot {
+  fill: var(--stop-off);
+  transition: fill 0.4s;
+}
+
+.stopDot.on {
+  fill: var(--pink);
+}
+
+/* Мини-интерфейсы на остановках */
+.mini {
+  position: absolute;
+  display: grid;
+  grid-gap: 8px;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  background: var(--glass-bg-strong);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+}
+
+.mini,
+.polaroid {
+  opacity: 0;
+  transform: translateY(14px) scale(0.85);
+  transition:
+    opacity 0.5s,
+    transform 0.6s var(--ease-spring);
+}
+
+.mini.on {
+  opacity: 1;
+  transform: none;
+}
+
+.miniLabel {
+  color: var(--sky-deep);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.quiz {
+  top: 196px;
+  left: 4px;
+  width: 196px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.chipOn,
+.chipOff {
+  margin: 0 6px 6px 0;
+  padding: 5px 9px;
+  border-radius: var(--r-badge);
+  font-size: 12px;
+}
+
+.chipOn {
+  background: var(--pink);
+  color: var(--white);
+  font-weight: 700;
+}
+
+.chipOff {
+  background: var(--ink-wash);
+  font-weight: 600;
+}
+
+.match {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.ring {
+  flex: none;
+  margin-right: 10px;
+  transform: rotate(-90deg);
+}
+
+.ringTrack,
+.ringValue {
+  fill: none;
+  stroke-width: 5;
+}
+
+.ringTrack {
+  stroke: var(--ink-wash);
+}
+
+.ringValue {
+  stroke: var(--pink);
+  stroke-linecap: round;
+  stroke-dasharray: 98 100;
+}
+
+.map {
+  top: 22px;
+  left: 176px;
+  width: 190px;
+}
+
+.mapSvg {
+  width: 100%;
+  height: auto;
+}
+
+.mapBg {
+  fill: var(--morning);
+}
+
+.river {
+  fill: none;
+  stroke: var(--river);
+  stroke-width: 14;
+}
+
+.mapRoute {
+  fill: none;
+  stroke: var(--pink);
+  stroke-width: 3;
+  stroke-dasharray: 5 4;
+}
+
+.mapPins {
+  fill: var(--pink);
+}
+
+.pass {
+  top: 360px;
+  left: 330px;
+  width: 230px;
+}
+
+.passRoute {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-size: 26px;
+  letter-spacing: -0.03em;
+}
+
+.passPlane {
+  color: var(--pink);
+  transform: rotate(90deg);
+}
+
+.barcode {
+  height: 18px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--ink) 0 2px,
+    transparent 2px 4px,
+    var(--ink) 4px 5px,
+    transparent 5px 8px
+  );
+}
+
+.polaroid {
+  position: absolute;
+  top: 172px;
+  left: 528px;
+  display: grid;
+  grid-gap: 6px;
+  gap: 6px;
+  width: 138px;
+  padding: 8px 8px 14px;
+  border-radius: 6px;
+  background: var(--white);
+  box-shadow: var(--shadow-polaroid);
+  transform-origin: 50% 0;
+}
+
+.polaroid.on {
+  opacity: 1;
+  transform: rotate(5deg);
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  height: 96px;
+  border-radius: 3px;
+  object-fit: cover;
+}
+
+.caption {
+  font-family: var(--font-hand);
+  font-size: 18px;
+  text-align: center;
+}
+
+.stamp {
+  position: absolute;
+  right: -14px;
+  bottom: -14px;
+  color: var(--pink);
+  transform: rotate(-14deg);
+}
+
+.stamp circle {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+}
+
+.stamp text {
+  fill: currentColor;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.plane {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--pink);
+  filter: var(--shadow-plane);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.plane svg {
+  transform: rotate(90deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mini,
+  .polaroid,
+  .stopDot {
+    transition: none;
+  }
+}
