@@ -1,0 +1,145 @@
+.section {
+  position: relative;
+  padding: 40px 0 96px;
+}
+
+.strip {
+  display: flex;
+  margin: 28px 0 0;
+  padding: 10px max(24px, calc((100% - var(--container)) / 2 + var(--gutter))) 24px;
+  overflow-x: auto;
+  list-style: none;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 max(24px, calc((100% - var(--container)) / 2 + var(--gutter)));
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.strip::-webkit-scrollbar {
+  display: none;
+}
+
+/* Отступы между карточками через margin (Safari 14.0 без flex-gap) */
+.item {
+  flex: 0 0 280px;
+  margin-right: 18px;
+  scroll-snap-align: start;
+}
+
+.item:last-child {
+  margin-right: 0;
+}
+
+.card {
+  display: grid;
+  grid-gap: 18px;
+  gap: 18px;
+  height: 100%;
+  padding: 22px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-card);
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+  color: var(--ink);
+  text-decoration: none;
+  transition:
+    transform 0.4s var(--ease-out),
+    box-shadow 0.4s;
+}
+
+.preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 130px;
+  border-radius: 20px;
+  background: var(--field-bg);
+}
+
+.previewInner {
+  display: flex;
+  transition: transform 0.5s var(--ease-spring);
+}
+
+.card:hover,
+.card:focus-visible {
+  transform: translateY(-8px);
+  box-shadow: var(--glass-shadow), var(--shadow-raised);
+}
+
+.card:hover .previewInner,
+.card:focus-visible .previewInner {
+  transform: scale(1.1) rotate(-3deg);
+}
+
+.text {
+  display: grid;
+  grid-gap: 6px;
+  gap: 6px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.desc {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.open {
+  display: flex;
+  align-items: center;
+  color: var(--pink);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.open svg {
+  margin-left: 8px;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .card {
+    background: var(--glass-bg-solid);
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding: 24px 0 64px;
+  }
+
+  .item {
+    flex-basis: 250px;
+    margin-right: 14px;
+  }
+}
+
+/* На тач-экранах ховера нет — отклик на нажатие */
+@media (hover: none) {
+  .card:hover {
+    transform: none;
+    box-shadow: var(--glass-shadow);
+  }
+
+  .card:hover .previewInner {
+    transform: none;
+  }
+
+  .card:active {
+    transform: scale(0.98);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .previewInner {
+    transition: none;
+  }
+}

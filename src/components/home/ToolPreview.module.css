@@ -1,0 +1,189 @@
+.svg {
+  overflow: visible;
+}
+
+.stopSky {
+  stop-color: var(--sky);
+}
+
+.stopFlamingo {
+  stop-color: var(--flamingo);
+}
+
+.stopDusk {
+  stop-color: var(--dusk);
+}
+
+.map {
+  fill: var(--morning);
+}
+
+.ink {
+  fill: var(--ink);
+}
+
+.pink {
+  fill: var(--pink);
+}
+
+.ringSky {
+  stroke: var(--sky);
+}
+
+.ringFlamingo {
+  stroke: var(--flamingo);
+}
+
+.ringDusk {
+  stroke: var(--dusk);
+}
+
+.ringInk {
+  stroke: var(--ink);
+}
+
+/* Папки */
+.folders {
+  position: relative;
+  width: 150px;
+  height: 110px;
+}
+
+.f1,
+.f2,
+.f3 {
+  position: absolute;
+  width: 110px;
+  height: 80px;
+  border-radius: 0 12px 12px 12px;
+}
+
+.f1 {
+  top: 24px;
+  left: 0;
+  background: var(--folder-tab-muted);
+}
+
+.f2 {
+  top: 14px;
+  left: 20px;
+  background: var(--sky-light);
+}
+
+.f3 {
+  top: 4px;
+  left: 40px;
+  background: var(--grad-brand-diag);
+}
+
+.fTab {
+  position: absolute;
+  top: -8px;
+  left: 40px;
+  width: 44px;
+  height: 14px;
+  border-radius: 8px 8px 0 0;
+  background: var(--pink);
+}
+
+/* Табло */
+.flaps {
+  display: flex;
+}
+
+.flap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 56px;
+  margin: 0 2px;
+  border-radius: 8px;
+  background: var(--flap);
+  color: var(--white);
+  font-size: 30px;
+  font-weight: 800;
+}
+
+/* Талон */
+.ticket {
+  display: flex;
+  width: 150px;
+  height: 84px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--white);
+  box-shadow: var(--shadow-sheet);
+}
+
+.ticketMain {
+  width: 100px;
+  background: var(--grad-brand-diag);
+}
+
+.ticketCode {
+  flex: 1 1 auto;
+  margin: 12px 10px;
+  border-left: 2px dashed var(--perforation);
+  border-radius: 3px;
+  background: repeating-linear-gradient(0deg, var(--ink) 0 2px, transparent 2px 5px);
+}
+
+/* Чемодан */
+.handle {
+  stroke: var(--ink);
+}
+
+.straps {
+  stroke: var(--white);
+  stroke-opacity: 0.5;
+}
+
+/* Полароиды */
+.polaroids {
+  position: relative;
+  width: 150px;
+  height: 110px;
+}
+
+.polaroid {
+  position: absolute;
+  width: 76px;
+  height: 90px;
+  padding: 6px 6px 18px;
+  background: var(--white);
+  box-shadow: var(--shadow-sheet);
+}
+
+.polaroid > span {
+  display: block;
+  height: 100%;
+}
+
+.pLeft {
+  top: 10px;
+  left: 10px;
+  transform: rotate(-8deg);
+}
+
+.pRight {
+  top: 6px;
+  left: 62px;
+  transform: rotate(7deg);
+}
+
+/* Штамп */
+.stampSmall,
+.stampBig {
+  fill: currentColor;
+  font-family: var(--font);
+  font-weight: 800;
+}
+
+.stampSmall {
+  font-size: 14px;
+}
+
+.stampBig {
+  font-size: 26px;
+}
