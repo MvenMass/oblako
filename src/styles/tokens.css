@@ -99,6 +99,52 @@
   --glass-dark-border: rgba(255, 255, 255, 0.14);
   --glass-dark-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 24px 60px rgba(0, 0, 0, 0.3);
 
+  /* Ночь и футер */
+  --night-deep: #06132a;
+  --on-night: #eaf4fb;
+  --on-night-link: #d7e6f2;
+  --on-night-muted: #b8ccdd;
+  --on-night-faint: #9db6cc;
+  --on-night-accent: #7fd3f2;
+  --on-night-line: rgba(255, 255, 255, 0.12);
+  --on-night-field: rgba(255, 255, 255, 0.1);
+  --on-night-field-border: rgba(255, 255, 255, 0.2);
+  /* Остановки в px: к началу текста (≥300px) фон уже тёмный — контраст AA */
+  --footer-sky: linear-gradient(
+    180deg,
+    #f4fafe 0,
+    #9bd8f0 80px,
+    #3c7fbf 180px,
+    #142e5c 290px,
+    #06132a 640px
+  );
+  --footer-sky-dark: linear-gradient(180deg, #06172f 0, #0a1e3d 200px, #06132a 640px);
+  --footer-cloud: #0b1f3f;
+  --wordmark: linear-gradient(
+    180deg,
+    rgba(234, 244, 251, 0.95),
+    rgba(127, 211, 242, 0.55) 60%,
+    rgba(232, 40, 142, 0.35)
+  );
+
+  /* Нижнее меню */
+  --dock-bg: rgba(255, 255, 255, 0.72);
+  --dock-border: rgba(255, 255, 255, 0.8);
+  --dock-dark-bg: rgba(6, 23, 47, 0.72);
+  --dock-blur: blur(20px) saturate(180%);
+  --dock-shadow: 0 14px 34px rgba(11, 37, 64, 0.18);
+  --grad-dock-cta: linear-gradient(135deg, #38bde8, #c8146f);
+  --shadow-dock-cta: 0 12px 26px rgba(200, 20, 111, 0.35);
+  --dock-h: 66px;
+  --dock-space: 110px;
+
+  /* Затемнение под модалками */
+  --scrim: rgba(244, 250, 254, 0.6);
+
+  /* Облака перехода */
+  --cloud: #ffffff;
+  --cloud-shade: #e3f6fd;
+
   /* Фокус */
   --focus: 3px solid var(--pink);
 

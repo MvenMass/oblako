@@ -49,13 +49,14 @@ a {
   color: var(--sky-deep);
 }
 
+/* Safari 14 не знает :focus-visible — там правило с :not() отбрасывается и кольцо остаётся на :focus */
 :focus {
-  outline: none;
-}
-
-:focus-visible {
   outline: var(--focus);
   outline-offset: 3px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
 }
 
 /* Живой градиент акцентных слов */
@@ -108,4 +109,18 @@ a {
   .grad {
     animation: none;
   }
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
 }

@@ -18,7 +18,7 @@ const SWATCHES = [
 /** Стиль-гайд: повторяет docs/design/Main.dc.html и показывает все компоненты UI-кита */
 export default function Kit() {
   return (
-    <main id="main" className={styles.page}>
+    <div className={styles.page}>
       <Aurora ribbons />
 
       <div className={`container ${styles.content}`}>
@@ -88,6 +88,6 @@ export default function Kit() {
 
         <KitComponents />
       </div>
-    </main>
+    </div>
   );
 }

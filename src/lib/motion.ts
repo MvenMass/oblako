@@ -1,4 +1,4 @@
-import { useSyncExternalStore } from 'react';
+import { useEffect, useState, useSyncExternalStore, type RefObject } from 'react';
 
 const QUERY = '(prefers-reduced-motion: reduce)';
 
@@ -22,6 +22,32 @@ function getSnapshot(): boolean {
 /** true, если пользователь просит уменьшить движение. Отключает параллакс, автоплеи и сияние. */
 export function useReducedMotion(): boolean {
   return useSyncExternalStore(subscribe, getSnapshot, () => false);
+}
+
+/** Однократно становится true, когда элемент входит в экран. Без IntersectionObserver — сразу true. */
+export function useInView(
+  ref: RefObject<Element | null>,
+  rootMargin = '0px 0px -15% 0px',
+): boolean {
+  const [inView, setInView] = useState(() => typeof IntersectionObserver === 'undefined');
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || inView) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setInView(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [ref, rootMargin, inView]);
+
+  return inView;
 }
 
 export const ease = {
