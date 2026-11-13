@@ -1,0 +1,95 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--btn-h);
+  padding: 0 22px;
+  border: 1px solid transparent;
+  border-radius: var(--r-btn);
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    transform 0.25s var(--ease-out),
+    box-shadow 0.25s var(--ease-out),
+    opacity 0.2s;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Иконка рядом с текстом: margin вместо flex-gap (Safari 14.0) */
+.iconStart {
+  flex-shrink: 0;
+  margin-right: 10px;
+}
+
+.iconEnd {
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+.sm {
+  min-height: var(--tap);
+  padding: 0 16px;
+  font-size: 14px;
+}
+
+.iconOnly {
+  width: var(--btn-h);
+  padding: 0;
+}
+
+.iconOnly.sm {
+  width: var(--tap);
+}
+
+.primary {
+  background: var(--pink);
+  color: var(--white);
+  box-shadow: var(--shadow-cta);
+}
+
+.dark {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.glass {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border-color: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  color: var(--ink);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--ink);
+}
+
+.ghost:hover {
+  background: var(--morning);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass {
+    background: var(--glass-bg-solid);
+  }
+}

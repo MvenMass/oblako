@@ -1,0 +1,27 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  color: var(--ink);
+}
+
+.cloud {
+  width: 36px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.word {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.lg .cloud {
+  width: 44px;
+  height: 30px;
+  margin-right: 12px;
+}
+
+.lg .word {
+  font-size: 28px;
+}

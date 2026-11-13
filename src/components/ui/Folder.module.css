@@ -1,0 +1,148 @@
+.folder {
+  --folder-tab: var(--folder-tab-muted);
+  --folder-tab-ink: var(--ink);
+
+  position: relative;
+  width: 290px;
+  height: 330px;
+  margin-top: 26px;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+  color: var(--ink);
+}
+
+.hit {
+  --folder-tab: var(--pink);
+  --folder-tab-ink: var(--white);
+}
+
+.tab {
+  position: absolute;
+  top: -26px;
+  left: 0;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 14px 14px 0 0;
+  background: var(--folder-tab);
+  color: var(--folder-tab-ink);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 30px;
+  letter-spacing: 0.1em;
+}
+
+.back {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 6px 18px 18px 18px;
+  background: var(--folder-fill);
+  box-shadow: var(--shadow-folder);
+}
+
+.sheet {
+  position: absolute;
+  top: 16px;
+  right: 14px;
+  left: 14px;
+  height: 260px;
+  padding: 16px;
+  border-radius: var(--r-btn);
+  background: var(--white);
+  box-shadow: var(--shadow-sheet);
+  transition: transform 0.8s var(--ease-out);
+}
+
+.open .sheet {
+  transform: translateY(-170px);
+}
+
+.front {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 230px;
+  padding: 22px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-card-sm);
+  background: var(--glass-bg-strong);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+  color: var(--ink);
+  font-family: var(--font);
+  text-align: left;
+  -webkit-transform-origin: bottom;
+  transform-origin: bottom;
+  transition: transform 0.8s var(--ease-out);
+}
+
+button.front {
+  cursor: pointer;
+}
+
+.open .front {
+  transform: rotateX(-24deg) translateY(10px);
+}
+
+.top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: var(--icon-gloss), var(--folder-fill);
+  box-shadow: var(--shadow-icon);
+}
+
+.badge {
+  padding: 6px 10px;
+  border-radius: var(--r-badge);
+  background: var(--pink);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.name {
+  display: grid;
+  grid-gap: 4px;
+  gap: 4px;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.hint {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .front {
+    background: var(--glass-bg-solid);
+  }
+}

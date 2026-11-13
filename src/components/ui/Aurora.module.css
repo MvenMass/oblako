@@ -1,0 +1,63 @@
+.aurora {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  animation: aurora-drift 20s ease-in-out infinite;
+  will-change: transform;
+}
+
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+.ribbon {
+  fill: none;
+  stroke-dasharray: 420 780;
+  animation: aurora-flow 9s linear infinite;
+}
+
+.grain {
+  opacity: 0.07;
+  mix-blend-mode: multiply;
+}
+
+@keyframes aurora-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(60px, -40px) scale(1.15);
+  }
+  66% {
+    transform: translate(-50px, 30px) scale(0.92);
+  }
+}
+
+@keyframes aurora-flow {
+  to {
+    stroke-dashoffset: -1200;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob,
+  .ribbon {
+    animation: none;
+  }
+}

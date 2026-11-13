@@ -1,0 +1,67 @@
+.chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-chip);
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    transform 0.2s var(--ease-out);
+}
+
+button.chip {
+  cursor: pointer;
+}
+
+/* Тач-цель 44px при визуальной высоте 36px */
+button.chip::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: 0;
+  bottom: -5px;
+  left: 0;
+}
+
+button.chip:hover {
+  transform: translateY(-1px);
+}
+
+.lg {
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+button.lg::after {
+  top: -3px;
+  bottom: -3px;
+}
+
+.selected {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--white);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .chip:not(.selected) {
+    background: var(--glass-bg-solid);
+  }
+}

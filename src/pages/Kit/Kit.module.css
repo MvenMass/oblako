@@ -1,0 +1,285 @@
+.page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.content {
+  position: relative;
+  display: grid;
+  grid-gap: 40px;
+  gap: 40px;
+  padding-top: 64px;
+  padding-bottom: 96px;
+}
+
+/* Шапка */
+.intro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin: -16px;
+}
+
+.intro > * {
+  margin: 16px;
+}
+
+.introTitle {
+  display: grid;
+  grid-gap: 14px;
+  gap: 14px;
+}
+
+.h1 {
+  font-size: 68px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: var(--ls-tight);
+}
+
+.introText {
+  max-width: 380px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* Палитра */
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-gap: 14px;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.swatch {
+  display: grid;
+  grid-gap: 8px;
+  gap: 8px;
+}
+
+.swatchColor {
+  height: 104px;
+  border-radius: 18px;
+}
+
+.swatchName {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.swatchMeta {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+  padding: 0 22px;
+  border-radius: 18px;
+  background: var(--grad-brand);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Карточки */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-gap: 22px;
+  gap: 22px;
+}
+
+.card {
+  display: grid;
+  align-content: start;
+  grid-gap: 16px;
+  gap: 16px;
+  padding: 28px;
+}
+
+.eyebrow,
+.eyebrowLight {
+  color: var(--sky-deep);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.eyebrowLight {
+  color: var(--sky-light);
+}
+
+.cardTitle {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: var(--ls-tight);
+}
+
+.cardText {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.cardNote {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* Ряды без flex-gap (Safari 14.0): отступы через margin */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: -6px;
+  padding: 0;
+  list-style: none;
+}
+
+.row > * {
+  margin: 6px;
+}
+
+/* 3D-иконки */
+.icons3d {
+  display: flex;
+  align-items: center;
+  height: 96px;
+}
+
+.icon3d {
+  margin-right: 22px;
+  animation: float 5s ease-in-out infinite;
+}
+
+.iconSky {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--icon3d-sky);
+  box-shadow: var(--shadow-icon3d-sky);
+}
+
+.iconPink {
+  width: 64px;
+  height: 80px;
+  border-radius: 22px;
+  background: var(--icon3d-pink);
+  box-shadow: var(--shadow-icon3d-pink);
+  animation-delay: -1.6s;
+}
+
+.iconDusk {
+  width: 74px;
+  height: 74px;
+  border-radius: 24px;
+  background: var(--icon3d-dusk);
+  box-shadow: var(--shadow-icon3d-dusk);
+  animation-delay: -3.2s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-8deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(6deg);
+  }
+}
+
+.footnote {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Компоненты */
+.section {
+  display: grid;
+  grid-gap: 22px;
+  gap: 22px;
+  padding-top: 40px;
+}
+
+.iconCell {
+  display: grid;
+  justify-items: center;
+  grid-gap: 6px;
+  gap: 6px;
+  min-width: 88px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.iconCell svg {
+  color: var(--ink);
+}
+
+.glassPair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-gap: 22px;
+  gap: 22px;
+}
+
+.night {
+  padding: 24px;
+  border-radius: var(--r-card);
+  background: var(--night);
+}
+
+.folders {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  justify-items: center;
+  grid-gap: 40px 22px;
+  gap: 40px 22px;
+  padding: 120px 0 24px;
+}
+
+@media (max-width: 1024px) {
+  .swatches {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .cards,
+  .glassPair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding-top: 40px;
+  }
+
+  .h1 {
+    font-size: var(--fs-h1);
+  }
+
+  .swatches {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cardTitle {
+    font-size: 34px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icon3d {
+    animation: none;
+  }
+}
