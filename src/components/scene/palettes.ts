@@ -1,4 +1,4 @@
-import { mix } from '@/lib/color';
+import { contrast, mix } from '@/lib/color';
 import type { City, TodPalette } from '@/types/city';
 
 // Опорные небеса — по палитрам Тбилиси (city.md): день светлый, закат розово-лиловый, ночь #06172F
@@ -15,22 +15,23 @@ const NIGHT = '#06172F';
  */
 export function generatePalettes(city: City): TodPalette[] {
   const { accent, accent2, folder } = city.theme;
-  const [light, dark] = folder;
+  // Светлый из пары folder — тот, что хуже контрастирует с белым
+  const [dark, light] = [...folder].sort((a, b) => contrast(b, '#ffffff') - contrast(a, '#ffffff'));
 
   const day: TodPalette = {
-    far: mix(dark, '#C9E6F2', 0.72),
+    far: mix(dark, '#CFE6F0', 0.72),
     snow: '#FFFFFF',
-    mid: mix(dark, '#9FC9B0', 0.55),
-    mid2: mix(dark, '#7FAF95', 0.45),
-    city: mix(light, '#F3E7DA', 0.45),
-    city2: mix(accent2, '#F0D9C4', 0.5),
-    roof: mix(accent, '#B5644A', 0.4),
-    wood: mix(accent, '#6E4A3A', 0.5),
+    mid: mix(light, '#3E6B55', 0.45),
+    mid2: mix(light, '#2F5A47', 0.55),
+    city: mix(light, '#FFFFFF', 0.72),
+    city2: mix(accent2, '#FFFFFF', 0.5),
+    roof: mix(accent, '#B5644A', 0.25),
+    wood: mix(accent, '#5A3A2E', 0.6),
     winBase: '#5E7C93',
     win: 0,
-    water: mix(dark, '#5DB3D6', 0.6),
-    near: mix(dark, '#3F7A55', 0.5),
-    grape: mix(accent, '#5B2A4A', 0.5),
+    water: mix(dark, '#5DB3D6', 0.55),
+    near: mix(dark, '#24402F', 0.55),
+    grape: accent,
     sun: '#FFE9A8',
     stars: 0,
     cloud: 1,
@@ -44,16 +45,16 @@ export function generatePalettes(city: City): TodPalette[] {
 
   const sunset: TodPalette = {
     ...day,
-    far: mix(dark, '#7A4A7F', 0.6),
-    mid: mix(dark, '#5B3557', 0.55),
-    mid2: mix(dark, '#4A2B48', 0.5),
-    city: mix(light, '#E3A88C', 0.5),
-    city2: mix(accent2, '#C9826B', 0.5),
-    roof: mix(accent, '#7A2E3A', 0.4),
+    far: mix(dark, '#8A5A8F', 0.65),
+    mid: mix(light, '#5B3557', 0.6),
+    mid2: mix(light, '#4A2B48', 0.65),
+    city: mix(light, '#F2C2A8', 0.6),
+    city2: mix(accent2, '#E39A7E', 0.5),
+    roof: mix(accent, '#7A2E3A', 0.35),
     winBase: '#6E4A5A',
     win: 0.65,
-    water: mix(dark, '#C2557A', 0.45),
-    near: mix(dark, '#2E1F33', 0.6),
+    water: mix(dark, '#C2557A', 0.5),
+    near: mix(dark, '#2E1F33', 0.7),
     sun: '#FFB46B',
     stars: 0.2,
     cloud: 0.8,
@@ -69,8 +70,8 @@ export function generatePalettes(city: City): TodPalette[] {
     ...day,
     far: mix(dark, NIGHT, 0.7),
     snow: '#9FB3C8',
-    mid: mix(dark, NIGHT, 0.75),
-    mid2: mix(dark, NIGHT, 0.8),
+    mid: mix(light, NIGHT, 0.78),
+    mid2: mix(light, NIGHT, 0.82),
     city: mix(light, NIGHT, 0.72),
     city2: mix(accent2, NIGHT, 0.75),
     roof: mix(accent, NIGHT, 0.7),
@@ -79,7 +80,7 @@ export function generatePalettes(city: City): TodPalette[] {
     win: 1,
     water: mix(dark, NIGHT, 0.65),
     near: mix(dark, NIGHT, 0.88),
-    grape: mix(accent, NIGHT, 0.75),
+    grape: mix(accent, NIGHT, 0.6),
     sun: '#EAF4FB',
     stars: 1,
     cloud: 0.25,

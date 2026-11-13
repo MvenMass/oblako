@@ -236,7 +236,7 @@
   }
   46%,
   54% {
-    transform: translate(460px, 198px);
+    transform: translate(var(--dx, 460px), var(--dy, 198px));
   }
   92%,
   100% {
@@ -285,7 +285,41 @@
   }
 }
 
+/* Струи фонтанов */
+.svg :global(.jet) {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: scene-jet 1.6s ease-in-out infinite;
+}
+
+@keyframes scene-jet {
+  0%,
+  100% {
+    transform: scaleY(0.7);
+  }
+  50% {
+    transform: scaleY(1.05);
+  }
+}
+
+/* Яхта и лодки на волнах */
+.svg :global(.bob) {
+  animation: scene-bob 4s ease-in-out infinite;
+}
+
+@keyframes scene-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(1.5deg);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .svg :global(.jet),
+  .svg :global(.bob),
   .svg :global(.tw),
   .svg :global(.shim),
   .svg :global(.cable),
