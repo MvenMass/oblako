@@ -1,0 +1,254 @@
+.section {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 560px);
+  grid-gap: 40px;
+  gap: 40px;
+  align-items: center;
+  padding-bottom: 120px;
+}
+
+.side {
+  display: grid;
+  grid-gap: 18px;
+  gap: 18px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -4px;
+}
+
+.chip {
+  min-height: var(--tap);
+  margin: 4px;
+  padding: 0 16px;
+  border: 1px solid var(--tag-border);
+  border-radius: var(--r-btn);
+  background: var(--tag-bg);
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    opacity 0.3s;
+}
+
+.chip:hover {
+  background: var(--white);
+}
+
+.done,
+.done:hover {
+  border-color: transparent;
+  background: var(--line-hair);
+  color: var(--muted);
+  cursor: default;
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-panel);
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--line-hair);
+}
+
+.bot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-right: 12px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--morning), var(--white));
+  box-shadow: inset 0 0 0 1px var(--line-hair);
+  fill: var(--sky);
+}
+
+.online {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: 14px;
+  height: 14px;
+  border: 3px solid var(--white);
+  border-radius: 50%;
+  background: var(--success);
+}
+
+.who {
+  display: grid;
+  font-size: 17px;
+}
+
+.status {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.log {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: 20px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.msg {
+  max-width: 82%;
+  margin-bottom: 10px;
+  padding: 12px 16px;
+  font-size: 15px;
+  line-height: 1.45;
+  animation: msg-in 0.35s var(--ease-spring) both;
+}
+
+@keyframes msg-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+}
+
+.mine {
+  align-self: flex-end;
+  border-radius: 18px 18px 6px 18px;
+  background: var(--ink);
+  color: var(--white);
+}
+
+.bot2 {
+  align-self: flex-start;
+  border-radius: 18px 18px 18px 6px;
+  background: var(--white);
+  box-shadow: var(--shadow-card);
+}
+
+.typing {
+  display: flex;
+  align-self: flex-start;
+  padding: 14px 16px;
+  border-radius: 18px 18px 18px 6px;
+  background: var(--white);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background: var(--muted);
+  animation: dot 1s ease-in-out infinite;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.dot:nth-child(3) {
+  margin-right: 0;
+  animation-delay: 0.3s;
+}
+
+@keyframes dot {
+  0%,
+  80%,
+  100% {
+    opacity: 0.4;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+}
+
+.form {
+  display: flex;
+  padding: 14px;
+  border-top: 1px solid var(--line-hair);
+}
+
+.field {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.input {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 48px;
+  padding: 0 16px;
+  border: 1px solid var(--field-border);
+  border-radius: var(--r-btn);
+  background: var(--white);
+  font-size: 15px;
+}
+
+.send {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-left: 8px;
+  border: 0;
+  border-radius: var(--r-btn);
+  background: var(--pink);
+  color: var(--white);
+  cursor: pointer;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .chat {
+    background: var(--glass-bg-solid);
+  }
+}
+
+@media (max-width: 1023px) {
+  .section {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding-bottom: 72px;
+  }
+
+  .chat {
+    height: 480px;
+  }
+
+  .chip {
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .msg,
+  .dot {
+    animation: none;
+  }
+}
