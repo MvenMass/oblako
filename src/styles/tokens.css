@@ -229,6 +229,23 @@
   --wine-bottom: #6e1e35;
   --wine-glass: rgba(255, 255, 255, 0.06);
 
+  /* Тематическая секция Стамбула: два континента */
+  --ist-bg: #0e2559;
+  --ist-ink: #f2f7fb;
+  --ist-muted: #c9d7ec;
+  --ist-eyebrow: #94d6d8;
+  --ist-strait-band: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.08) 0 30%,
+    #2ba3a8 30% 70%,
+    rgba(255, 255, 255, 0.08) 70% 100%
+  );
+  --iznik-white: #f7fafc;
+  --iznik-mist: #e6f3f4;
+  --iznik-teal: #2ba3a8;
+  --iznik-blue: #1b3f8b;
+  --iznik-red: #c2364b;
+
   /* Первый экран */
   --field-bg: rgba(255, 255, 255, 0.55);
   --grad-badge: linear-gradient(135deg, #38bde8, #8b6cf0);

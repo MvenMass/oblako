@@ -150,7 +150,8 @@
 }
 
 @media (max-width: 900px) {
-  .inner {
+  .inner,
+  .istanbul .inner {
     grid-template-columns: minmax(0, 1fr);
     padding-top: 96px;
   }
@@ -177,5 +178,141 @@
   .liquid {
     transform: none;
     transition: none;
+  }
+}
+
+/* Стамбул: два континента */
+.istanbul {
+  background: var(--ist-bg);
+  color: var(--ist-ink);
+}
+
+.istanbul .inner {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-gap: 56px;
+  gap: 56px;
+  padding-top: 104px;
+  padding-bottom: 104px;
+}
+
+.eyebrowIst {
+  color: var(--ist-eyebrow);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.leadIst {
+  max-width: 520px;
+  color: var(--ist-muted);
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.strait {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  padding: 0 18px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--ist-strait-band);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.strait > span:not(.boat) {
+  position: relative;
+}
+
+.boat {
+  position: absolute;
+  top: 22px;
+  left: 32%;
+  width: 44px;
+  height: 20px;
+  border-radius: 4px 4px 10px 10px;
+  background: var(--white);
+  animation: boat 16s ease-in-out infinite;
+}
+
+@keyframes boat {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(160px);
+  }
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-gap: 6px;
+  gap: 6px;
+}
+
+.tile {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  border-radius: 6px;
+  opacity: 0;
+}
+
+.tileIn {
+  animation: tile-in 0.7s var(--ease-spring) both;
+}
+
+@keyframes tile-in {
+  from {
+    opacity: 0;
+    transform: scale(0.6) rotate(-20deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.tileA .tileBg,
+.tileC .tileBg {
+  fill: var(--iznik-white);
+}
+
+.tileB .tileBg {
+  fill: var(--iznik-mist);
+}
+
+.tileA .tileStar,
+.tileC .tileStar,
+.tileB .tileDot {
+  fill: var(--iznik-teal);
+}
+
+.tileB .tileStar,
+.tileA .tileDot {
+  fill: var(--iznik-blue);
+}
+
+.tileC .tileDot,
+.tileCorner {
+  fill: var(--iznik-red);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .boat,
+  .tileIn {
+    animation: none;
+  }
+
+  .tile {
+    opacity: 1;
   }
 }
