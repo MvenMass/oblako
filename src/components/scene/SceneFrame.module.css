@@ -317,8 +317,49 @@
   }
 }
 
+/* Неон на небоскрёбах — бежит ночью, днём не виден */
+.svg :global(.neon) {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 18 30;
+  opacity: var(--win);
+  transition: opacity 1.2s;
+  animation: scene-neon 2.4s linear infinite;
+}
+
+.svg :global(.neon-pink) {
+  stroke: var(--aurora-2);
+}
+
+.svg :global(.neon-blue) {
+  stroke: var(--aurora-1);
+}
+
+@keyframes scene-neon {
+  to {
+    stroke-dashoffset: -96;
+  }
+}
+
+/* Мотобайки проезжают по улице */
+.svg :global(.ride) {
+  animation: scene-ride 9s linear infinite;
+}
+
+@keyframes scene-ride {
+  from {
+    transform: translateX(-200px);
+  }
+  to {
+    transform: translateX(1700px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .svg :global(.jet),
+  .svg :global(.neon),
+  .svg :global(.ride),
   .svg :global(.bob),
   .svg :global(.tw),
   .svg :global(.shim),
