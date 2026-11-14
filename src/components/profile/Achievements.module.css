@@ -1,0 +1,155 @@
+.section {
+  display: grid;
+  grid-gap: 16px;
+  gap: 16px;
+}
+
+.h2 {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: var(--ls-tight);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-gap: 16px;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  perspective: 1000px;
+}
+
+.card {
+  position: relative;
+  display: grid;
+  grid-gap: 14px;
+  gap: 14px;
+  padding: 22px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  background: var(--glass-bg);
+  box-shadow: var(--glass-shadow);
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateZ(0);
+  transition: transform 0.6s var(--ease-out);
+}
+
+.card[data-over] {
+  transition: transform 0.08s linear;
+}
+
+.card[data-locked] {
+  opacity: 0.6;
+}
+
+.icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 22px;
+  background: radial-gradient(circle at 32% 26%, var(--white) 0%, var(--icon) 60%);
+  box-shadow: var(--shadow-icon);
+  transform: translateY(0);
+  transition: transform 0.4s var(--ease-out);
+}
+
+.icon[data-round] {
+  border-radius: 50%;
+}
+
+.card:not([data-got]) .icon {
+  filter: grayscale(0.9);
+}
+
+.card[data-over] .icon {
+  transform: translateY(-6px);
+}
+
+.text {
+  display: grid;
+  grid-gap: 4px;
+  gap: 4px;
+}
+
+.text b {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.text span,
+.state {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.state {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.bar {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--glass-bg-strong);
+}
+
+.bar span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--field-border);
+  transform-origin: left;
+}
+
+.card[data-got] .bar span {
+  background: var(--grad-progress);
+}
+
+.holo,
+.glare {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.holo {
+  background: var(--holo);
+  background-position: var(--px, 30%) var(--py, 30%);
+  background-size: 260% 260%;
+  mix-blend-mode: soft-light;
+}
+
+.card[data-got] .holo {
+  opacity: 0.45;
+}
+
+.card[data-got][data-over] .holo {
+  opacity: 1;
+}
+
+.glare {
+  background: radial-gradient(
+    circle at var(--px, 50%) var(--py, 50%),
+    var(--glare),
+    transparent 45%
+  );
+}
+
+.card[data-over] .glare {
+  opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .icon {
+    transition: none;
+  }
+}

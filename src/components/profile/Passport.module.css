@@ -1,0 +1,319 @@
+.section {
+  display: grid;
+  grid-gap: 20px;
+  gap: 20px;
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin: -8px;
+}
+
+.head > * {
+  margin: 8px;
+}
+
+.h2 {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: var(--ls-tight);
+}
+
+.stage {
+  display: flex;
+  justify-content: center;
+  height: 460px;
+  perspective: 2000px;
+}
+
+/* Закрытый паспорт смещён влево, чтобы обложка стояла по центру */
+.book {
+  position: relative;
+  width: 760px;
+  max-width: 100%;
+  height: 460px;
+  transform: translateX(-25%);
+  transition: transform 1.2s cubic-bezier(0.3, 0.7, 0.2, 1);
+}
+
+.book[data-open] {
+  transform: none;
+}
+
+.page,
+.cover {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+}
+
+.page {
+  overflow: hidden;
+  border-radius: 6px 22px 22px 6px;
+  background: var(--paper);
+  box-shadow: var(--shadow-sheet);
+}
+
+.cover {
+  z-index: 2;
+  transform-origin: left center;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(0.3, 0.7, 0.2, 1);
+}
+
+.book[data-open] .cover {
+  transform: rotateY(-180deg);
+}
+
+.front,
+.back {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.front {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px 22px 22px 6px;
+  background: var(--passport-cover);
+  box-shadow: var(--shadow-sheet);
+  color: var(--passport-gold);
+}
+
+.front > * + * {
+  margin-top: 22px;
+}
+
+.front svg path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+}
+
+.front b {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+}
+
+.front span {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.back {
+  border-radius: 22px 6px 6px 22px;
+  background: var(--paper-back);
+  transform: rotateY(180deg);
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 30px;
+  color: var(--passport-ink);
+}
+
+.dataTitle {
+  margin-bottom: 18px;
+  color: var(--passport-muted);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.dataRow {
+  display: flex;
+}
+
+.photo {
+  display: flex;
+  flex: none;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100px;
+  height: 128px;
+  margin-right: 20px;
+  padding-bottom: 8px;
+  border-radius: 8px;
+  background: var(--grad-avatar);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.dataRow dl {
+  margin: 0;
+  font-size: 13px;
+}
+
+.dataRow dt {
+  color: var(--passport-muted);
+  font-size: 10px;
+}
+
+.dataRow dd {
+  margin: 0 0 10px;
+  overflow-wrap: anywhere;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.mrz {
+  margin-top: auto;
+  overflow-wrap: anywhere;
+  color: var(--passport-muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  word-break: break-all;
+}
+
+.stamps {
+  position: relative;
+  height: 100%;
+}
+
+.stamp {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  transform: rotate(var(--r));
+  animation: thump 0.5s cubic-bezier(0.3, 0.7, 0.3, 1) both;
+}
+
+.inkG {
+  opacity: 0.85;
+  fill: none;
+  stroke: var(--ink);
+}
+
+.inkG text {
+  fill: var(--ink);
+  stroke: none;
+  font-family: var(--font);
+  font-weight: 800;
+  text-anchor: middle;
+}
+
+.country {
+  font-size: 12px;
+  letter-spacing: 1.5px;
+}
+
+.iata {
+  font-size: 24px;
+}
+
+.inkG .date {
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.empty {
+  padding: 40px 30px;
+  color: var(--passport-muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.empty a {
+  color: var(--pink);
+  font-weight: 700;
+}
+
+.num {
+  position: absolute;
+  right: 18px;
+  bottom: 14px;
+  color: var(--passport-muted);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav > span {
+  margin: 0 16px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.defs {
+  position: absolute;
+}
+
+@keyframes thump {
+  0% {
+    opacity: 0;
+    transform: rotate(calc(var(--r) - 18deg)) scale(2.4);
+  }
+
+  55% {
+    opacity: 1;
+    transform: rotate(var(--r)) scale(0.92);
+  }
+
+  75% {
+    transform: rotate(var(--r)) scale(1.04);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotate(var(--r)) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stamp {
+    animation: none;
+  }
+
+  .book,
+  .cover {
+    transition: none;
+  }
+}
+
+/* Телефон: одна страница, обложка уходит влево целиком */
+@media (max-width: 639px) {
+  .stage {
+    height: 440px;
+    overflow: hidden;
+  }
+
+  .book {
+    width: 100%;
+    height: 440px;
+    transform: none;
+  }
+
+  .page,
+  .cover {
+    left: 0;
+    width: 100%;
+  }
+}

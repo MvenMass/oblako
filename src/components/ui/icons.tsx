@@ -16,6 +16,7 @@ export const STROKE_ICONS = {
   menu: <path d="M4 7h16M4 12h16M4 17h16" />,
   check: <path d="M5 12.5l4.5 4.5L19 7.5" />,
   plus: <path d="M12 5v14M5 12h14" />,
+  pen: <path d="M4 20h4L19 9l-4-4L4 16zM13 7l4 4" />,
   send: <path d="M4 12l16-8-6 16-3-7z" />,
   home: <path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z" />,
   route: (

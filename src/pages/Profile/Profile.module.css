@@ -1,0 +1,99 @@
+.page {
+  position: relative;
+  overflow: hidden;
+}
+
+.content {
+  position: relative;
+  display: grid;
+  grid-gap: 32px;
+  gap: 32px;
+  padding-top: 48px;
+  padding-bottom: 80px;
+}
+
+.world {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  grid-gap: 20px;
+  gap: 20px;
+}
+
+.globeCard {
+  display: grid;
+  justify-items: center;
+  grid-gap: 6px;
+  gap: 6px;
+  padding: 20px;
+  border: 1px solid var(--glass-border);
+  border-radius: 32px;
+  background: var(--glass-bg);
+  box-shadow: var(--glass-shadow);
+}
+
+.globeHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  justify-self: stretch;
+  padding: 4px 8px;
+}
+
+.globeHead h2 {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.globeHead span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.globe {
+  width: 440px;
+  max-width: 100%;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-gap: 16px;
+  gap: 16px;
+  margin: 0;
+}
+
+.stats > div {
+  display: grid;
+  align-content: space-between;
+  padding: 22px;
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  background: var(--glass-bg);
+  box-shadow: var(--glass-shadow);
+}
+
+.stats dt {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.stats dd {
+  margin: 0;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 1023px) {
+  .world {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .content {
+    padding-top: 28px;
+  }
+}

@@ -199,6 +199,23 @@
   --case-shadow: rgba(11, 37, 64, 0.18);
   --case-strap: #0f2c4c;
   --item-shadow: 0 8px 10px rgba(11, 37, 64, 0.18);
+  /* Профиль: паспорт, чернила штампов, иконки достижений */
+  --paper: linear-gradient(90deg, #efe8da, #fbf7ee 8%, #fbf7ee);
+  --paper-back: linear-gradient(270deg, #efe8da, #fbf7ee 8%, #fbf7ee);
+  --passport-cover: linear-gradient(135deg, #12335a, #0b2540);
+  --passport-gold: #e9c77e;
+  --passport-ink: #3b3428;
+  --passport-muted: #6e6247;
+  --ink-wine: #8e2c48;
+  --ink-navy: #1b3f8b;
+  --ink-rose: #b2405e;
+  --ink-teal: #2f8a74;
+  --ink-moss: #5c8457;
+  --ink-sky: #1e86b3;
+  --ach-sky: #0a79a8;
+  --ach-pink: #c8146f;
+  --ach-green: #3e8c7b;
+  --ach-gold: #f08a24;
   /* Табло: статусы и радар */
   --board-delay: #f5b544;
   --board-departed: #8fa6bc;
