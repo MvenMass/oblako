@@ -1,0 +1,187 @@
+.wrap {
+  display: grid;
+}
+
+.terminal {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-gap: 14px;
+  gap: 14px;
+  padding: 18px 18px 22px;
+  border-radius: 26px;
+  background: var(--terminal-bg);
+  box-shadow: var(--shadow-ticket);
+  color: var(--on-night);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.led {
+  display: flex;
+  align-items: center;
+  color: var(--on-night-faint);
+  font-size: 12px;
+}
+
+.led i {
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--sky);
+  box-shadow: 0 0 10px var(--sky);
+}
+
+.led[data-phase='printed'] i {
+  background: var(--led-amber);
+  box-shadow: 0 0 10px var(--led-amber);
+}
+
+.led[data-phase='torn'] i {
+  background: var(--led-green);
+  box-shadow: 0 0 10px var(--led-green);
+}
+
+.pay {
+  min-height: 56px;
+  border: 0;
+  border-radius: var(--r-btn);
+  background: var(--pink);
+  box-shadow: var(--shadow-cta);
+  color: var(--white);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pay:disabled {
+  background: var(--on-night-field);
+  box-shadow: none;
+  color: var(--on-night-muted);
+  cursor: default;
+}
+
+.pay[data-phase='torn']:disabled {
+  background: var(--success-ink);
+  color: var(--white);
+}
+
+.slot {
+  display: block;
+  height: 10px;
+  margin: 0 6px;
+  border-radius: 999px;
+  background: var(--terminal-slot);
+}
+
+/* Бумага выезжает из щели: контейнер обрезает, талон сдвигается */
+.paper {
+  position: relative;
+  z-index: 2;
+  margin-top: -16px;
+  padding: 16px 14px 18px;
+  overflow: hidden;
+  perspective: 1100px;
+}
+
+.pass {
+  position: relative;
+  border-radius: 0 0 22px 22px;
+  box-shadow: var(--shadow-sheet);
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transform-style: preserve-3d;
+  transition: transform 0.6s var(--ease-out);
+  animation: print 1.6s cubic-bezier(0.3, 0.7, 0.2, 1) both;
+}
+
+.pass[data-over] {
+  transition: transform 0.08s linear;
+}
+
+.holo,
+.glare {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 0 0 22px 22px;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+
+.holo {
+  background: var(--holo);
+  background-position: var(--px, 50%) var(--py, 50%);
+  background-size: 260% 260%;
+  mix-blend-mode: multiply;
+  opacity: 0.25;
+}
+
+.pass[data-over] .holo {
+  opacity: 0.55;
+}
+
+.pass[data-phase='torn'] .holo {
+  opacity: 0;
+}
+
+.glare {
+  background: radial-gradient(
+    circle at var(--px, 50%) var(--py, 50%),
+    var(--glare),
+    transparent 40%
+  );
+  opacity: 0;
+}
+
+.pass[data-over] .glare {
+  opacity: 0.7;
+}
+
+.fly {
+  animation: toWallet 1.1s cubic-bezier(0.5, 0, 0.3, 1) both;
+}
+
+@keyframes print {
+  from {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes toWallet {
+  35% {
+    transform: translate(20px, 30px) rotate(6deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(0, 240px) rotate(-4deg) scale(0.35);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pass {
+    animation: none;
+    transition: none;
+  }
+
+  .fly {
+    animation: none;
+    opacity: 0;
+  }
+}

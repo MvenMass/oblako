@@ -1,0 +1,173 @@
+.card {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  grid-gap: 24px;
+  gap: 24px;
+  align-items: center;
+  padding: 22px;
+  border: 1px solid var(--glass-border);
+  border-radius: 28px;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+}
+
+.svg {
+  width: 210px;
+  height: 280px;
+}
+
+.wall {
+  fill: var(--porthole-wall);
+}
+
+.bezel {
+  fill: var(--porthole-bezel);
+  stroke: var(--porthole-edge);
+  stroke-width: 2;
+}
+
+.inner {
+  fill: var(--porthole-inner);
+}
+
+.view {
+  transition: filter 0.4s var(--ease-out);
+}
+
+/* Не у окна — небо видно размытым через салон */
+.view[data-blur] {
+  filter: blur(3px);
+}
+
+.sky {
+  fill: var(--porthole-sky);
+}
+
+.sun {
+  fill: var(--white);
+  opacity: 0.35;
+}
+
+.clouds {
+  fill: var(--white);
+  animation: drift 9s linear infinite alternate;
+}
+
+.wing path {
+  fill: var(--cabin-wing);
+  stroke: var(--porthole-edge);
+  stroke-width: 1.5;
+}
+
+.wing .flap {
+  fill: none;
+  stroke-width: 2;
+}
+
+.light {
+  fill: var(--pink);
+}
+
+.shade {
+  fill: var(--porthole-shade);
+  transform: scaleY(0.035);
+  transform-box: fill-box;
+  transform-origin: top;
+  transition: transform 0.8s var(--ease-out);
+}
+
+.shade[data-down] {
+  transform: scaleY(0.2);
+}
+
+.glass {
+  fill: var(--porthole-glare);
+}
+
+.frame {
+  fill: none;
+  stroke: var(--porthole-edge);
+  stroke-width: 3;
+}
+
+.text {
+  display: grid;
+  justify-items: start;
+  grid-gap: 8px;
+  gap: 8px;
+}
+
+.eyebrow {
+  color: var(--sky-deep);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.note {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.toggle {
+  min-height: var(--tap);
+  margin-top: 4px;
+  padding: 0 14px;
+  border: 1px solid var(--seat-border);
+  border-radius: var(--r-btn);
+  background: var(--glass-bg-strong);
+  color: var(--ink);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.toggle::before {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 8px;
+  border: 2px solid var(--muted);
+  border-radius: 3px;
+  content: '';
+}
+
+.toggle[aria-pressed='true']::before {
+  border-color: var(--pink);
+  background: var(--pink);
+}
+
+@keyframes drift {
+  to {
+    transform: translateX(-120px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clouds {
+    animation: none;
+  }
+
+  .shade,
+  .view {
+    transition: none;
+  }
+}
+
+@media (max-width: 479px) {
+  .card {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+  }
+}

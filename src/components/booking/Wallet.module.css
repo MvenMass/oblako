@@ -1,0 +1,191 @@
+.wallet {
+  position: relative;
+  padding: 18px 20px;
+  overflow: hidden;
+  border-radius: 26px;
+  background: var(--wallet-bg);
+  box-shadow: var(--shadow-ticket);
+  color: var(--on-night);
+}
+
+.wallet::before {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  bottom: 8px;
+  left: 8px;
+  border: 2px dashed var(--on-night-line);
+  border-radius: 20px;
+  content: '';
+  pointer-events: none;
+}
+
+.head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.title svg {
+  margin-right: 10px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.count {
+  color: var(--on-night-faint);
+  font-size: 13px;
+}
+
+.pocket {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 64px;
+  margin-top: 14px;
+  padding: 10px;
+  border-radius: 14px;
+  background: var(--wallet-pocket);
+  box-shadow: var(--wallet-pocket-shadow);
+}
+
+.stubs {
+  display: grid;
+  grid-gap: 8px;
+  gap: 8px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stubs li {
+  display: grid;
+  grid-template-columns: 60px auto minmax(0, 1fr);
+  grid-gap: 12px;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--white);
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.stubs li span {
+  color: var(--muted);
+  text-align: right;
+}
+
+.code {
+  height: 26px;
+}
+
+.fresh {
+  animation: slideIn 0.5s cubic-bezier(0.2, 1.3, 0.4, 1) 0.9s both;
+}
+
+.empty {
+  color: var(--on-night-faint);
+  font-size: 13px;
+}
+
+/* Стопка талонов — только на телефоне */
+.stack {
+  display: none;
+}
+
+.holo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: var(--holo);
+  background-size: 260% 260%;
+  mix-blend-mode: soft-light;
+  opacity: 0.35;
+  pointer-events: none;
+  animation: holo 6s ease-in-out infinite alternate;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.9);
+  }
+}
+
+@keyframes holo {
+  from {
+    background-position: 0% 30%;
+  }
+
+  to {
+    background-position: 100% 70%;
+  }
+}
+
+@media (max-width: 767px) {
+  .pocket {
+    display: none;
+  }
+
+  .stack {
+    position: relative;
+    display: block;
+    height: calc(330px + (var(--n) - 1) * 54px);
+    margin-top: 14px;
+  }
+
+  .card {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    border-radius: 22px;
+    background: none;
+    box-shadow: var(--shadow-sheet);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    transform: translateY(calc(var(--i) * 54px)) scale(0.96);
+    transition: transform 0.6s cubic-bezier(0.3, 1.2, 0.4, 1);
+  }
+
+  .card[data-open] {
+    z-index: 5;
+    transform: none;
+  }
+
+  .card[data-open] .holo {
+    opacity: 0.9;
+  }
+
+  .card[data-dim] {
+    transform: translateY(calc(var(--i) * 54px + 300px)) scale(0.92);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fresh,
+  .holo {
+    animation: none;
+  }
+
+  .card {
+    transition: none;
+  }
+}

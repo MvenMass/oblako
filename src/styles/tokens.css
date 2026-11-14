@@ -151,6 +151,47 @@
   /* Табло: перекидные таблички */
   --flap: linear-gradient(180deg, #16365a 0 49%, #06172f 49% 51%, #0c2440 51% 100%);
   --flap-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06), 0 2px 0 rgba(0, 0, 0, 0.35);
+  /* Бронирование: салон, иллюминатор, терминал, кошелёк */
+  --cabin-sky: linear-gradient(180deg, #cbeffb, #eaf7fd);
+  --cabin-shadow: 0 30px 40px rgba(11, 37, 64, 0.18);
+  --cabin-edge: #c9dce7;
+  --cabin-wing: #e9f3f8;
+  --seat-border: #bfe3f2;
+  --seat-taken: repeating-linear-gradient(45deg, #d9e6ee 0 3px, #eef4f8 3px 6px);
+  --seat-shadow: 0 8px 18px rgba(200, 20, 111, 0.35);
+  --porthole-wall: #eef2f5;
+  --porthole-bezel: #e7edf1;
+  --porthole-edge: #afc0cc;
+  --porthole-inner: #c9d4dc;
+  --porthole-sky: #6cc0ea;
+  --porthole-shade: #e4eaef;
+  --porthole-glare: rgba(255, 255, 255, 0.12);
+  --terminal-bg: linear-gradient(180deg, #13304f, #0b2540);
+  --terminal-slot: #030c18;
+  --led-amber: #ffb347;
+  --led-green: #7fd3a6;
+  --wallet-bg: linear-gradient(160deg, #1d4670, #0b2540);
+  --wallet-pocket: rgba(0, 0, 0, 0.22);
+  --wallet-pocket-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.35);
+  --barcode: repeating-linear-gradient(
+    90deg,
+    #0b2540 0 2px,
+    transparent 2px 4px,
+    #0b2540 4px 7px,
+    transparent 7px 9px,
+    #0b2540 9px 10px,
+    transparent 10px 13px
+  );
+  --holo: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0) 25%,
+    rgba(255, 140, 198, 0.6) 38%,
+    rgba(127, 211, 242, 0.6) 48%,
+    rgba(255, 230, 140, 0.55) 58%,
+    rgba(185, 168, 255, 0.6) 66%,
+    rgba(255, 255, 255, 0) 78%
+  );
+  --glare: rgba(255, 255, 255, 0.75);
   /* Табло: статусы и радар */
   --board-delay: #f5b544;
   --board-departed: #8fa6bc;

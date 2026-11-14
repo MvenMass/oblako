@@ -1,0 +1,137 @@
+.pass {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 22px 22px;
+  background: var(--white);
+  color: var(--ink);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  background: var(--grad-brand-diag);
+  color: var(--white);
+}
+
+.brand {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.kind {
+  font-size: 11px;
+  font-weight: 700;
+  opacity: 0.92;
+}
+
+.main {
+  display: grid;
+  grid-gap: 16px;
+  gap: 16px;
+  padding: 20px 22px;
+}
+
+.route {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.route b {
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.dash {
+  stroke: var(--seat-border);
+  stroke-width: 2;
+  stroke-dasharray: 4 5;
+}
+
+.arrow {
+  fill: none;
+  stroke: var(--pink);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-gap: 12px 10px;
+  gap: 12px 10px;
+  margin: 0;
+}
+
+.fields > div {
+  display: grid;
+  grid-gap: 2px;
+  gap: 2px;
+}
+
+.fields dt {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.fields dd {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.passenger {
+  grid-column: 1 / -1;
+}
+
+.fields [data-seat] dd {
+  color: var(--pink);
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.tear {
+  position: relative;
+  height: 0;
+  margin: 0 14px;
+  border-top: 2px dashed var(--perf-line);
+}
+
+.tear::before,
+.tear::after {
+  position: absolute;
+  top: -13px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--bg);
+  content: '';
+}
+
+.tear::before {
+  left: -26px;
+}
+
+.tear::after {
+  right: -26px;
+}
+
+.stub {
+  display: grid;
+  grid-gap: 10px;
+  gap: 10px;
+  padding: 16px 22px 20px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.barcode {
+  display: block;
+  height: 50px;
+  border-radius: 6px;
+  background: var(--barcode);
+}
