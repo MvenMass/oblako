@@ -164,6 +164,11 @@
   animation: city-rise 0.9s var(--ease-out) both;
 }
 
+/* Длинные названия («Калининград») — мельче, чтобы не наезжать на штамп */
+.long {
+  font-size: clamp(60px, 9.5vw, 150px);
+}
+
 .title[data-dark] {
   text-shadow: var(--hero-shadow-night);
 }

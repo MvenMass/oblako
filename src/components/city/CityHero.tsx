@@ -85,7 +85,11 @@ export function CityHero({ city }: { city: City }) {
         </svg>
 
         <div className={styles.titleWrap}>
-          <h1 id="city-title" className={styles.title} data-dark={tod ? '' : undefined}>
+          <h1
+            id="city-title"
+            className={`${styles.title} ${city.name.length > 8 ? styles.long : ''}`}
+            data-dark={tod ? '' : undefined}
+          >
             {city.name}
           </h1>
           <p className={styles.greeting}>

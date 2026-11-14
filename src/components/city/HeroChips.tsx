@@ -54,7 +54,7 @@ export function HeroChips({ city, className }: { city: City; className?: string 
             <span className={styles.skeleton} />
           ) : (
             <span className={`${styles.chipValue} ${styles.small}`}>
-              {rateText(city.facts.currency.code, rate.rub)}
+              {rateText(city.facts.currency.rateCode, rate.rub)}
             </span>
           )}
           <span className={styles.chipNote}>{rate.caption}</span>

@@ -118,3 +118,24 @@ describe('city helpers', () => {
     },
   );
 });
+
+describe('currency display', () => {
+  it('labels the rate with the rate currency (Zanzibar: USD, not TZS)', () => {
+    render(
+      <MemoryRouter initialEntries={['/city/zanzibar']}>
+        <Routes>
+          <Route path="/city/:id" element={<City />} />
+        </Routes>
+      </MemoryRouter>,
+    );
+    expect(screen.getAllByText(/1\sUSD = /).length).toBeGreaterThan(0);
+    expect(screen.queryByText(/1\sTZS = /)).not.toBeInTheDocument();
+  });
+});
+
+describe('all cities', () => {
+  it.each(getCities().map((c) => [c.id, c.name] as const))('%s renders its page', (id, name) => {
+    renderCity(id);
+    expect(screen.getByRole('heading', { level: 1, name })).toBeInTheDocument();
+  });
+});

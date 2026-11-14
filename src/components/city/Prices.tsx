@@ -17,7 +17,8 @@ export function Prices({ city }: { city: City }) {
   const root = useRef<HTMLDivElement>(null);
   const visible = useInView(root);
   const rate = useCityRate(city);
-  const { code } = city.facts.currency;
+  // Цены и курс — в валюте курса (у Занзибара это доллары, а не шиллинги)
+  const code = city.facts.currency.rateCode;
 
   const rows = city.prices.items.map((p) => ({
     name: p.item,

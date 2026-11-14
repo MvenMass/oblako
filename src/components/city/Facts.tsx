@@ -51,7 +51,7 @@ export function Facts({ city }: { city: City }) {
           <span className={styles.note}>
             {rate.isRub
               ? 'рубли — как дома'
-              : `${rateText(facts.currency.code, rate.rub)} · ${rate.caption}`}
+              : `${rateText(facts.currency.rateCode, rate.rub)} · ${rate.caption}`}
           </span>
         </div>
 

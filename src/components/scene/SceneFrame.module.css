@@ -356,8 +356,47 @@
   }
 }
 
+/* Луч маяка: вращается, виден в сумерках и ночью */
+.svg :global(.beam) {
+  opacity: var(--win);
+  transform-box: view-box;
+  transition: opacity 1.2s;
+  animation: scene-beam 6s linear infinite;
+}
+
+@keyframes scene-beam {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Млечный путь — только ночью */
+.svg :global(.milky) {
+  opacity: calc(var(--stars) * 0.35);
+  transition: opacity 1.2s;
+}
+
+/* Дымок над юртой */
+.svg :global(.smoke) {
+  transform-box: fill-box;
+  animation: scene-smoke 5s ease-out infinite;
+}
+
+@keyframes scene-smoke {
+  from {
+    opacity: 0.7;
+    transform: translateY(0) scale(0.6);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-50px) scale(1.4);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .svg :global(.jet),
+  .svg :global(.beam),
+  .svg :global(.smoke),
   .svg :global(.neon),
   .svg :global(.ride),
   .svg :global(.bob),
