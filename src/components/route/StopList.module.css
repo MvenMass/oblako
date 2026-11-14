@@ -1,0 +1,98 @@
+.list {
+  position: relative;
+  display: grid;
+  grid-gap: 8px;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 72px;
+  padding: 8px 8px 8px 4px;
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  background: var(--glass-bg-solid);
+  box-shadow: var(--shadow-card);
+}
+
+.handle {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 52px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--muted);
+  fill: currentColor;
+  cursor: grab;
+  touch-action: none;
+}
+
+.handle:active {
+  cursor: grabbing;
+}
+
+.num {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+  border-radius: 10px;
+  background: var(--grad-progress);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.text {
+  display: grid;
+  flex: 1 1 auto;
+  grid-gap: 2px;
+  gap: 2px;
+  min-width: 0;
+}
+
+.name {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.time {
+  color: var(--muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.walk {
+  color: var(--sky-deep);
+  font-size: 11px;
+}
+
+.remove {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.remove:hover {
+  background: var(--ink-wash);
+}

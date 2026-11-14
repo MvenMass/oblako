@@ -1,0 +1,234 @@
+.layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 440px) minmax(0, 1fr);
+  grid-gap: 20px;
+  gap: 20px;
+  align-items: start;
+}
+
+.panel {
+  padding: 20px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-card);
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+}
+
+/* Ручка выдвижной панели — только на телефоне */
+.grip {
+  display: none;
+}
+
+.panelBody,
+.dayPanel {
+  display: grid;
+  grid-gap: 14px;
+  gap: 14px;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -3px;
+}
+
+.tabs > * {
+  margin: 3px;
+}
+
+.tab {
+  display: grid;
+  flex: 1 1 0;
+  min-height: 52px;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--field-bg);
+  color: var(--ink);
+  text-align: center;
+  cursor: pointer;
+}
+
+.tab span {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.tab[aria-selected='true'] {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.addDay {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  min-height: 52px;
+  border: 1px dashed var(--sky);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--pink);
+  cursor: pointer;
+}
+
+.help,
+.empty {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.empty {
+  padding: 18px;
+  border: 1px dashed var(--sky-light);
+  border-radius: 16px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.suggest {
+  display: grid;
+  grid-gap: 10px;
+  gap: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line-hair);
+}
+
+.suggestTitle {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -4px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  margin: 4px;
+  padding: 0 12px;
+  border: 1px dashed var(--sky);
+  border-radius: 10px;
+  background: var(--field-bg);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.chip span {
+  margin-right: 6px;
+  color: var(--pink);
+  font-weight: 800;
+}
+
+.main {
+  display: grid;
+  grid-gap: 20px;
+  gap: 20px;
+  min-width: 0;
+}
+
+.bottom {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-gap: 20px;
+  gap: 20px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-gap: 12px;
+  gap: 12px;
+  margin: 0;
+}
+
+.stats > div {
+  display: grid;
+  align-content: center;
+  grid-gap: 4px;
+  gap: 4px;
+  padding: 18px;
+  border: 1px solid var(--glass-border);
+  border-radius: 22px;
+  background: var(--glass-bg-solid);
+  box-shadow: var(--glass-shadow);
+}
+
+.stats dt {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.stats dd {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .panel {
+    background: var(--glass-bg-solid);
+  }
+}
+
+@media (max-width: 1023px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Телефон и планшет: карта сверху, список — выдвижная панель снизу */
+  .main {
+    order: -1;
+  }
+
+  .bottom {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: stretch;
+  }
+
+  .grip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: var(--tap);
+    margin-bottom: 8px;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  .grip span {
+    width: 44px;
+    height: 5px;
+    margin-bottom: 6px;
+    border-radius: 3px;
+    background: var(--stop-off);
+  }
+
+  .panel {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: var(--dock-space);
+    z-index: 4;
+    padding-top: 8px;
+    border-radius: 28px 28px 22px 22px;
+  }
+
+  .panel:not([data-open]) .panelBody {
+    display: none;
+  }
+}

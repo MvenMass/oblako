@@ -1,0 +1,174 @@
+.frame {
+  position: relative;
+  height: 480px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-card);
+  background: linear-gradient(180deg, var(--morning), var(--bg));
+  box-shadow: var(--glass-shadow);
+}
+
+.stage {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  width: 640px;
+  height: 520px;
+  margin: -260px 0 0 -320px;
+  -webkit-perspective: 1200px;
+  perspective: 1200px;
+}
+
+/* Наклон карты; метки ниже компенсируют его и стоят вертикально */
+.tilt {
+  position: relative;
+  width: 640px;
+  height: 520px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  transform: rotateX(45deg) rotateZ(-8deg) scale(0.92);
+}
+
+.svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 640px;
+  height: 520px;
+  max-width: none;
+  border-radius: 24px;
+  box-shadow: var(--shadow-panel);
+}
+
+.ground {
+  fill: var(--map-ground);
+}
+
+.park {
+  fill: var(--map-park);
+}
+
+.river {
+  fill: none;
+  stroke: var(--river);
+  stroke-width: 28;
+  stroke-linecap: round;
+}
+
+.blockSide {
+  fill: var(--map-block-side);
+}
+
+.blockTop {
+  fill: var(--white);
+  stroke: var(--map-block-edge);
+}
+
+.stop1 {
+  stop-color: var(--sky);
+}
+
+.stop2 {
+  stop-color: var(--flamingo);
+}
+
+.stop3 {
+  stop-color: var(--dusk);
+}
+
+.shadow,
+.line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.shadow {
+  stroke: var(--ink-wash);
+  stroke-width: 12;
+}
+
+.line {
+  stroke: url(#route-line);
+  stroke-width: 6;
+  stroke-dasharray: 100;
+  animation: route-draw 1.6s var(--ease-out) both;
+}
+
+@keyframes route-draw {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.runner {
+  fill: var(--white);
+  stroke: var(--pink);
+  stroke-width: 3;
+}
+
+.pinShadow {
+  fill: var(--ink);
+  opacity: 0.25;
+}
+
+.pin {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(-50%, -100%) rotateZ(8deg) rotateX(-45deg);
+  transform-origin: 50% 100%;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--white);
+  border-radius: 50%;
+  background: var(--pink);
+  box-shadow: var(--shadow-card);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.stem {
+  width: 3px;
+  height: 26px;
+  border-radius: 2px;
+  background: var(--ink);
+}
+
+.badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: var(--glass-bg-solid);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .frame {
+    height: 360px;
+  }
+
+  .stage {
+    transform: scale(0.62);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line {
+    animation: none;
+  }
+}

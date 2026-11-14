@@ -246,6 +246,12 @@
   --iznik-blue: #1b3f8b;
   --iznik-red: #c2364b;
 
+  /* Маршрут: 3D-схема */
+  --map-ground: #f3f9fc;
+  --map-park: #ddefd9;
+  --map-block-side: #c9dce7;
+  --map-block-edge: #dceaf2;
+
   /* Подбор поездки */
   --season-sun: #ffb347;
   --fit-bg: rgba(63, 185, 140, 0.14);

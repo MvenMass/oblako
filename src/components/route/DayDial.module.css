@@ -1,0 +1,84 @@
+.dial {
+  display: grid;
+  justify-items: center;
+  grid-gap: 8px;
+  gap: 8px;
+  padding: 18px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-card);
+  background: var(--glass-bg-solid);
+  box-shadow: var(--glass-shadow);
+}
+
+.svg {
+  width: 240px;
+  height: 240px;
+}
+
+.track,
+.night,
+.seg {
+  fill: none;
+  stroke-width: 22;
+}
+
+.track {
+  stroke: var(--morning);
+}
+
+.night {
+  stroke: var(--ink);
+  stroke-opacity: 0.75;
+}
+
+.seg {
+  stroke-width: 14;
+}
+
+.hours text {
+  fill: var(--muted);
+  font-family: var(--font);
+  font-size: 10px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+.sun {
+  fill: var(--season-sun);
+  stroke: var(--white);
+  stroke-width: 3;
+}
+
+.moon {
+  fill: var(--aurora-dusk-soft);
+  stroke: var(--white);
+  stroke-width: 3;
+}
+
+.hand {
+  stroke: var(--pink);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.small,
+.big {
+  font-family: var(--font);
+  text-anchor: middle;
+}
+
+.small {
+  fill: var(--muted);
+  font-size: 13px;
+}
+
+.big {
+  fill: var(--ink);
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.note {
+  color: var(--muted);
+  font-size: 12px;
+}
