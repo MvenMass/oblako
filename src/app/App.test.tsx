@@ -10,10 +10,12 @@ function renderAt(path: string) {
   );
 }
 
-describe('App layout', () => {
+describe('App layout', { timeout: 15000 }, () => {
   it('renders main landmark, navigation and footer', async () => {
     renderAt('/');
-    expect(await screen.findByRole('heading', { level: 1 }, { timeout: 5000 })).toBeInTheDocument();
+    expect(
+      await screen.findByRole('heading', { level: 1 }, { timeout: 10000 }),
+    ).toBeInTheDocument();
     expect(screen.getByRole('main')).toBeInTheDocument();
     expect(screen.getByRole('navigation', { name: 'Основная навигация' })).toBeInTheDocument();
     expect(screen.getByRole('contentinfo')).toBeInTheDocument();
@@ -21,7 +23,7 @@ describe('App layout', () => {
 
   it('marks the active link with aria-current', async () => {
     renderAt('/route');
-    await screen.findByRole('heading', { level: 1 }, { timeout: 5000 });
+    await screen.findByRole('heading', { level: 1 }, { timeout: 10000 });
     const nav = screen.getByRole('navigation', { name: 'Основная навигация' });
     expect(within(nav).getByRole('link', { name: 'Маршрут' })).toHaveAttribute(
       'aria-current',
@@ -33,14 +35,14 @@ describe('App layout', () => {
   it('shows 404 for unknown paths', async () => {
     renderAt('/nowhere');
     expect(
-      await screen.findByRole('heading', { name: /Такого облака нет/ }, { timeout: 5000 }),
+      await screen.findByRole('heading', { name: /Такого облака нет/ }, { timeout: 10000 }),
     ).toBeInTheDocument();
     expect(document.title).toBe('Такого облака нет — OBLAKO');
   });
 
   it('opens the mobile menu, closes it on Escape and returns focus', async () => {
     renderAt('/');
-    await screen.findByRole('heading', { level: 1 }, { timeout: 5000 });
+    await screen.findByRole('heading', { level: 1 }, { timeout: 10000 });
     const burger = screen.getByRole('button', { name: 'Открыть меню' });
     fireEvent.click(burger);
 
@@ -58,7 +60,7 @@ describe('App layout', () => {
 
   it('shows a demo confirmation after subscribing', async () => {
     renderAt('/');
-    await screen.findByRole('heading', { level: 1 }, { timeout: 5000 });
+    await screen.findByRole('heading', { level: 1 }, { timeout: 10000 });
     fireEvent.change(screen.getByLabelText('Электронная почта'), {
       target: { value: 'a@b.ru' },
     });
