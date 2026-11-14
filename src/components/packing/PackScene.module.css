@@ -1,0 +1,237 @@
+.floor {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  border-radius: 32px;
+  background: var(--linen);
+  box-shadow: var(--glass-shadow);
+}
+
+.scroll {
+  overflow-x: auto;
+}
+
+.stage {
+  position: relative;
+  width: 1232px;
+  height: 720px;
+  margin: 0 auto;
+}
+
+.shadow {
+  position: absolute;
+  top: 590px;
+  left: 320px;
+  width: 600px;
+  height: 70px;
+  border-radius: 50%;
+  background: var(--case-shadow);
+  filter: blur(22px);
+}
+
+.case {
+  position: absolute;
+  top: 112px;
+  left: 336px;
+  width: 560px;
+  height: 520px;
+}
+
+.strapL,
+.strapR {
+  position: absolute;
+  top: 330px;
+  width: 230px;
+  height: 14px;
+  border-radius: 7px;
+  background: var(--case-strap);
+  opacity: 0;
+  transition:
+    opacity 0.6s,
+    transform 0.6s cubic-bezier(0.3, 1.3, 0.4, 1);
+}
+
+.strapL {
+  left: 366px;
+  transform: rotate(-14deg) scaleX(0.4);
+}
+
+.strapR {
+  left: 636px;
+  transform: rotate(14deg) scaleX(0.4);
+}
+
+.strapL[data-on] {
+  opacity: 0.9;
+  transform: rotate(-14deg);
+}
+
+.strapR[data-on] {
+  opacity: 0.9;
+  transform: rotate(14deg);
+}
+
+.tag {
+  position: absolute;
+  z-index: 30;
+  top: 12px;
+  left: 532px;
+  display: grid;
+  grid-gap: 2px;
+  gap: 2px;
+  width: 168px;
+  padding: 8px 12px;
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  background: var(--glass-bg-strong);
+  color: var(--ink);
+  font-size: 11px;
+  transform-origin: 50% -30px;
+  animation: sway 4s ease-in-out infinite;
+}
+
+.tag::before {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  width: 2px;
+  height: 30px;
+  background: var(--ink);
+  content: '';
+}
+
+.tag b {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.tagTitle {
+  font-weight: 700;
+  white-space: nowrap;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tag[data-heavy] {
+  background: var(--pink);
+  color: var(--white);
+}
+
+.tag[data-heavy]::before {
+  background: var(--pink);
+}
+
+/* Дуга полёта: горизонталь и вертикаль едут с разными кривыми */
+.x {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(var(--x));
+  transition: transform 0.85s cubic-bezier(0.45, 0, 0.25, 1);
+}
+
+.y {
+  display: block;
+  transform: translateY(var(--y));
+  transition: transform 0.85s cubic-bezier(0.3, -0.55, 0.4, 1.1);
+}
+
+.item {
+  position: relative;
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transform: translate(-50%, -50%) rotate(var(--r)) scale(var(--s));
+  transition: transform 0.85s cubic-bezier(0.3, 1.25, 0.4, 1);
+}
+
+.item:hover {
+  filter: brightness(1.04);
+}
+
+.item:focus {
+  border-radius: 10px;
+  outline: 3px solid var(--focus);
+  outline-offset: 6px;
+}
+
+.item:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.item :global(.packArt) {
+  display: block;
+  filter: drop-shadow(var(--item-shadow));
+}
+
+.name {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--glass-bg-solid);
+  color: var(--ink);
+  width: max-content;
+  max-width: 116px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  transform: translate(-50%, 100%) rotate(var(--nr));
+  transition: opacity 0.3s;
+}
+
+.item[aria-pressed='true'] .name,
+.item[aria-pressed='true'] .tip {
+  opacity: 0;
+}
+
+.tip {
+  position: absolute;
+  top: -10px;
+  right: -12px;
+  padding: 3px 7px;
+  border-radius: 6px;
+  background: var(--pink);
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.hint {
+  position: absolute;
+  bottom: 18px;
+  left: 24px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .x,
+  .y,
+  .item,
+  .strapL,
+  .strapR {
+    transition: none;
+  }
+
+  .tag {
+    animation: none;
+  }
+}

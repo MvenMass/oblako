@@ -192,6 +192,13 @@
     rgba(255, 255, 255, 0) 78%
   );
   --glare: rgba(255, 255, 255, 0.75);
+  /* Сборы: льняной пол, чемодан */
+  --linen:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.35) 0 2px, transparent 2px 6px),
+    linear-gradient(160deg, #eef6fa, #e2eff6);
+  --case-shadow: rgba(11, 37, 64, 0.18);
+  --case-strap: #0f2c4c;
+  --item-shadow: 0 8px 10px rgba(11, 37, 64, 0.18);
   /* Табло: статусы и радар */
   --board-delay: #f5b544;
   --board-departed: #8fa6bc;

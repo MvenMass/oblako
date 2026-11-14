@@ -1,0 +1,117 @@
+.list {
+  padding: 0 22px;
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  background: var(--glass-bg);
+  box-shadow: var(--glass-shadow);
+}
+
+.list summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+  font-size: 18px;
+  font-weight: 800;
+  list-style: none;
+  cursor: pointer;
+}
+
+.list summary::-webkit-details-marker {
+  display: none;
+}
+
+.list summary span {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-gap: 8px;
+  gap: 8px;
+  padding-bottom: 20px;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  min-height: var(--tap);
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--glass-bg-strong);
+  color: var(--ink);
+  font: inherit;
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.box {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: inset 0 0 0 2px var(--field-border);
+}
+
+.box path {
+  fill: none;
+  stroke: var(--white);
+  stroke-width: 3.4;
+}
+
+.check[aria-checked='true'] .box {
+  background: var(--pink);
+  box-shadow: none;
+}
+
+.confetti {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 60;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.confetti span {
+  position: absolute;
+  top: 0;
+  width: 10px;
+  height: 14px;
+  border-radius: 3px;
+  animation: fall 3.2s cubic-bezier(0.3, 0.6, 0.4, 1) both;
+}
+
+.done {
+  justify-self: center;
+  padding: 16px 24px;
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  background: var(--glass-bg-solid);
+  box-shadow: var(--glass-shadow);
+  font-size: 18px;
+  font-weight: 800;
+  text-align: center;
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(-40px) rotate(0);
+  }
+
+  to {
+    transform: translateY(110vh) rotate(720deg);
+  }
+}

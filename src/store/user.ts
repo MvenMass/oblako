@@ -16,6 +16,8 @@ interface UserActions {
   addExpense: (expense: Expense) => void;
   removeExpense: (id: string) => void;
   setPacked: (cityId: string, itemId: string, packed: boolean) => void;
+  /** «Собрать всё» / «Вытряхнуть»: весь набор сразу */
+  setPacking: (cityId: string, packed: Record<string, boolean>) => void;
   setSeat: (seat: string | null) => void;
   setShade: (shade: boolean) => void;
   /** Оформленная бронь: талон в кошелёк и штамп страны в паспорт */
@@ -81,6 +83,8 @@ export const useUserStore = create<UserStore>()(
           const prev = s.packing?.cityId === cityId ? s.packing.packed : {};
           return { packing: { cityId, packed: { ...prev, [itemId]: packed } } };
         }),
+
+      setPacking: (cityId, packed) => set({ packing: { cityId, packed } }),
 
       setSeat: (seat) => set((s) => ({ booking: { ...s.booking, seat } })),
 
