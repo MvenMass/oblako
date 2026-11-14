@@ -1,0 +1,215 @@
+.tile {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-gap: 32px;
+  gap: 32px;
+  align-content: start;
+}
+
+.form,
+.listWrap {
+  display: grid;
+  align-content: start;
+  grid-gap: 16px;
+  gap: 16px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
+  grid-gap: 12px;
+  gap: 12px;
+}
+
+.field {
+  display: grid;
+  grid-gap: 6px;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  min-height: var(--btn-h);
+  padding: 0 14px;
+  border: 1px solid var(--field-border);
+  border-radius: var(--r-btn);
+  background: var(--field-bg);
+  color: var(--ink);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.cats {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -4px;
+  padding: 0;
+  border: 0;
+}
+
+.cats legend {
+  margin: 0 0 6px 4px;
+  padding: 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.cat {
+  position: relative;
+  margin: 4px;
+}
+
+/* Радио-кнопка визуально — чип, но остаётся нативной для клавиатуры и чтецов */
+.cat input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.cat span {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  padding: 0 14px;
+  border: 1px solid var(--field-border);
+  border-radius: 12px;
+  background: var(--field-bg);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cat i,
+.list i {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  margin-right: 8px;
+  border-radius: 3px;
+}
+
+.cat input:checked + span {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--white);
+}
+
+.cat input:focus + span {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.cat input:focus:not(:focus-visible) + span {
+  outline: none;
+}
+
+.submit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.submit > * {
+  margin-right: 14px;
+}
+
+.list {
+  display: grid;
+  grid-gap: 8px;
+  gap: 8px;
+  max-height: 360px;
+  margin: 0;
+  padding: 0 4px 0 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.list li {
+  display: flex;
+  align-items: center;
+  padding: 10px 10px 10px 14px;
+  border-radius: 14px;
+  background: var(--glass-bg-solid);
+}
+
+.what,
+.sum {
+  display: grid;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.what {
+  flex: 1 1 auto;
+}
+
+.sum {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.what small,
+.sum small {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.remove {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--tap);
+  height: var(--tap);
+  margin-left: 6px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.remove:hover {
+  color: var(--ink);
+}
+
+.empty {
+  padding: 24px;
+  border: 1px dashed var(--sky-light);
+  border-radius: 16px;
+  color: var(--muted);
+  font-size: 14px;
+  text-align: center;
+}
+
+@media (max-width: 1023px) {
+  .tile {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 479px) {
+  .fields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .fields > :first-child {
+    grid-column: 1 / -1;
+  }
+}

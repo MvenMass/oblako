@@ -24,6 +24,21 @@ export interface RouteDay {
   stops: Stop[];
 }
 
+export type ExpenseCategory = 'flight' | 'stay' | 'food' | 'fun';
+
+export interface Expense {
+  id: string;
+  /** Сумма в валюте ввода */
+  amount: number;
+  /** 'RUB' или код местной валюты */
+  currency: string;
+  /** В рублях по курсу на момент ввода */
+  rub: number;
+  category: ExpenseCategory;
+  /** День поездки, с 1 */
+  day: number;
+}
+
 export interface Pass {
   id: string;
   cityId: string;
@@ -48,6 +63,8 @@ export interface UserData {
   route: { cityId: string; days: RouteDay[] } | null;
   /** cityId → id мест, добавленных из галереи «В маршрут» */
   routeAdded: Record<string, string[]>;
+  /** Бюджет одной поездки: план в ₽ и траты */
+  budget: { cityId: string; plan: number; expenses: Expense[] } | null;
   packing: { cityId: string; packed: Record<string, boolean> } | null;
   booking: { seat: string | null; shade: boolean; passes: Pass[] };
   journal: { trips: Trip[] };

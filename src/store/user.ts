@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import type { Pass, QuizAnswers, RouteDay, Trip, UserData } from '@/types/user';
+import type { Expense, Pass, QuizAnswers, RouteDay, Trip, UserData } from '@/types/user';
 import { initialUserData, migrateUserData, STORE_KEY, STORE_VERSION } from './initial';
 
 interface UserActions {
@@ -11,6 +11,10 @@ interface UserActions {
   addToRoute: (cityId: string, placeId: string) => void;
   /** Тоггл «В маршрут» в галерее города */
   toggleRoutePlace: (cityId: string, placeId: string) => void;
+  /** Новый бюджет поездки (смена города, «Заполнить примером», «Очистить») */
+  setBudget: (cityId: string, plan: number, expenses: Expense[]) => void;
+  addExpense: (expense: Expense) => void;
+  removeExpense: (id: string) => void;
   setPacked: (cityId: string, itemId: string, packed: boolean) => void;
   setSeat: (seat: string | null) => void;
   setShade: (shade: boolean) => void;
@@ -57,6 +61,20 @@ export const useUserStore = create<UserStore>()(
             : [...list, placeId];
           return { routeAdded: { ...s.routeAdded, [cityId]: next } };
         }),
+
+      setBudget: (cityId, plan, expenses) => set({ budget: { cityId, plan, expenses } }),
+
+      addExpense: (expense) =>
+        set((s) =>
+          s.budget ? { budget: { ...s.budget, expenses: [...s.budget.expenses, expense] } } : {},
+        ),
+
+      removeExpense: (id) =>
+        set((s) =>
+          s.budget
+            ? { budget: { ...s.budget, expenses: s.budget.expenses.filter((e) => e.id !== id) } }
+            : {},
+        ),
 
       setPacked: (cityId, itemId, packed) =>
         set((s) => {

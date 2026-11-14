@@ -1,0 +1,88 @@
+.tile {
+  align-content: stretch;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+}
+
+.sum {
+  display: grid;
+  grid-gap: 6px;
+  gap: 6px;
+}
+
+.grid line {
+  stroke: var(--white);
+  stroke-opacity: 0.9;
+}
+
+.plan {
+  stroke: var(--muted);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 6;
+}
+
+.planText {
+  fill: var(--muted);
+  font-family: var(--font);
+  font-size: 13px;
+  text-anchor: end;
+}
+
+.areaTop {
+  stop-color: var(--pink);
+  stop-opacity: 0.28;
+}
+
+.areaBottom {
+  stop-color: var(--pink);
+  stop-opacity: 0;
+}
+
+.l1 {
+  stop-color: var(--sky);
+}
+
+.l2 {
+  stop-color: var(--pink);
+}
+
+.l3 {
+  stop-color: var(--dusk);
+}
+
+.area {
+  fill: url(#spend-area);
+}
+
+.line {
+  fill: none;
+  stroke: url(#spend-line);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  animation: draw 1.6s var(--ease-out) both;
+}
+
+.dot {
+  fill: var(--dusk);
+  stroke: var(--white);
+  stroke-width: 3;
+}
+
+.days {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 100;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line {
+    animation: none;
+  }
+}

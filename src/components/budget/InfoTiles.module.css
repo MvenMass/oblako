@@ -1,0 +1,94 @@
+.flaps {
+  display: flex;
+  align-items: flex-end;
+}
+
+.flap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 58px;
+  margin-right: 4px;
+  border-radius: 10px;
+  background: var(--flap);
+  font-size: 34px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.comma {
+  margin-right: 4px;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.plan {
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  align-content: center;
+}
+
+.ring {
+  width: 104px;
+  height: 104px;
+}
+
+.track,
+.fill {
+  fill: none;
+  stroke-width: 12;
+}
+
+.track {
+  stroke: var(--white);
+}
+
+.fill {
+  stroke: var(--pink);
+  stroke-linecap: round;
+}
+
+.fill[data-over] {
+  stroke: var(--over-ink);
+}
+
+.pct {
+  fill: var(--ink);
+  font-family: var(--font);
+  font-size: 24px;
+  font-weight: 800;
+  text-anchor: middle;
+}
+
+.planText {
+  display: grid;
+  grid-gap: 4px;
+  gap: 4px;
+}
+
+.planText b {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.planText span {
+  color: var(--muted);
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
+.extremes {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: center;
+}
+
+.row {
+  display: grid;
+  grid-gap: 2px;
+  gap: 2px;
+}
+
+.row b {
+  font-size: 24px;
+}

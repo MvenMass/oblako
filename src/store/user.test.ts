@@ -10,7 +10,7 @@ describe('user store', () => {
   it('persists state to localStorage under oblako:v1', () => {
     useUserStore.getState().toggleFavorite('tbilisi');
     const saved = JSON.parse(localStorage.getItem(STORE_KEY)!);
-    expect(saved.version).toBe(1);
+    expect(saved.version).toBe(2);
     expect(saved.state.favorites).toEqual(['tbilisi']);
   });
 
@@ -63,6 +63,33 @@ describe('migrateUserData', () => {
     expect(data.passport).toEqual({ stamps: ['tbilisi'], achievements: [] });
     expect(data.profile.name).toBe('[Имя Фамилия]');
     expect(data.ui.boardSound).toBe(false);
+  });
+
+  it('migrates v1 → v2: keeps data, adds an empty budget', () => {
+    const v1 = { ...initialUserData(), favorites: ['kazan'] } as Record<string, unknown>;
+    delete v1.budget;
+    const data = migrateUserData(v1, 1);
+    expect(data.favorites).toEqual(['kazan']);
+    expect(data.budget).toBeNull();
+  });
+
+  it('adds and removes expenses only when a budget exists', () => {
+    const { addExpense, removeExpense, setBudget } = useUserStore.getState();
+    const e = {
+      id: 'e1',
+      amount: 10,
+      currency: 'GEL',
+      rub: 317,
+      category: 'food' as const,
+      day: 1,
+    };
+    addExpense(e);
+    expect(useUserStore.getState().budget).toBeNull();
+    setBudget('tbilisi', 90000, []);
+    addExpense(e);
+    expect(useUserStore.getState().budget?.expenses).toEqual([e]);
+    removeExpense('e1');
+    expect(useUserStore.getState().budget?.expenses).toEqual([]);
   });
 
   it('returns defaults for garbage', () => {
