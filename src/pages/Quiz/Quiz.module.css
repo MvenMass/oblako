@@ -1,0 +1,226 @@
+.page {
+  position: relative;
+  min-height: 80vh;
+  overflow: hidden;
+}
+
+/* Сияние перекрашивается под выбранные настроения */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  transition: background-color 1.2s;
+  pointer-events: none;
+  animation: quiz-aurora 22s ease-in-out infinite;
+}
+
+.blobA {
+  top: -200px;
+  left: -140px;
+  width: 680px;
+  height: 680px;
+  background: var(--qa);
+}
+
+.blobB {
+  top: 320px;
+  right: -200px;
+  width: 640px;
+  height: 640px;
+  background: var(--qb);
+  opacity: 0.7;
+  animation-delay: -9s;
+}
+
+@keyframes quiz-aurora {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(50px, -40px) scale(1.1);
+  }
+}
+
+.content {
+  position: relative;
+  display: grid;
+  grid-gap: 28px;
+  gap: 28px;
+  padding-top: 40px;
+  padding-bottom: 80px;
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.titles {
+  display: grid;
+  grid-gap: 10px;
+  gap: 10px;
+  margin: 0 16px 8px 0;
+}
+
+.eyebrow {
+  color: var(--sky-deep);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 18px 0 14px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-btn);
+  background: var(--glass-bg-solid);
+  box-shadow: var(--glass-shadow);
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.back svg {
+  margin-right: 8px;
+}
+
+/* Переход шагов: въезд из размытия (0,8 с) и волна облаков поверх */
+.body {
+  position: relative;
+  min-height: 560px;
+}
+
+.fromRight {
+  animation: step-right 0.8s var(--ease-out) both;
+}
+
+.fromLeft {
+  animation: step-left 0.8s var(--ease-out) both;
+}
+
+@keyframes step-right {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateX(70px);
+  }
+}
+
+@keyframes step-left {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateX(-70px);
+  }
+}
+
+.wave {
+  position: absolute;
+  top: -20px;
+  right: -40px;
+  bottom: -20px;
+  left: -40px;
+  z-index: 3;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.wave span {
+  position: absolute;
+  top: 10%;
+  width: 60%;
+  height: 80%;
+  border-radius: 50%;
+  background: var(--cloud);
+  filter: blur(40px);
+  opacity: 0;
+  animation: cloud-wave 0.9s ease-out both;
+}
+
+.wave span:nth-child(2) {
+  top: 30%;
+  animation-delay: 0.08s;
+}
+
+.wave span:nth-child(3) {
+  top: -10%;
+  animation-delay: 0.16s;
+}
+
+.fromLeft .wave span {
+  animation-name: cloud-wave-back;
+}
+
+@keyframes cloud-wave {
+  0% {
+    opacity: 0.9;
+    transform: translateX(-60%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(180%);
+  }
+}
+
+@keyframes cloud-wave-back {
+  0% {
+    opacity: 0.9;
+    transform: translateX(180%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-60%);
+  }
+}
+
+@media (max-width: 767px) {
+  .content {
+    padding-top: 24px;
+    padding-bottom: 48px;
+  }
+
+  .title {
+    font-size: 38px;
+  }
+
+  .body {
+    min-height: 0;
+  }
+
+  .blobA {
+    width: 420px;
+    height: 420px;
+  }
+
+  .blobB {
+    width: 380px;
+    height: 380px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob,
+  .fromRight,
+  .fromLeft {
+    animation: none;
+  }
+
+  .wave {
+    display: none;
+  }
+}

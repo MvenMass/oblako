@@ -246,6 +246,12 @@
   --iznik-blue: #1b3f8b;
   --iznik-red: #c2364b;
 
+  /* Подбор поездки */
+  --season-sun: #ffb347;
+  --fit-bg: rgba(63, 185, 140, 0.14);
+  --over-bg: rgba(232, 40, 142, 0.12);
+  --over-ink: #a0105a;
+
   /* Первый экран */
   --field-bg: rgba(255, 255, 255, 0.55);
   --grad-badge: linear-gradient(135deg, #38bde8, #8b6cf0);

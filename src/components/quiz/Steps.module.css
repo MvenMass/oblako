@@ -1,0 +1,512 @@
+.step {
+  display: grid;
+  grid-gap: 24px;
+  gap: 24px;
+}
+
+.lead {
+  color: var(--muted);
+  font-size: 19px;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.footer > * {
+  margin-right: 18px;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+/* Кнопка «Дальше» */
+.nextWrap {
+  display: inline-flex;
+}
+
+.next {
+  display: inline-flex;
+  align-items: center;
+  min-height: 56px;
+  padding: 0 30px;
+  border: 0;
+  border-radius: var(--r-btn);
+  background: var(--pink);
+  box-shadow: var(--shadow-cta);
+  color: var(--white);
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    opacity 0.3s,
+    transform 0.3s var(--ease-out);
+}
+
+.next svg {
+  margin-left: 10px;
+}
+
+.next:hover {
+  transform: translateY(-1px);
+}
+
+.next[aria-disabled='true'] {
+  box-shadow: none;
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Шаг 1: карточки настроения */
+.moods {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-gap: 16px;
+  gap: 16px;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+}
+
+.mood {
+  position: relative;
+  height: 200px;
+  padding: 0;
+  border: 2px solid var(--glass-border);
+  border-radius: 24px;
+  background: var(--glass-bg);
+  box-shadow: var(--glass-shadow);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  transition:
+    transform 0.35s var(--ease-spring),
+    background-color 0.4s,
+    box-shadow 0.4s,
+    border-color 0.4s;
+}
+
+.moodInner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 22px;
+  transition: transform 0.25s ease-out;
+}
+
+.moodLabel {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.moodOn {
+  border-color: var(--pink);
+  background: var(--white);
+  box-shadow: var(--shadow-raised);
+  transform: translateY(-8px);
+}
+
+.moodBlocked {
+  opacity: 0.6;
+}
+
+.check {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--pink);
+  color: var(--white);
+  transform: scale(0);
+  transition: transform 0.35s var(--ease-spring);
+}
+
+.moodOn .check {
+  transform: scale(1);
+}
+
+/* Шаг 2: кольцо месяцев и дни */
+.dates,
+.budget {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-gap: 48px;
+  gap: 48px;
+  align-items: center;
+}
+
+.ringWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.ring {
+  --r: 172px;
+  --m: 52px;
+
+  position: relative;
+  width: 400px;
+  height: 400px;
+  max-width: 100%;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  box-shadow: var(--glass-shadow);
+}
+
+.hand {
+  position: absolute;
+  top: 60px;
+  left: calc(50% - 1px);
+  width: 2px;
+  height: 140px;
+  background: linear-gradient(var(--pink), transparent);
+  transform: rotate(var(--a));
+  transform-origin: 50% 100%;
+  transition: transform 0.7s var(--ease-spring);
+}
+
+.month {
+  position: absolute;
+  width: var(--m);
+  height: var(--m);
+  border: 0;
+  border-radius: 16px;
+  background: var(--field-bg);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    transform 0.3s var(--ease-out);
+}
+
+.month[aria-checked='true'] {
+  background: var(--pink);
+  box-shadow: var(--shadow-cta);
+  color: var(--white);
+  transform: scale(1.12);
+}
+
+.ringCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  justify-items: center;
+  width: 210px;
+  text-align: center;
+  transform: translate(-50%, -38%);
+}
+
+.seasonIcon {
+  width: 72px;
+  height: 72px;
+}
+
+.monthName {
+  margin-top: 4px;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+}
+
+.seasonNote {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.sun {
+  fill: var(--season-sun);
+}
+
+.cloud {
+  fill: var(--white);
+  stroke: var(--sky-light);
+  stroke-width: 2;
+}
+
+.snow {
+  fill: none;
+  stroke: var(--sky);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.spin {
+  transform-origin: 40px 40px;
+  animation: season-spin 12s linear infinite;
+}
+
+@keyframes season-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.drop {
+  stroke: var(--sky);
+  stroke-width: 3;
+  stroke-linecap: round;
+  animation: season-drop 1s ease-in infinite;
+}
+
+@keyframes season-drop {
+  from {
+    opacity: 1;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.daysCol,
+.budgetCol {
+  display: grid;
+  grid-gap: 18px;
+  gap: 18px;
+  justify-items: start;
+}
+
+.rangeLabel {
+  display: grid;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.rangeValue {
+  color: var(--ink);
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.range {
+  width: 100%;
+  height: var(--tap);
+  accent-color: var(--pink);
+  cursor: pointer;
+}
+
+.flight {
+  width: 100%;
+  height: auto;
+}
+
+.flightTrack,
+.flightLine {
+  fill: none;
+  stroke-width: 3;
+}
+
+.flightTrack {
+  stroke: var(--stop-off);
+  stroke-dasharray: 6 8;
+}
+
+.flightLine {
+  stroke: var(--pink);
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  transition: stroke-dashoffset 0.5s;
+}
+
+.dayDot {
+  fill: var(--white);
+  stroke: var(--pink);
+  stroke-width: 3;
+  animation: pop-dot 0.4s var(--ease-spring) both;
+}
+
+@keyframes pop-dot {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+/* Шаг 3: бюджет и компания */
+.stack {
+  position: relative;
+  width: 220px;
+  height: 140px;
+}
+
+.ticket {
+  position: absolute;
+  left: 0;
+  width: 200px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--grad-brand-diag);
+  box-shadow: var(--shadow-card);
+  animation: pop-dot 0.3s var(--ease-spring) both;
+}
+
+.company {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-gap: 10px;
+  gap: 10px;
+  width: 100%;
+}
+
+.companyBtn {
+  min-height: var(--btn-h);
+  border: 1px solid var(--field-border);
+  border-radius: var(--r-btn);
+  background: var(--field-bg);
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.companyBtn[aria-checked='true'] {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--white);
+}
+
+.porthole {
+  position: relative;
+  width: 230px;
+  height: 160px;
+  overflow: hidden;
+  border: 10px solid var(--white);
+  border-radius: 80px;
+  background: var(--grad-brand-diag);
+  box-shadow: var(--shadow-raised);
+}
+
+.person {
+  position: absolute;
+  bottom: -6px;
+  width: 44px;
+  height: 90px;
+  border-radius: 22px 22px 0 0;
+  background: var(--glass-bg-solid);
+  transform-origin: bottom;
+  animation: pop-dot 0.4s var(--ease-spring) both;
+}
+
+.person::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  left: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--glass-bg-solid);
+}
+
+.kid {
+  transform: scale(0.65);
+}
+
+@media (max-width: 900px) {
+  .dates,
+  .budget {
+    grid-template-columns: minmax(0, 1fr);
+    grid-gap: 32px;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 767px) {
+  .moods {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 10px;
+    gap: 10px;
+  }
+
+  .mood {
+    height: 150px;
+  }
+
+  .moodInner {
+    padding: 16px;
+  }
+
+  .moodInner svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .moodLabel {
+    font-size: 17px;
+  }
+
+  .ring {
+    --r: 128px;
+    --m: 44px;
+
+    width: 320px;
+    height: 320px;
+  }
+
+  .month {
+    font-size: 12px;
+  }
+
+  .hand {
+    top: 40px;
+    height: 120px;
+  }
+
+  .ringCenter {
+    width: 170px;
+  }
+
+  .rangeValue {
+    font-size: 34px;
+  }
+
+  /* «Дальше» закреплена над нижним меню */
+  .nextWrap {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 92px;
+    z-index: 5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mood,
+  .moodInner,
+  .check,
+  .month,
+  .hand,
+  .flightLine {
+    transition: none;
+  }
+
+  .spin,
+  .drop,
+  .dayDot,
+  .ticket,
+  .person {
+    animation: none;
+  }
+}

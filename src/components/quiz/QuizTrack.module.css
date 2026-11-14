@@ -1,0 +1,114 @@
+.track {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0 0 30px;
+  list-style: none;
+}
+
+.dash,
+.fill {
+  position: absolute;
+  top: 13px;
+  left: 14px;
+}
+
+.dash {
+  right: 14px;
+  border-top: 2px dashed var(--stop-off);
+}
+
+/* Заполненная часть: ширина = доля пройденного (scaleX — только transform) */
+.fill {
+  right: 14px;
+  height: 4px;
+  margin-top: -1px;
+  border-radius: 2px;
+  background: var(--grad-progress);
+  transform: scaleX(var(--p));
+  transform-origin: 0 50%;
+  transition: transform 0.9s cubic-bezier(0.6, 0, 0.2, 1);
+}
+
+/* Обёртка шириной в трек сдвигается на долю своей ширины — самолётик едет к текущему шагу */
+.plane {
+  position: absolute;
+  top: -1px;
+  left: 14px;
+  right: 14px;
+  z-index: 2;
+  color: var(--pink);
+  pointer-events: none;
+  transform: translateX(calc(var(--p) * 100%));
+  transition: transform 0.9s cubic-bezier(0.6, 0, 0.2, 1);
+}
+
+.plane svg {
+  margin-left: -15px;
+  transform: rotate(90deg);
+}
+
+.item {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 28px;
+}
+
+.dot {
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--stop-off);
+  border-radius: 50%;
+  background: var(--white);
+  transition:
+    background-color 0.5s,
+    border-color 0.5s;
+}
+
+.done .dot {
+  border-color: var(--pink);
+  background: var(--pink);
+}
+
+.current .dot {
+  opacity: 0;
+}
+
+.label {
+  position: absolute;
+  top: 38px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.done .label,
+.current .label {
+  color: var(--ink);
+}
+
+.current .label {
+  font-weight: 800;
+}
+
+@media (max-width: 600px) {
+  .label {
+    display: none;
+  }
+
+  .current .label {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fill,
+  .plane {
+    transition: none;
+  }
+}

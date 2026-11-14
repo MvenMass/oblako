@@ -1,0 +1,179 @@
+.calc {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr);
+  grid-gap: 32px;
+  gap: 32px;
+  align-items: center;
+}
+
+.map {
+  width: 100%;
+  height: auto;
+}
+
+.bg {
+  fill: var(--glass-bg-solid);
+  stroke: var(--glass-border);
+}
+
+.home {
+  fill: var(--ink);
+  stroke: var(--white);
+  stroke-width: 3;
+}
+
+.mark {
+  transition:
+    opacity 0.6s,
+    filter 0.6s;
+}
+
+.gone {
+  opacity: 0.12;
+  filter: grayscale(1);
+}
+
+.dot,
+.win {
+  stroke: var(--white);
+  stroke-width: 3;
+}
+
+.win {
+  fill: var(--pink);
+}
+
+.pulse {
+  fill: var(--flamingo);
+  opacity: 0.35;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: calc-pulse 1.4s ease-out infinite;
+}
+
+@keyframes calc-pulse {
+  from {
+    opacity: 0.5;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+}
+
+.label {
+  fill: var(--ink);
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+.arc {
+  fill: none;
+  stroke: var(--pink);
+  stroke-width: 2.5;
+  stroke-dasharray: 6 6;
+  animation: calc-draw 0.8s var(--ease-out) both;
+}
+
+@keyframes calc-draw {
+  from {
+    opacity: 0;
+  }
+}
+
+.side {
+  display: grid;
+  justify-items: start;
+  grid-gap: 18px;
+  gap: 18px;
+}
+
+.ring {
+  width: 120px;
+  height: 120px;
+  transform: rotate(-90deg);
+}
+
+.ringTrack,
+.ringValue {
+  fill: none;
+  stroke-width: 10;
+}
+
+.ringTrack {
+  stroke: var(--ink-wash);
+}
+
+.ringValue {
+  stroke: var(--pink);
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  transition: stroke-dashoffset 0.7s;
+}
+
+.ticker {
+  min-height: 2.6em;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.checks {
+  display: grid;
+  grid-gap: 12px;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.checks li {
+  display: flex;
+  align-items: center;
+  font-size: 17px;
+  font-weight: 600;
+  opacity: 0.4;
+  transition: opacity 0.4s;
+}
+
+.checks .checkOn {
+  opacity: 1;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  border-radius: 8px;
+  background: var(--stop-off);
+  color: var(--white);
+  transition: background-color 0.4s;
+}
+
+.boxDone {
+  background: var(--pink);
+}
+
+@media (max-width: 900px) {
+  .calc {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse,
+  .arc {
+    animation: none;
+  }
+
+  .mark,
+  .ringValue,
+  .checks li {
+    transition: none;
+  }
+}
