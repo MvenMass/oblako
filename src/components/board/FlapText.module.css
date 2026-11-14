@@ -1,0 +1,63 @@
+.row {
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+.flap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 34px;
+  margin-right: 3px;
+  border-radius: 6px;
+  background: var(--flap);
+  box-shadow: var(--flap-shadow);
+  color: var(--white);
+  font-size: 17px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  transform-origin: 50% 50%;
+}
+
+.small {
+  flex-wrap: wrap;
+  white-space: normal;
+}
+
+.small .flap {
+  width: 14px;
+  height: 22px;
+  margin: 0 1px 2px 0;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.flipA {
+  animation: flipA 0.12s ease-out;
+}
+
+.flipB {
+  animation: flipB 0.12s ease-out;
+}
+
+/* Два одинаковых ключевых кадра — смена имени перезапускает анимацию */
+@keyframes flipA {
+  from {
+    transform: rotateX(-90deg);
+  }
+}
+
+@keyframes flipB {
+  from {
+    transform: rotateX(-90deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flipA,
+  .flipB {
+    animation: none;
+  }
+}

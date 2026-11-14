@@ -44,6 +44,8 @@ export const FILL_ICONS = {
   plane: (
     <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z" />
   ),
+  'sound-on': <path d="M4 9v6h4l5 4V5L8 9zM16 8a5 5 0 0 1 0 8M19 5a9 9 0 0 1 0 14" />,
+  'sound-off': <path d="M4 9v6h4l5 4V5L8 9zM16 9l5 6M21 9l-5 6" />,
   sparkle: <path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z" />,
 } satisfies Record<string, ReactElement>;
 

@@ -150,6 +150,19 @@
 
   /* Табло: перекидные таблички */
   --flap: linear-gradient(180deg, #16365a 0 49%, #06172f 49% 51%, #0c2440 51% 100%);
+  --flap-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06), 0 2px 0 rgba(0, 0, 0, 0.35);
+  /* Табло: статусы и радар */
+  --board-delay: #f5b544;
+  --board-departed: #8fa6bc;
+  --board-radar: #7fd3f2;
+  --board-row: rgba(255, 255, 255, 0.04);
+  --board-radar-sweep: conic-gradient(
+    from 0deg,
+    rgba(127, 211, 242, 0) 0deg,
+    rgba(127, 211, 242, 0) 300deg,
+    rgba(127, 211, 242, 0.45) 360deg
+  );
+  --board-trail: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
 
   /* Талон */
   --perforation: #cfe6f1;

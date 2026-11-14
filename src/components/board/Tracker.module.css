@@ -1,0 +1,153 @@
+.card {
+  display: grid;
+  grid-gap: 16px;
+  gap: 16px;
+  padding: 24px;
+  border: 1px solid var(--glass-dark-border);
+  border-radius: var(--r-panel);
+  background: var(--glass-dark-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  color: var(--on-night-accent);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.badge {
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: var(--on-night-field);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.badge[data-status='boarding'] {
+  background: var(--pink);
+  color: var(--white);
+}
+
+.pick select {
+  width: 100%;
+  min-height: var(--tap);
+  padding: 0 12px;
+  border: 1px solid var(--on-night-field-border);
+  border-radius: 12px;
+  background: var(--on-night-field);
+  color: var(--on-night);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.pick option {
+  background: var(--night);
+}
+
+.ends {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  color: var(--on-night-faint);
+  font-size: 13px;
+}
+
+.ends > span {
+  display: grid;
+}
+
+.ends b {
+  color: var(--on-night);
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.to {
+  text-align: right;
+}
+
+.ends .no {
+  display: block;
+  padding-bottom: 6px;
+  color: var(--on-night-accent);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.track {
+  fill: none;
+  stroke: var(--on-night-faint);
+  stroke-opacity: 0.6;
+  stroke-width: 2;
+  stroke-dasharray: 4 6;
+}
+
+.flown {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.g1 {
+  stop-color: var(--sky);
+}
+
+.g2 {
+  stop-color: var(--pink);
+}
+
+.plane {
+  fill: var(--white);
+}
+
+.arrow {
+  fill: none;
+  stroke: var(--night);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-gap: 10px;
+  gap: 10px;
+}
+
+.tiles > div {
+  display: grid;
+  grid-gap: 2px;
+  gap: 2px;
+  padding: 14px;
+  border-radius: 16px;
+  background: var(--board-row);
+}
+
+.tiles span {
+  color: var(--on-night-faint);
+  font-size: 12px;
+}
+
+.tiles b {
+  font-size: 24px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}

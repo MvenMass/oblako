@@ -1,0 +1,188 @@
+.wrap {
+  min-width: 0;
+  padding: 10px 18px 18px;
+  overflow-x: auto;
+  border: 1px solid var(--glass-dark-border);
+  border-radius: var(--r-panel);
+  background: var(--glass-dark-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  font-size: 14px;
+}
+
+.table th {
+  padding: 8px 6px;
+  color: var(--on-night-faint);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.table td {
+  padding: 6px;
+  vertical-align: middle;
+}
+
+.table tr[data-status='departed'] td {
+  opacity: 0.55;
+}
+
+.time {
+  display: inline-block;
+  padding: 6px 8px;
+  border-radius: 6px;
+  background: var(--flap);
+  box-shadow: var(--flap-shadow);
+  color: var(--white);
+  font-size: 17px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+
+.no {
+  color: var(--on-night-accent);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.gate {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.flapsSmall,
+.sub {
+  display: none;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 12px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.status i {
+  display: none;
+}
+
+.status[data-status='scheduled'] {
+  border-color: var(--on-night-accent);
+  color: var(--on-night-accent);
+}
+
+.status[data-status='checkin'] {
+  background: var(--sky);
+  color: var(--night);
+}
+
+.status[data-status='boarding'] {
+  background: var(--pink);
+  color: var(--white);
+}
+
+.status[data-status='boarding'] i {
+  display: block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--white);
+  animation: blink 1s steps(2, start) infinite;
+}
+
+.status[data-status='departed'] {
+  color: var(--board-departed);
+}
+
+.status[data-status='delayed'] {
+  border: 1px dashed var(--board-delay);
+  color: var(--board-delay);
+}
+
+.empty {
+  padding: 24px;
+  color: var(--on-night-muted);
+  text-align: center;
+}
+
+@keyframes blink {
+  to {
+    opacity: 0.2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status[data-status='boarding'] i {
+    animation: none;
+  }
+}
+
+/* Телефон: время, город с рейсом и выходом, статус */
+@media (max-width: 767px) {
+  .wrap {
+    padding: 6px 10px;
+    border-radius: 22px;
+  }
+
+  .table {
+    border-spacing: 0;
+  }
+
+  .wide,
+  .flapsWide {
+    display: none;
+  }
+
+  .flapsSmall {
+    display: block;
+  }
+
+  .sub {
+    display: block;
+    margin-top: 3px;
+    color: var(--on-night-faint);
+    font-size: 11px;
+  }
+
+  .table td {
+    padding: 10px 4px;
+    border-top: 1px solid var(--on-night-line);
+  }
+
+  .time {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    color: var(--season-sun);
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .status {
+    min-height: 26px;
+    padding: 0 7px;
+    font-size: 11px;
+  }
+
+  .table th:last-child,
+  .table td:last-child {
+    text-align: right;
+  }
+}

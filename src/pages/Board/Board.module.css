@@ -1,0 +1,297 @@
+.page {
+  position: relative;
+  overflow: hidden;
+  color: var(--on-night);
+}
+
+.glow {
+  position: absolute;
+  top: -260px;
+  left: 20%;
+  width: 760px;
+  height: 560px;
+  border-radius: 50%;
+  background: var(--sky-deep);
+  opacity: 0.45;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  display: grid;
+  grid-gap: 24px;
+  gap: 24px;
+  padding-top: 48px;
+  padding-bottom: 80px;
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin: -8px;
+}
+
+.top > * {
+  margin: 8px;
+}
+
+.titles {
+  display: grid;
+  grid-gap: 10px;
+  gap: 10px;
+}
+
+.eyebrow {
+  color: var(--on-night-accent);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+}
+
+.h1 {
+  font-size: var(--fs-h1);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: var(--ls-tight);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+}
+
+.sound {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  margin-right: 14px;
+  padding: 0 14px;
+  border: 1px solid var(--glass-dark-border);
+  border-radius: var(--r-btn);
+  background: var(--glass-dark-bg);
+  color: var(--on-night);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sound svg {
+  margin-right: 8px;
+}
+
+.sound[aria-pressed='true'] {
+  border-color: var(--pink);
+}
+
+.clock {
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.bar {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-gap: 12px;
+  gap: 12px;
+}
+
+.tabs {
+  display: flex;
+  padding: 6px;
+  border: 1px solid var(--glass-dark-border);
+  border-radius: 16px;
+  background: var(--glass-dark-bg);
+}
+
+.tabs button {
+  min-height: var(--tap);
+  padding: 0 18px;
+  border: 0;
+  border-radius: 11px;
+  background: transparent;
+  color: var(--on-night);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tabs button + button {
+  margin-left: 6px;
+}
+
+.tabs button[aria-selected='true'] {
+  background: var(--on-night);
+  color: var(--night);
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+  padding: 0 16px;
+  border: 1px solid var(--glass-dark-border);
+  border-radius: 16px;
+  background: var(--glass-dark-bg);
+  color: var(--on-night-accent);
+}
+
+.search input {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-left: 10px;
+  border: 0;
+  background: transparent;
+  color: var(--on-night);
+  font: inherit;
+  font-size: 16px;
+}
+
+.search input::placeholder {
+  color: var(--on-night-faint);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  grid-gap: 20px;
+  gap: 20px;
+  align-items: start;
+}
+
+.side {
+  display: grid;
+  grid-gap: 20px;
+  gap: 20px;
+}
+
+.radarCard {
+  display: grid;
+  grid-gap: 14px;
+  gap: 14px;
+  padding: 22px;
+  border: 1px solid var(--glass-dark-border);
+  border-radius: var(--r-panel);
+  background: var(--glass-dark-bg);
+}
+
+.radarHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.radarHead h2 {
+  color: var(--on-night-accent);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.radarHead span {
+  color: var(--on-night-faint);
+  font-size: 12px;
+}
+
+.mobileRadar {
+  display: none;
+}
+
+/* Пролёт самолёта раз в 60 с */
+.fly {
+  position: absolute;
+  top: 120px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  transform: translateX(-500px);
+  animation: fly 60s linear 2s infinite;
+}
+
+.fly span {
+  width: 360px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--board-trail);
+}
+
+.fly path {
+  fill: var(--on-night);
+}
+
+@keyframes fly {
+  0% {
+    transform: translateX(-500px);
+  }
+
+  12%,
+  100% {
+    transform: translateX(110vw);
+  }
+}
+
+@media (max-width: 1023px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .side {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+@media (max-width: 767px) {
+  .content {
+    padding-top: 28px;
+  }
+
+  .clock {
+    font-size: 30px;
+  }
+
+  .bar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .side {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .radarCard {
+    display: none;
+  }
+
+  .mobileRadar {
+    display: flex;
+    align-items: center;
+  }
+
+  .mobileRadar > div {
+    display: grid;
+    margin-left: 16px;
+  }
+
+  .mobileRadar span {
+    color: var(--on-night-muted);
+    font-size: 13px;
+  }
+
+  .mobileRadar b {
+    font-size: 32px;
+    font-weight: 800;
+  }
+
+  .fly {
+    top: 80px;
+  }
+}
