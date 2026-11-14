@@ -1,0 +1,129 @@
+.banner {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr) auto;
+  grid-gap: 32px;
+  gap: 32px;
+  align-items: center;
+  padding: 28px 32px;
+  border: 1px solid var(--glass-border);
+  border-radius: 32px;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+}
+
+.stack {
+  position: relative;
+  width: 220px;
+  height: 170px;
+}
+
+.card {
+  position: absolute;
+  width: 130px;
+  height: 150px;
+  overflow: hidden;
+  border: 6px solid var(--white);
+  border-radius: 16px;
+  background: var(--sky-light);
+  box-shadow: var(--shadow-polaroid);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card[data-k='0'] {
+  top: 20px;
+  left: 10px;
+  transform: rotate(-10deg);
+}
+
+.card[data-k='1'] {
+  top: 6px;
+  left: 80px;
+  transform: rotate(8deg);
+}
+
+.card[data-k='2'] {
+  top: 14px;
+  left: 44px;
+}
+
+.text {
+  display: grid;
+  grid-gap: 10px;
+  gap: 10px;
+}
+
+.eyebrow {
+  color: var(--sky-deep);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: var(--ls-tight);
+}
+
+.note {
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.play {
+  display: inline-flex;
+  align-items: center;
+  min-height: 52px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: var(--r-btn);
+  background: var(--pink);
+  box-shadow: var(--shadow-cta);
+  color: var(--white);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.play svg {
+  margin-right: 10px;
+}
+
+@media (max-width: 1023px) {
+  .banner {
+    grid-template-columns: 180px minmax(0, 1fr);
+    padding: 24px;
+  }
+
+  .stack {
+    transform: scale(0.82);
+    transform-origin: left center;
+  }
+
+  .play {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+}
+
+@media (max-width: 639px) {
+  .banner {
+    grid-template-columns: minmax(0, 1fr);
+    grid-gap: 16px;
+    gap: 16px;
+  }
+
+  .stack {
+    height: 150px;
+  }
+}

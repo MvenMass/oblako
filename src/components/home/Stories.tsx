@@ -5,7 +5,7 @@ import { SectionHead } from '@/components/ui/SectionHead';
 import { STORIES } from '@/data/home';
 import { useMediaQuery, useReducedMotion } from '@/lib/motion';
 import { typograph } from '@/lib/typograph';
-import { StoryViewer } from './StoryViewer';
+import { StoryViewer } from '@/components/ui/StoryViewer';
 import styles from './Stories.module.css';
 
 const N = STORIES.length;
@@ -132,7 +132,17 @@ export function Stories() {
         )}
       </p>
 
-      {open !== null && <StoryViewer story={STORIES[open]} reduced={reduced} onClose={close} />}
+      {open !== null && (
+        <StoryViewer
+          title={STORIES[open].title}
+          slides={STORIES[open].slides.map((text, k) => ({
+            src: `/photos/${STORIES[open].cityId}/${STORIES[open].photos[k]}.jpg`,
+            text,
+          }))}
+          reduced={reduced}
+          onClose={close}
+        />
+      )}
     </section>
   );
 }

@@ -46,6 +46,7 @@ export const FILL_ICONS = {
   ),
   'sound-on': <path d="M4 9v6h4l5 4V5L8 9zM16 8a5 5 0 0 1 0 8M19 5a9 9 0 0 1 0 14" />,
   'sound-off': <path d="M4 9v6h4l5 4V5L8 9zM16 9l5 6M21 9l-5 6" />,
+  play: <path d="M8 5v14l11-7z" />,
   sparkle: <path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z" />,
 } satisfies Record<string, ReactElement>;
 

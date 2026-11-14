@@ -1,23 +1,30 @@
 import { useEffect, useRef, useState } from 'react';
 import { Icon } from '@/components/ui/Icon';
-import type { Story } from '@/data/home';
 import { lockScroll } from '@/lib/scroll';
 import { typograph } from '@/lib/typograph';
 import styles from './StoryViewer.module.css';
 
 const SLIDE_MS = 3200;
 
-interface StoryViewerProps {
-  story: Story;
-  reduced: boolean;
-  onClose: () => void;
+export interface StorySlide {
+  src: string;
+  text: string;
 }
 
-/** Сторис: 3 слайда по 3,2 с, тап слева — назад, справа — вперёд, Esc закрывает */
-export function StoryViewer({ story, reduced, onClose }: StoryViewerProps) {
-  const [slide, setSlide] = useState(0);
+interface StoryViewerProps {
+  title: string;
+  slides: StorySlide[];
+  reduced: boolean;
+  onClose: () => void;
+  /** С какого слайда начать */
+  start?: number;
+}
+
+/** Сторис: слайды по 3,2 с, тап слева — назад, справа — вперёд, Esc закрывает */
+export function StoryViewer({ title, slides, reduced, onClose, start = 0 }: StoryViewerProps) {
+  const [slide, setSlide] = useState(start);
   const closeRef = useRef<HTMLButtonElement>(null);
-  const last = story.slides.length - 1;
+  const last = slides.length - 1;
 
   useEffect(() => {
     lockScroll(true);
@@ -49,18 +56,13 @@ export function StoryViewer({ story, reduced, onClose }: StoryViewerProps) {
   const forward = () => (slide < last ? setSlide(slide + 1) : onClose());
 
   return (
-    <div className={styles.overlay} role="dialog" aria-modal="true" aria-label={story.title}>
+    <div className={styles.overlay} role="dialog" aria-modal="true" aria-label={title}>
       <div className={styles.card}>
-        <img
-          key={slide}
-          src={`/photos/${story.cityId}/${story.photos[slide]}.jpg`}
-          alt=""
-          className={styles.photo}
-        />
+        <img key={slide} src={slides[slide].src} alt="" className={styles.photo} />
         <span aria-hidden="true" className={styles.shade} />
 
         <div aria-hidden="true" className={styles.bars}>
-          {story.slides.map((_, k) => (
+          {slides.map((_, k) => (
             <span key={k} className={styles.bar}>
               <span
                 className={[
@@ -75,7 +77,7 @@ export function StoryViewer({ story, reduced, onClose }: StoryViewerProps) {
           ))}
         </div>
 
-        <span className={styles.title}>{story.title}</span>
+        <span className={styles.title}>{title}</span>
         <button
           ref={closeRef}
           type="button"
@@ -103,10 +105,10 @@ export function StoryViewer({ story, reduced, onClose }: StoryViewerProps) {
         />
 
         <p key={`t${slide}`} className={styles.text} aria-live="polite">
-          {typograph(story.slides[slide])}
+          {typograph(slides[slide].text)}
         </p>
         <span className={styles.hint}>
-          {slide + 1} из {story.slides.length} · стрелки ← →
+          {slide + 1} из {slides.length} · стрелки ← →
         </span>
       </div>
     </div>

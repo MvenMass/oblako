@@ -1,0 +1,71 @@
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ground {
+  fill: var(--map-ground);
+}
+
+.river {
+  fill: none;
+  stroke: var(--river);
+  stroke-width: 22;
+  stroke-linecap: round;
+  opacity: 0.6;
+}
+
+.s1 {
+  stop-color: var(--sky);
+}
+
+.s2 {
+  stop-color: var(--pink);
+}
+
+.s3 {
+  stop-color: var(--dusk);
+}
+
+.line {
+  fill: none;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  animation: draw 1.6s var(--ease-out) both;
+}
+
+.ring {
+  fill: var(--white);
+}
+
+.ph {
+  fill: var(--sky-light);
+}
+
+.badge {
+  fill: var(--ink);
+  stroke: var(--white);
+  stroke-width: 2;
+}
+
+.num {
+  fill: var(--white);
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 800;
+  text-anchor: middle;
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 100;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line {
+    animation: none;
+  }
+}

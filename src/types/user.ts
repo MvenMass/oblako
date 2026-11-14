@@ -53,8 +53,10 @@ export interface Trip {
   title: string;
   /** ISO-дата */
   date: string;
-  /** Ключи фото в IndexedDB */
+  /** Ключи фото в IndexedDB; демо-фото — «demo:<placeId>» */
   photoIds: string[];
+  /** Попробованные блюда из city.dishes — для достижения «Гурман» */
+  dishes?: string[];
 }
 
 export interface UserData {
