@@ -1,4 +1,5 @@
 import type { Ref } from 'react';
+import { photoSrcSet } from '@/lib/img';
 import { Icon } from '@/components/ui/Icon';
 import { getCity } from '@/lib/cities';
 import { HOW_PATH, STOPS } from './howPath';
@@ -83,7 +84,14 @@ export function HowScene({ active, pathRef, trailRef, planeRef }: HowSceneProps)
 
       {/* 04 — полароид */}
       <div className={`${styles.polaroid} ${on(3)}`}>
-        <img src="/photos/istanbul/balat.jpg" alt="" className={styles.photo} loading="lazy" />
+        <img
+          src="/photos/istanbul/balat.jpg"
+          srcSet={photoSrcSet('/photos/istanbul/balat.jpg')}
+          sizes="300px"
+          alt=""
+          className={styles.photo}
+          loading="lazy"
+        />
         <span className={styles.caption}>Балат, май</span>
         <svg viewBox="0 0 60 60" width="46" height="46" className={styles.stamp}>
           <circle cx="30" cy="30" r="26" />

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { photoSrcSet } from '@/lib/img';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/Draggable';
 import { InertiaPlugin } from 'gsap/InertiaPlugin';
@@ -128,7 +129,14 @@ export function PhotoTable({ items, onOpen }: PhotoTableProps) {
               <span className={styles.paper}>
                 <span className={styles.frame}>
                   {it.src ? (
-                    <img src={it.src} alt="" draggable={false} />
+                    <img
+                      src={it.src}
+                      srcSet={photoSrcSet(it.src)}
+                      sizes="180px"
+                      alt=""
+                      loading="lazy"
+                      draggable={false}
+                    />
                   ) : (
                     <span className={styles.ph} />
                   )}

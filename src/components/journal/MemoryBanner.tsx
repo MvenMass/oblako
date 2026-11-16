@@ -1,4 +1,5 @@
 import { Icon } from '@/components/ui/Icon';
+import { photoSrcSet } from '@/lib/img';
 import { getCity } from '@/lib/cities';
 import { formatTripDate, whereIn } from '@/lib/journal';
 import { typograph } from '@/lib/typograph';
@@ -21,7 +22,7 @@ export function MemoryBanner({ trip, srcs, onPlay }: MemoryBannerProps) {
       <div aria-hidden="true" className={styles.stack}>
         {[0, 1, 2].map((k) => (
           <span key={k} className={styles.card} data-k={k}>
-            {srcs[k] && <img src={srcs[k]} alt="" />}
+            {srcs[k] && <img src={srcs[k]} srcSet={photoSrcSet(srcs[k])} sizes="130px" alt="" />}
           </span>
         ))}
       </div>

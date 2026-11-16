@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'react';
+import { photoSrcSet } from '@/lib/img';
 import { Link } from 'react-router-dom';
 import { Icon } from '@/components/ui/Icon';
 import { getCurrentWeather } from '@/lib/api/weather';
@@ -69,7 +70,13 @@ export function Dossier({ city }: { city: City }) {
       <ul className={styles.photos}>
         {city.places.slice(0, 3).map((p) => (
           <li key={p.id}>
-            <img src={p.photo} alt={p.name} loading="lazy" />
+            <img
+              src={p.photo}
+              srcSet={photoSrcSet(p.photo)}
+              sizes="160px"
+              alt={p.name}
+              loading="lazy"
+            />
           </li>
         ))}
       </ul>

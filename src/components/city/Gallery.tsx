@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type KeyboardEvent, type PointerEvent } from 'react';
+import { photoSrcSet } from '@/lib/img';
 import { Chip } from '@/components/ui/Chip';
 import { useReducedMotion } from '@/lib/motion';
 import { CATEGORY_LABEL, categoriesOf } from '@/lib/places';
@@ -111,6 +112,8 @@ export function Gallery({ city }: { city: City }) {
               >
                 <img
                   src={p.photo}
+                  srcSet={photoSrcSet(p.photo)}
+                  sizes="(max-width: 767px) 80vw, 460px"
                   alt={active ? p.name : ''}
                   draggable={false}
                   loading={Math.abs(pos) <= 1 ? 'eager' : 'lazy'}

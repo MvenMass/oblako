@@ -1,4 +1,5 @@
 import { useCallback, useRef, useState, type CSSProperties } from 'react';
+import { photoSrcSet } from '@/lib/img';
 import { Button } from '@/components/ui/Button';
 import { Icon } from '@/components/ui/Icon';
 import { SectionHead } from '@/components/ui/SectionHead';
@@ -104,6 +105,8 @@ export function Stories() {
               >
                 <img
                   src={`/photos/${story.cityId}/${story.photos[0]}.jpg`}
+                  srcSet={photoSrcSet(`/photos/${story.cityId}/${story.photos[0]}.jpg`)}
+                  sizes="280px"
                   alt=""
                   className={styles.photo}
                   loading="lazy"
