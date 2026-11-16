@@ -35,11 +35,34 @@ describe('Hero', () => {
 
   it('sends the search form to the quiz with parameters', () => {
     renderHero();
-    fireEvent.change(screen.getByLabelText('Куда'), { target: { value: 'tbilisi' } });
-    fireEvent.change(screen.getByLabelText('Когда'), { target: { value: '5' } });
-    fireEvent.change(screen.getByLabelText('Сколько'), { target: { value: '3' } });
+    // Куда: поиск по названию и Enter
+    fireEvent.click(screen.getByRole('button', { name: /^Куда/ }));
+    const search = screen.getByRole('combobox', { name: 'Найти город или страну' });
+    fireEvent.change(search, { target: { value: 'тбил' } });
+    fireEvent.keyDown(search, { key: 'Enter' });
+    expect(screen.getByRole('button', { name: /^Куда/ })).toHaveTextContent('Тбилиси');
+    // Когда: сетка месяцев, сезон города отмечен
+    fireEvent.click(screen.getByRole('button', { name: /^Когда/ }));
+    expect(screen.getByRole('radio', { name: /^Май, сезон/ })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('radio', { name: /^Май/ }));
+    expect(screen.queryByRole('radiogroup')).toBeNull();
+    // Сколько: счётчик
+    fireEvent.click(screen.getByRole('button', { name: /^Сколько/ }));
+    fireEvent.click(screen.getByRole('button', { name: 'Больше' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Готово' }));
+    expect(screen.getByRole('button', { name: /^Сколько/ })).toHaveTextContent('3 человека');
     fireEvent.submit(screen.getByRole('form', { name: 'Поиск поездки' }));
     expect(screen.getByTestId('location')).toHaveTextContent('/quiz?to=tbilisi&month=5&people=3');
+  });
+
+  it('closes a picker with Escape and returns focus to the field', () => {
+    renderHero();
+    const field = screen.getByRole('button', { name: /^Куда/ });
+    fireEvent.click(field);
+    expect(field).toHaveAttribute('aria-expanded', 'true');
+    fireEvent.keyDown(document, { key: 'Escape' });
+    expect(field).toHaveAttribute('aria-expanded', 'false');
+    expect(field).toHaveFocus();
   });
 
   it('shows a dash when the weather is unavailable', async () => {

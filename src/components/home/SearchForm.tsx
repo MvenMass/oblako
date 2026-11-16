@@ -1,20 +1,29 @@
 import { useState, type FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Icon } from '@/components/ui/Icon';
-import { getCities } from '@/lib/cities';
-import { MONTHS, PEOPLE, quizUrl } from '@/lib/search';
+import { getCity } from '@/lib/cities';
+import { MONTHS, peopleText, quizUrl } from '@/lib/search';
+import { CityList } from './search/CityList';
+import { MonthGrid } from './search/MonthGrid';
+import { PeopleStepper } from './search/PeopleStepper';
+import { Picker } from './search/Picker';
 import styles from './SearchForm.module.css';
 
-/** Поиск поездки: куда, когда, сколько человек → подбор */
+type Open = 'to' | 'month' | 'people' | null;
+
+/** Поиск поездки: куда, когда, сколько человек → подбор. Свои панели вместо системных select */
 export function SearchForm() {
   const navigate = useNavigate();
   const [to, setTo] = useState('');
   const [month, setMonth] = useState('');
-  const [people, setPeople] = useState('2');
+  const [people, setPeople] = useState(2);
+  const [open, setOpen] = useState<Open>(null);
+  const city = getCity(to || undefined);
+  const toggle = (key: Exclude<Open, null>) => (v: boolean) => setOpen(v ? key : null);
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    navigate(quizUrl(to, month, people));
+    navigate(quizUrl(to, month, String(people)));
   };
 
   return (
@@ -23,46 +32,53 @@ export function SearchForm() {
         Вылет из&nbsp;<strong>Москвы</strong>
       </p>
       <div className={styles.fields}>
-        <label className={`${styles.field} ${styles.wide}`}>
-          <span className={styles.label}>Куда</span>
-          <select className={styles.select} value={to} onChange={(e) => setTo(e.target.value)}>
-            <option value="">Куда угодно</option>
-            {getCities().map((c) => (
-              <option key={c.id} value={c.id}>
-                {c.name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className={styles.field}>
-          <span className={styles.label}>Когда</span>
-          <select
-            className={styles.select}
-            value={month}
-            onChange={(e) => setMonth(e.target.value)}
-          >
-            <option value="">Любой месяц</option>
-            {MONTHS.map((m, i) => (
-              <option key={m} value={String(i + 1)}>
-                {m}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className={styles.field}>
-          <span className={styles.label}>Сколько</span>
-          <select
-            className={styles.select}
-            value={people}
-            onChange={(e) => setPeople(e.target.value)}
-          >
-            {PEOPLE.map((n) => (
-              <option key={n} value={String(n)}>
-                {n} {n === 1 ? 'человек' : n < 5 ? 'человека' : 'человек'}
-              </option>
-            ))}
-          </select>
-        </label>
+        <Picker
+          label="Куда"
+          value={city ? city.name : 'Куда угодно'}
+          kind="listbox"
+          wide
+          className={styles.wide}
+          open={open === 'to'}
+          onOpenChange={toggle('to')}
+        >
+          {(close) => (
+            <CityList
+              value={to}
+              onPick={(id) => {
+                setTo(id);
+                close();
+              }}
+            />
+          )}
+        </Picker>
+        <Picker
+          label="Когда"
+          value={month ? MONTHS[Number(month) - 1] : 'Любой месяц'}
+          kind="dialog"
+          open={open === 'month'}
+          onOpenChange={toggle('month')}
+        >
+          {(close) => (
+            <MonthGrid
+              value={month}
+              best={city?.climate.bestMonths ?? []}
+              onPick={(m) => {
+                setMonth(m);
+                close();
+              }}
+            />
+          )}
+        </Picker>
+        <Picker
+          label="Сколько"
+          value={peopleText(people)}
+          kind="dialog"
+          alignEnd
+          open={open === 'people'}
+          onOpenChange={toggle('people')}
+        >
+          {(close) => <PeopleStepper value={people} onChange={setPeople} onDone={close} />}
+        </Picker>
         <button type="submit" className={styles.submit}>
           <Icon name="search" size={18} className={styles.submitIcon} />
           <span className={styles.submitShort}>Найти</span>

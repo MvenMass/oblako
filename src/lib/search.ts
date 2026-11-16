@@ -1,3 +1,5 @@
+import { plural } from './plural';
+
 export const MONTHS = [
   'Январь',
   'Февраль',
@@ -23,3 +25,5 @@ export function quizUrl(to: string, month: string, people: string): string {
   params.set('people', people);
   return `/quiz?${params.toString()}`;
 }
+
+export const peopleText = (n: number) => `${n} ${plural(n, ['человек', 'человека', 'человек'])}`;

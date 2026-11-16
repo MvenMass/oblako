@@ -1,0 +1,237 @@
+/* «Куда»: поиск и список */
+.cities {
+  display: grid;
+  grid-gap: 8px;
+  gap: 8px;
+}
+
+.search {
+  width: 100%;
+  min-height: 46px;
+  padding: 0 14px;
+  border: 1px solid var(--field-border);
+  border-radius: 12px;
+  background: var(--white);
+  color: var(--ink);
+  font: inherit;
+  font-size: 15px;
+}
+
+.search::placeholder {
+  color: var(--muted);
+}
+
+.list {
+  max-height: 320px;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+  overscroll-behavior: contain;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  padding: 6px 10px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.option[data-active] {
+  background: var(--field-bg);
+}
+
+.option[aria-selected='true'] b {
+  color: var(--pink);
+}
+
+.thumb {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--grad-brand-diag);
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.any {
+  color: var(--white);
+}
+
+.text {
+  display: grid;
+  min-width: 0;
+}
+
+.text b {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.text span {
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.check {
+  flex: none;
+  width: 8px;
+  height: 14px;
+  margin-left: auto;
+  border-right: 2px solid var(--pink);
+  border-bottom: 2px solid var(--pink);
+  transform: rotate(45deg);
+}
+
+.none {
+  padding: 16px 10px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* «Когда»: сетка месяцев */
+.months {
+  display: grid;
+  grid-gap: 8px;
+  gap: 8px;
+}
+
+.monthGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-gap: 6px;
+  gap: 6px;
+}
+
+.month {
+  position: relative;
+  min-height: var(--tap);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: var(--field-bg);
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.month:hover {
+  border-color: var(--seat-border);
+}
+
+.anyMonth {
+  grid-column: 1 / -1;
+}
+
+.month[aria-checked='true'] {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.month .season {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
+
+.season {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--success);
+}
+
+.hint {
+  display: flex;
+  align-items: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.hint .season {
+  margin-right: 6px;
+}
+
+/* «Сколько»: счётчик */
+.people {
+  display: grid;
+  grid-gap: 10px;
+  gap: 10px;
+}
+
+.stepper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-gap: 10px;
+  gap: 10px;
+  align-items: center;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--field-border);
+  border-radius: var(--r-btn);
+  background: var(--white);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.step:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.minus {
+  width: 14px;
+  height: 2px;
+  border-radius: 1px;
+  background: currentColor;
+}
+
+.count {
+  display: grid;
+  justify-items: center;
+}
+
+.count b {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.count span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.done {
+  min-height: var(--tap);
+  border: 0;
+  border-radius: var(--r-btn);
+  background: var(--ink);
+  color: var(--white);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
