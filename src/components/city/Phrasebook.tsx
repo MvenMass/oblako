@@ -46,7 +46,6 @@ export function Phrasebook({ city }: { city: City }) {
               key={p.native}
               type="button"
               className={`${styles.card} ${on ? styles.on : ''}`}
-              aria-label={`${p.ru}: послушать`}
               onClick={() => say(i)}
             >
               <span className={styles.top}>
@@ -61,6 +60,7 @@ export function Phrasebook({ city }: { city: City }) {
               </span>
               <span className={styles.translit}>{p.translit}</span>
               <span className={styles.ru}>{p.ru}</span>
+              <span className="visually-hidden">, послушать</span>
             </button>
           );
         })}

@@ -41,20 +41,25 @@ export function PackShelf({ packed, tips, onToggle }: SceneProps) {
       <div className={styles.shelf} role="group" aria-label="Полка вещей">
         {onFloor.length ? (
           onFloor.map((it) => (
-            <button
-              key={it.id}
-              type="button"
-              className={styles.thing}
-              aria-pressed="false"
-              aria-label={itemLabel(it.name, false, tips[it.id])}
-              onClick={() => onToggle(it.id)}
-            >
-              <span className={styles.art}>
-                <ItemArtSvg id={it.id} />
-              </span>
-              <span className={styles.name}>{it.name}</span>
-              {tips[it.id] && <span className={styles.tip}>совет</span>}
-            </button>
+            <span key={it.id} className={styles.slot}>
+              <button
+                type="button"
+                className={styles.thing}
+                aria-pressed="false"
+                aria-label={itemLabel(it.name, false, tips[it.id])}
+                onClick={() => onToggle(it.id)}
+              >
+                <span className={styles.art}>
+                  <ItemArtSvg id={it.id} />
+                </span>
+                <span className={styles.name}>{it.name}</span>
+              </button>
+              {tips[it.id] && (
+                <span aria-hidden="true" className={styles.tip}>
+                  совет
+                </span>
+              )}
+            </span>
           ))
         ) : (
           <p className={styles.empty}>Полка пуста&nbsp;— всё в&nbsp;чемодане</p>

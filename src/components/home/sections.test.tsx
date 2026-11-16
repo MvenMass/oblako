@@ -127,7 +127,7 @@ describe('FaqChat', () => {
 describe('Ticket', () => {
   it('tears the stub by click/Enter and focuses the quiz link', () => {
     withRouter(<Ticket />);
-    fireEvent.click(screen.getByRole('button', { name: /Оторвать корешок/ }));
+    fireEvent.click(screen.getByRole('button', { name: /чтобы начать/ }));
     const cta = screen.getByRole('link', { name: /Начать подбор/ });
     expect(cta).toHaveAttribute('href', '/quiz');
     expect(cta).toHaveFocus();

@@ -46,7 +46,7 @@ textarea {
 }
 
 a {
-  color: var(--sky-deep);
+  color: var(--sky-ink);
 }
 
 /* Safari 14 не знает :focus-visible — там правило с :not() отбрасывается и кольцо остаётся на :focus */

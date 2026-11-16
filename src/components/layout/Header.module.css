@@ -62,9 +62,10 @@
   color: var(--pink);
 }
 
+/* Активный пункт: тёмный жирный текст и розовая черта — розовый текст на стекле не держит контраст */
 .link[aria-current='page'] {
-  color: var(--pink);
-  font-weight: 600;
+  font-weight: 700;
+  box-shadow: inset 0 -2px 0 var(--pink);
 }
 
 .dark .link:hover,
@@ -120,4 +121,11 @@
     padding: 6px 6px 6px 14px;
     border-radius: 18px;
   }
+}
+
+/* На тёмных страницах светлое стекло кнопки становится серым — нужен тёмный вариант */
+.dark .profile {
+  border-color: var(--glass-dark-border);
+  background: var(--glass-dark-bg);
+  color: var(--on-night);
 }

@@ -154,17 +154,14 @@ export const ITEM_ART: Record<string, ItemArt> = {
         <path d="M6 4h20l-2 70H8z" fill="#FFB347" />
         <rect x="8" y="72" width="16" height="16" rx="3" fill="#0B2540" />
         <rect x="9" y="20" width="14" height="24" rx="3" fill="#FFFFFF" opacity=".8" />
-        <text
-          x="16"
-          y="36"
-          textAnchor="middle"
-          fontFamily="Onest"
-          fontSize="8"
-          fontWeight="800"
-          fill="#F08A24"
-        >
-          SPF
-        </text>
+        {/* Солнце вместо надписи SPF: текст в рисунке путал бы подпись кнопки */}
+        <circle cx="16" cy="32" r="3.5" fill="#F08A24" />
+        <path
+          d="M16 25.5v2M16 36.5v2M9.5 32h2M20.5 32h2"
+          stroke="#F08A24"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+        />
       </>
     ),
   },

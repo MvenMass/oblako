@@ -63,15 +63,20 @@
   scroll-snap-type: x mandatory;
 }
 
+.slot {
+  position: relative;
+  flex: none;
+  margin-right: 10px;
+  scroll-snap-align: start;
+}
+
 .thing {
   position: relative;
   display: grid;
-  flex: none;
   justify-items: center;
   align-content: space-between;
   width: 112px;
   height: 150px;
-  margin-right: 10px;
   padding: 10px 6px;
   border: 1px solid var(--glass-border);
   border-radius: 18px;
@@ -79,7 +84,6 @@
   color: var(--ink);
   font: inherit;
   cursor: pointer;
-  scroll-snap-align: start;
 }
 
 .art {
@@ -101,6 +105,7 @@
   position: absolute;
   top: -8px;
   right: -4px;
+  pointer-events: none;
   padding: 3px 7px;
   border-radius: 6px;
   background: var(--pink);

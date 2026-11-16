@@ -49,26 +49,28 @@ export function RoutePlanner({ city, days }: { city: City; days: RouteDay[] }) {
           {sheetOpen ? 'Свернуть список' : 'Показать список'}
         </button>
         <div id="route-panel" className={styles.panelBody}>
-          <div role="tablist" aria-label="Дни поездки" className={styles.tabs}>
-            {days.map((d, i) => (
-              <button
-                key={i}
-                type="button"
-                role="tab"
-                id={`day-tab-${i}`}
-                aria-selected={i === dayIndex}
-                aria-controls="day-panel"
-                tabIndex={i === dayIndex ? 0 : -1}
-                className={styles.tab}
-                onClick={() => setActive(i)}
-                onKeyDown={onTabKey}
-              >
-                <b>День {i + 1}</b>
-                <span>
-                  {d.stops.length} {plural(d.stops.length, ['точка', 'точки', 'точек'])}
-                </span>
-              </button>
-            ))}
+          <div className={styles.tabsRow}>
+            <div role="tablist" aria-label="Дни поездки" className={styles.tabs}>
+              {days.map((d, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  role="tab"
+                  id={`day-tab-${i}`}
+                  aria-selected={i === dayIndex}
+                  aria-controls="day-panel"
+                  tabIndex={i === dayIndex ? 0 : -1}
+                  className={styles.tab}
+                  onClick={() => setActive(i)}
+                  onKeyDown={onTabKey}
+                >
+                  <b>День {i + 1}</b>
+                  <span>
+                    {d.stops.length} {plural(d.stops.length, ['точка', 'точки', 'точек'])}
+                  </span>
+                </button>
+              ))}
+            </div>
             <button
               type="button"
               className={styles.addDay}

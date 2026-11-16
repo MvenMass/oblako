@@ -41,7 +41,7 @@
   transition: transform 0.08s linear;
 }
 
-.card[data-locked] {
+.card[data-locked] .icon {
   opacity: 0.6;
 }
 

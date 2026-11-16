@@ -66,8 +66,17 @@ export function PackScene({ packed, tips, kg, last, onToggle }: SceneProps) {
                     <span className={styles.name} style={{ '--nr': `${-r}deg` } as CSSProperties}>
                       {it.name}
                     </span>
-                    {tips[it.id] && <span className={styles.tip}>совет</span>}
                   </button>
+                  {/* Бейдж — рядом с кнопкой, а не внутри: подпись кнопки = видимый текст */}
+                  {tips[it.id] && !on && (
+                    <span
+                      aria-hidden="true"
+                      className={styles.tip}
+                      style={{ left: ITEM_ART[it.id].w / 2 - 22, top: -ITEM_ART[it.id].h / 2 - 10 }}
+                    >
+                      совет
+                    </span>
+                  )}
                 </span>
               </span>
             );

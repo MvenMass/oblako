@@ -132,6 +132,7 @@
 }
 
 .y {
+  position: relative;
   display: block;
   transform: translateY(var(--y));
   transition: transform 0.85s cubic-bezier(0.3, -0.55, 0.4, 1.1);
@@ -185,15 +186,13 @@
   transition: opacity 0.3s;
 }
 
-.item[aria-pressed='true'] .name,
-.item[aria-pressed='true'] .tip {
+.item[aria-pressed='true'] .name {
   opacity: 0;
 }
 
 .tip {
   position: absolute;
-  top: -10px;
-  right: -12px;
+  pointer-events: none;
   padding: 3px 7px;
   border-radius: 6px;
   background: var(--pink);

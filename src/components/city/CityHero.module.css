@@ -360,11 +360,11 @@
     display: none;
   }
 
+  /* Чипы переносятся, а не прокручиваются: в прокрутку без фокусируемых элементов не попасть с клавиатуры */
   .chipsBelow {
     display: flex;
+    flex-wrap: wrap;
     margin: 6px 11px 0;
-    overflow-x: auto;
-    scrollbar-width: none;
   }
 
   .chipsBelow > .chip {

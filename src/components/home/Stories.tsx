@@ -99,7 +99,6 @@ export function Stories() {
                 }}
                 type="button"
                 className={`${styles.card} ${!phone && a ? styles.side : ''}`}
-                aria-label={`История «${story.title}»${!phone && d !== 0 ? ', показать' : ', открыть'}`}
                 tabIndex={!phone && a > 3 ? -1 : undefined}
                 onClick={() => pick(i)}
               >
@@ -117,6 +116,9 @@ export function Stories() {
                     <span aria-hidden="true" className={styles.avatar} />
                     [Автор]
                   </span>
+                </span>
+                <span className="visually-hidden">
+                  {!phone && d !== 0 ? ', показать историю' : ', открыть историю'}
                 </span>
               </button>
             </li>

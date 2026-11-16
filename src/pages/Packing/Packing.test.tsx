@@ -37,8 +37,8 @@ describe('Packing', () => {
 
   it('shows culture tips for Istanbul', () => {
     renderPacking();
-    expect(item(/^Платок для храмов \(совет:/)).toBeInTheDocument();
-    expect(item(/^Одежда, закрывающая колени \(совет:/)).toBeInTheDocument();
+    expect(item(/^Платок для храмов — совет:/)).toBeInTheDocument();
+    expect(item(/^Одежда, закрывающая колени — совет:/)).toBeInTheDocument();
     expect(screen.getByText('нет прогноза — по климату месяца')).toBeInTheDocument();
   });
 

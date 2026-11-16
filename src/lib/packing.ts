@@ -175,7 +175,7 @@ export function tipsFor(city: City, week: DayForecast[]): Record<string, string>
 
 /** Подпись кнопки вещи: что это, совет и что сделает нажатие */
 export function itemLabel(name: string, on: boolean, tip?: string) {
-  return `${name}${tip ? ` (совет: ${tip})` : ''}: ${
-    on ? 'в чемодане, нажмите, чтобы достать' : 'на полу, нажмите, чтобы уложить'
-  }`;
+  // Видимый текст кнопки («название» + бейдж «совет») идёт в начале подписи — так требует WCAG 2.5.3
+  const action = on ? 'в чемодане, нажмите, чтобы достать' : 'на полу, нажмите, чтобы уложить';
+  return tip ? `${name} — совет: ${tip}. Сейчас ${action}` : `${name}: ${action}`;
 }

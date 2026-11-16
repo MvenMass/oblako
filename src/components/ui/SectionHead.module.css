@@ -18,7 +18,7 @@
 }
 
 .eyebrow {
-  color: var(--sky-deep);
+  color: var(--sky-ink);
   font-size: var(--fs-eyebrow);
   font-weight: 700;
   letter-spacing: var(--ls-eyebrow);

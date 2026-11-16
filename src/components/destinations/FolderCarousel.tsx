@@ -83,7 +83,8 @@ export function FolderCarousel({
           const a = Math.abs(d);
           const isActive = d === 0;
           const spread = open && !isActive ? 1.35 : 1;
-          const opacity = a > 3 ? 0 : open && !isActive ? 0.35 : 1 - a * 0.2;
+          // Глубина — масштабом; полупрозрачные кнопки не держали бы контраст текста
+          const opacity = a > 2 ? 0 : open && !isActive ? 0.35 : 1;
           const scale = isActive ? (open ? 1.08 : 1) : Math.max(0.62, 1 - a * 0.1);
           const style: CSSProperties = {
             transform: `translate(${d * 230 * spread}px, ${d * d * 20 + (isActive && open ? 30 : 0)}px) rotate(${d * 6}deg) scale(${scale})`,

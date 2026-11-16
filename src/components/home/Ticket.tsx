@@ -104,7 +104,6 @@ export function Ticket() {
             style={
               dx && !torn ? { transform: `translateX(${dx}px) rotate(${dx / 14}deg)` } : undefined
             }
-            aria-label="Оторвать корешок и начать подбор"
             aria-hidden={torn || undefined}
             tabIndex={torn ? -1 : undefined}
             onPointerDown={onDown}
@@ -115,6 +114,7 @@ export function Ticket() {
           >
             <span className={styles.stubLabel}>КОРЕШОК</span>
             <b className={styles.stubTitle}>Оторвите, чтобы начать</b>
+            <span className="visually-hidden"> — откроется подбор поездки</span>
             <span className={styles.pull}>
               <svg
                 aria-hidden="true"

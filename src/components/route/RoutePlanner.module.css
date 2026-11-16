@@ -28,6 +28,14 @@
   gap: 14px;
 }
 
+.tabsRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-gap: 6px;
+  gap: 6px;
+  align-items: start;
+}
+
 .tabs {
   display: flex;
   flex-wrap: wrap;

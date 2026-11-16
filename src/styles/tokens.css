@@ -2,11 +2,13 @@
 :root {
   /* Цвета */
   --ink: #0b2540;
-  --muted: #45607a;
+  --muted: #3a5269;
   --bg: #f4fafe;
   --white: #ffffff;
   --sky-deep: #0a79a8;
   --sky: #38bde8;
+  /* Бирюзовый для мелкого текста: держит 4,5:1 даже на голубом и розовом сиянии */
+  --sky-ink: #044a68;
   --sky-light: #bdebfa;
   --morning: #e3f6fd;
   --pink: #c8146f;
@@ -218,7 +220,6 @@
   --ach-gold: #f08a24;
   /* Табло: статусы и радар */
   --board-delay: #f5b544;
-  --board-departed: #8fa6bc;
   --board-radar: #7fd3f2;
   --board-row: rgba(255, 255, 255, 0.04);
   --board-radar-sweep: conic-gradient(
