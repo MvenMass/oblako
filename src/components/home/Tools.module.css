@@ -9,10 +9,20 @@
   padding: 10px max(24px, calc((100% - var(--container)) / 2 + var(--gutter))) 24px;
   overflow-x: auto;
   list-style: none;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
+  cursor: grab;
   scroll-padding: 0 max(24px, calc((100% - var(--container)) / 2 + var(--gutter)));
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
+}
+
+.strip[data-dragging] {
+  cursor: grabbing;
+  scroll-snap-type: none;
+}
+
+.strip[data-dragging] a {
+  pointer-events: none;
 }
 
 .strip::-webkit-scrollbar {

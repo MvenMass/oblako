@@ -3,7 +3,7 @@ import { SectionHead } from '@/components/ui/SectionHead';
 import { HOW_STEPS } from '@/data/home';
 import { useMediaQuery, useReducedMotion } from '@/lib/motion';
 import { typograph } from '@/lib/typograph';
-import { Gauges } from './Gauges';
+import { TripFacts } from './TripFacts';
 import { HowScene } from './HowScene';
 import { STOPS } from './howPath';
 import { useHowProgress, type HowMode } from './useHowProgress';
@@ -59,53 +59,61 @@ export function HowItWorks() {
   return (
     <section id="how" className={styles.section} aria-labelledby="how-title">
       <div className="container">
-        <SectionHead
-          id="how-title"
-          eyebrow={<>О&nbsp;проекте</>}
-          title={
-            <>
-              Как работает <span className="grad">OBLAKO</span>
-            </>
-          }
-          lead={typograph(
-            'Четыре шага от «куда бы поехать?» до штампа в паспорте. Самолётик пролетает маршрут — на каждой остановке оживает настоящий инструмент.',
-          )}
-        />
+        {/* Закрепляется весь блок с заголовком: пока самолётик летит, заголовок остаётся на месте */}
+        <div ref={pinRef} className={styles.pinBox}>
+          <SectionHead
+            id="how-title"
+            eyebrow={<>О&nbsp;проекте</>}
+            title={
+              <>
+                Как работает <span className="grad">OBLAKO</span>
+              </>
+            }
+            lead={typograph(
+              'Четыре шага от «куда бы поехать?» до штампа в паспорте. Самолётик пролетает маршрут — на каждой остановке оживает настоящий инструмент.',
+            )}
+          />
 
-        <div ref={pinRef} className={styles.body}>
-          <ol className={styles.steps}>
-            {HOW_STEPS.map((step, i) => (
-              <li key={step.title}>
-                <button
-                  type="button"
-                  className={[
-                    styles.step,
-                    i === current && styles.current,
-                    i <= active && styles.done,
-                  ]
-                    .filter(Boolean)
-                    .join(' ')}
-                  aria-current={i === current ? 'step' : undefined}
-                  onClick={() => goTo(i)}
-                >
-                  <span className={styles.num}>{String(i + 1).padStart(2, '0')}</span>
-                  <span className={styles.stepText}>
-                    <span className={styles.stepTitle}>{step.title}</span>
-                    <span className={styles.stepDesc}>{typograph(step.text)}</span>
-                  </span>
-                </button>
-              </li>
-            ))}
-          </ol>
+          <div className={styles.body}>
+            <ol className={styles.steps}>
+              {HOW_STEPS.map((step, i) => (
+                <li key={step.title}>
+                  <button
+                    type="button"
+                    className={[
+                      styles.step,
+                      i === current && styles.current,
+                      i <= active && styles.done,
+                    ]
+                      .filter(Boolean)
+                      .join(' ')}
+                    aria-current={i === current ? 'step' : undefined}
+                    onClick={() => goTo(i)}
+                  >
+                    <span className={styles.num}>{String(i + 1).padStart(2, '0')}</span>
+                    <span className={styles.stepText}>
+                      <span className={styles.stepTitle}>{step.title}</span>
+                      <span className={styles.stepDesc}>{typograph(step.text)}</span>
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </ol>
 
-          <div ref={boxRef} className={styles.sceneBox} style={{ height: SCENE_H * scale }}>
-            <div className={styles.scene} style={{ transform: `scale(${scale})` }}>
-              <HowScene active={active} pathRef={pathRef} trailRef={trailRef} planeRef={planeRef} />
+            <div ref={boxRef} className={styles.sceneBox} style={{ height: SCENE_H * scale }}>
+              <div className={styles.scene} style={{ transform: `scale(${scale})` }}>
+                <HowScene
+                  active={active}
+                  pathRef={pathRef}
+                  trailRef={trailRef}
+                  planeRef={planeRef}
+                />
+              </div>
             </div>
           </div>
         </div>
 
-        <Gauges />
+        <TripFacts />
       </div>
     </section>
   );

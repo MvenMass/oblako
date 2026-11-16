@@ -6,6 +6,21 @@
   left: 0;
   overflow: hidden;
   pointer-events: none;
+  /* Пятна растворяются у верхнего и нижнего краёв — без резких линий под шапкой и перед подвалом */
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    transparent 0,
+    #000 180px,
+    #000 calc(100% - 320px),
+    transparent
+  );
+  mask-image: linear-gradient(
+    180deg,
+    transparent 0,
+    #000 180px,
+    #000 calc(100% - 320px),
+    transparent
+  );
 }
 
 .blob {

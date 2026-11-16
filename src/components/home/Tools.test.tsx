@@ -1,4 +1,4 @@
-import { render, screen, within } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { Tools } from './Tools';
 
@@ -24,5 +24,19 @@ describe('Tools', () => {
     );
     expect(screen.getByRole('button', { name: 'Прокрутить назад' })).toBeDisabled();
     expect(screen.getByRole('button', { name: 'Прокрутить вперёд' })).toBeInTheDocument();
+  });
+
+  it('moves focus between cards with arrow keys', () => {
+    render(
+      <MemoryRouter>
+        <Tools />
+      </MemoryRouter>,
+    );
+    const links = within(screen.getByRole('list')).getAllByRole('link');
+    links[0].focus();
+    fireEvent.keyDown(links[0], { key: 'ArrowRight' });
+    expect(links[1]).toHaveFocus();
+    fireEvent.keyDown(links[1], { key: 'ArrowLeft' });
+    expect(links[0]).toHaveFocus();
   });
 });

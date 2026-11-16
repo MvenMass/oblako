@@ -36,7 +36,8 @@ export function useHowProgress(
         onUpdate: () => apply(state.p),
         scrollTrigger: {
           trigger: el,
-          start: 'center center',
+          // Под шапкой сайта (≈ 96 px), чтобы заголовок секции был виден целиком
+          start: 'top top+=96',
           end: '+=1400',
           pin: true,
           scrub: 0.5,

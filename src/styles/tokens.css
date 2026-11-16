@@ -112,22 +112,18 @@
   --on-night-field: rgba(255, 255, 255, 0.1);
   --on-night-field-border: rgba(255, 255, 255, 0.2);
   /* Остановки в px: к началу текста (≥300px) фон уже тёмный — контраст AA */
+  /* Верх прозрачный: подвал вырастает из фона любой страницы, без ступеньки */
   --footer-sky: linear-gradient(
     180deg,
-    #f4fafe 0,
-    #9bd8f0 80px,
+    rgba(155, 216, 240, 0) 0,
+    #9bd8f0 110px,
     #3c7fbf 180px,
     #142e5c 290px,
     #06132a 640px
   );
-  --footer-sky-dark: linear-gradient(180deg, #06172f 0, #0a1e3d 200px, #06132a 640px);
+  --footer-sky-dark: linear-gradient(180deg, rgba(6, 23, 47, 0) 0, #0a1e3d 200px, #06132a 640px);
   --footer-cloud: #0b1f3f;
-  --wordmark: linear-gradient(
-    180deg,
-    rgba(234, 244, 251, 0.95),
-    rgba(127, 211, 242, 0.55) 60%,
-    rgba(232, 40, 142, 0.35)
-  );
+  --wordmark: linear-gradient(180deg, #f4fafe, #bfe6f7 70%, #9bd8f0);
 
   /* Нижнее меню */
   --dock-bg: rgba(255, 255, 255, 0.72);

@@ -18,3 +18,6 @@ if (typeof window.matchMedia !== 'function') {
 // jsdom не рисует на canvas — без заглушки getContext пишет ошибки в консоль
 HTMLCanvasElement.prototype.getContext = (() =>
   null) as typeof HTMLCanvasElement.prototype.getContext;
+
+// jsdom не умеет прокручивать к элементу
+if (!Element.prototype.scrollIntoView) Element.prototype.scrollIntoView = () => {};

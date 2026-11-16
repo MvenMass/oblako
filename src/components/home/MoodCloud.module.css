@@ -6,7 +6,8 @@
 
 .aurora {
   position: absolute;
-  top: 80px;
+  /* Ореол размытия (≈160 px) целиком внутри секции — иначе его обрезает край */
+  top: 200px;
   right: 10%;
   width: 560px;
   height: 560px;
