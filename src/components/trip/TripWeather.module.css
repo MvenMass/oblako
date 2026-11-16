@@ -1,0 +1,40 @@
+.box {
+  display: grid;
+  grid-gap: 10px;
+  gap: 10px;
+}
+
+.label {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(86px, 1fr));
+  grid-gap: 8px;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.days li {
+  display: grid;
+  justify-items: center;
+  padding: 10px 6px;
+  border-radius: 14px;
+  background: var(--field-bg);
+  font-size: 12px;
+}
+
+.days b {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.climate {
+  font-size: 15px;
+  line-height: 1.55;
+}

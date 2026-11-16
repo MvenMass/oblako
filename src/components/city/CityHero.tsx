@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { Link } from 'react-router-dom';
 import { Icon } from '@/components/ui/Icon';
 import { SceneFrame } from '@/components/scene/SceneFrame';
 import { paletteVars, palettesFor } from '@/components/scene/palettes';
 import { renderScene } from '@/components/scene';
 import { todNow, type Tod } from '@/lib/cityTime';
 import { useReducedMotion } from '@/lib/motion';
-import { scrollToY } from '@/lib/scroll';
 import { typograph } from '@/lib/typograph';
 import { useUserStore } from '@/store/user';
 import type { City } from '@/types/city';
@@ -105,19 +105,10 @@ export function CityHero({ city }: { city: City }) {
         <div className={styles.card}>
           <p className={styles.lead}>{typograph(city.lead)}</p>
           <div className={styles.actions}>
-            <a
-              href="#plan"
-              className={styles.primary}
-              onClick={(e) => {
-                const plan = document.getElementById('plan');
-                if (!plan) return;
-                e.preventDefault();
-                scrollToY(plan.getBoundingClientRect().top + window.scrollY - 24, !reduced);
-              }}
-            >
-              Собрать маршрут
+            <Link to={`/trip?city=${city.id}`} className={styles.primary}>
+              Спланировать поездку
               <Icon name="arrow-right" size={18} />
-            </a>
+            </Link>
             <button
               type="button"
               className={styles.fav}

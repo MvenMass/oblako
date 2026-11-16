@@ -39,6 +39,27 @@ export interface Expense {
   day: number;
 }
 
+/** План поездки из мастера «Моя поездка» */
+export interface TripPlan {
+  id: string;
+  cityId: string;
+  /** Дата вылета, ISO */
+  dateFrom: string;
+  nights: number;
+  people: number;
+  /** План бюджета на всю компанию, ₽ */
+  budget: number;
+  outId: string | null;
+  backId: string | null;
+  hotelId: string | null;
+  transferId: string | null;
+  /** Чек-лист «перед вылетом» */
+  checklist: Record<string, boolean>;
+  /** Сохранена ли поездка (до этого — черновик мастера) */
+  saved: boolean;
+  createdAt: string;
+}
+
 export interface Pass {
   id: string;
   cityId: string;
@@ -65,6 +86,8 @@ export interface UserData {
   route: { cityId: string; days: RouteDay[] } | null;
   /** cityId → id мест, добавленных из галереи «В маршрут» */
   routeAdded: Record<string, string[]>;
+  /** Поездки из мастера; активная показывается в шапке и профиле */
+  plans: { list: TripPlan[]; activeId: string | null };
   /** Бюджет одной поездки: план в ₽ и траты */
   budget: { cityId: string; plan: number; expenses: Expense[] } | null;
   packing: { cityId: string; packed: Record<string, boolean> } | null;

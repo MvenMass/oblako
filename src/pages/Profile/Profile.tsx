@@ -1,10 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Globe } from '@/components/globe/Globe';
 import { Achievements } from '@/components/profile/Achievements';
+import { NextTrip } from '@/components/profile/NextTrip';
+import { TripsList } from '@/components/profile/TripsList';
 import { Passport, type StampEntry } from '@/components/profile/Passport';
 import { ProfileHeader } from '@/components/profile/ProfileHeader';
 import { Aurora } from '@/components/ui/Aurora';
-import { getCities } from '@/lib/cities';
+import { getCities, getCity } from '@/lib/cities';
+import { addDays, daysUntil } from '@/lib/trip';
 import { achievementsOf, countriesOf, kmInSky, levelOf, stampCities } from '@/lib/profile';
 import { usePageTitle } from '@/lib/usePageTitle';
 import { useUserStore } from '@/store/user';
@@ -27,6 +30,13 @@ export default function Profile() {
   const passes = useUserStore((s) => s.booking.passes);
   const trips = useUserStore((s) => s.journal.trips);
   const unlock = useUserStore((s) => s.unlockAchievement);
+  const plans = useUserStore((s) => s.plans);
+  const [now] = useState(() => Date.now());
+  // Ближайшая — активная сохранённая, если она ещё не закончилась
+  const next = plans.list.find(
+    (p) => p.id === plans.activeId && p.saved && daysUntil(addDays(p.dateFrom, p.nights), now) >= 0,
+  );
+  const nextCity = next && getCity(next.cityId);
 
   const state = { stamps, passes, trips };
   const level = levelOf(state);
@@ -63,6 +73,8 @@ export default function Profile() {
           toNext={level.toNext}
           stamps={stamps.length}
         />
+        {next && nextCity && <NextTrip plan={next} city={nextCity} now={now} />}
+        <TripsList plans={plans.list} now={now} />
         <Passport stamps={entries} name={name} countries={countries} />
 
         <div className={styles.world}>

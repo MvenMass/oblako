@@ -110,8 +110,8 @@ export function StepResult({ top, pick, answers, onPick, onEdit, onRestart }: St
           Открыть маршрут
           <Icon name="arrow-right" size={18} />
         </button>
-        <Link to={`/booking?city=${city.id}`} className={styles.secondary}>
-          Билеты
+        <Link to={`/trip?city=${city.id}`} className={styles.secondary}>
+          Билеты и&nbsp;отель
         </Link>
         <Link to={`/packing?city=${city.id}`} className={styles.secondary}>
           Сборы

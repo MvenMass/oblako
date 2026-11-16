@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import type { Expense, Pass, QuizAnswers, RouteDay, Trip, UserData } from '@/types/user';
+import type { Expense, Pass, QuizAnswers, RouteDay, Trip, TripPlan, UserData } from '@/types/user';
 import { initialUserData, migrateUserData, STORE_KEY, STORE_VERSION } from './initial';
 
 interface UserActions {
@@ -13,6 +13,11 @@ interface UserActions {
   toggleRoutePlace: (cityId: string, placeId: string) => void;
   /** Новый бюджет поездки (смена города, «Заполнить примером», «Очистить») */
   setBudget: (cityId: string, plan: number, expenses: Expense[]) => void;
+  /** Создать или обновить план поездки и сделать его активным */
+  upsertPlan: (plan: TripPlan) => void;
+  removePlan: (id: string) => void;
+  setActivePlan: (id: string | null) => void;
+  toggleCheck: (planId: string, itemId: string) => void;
   addExpense: (expense: Expense) => void;
   removeExpense: (id: string) => void;
   setPacked: (cityId: string, itemId: string, packed: boolean) => void;
@@ -65,6 +70,37 @@ export const useUserStore = create<UserStore>()(
         }),
 
       setBudget: (cityId, plan, expenses) => set({ budget: { cityId, plan, expenses } }),
+
+      upsertPlan: (plan) =>
+        set((s) => {
+          const exists = s.plans.list.some((p) => p.id === plan.id);
+          const list = exists
+            ? s.plans.list.map((p) => (p.id === plan.id ? plan : p))
+            : [...s.plans.list, plan];
+          return { plans: { list, activeId: plan.id } };
+        }),
+
+      removePlan: (id) =>
+        set((s) => ({
+          plans: {
+            list: s.plans.list.filter((p) => p.id !== id),
+            activeId: s.plans.activeId === id ? null : s.plans.activeId,
+          },
+        })),
+
+      setActivePlan: (id) => set((s) => ({ plans: { ...s.plans, activeId: id } })),
+
+      toggleCheck: (planId, itemId) =>
+        set((s) => ({
+          plans: {
+            ...s.plans,
+            list: s.plans.list.map((p) =>
+              p.id === planId
+                ? { ...p, checklist: { ...p.checklist, [itemId]: !p.checklist[itemId] } }
+                : p,
+            ),
+          },
+        })),
 
       addExpense: (expense) =>
         set((s) =>

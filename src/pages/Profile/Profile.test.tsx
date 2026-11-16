@@ -78,3 +78,49 @@ describe('Profile', () => {
     expect(within(gourmet).getByText('Закрыто')).toBeInTheDocument();
   });
 });
+
+describe('Profile trips', () => {
+  const plan = (id: string, dateFrom: string, saved = true) => ({
+    id,
+    cityId: 'istanbul',
+    dateFrom,
+    nights: 4,
+    people: 2,
+    budget: 150000,
+    outId: 'out-am',
+    backId: 'back-pm',
+    hotelId: 'mid',
+    transferId: 'taxi',
+    checklist: {},
+    saved,
+    createdAt: '2026-01-01',
+  });
+
+  beforeEach(() => {
+    vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new TypeError('offline')));
+  });
+  afterEach(() => vi.unstubAllGlobals());
+
+  it('shows the next trip with a countdown and country facts', () => {
+    const inTen = new Date(Date.now() + 10 * 86400000).toISOString().slice(0, 10);
+    useUserStore.getState().upsertPlan(plan('p1', inTen));
+    renderProfile();
+    expect(screen.getByText('Ближайшая поездка')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Что нужно знать: Турция/ })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Маршрут' })).toHaveAttribute(
+      'href',
+      '/route?city=istanbul',
+    );
+  });
+
+  it('moves a past trip into the journal', () => {
+    useUserStore.getState().upsertPlan(plan('p0', '2025-05-01'));
+    renderProfile();
+    fireEvent.click(screen.getByRole('button', { name: /^В\sдневник$/ }));
+    expect(useUserStore.getState().journal.trips[0]).toMatchObject({
+      cityId: 'istanbul',
+      date: '2025-05-01',
+    });
+    expect(screen.queryByRole('button', { name: /^В\sдневник$/ })).toBeNull();
+  });
+});

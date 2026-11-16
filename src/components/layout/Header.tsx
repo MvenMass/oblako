@@ -5,6 +5,7 @@ import { Icon } from '@/components/ui/Icon';
 import { Logo } from '@/components/ui/Logo';
 import { MAIN_NAV } from '@/app/routes';
 import { MobileMenu } from './MobileMenu';
+import { TripChip } from './TripChip';
 import styles from './Header.module.css';
 
 interface HeaderProps {
@@ -35,14 +36,17 @@ export function Header({ dark = false }: HeaderProps) {
           ))}
         </nav>
 
-        <Button
-          to="/profile"
-          variant={dark ? 'glass' : 'dark'}
-          size="sm"
-          className={styles.profile}
-        >
-          Профиль
-        </Button>
+        <div className={styles.end}>
+          <TripChip dark={dark} />
+          <Button
+            to="/profile"
+            variant={dark ? 'glass' : 'dark'}
+            size="sm"
+            className={styles.profile}
+          >
+            Профиль
+          </Button>
+        </div>
 
         <button
           ref={burgerRef}

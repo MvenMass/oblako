@@ -23,6 +23,12 @@ export const STROKE_ICONS = {
       <rect x="7" y="14" width="10" height="7" />
     </>
   ),
+  calendar: (
+    <>
+      <rect x="3" y="5" width="18" height="16" rx="3" />
+      <path d="M3 10h18M8 3v4M16 3v4" />
+    </>
+  ),
   pen: <path d="M4 20h4L19 9l-4-4L4 16zM13 7l4 4" />,
   send: <path d="M4 12l16-8-6 16-3-7z" />,
   home: <path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z" />,

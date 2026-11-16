@@ -1,0 +1,148 @@
+.page {
+  position: relative;
+  overflow: hidden;
+}
+
+.content {
+  position: relative;
+  display: grid;
+  grid-gap: 24px;
+  gap: 24px;
+  padding-top: 48px;
+  padding-bottom: 96px;
+}
+
+.head {
+  display: grid;
+  grid-gap: 10px;
+  gap: 10px;
+}
+
+.eyebrow {
+  color: var(--sky-ink);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+}
+
+.h1 {
+  font-size: var(--fs-h1);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: var(--ls-tight);
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-gap: 8px;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.steps button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 52px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--glass-bg);
+  color: var(--muted);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.steps button:disabled {
+  cursor: default;
+}
+
+.steps button span {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  margin-right: 10px;
+  border-radius: 8px;
+  background: var(--sky-light);
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.steps button[data-done] {
+  background: var(--glass-bg-strong);
+  color: var(--ink);
+}
+
+.steps button[data-done] span {
+  background: var(--sky-deep);
+  color: var(--white);
+}
+
+.steps button[aria-current='step'] {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.steps button[aria-current='step'] span {
+  background: var(--pink);
+  color: var(--white);
+}
+
+.stage {
+  padding: 28px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-panel);
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+}
+
+.stage:focus {
+  outline: none;
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav > * + * {
+  margin-left: 10px;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .stage {
+    background: var(--glass-bg-solid);
+  }
+}
+
+@media (max-width: 1023px) {
+  .steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 639px) {
+  .content {
+    padding-top: 28px;
+  }
+
+  .steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stage {
+    padding: 18px;
+  }
+}

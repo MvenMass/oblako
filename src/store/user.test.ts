@@ -10,7 +10,7 @@ describe('user store', () => {
   it('persists state to localStorage under oblako:v1', () => {
     useUserStore.getState().toggleFavorite('tbilisi');
     const saved = JSON.parse(localStorage.getItem(STORE_KEY)!);
-    expect(saved.version).toBe(2);
+    expect(saved.version).toBe(3);
     expect(saved.state.favorites).toEqual(['tbilisi']);
   });
 
@@ -90,6 +90,14 @@ describe('migrateUserData', () => {
     expect(useUserStore.getState().budget?.expenses).toEqual([e]);
     removeExpense('e1');
     expect(useUserStore.getState().budget?.expenses).toEqual([]);
+  });
+
+  it('migrates v2 → v3: adds an empty trip list', () => {
+    const v2 = { ...initialUserData(), favorites: ['sochi'] } as Record<string, unknown>;
+    delete v2.plans;
+    const data = migrateUserData(v2, 2);
+    expect(data.favorites).toEqual(['sochi']);
+    expect(data.plans).toEqual({ list: [], activeId: null });
   });
 
   it('returns defaults for garbage', () => {

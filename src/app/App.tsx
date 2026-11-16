@@ -14,6 +14,7 @@ const Packing = lazy(() => import('@/pages/Packing/Packing'));
 const Journal = lazy(() => import('@/pages/Journal/Journal'));
 const Profile = lazy(() => import('@/pages/Profile/Profile'));
 const About = lazy(() => import('@/pages/About/About'));
+const Trip = lazy(() => import('@/pages/Trip/Trip'));
 const NotFound = lazy(() => import('@/pages/NotFound/NotFound'));
 
 // Стиль-гайд доступен только в режиме разработки и не попадает в продакшен-сборку
@@ -35,6 +36,7 @@ export function AppRoutes() {
         <Route path="journal" element={<Journal />} />
         <Route path="profile" element={<Profile />} />
         <Route path="about" element={<About />} />
+        <Route path="trip" element={<Trip />} />
         {Kit && <Route path="kit" element={<Kit />} />}
         <Route path="*" element={<NotFound />} />
       </Route>

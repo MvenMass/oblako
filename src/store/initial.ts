@@ -1,7 +1,7 @@
 import type { UserData } from '@/types/user';
 
 export const STORE_KEY = 'oblako:v1';
-export const STORE_VERSION = 2;
+export const STORE_VERSION = 3;
 
 export function initialUserData(): UserData {
   return {
@@ -10,6 +10,7 @@ export function initialUserData(): UserData {
     route: null,
     routeAdded: {},
     budget: null,
+    plans: { list: [], activeId: null },
     packing: null,
     booking: { seat: null, shade: false, passes: [] },
     journal: { trips: [] },
@@ -27,6 +28,7 @@ function isObject(v: unknown): v is Record<string, unknown> {
  * Миграция сохранённого состояния: недостающие разделы и поля берутся из initialUserData.
  * Версия 0 — ранний формат без profile/ui и с favorites как объектом { id: true }.
  * Версия 1 — без бюджета: траты начинаются с пустого плана.
+ * Версия 2 — без поездок: список планов пустой.
  */
 export function migrateUserData(persisted: unknown, version: number): UserData {
   const base = initialUserData();
@@ -40,6 +42,7 @@ export function migrateUserData(persisted: unknown, version: number): UserData {
   }
 
   if (version < 2) data.budget = null;
+  if (version < 3) data.plans = { list: [], activeId: null };
 
   const out = { ...base } as Record<string, unknown>;
   for (const key of Object.keys(base) as (keyof UserData)[]) {
