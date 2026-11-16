@@ -17,7 +17,7 @@ function renderRoute(url = '/route') {
 const stopNames = () =>
   within(screen.getByRole('list', { name: 'Точки дня' }))
     .getAllByRole('listitem')
-    .map((li) => li.querySelector('[class*="name"]')?.textContent);
+    .map((li) => li.querySelector('[class*="name"]')?.firstChild?.textContent);
 
 const savedStops = () => useUserStore.getState().route?.days[0].stops.map((s) => s.placeId);
 
@@ -86,5 +86,28 @@ describe('Route', () => {
     const stats = screen.getByText('Точек').closest('dl')!;
     expect(within(stats).getByText(String(savedStops()!.length))).toBeInTheDocument();
     expect(within(stats).getByText(/км$/)).toBeInTheDocument();
+  });
+});
+
+describe('Route place card', () => {
+  it('opens a place, moves it to another day and closes with Escape', () => {
+    renderRoute('/route?city=tbilisi');
+    const first = useUserStore.getState().route!.days[0].stops[0].placeId;
+    const name = getCity('tbilisi')!.places.find((p) => p.id === first)!.name;
+    fireEvent.click(screen.getByRole('button', { name: `${name}: подробнее о месте` }));
+    expect(screen.getByRole('heading', { level: 2, name })).toHaveFocus();
+    fireEvent.change(screen.getByLabelText('Перенести в'), { target: { value: '1' } });
+    const days = useUserStore.getState().route!.days;
+    expect(days[0].stops.map((s) => s.placeId)).not.toContain(first);
+    expect(days[1].stops.map((s) => s.placeId)).toContain(first);
+    expect(screen.queryByRole('heading', { level: 2, name })).toBeNull();
+  });
+
+  it('opens a place from the map pin', () => {
+    renderRoute('/route?city=tbilisi');
+    fireEvent.click(screen.getAllByRole('button', { name: /^1\. .*: подробнее$/ })[0]);
+    expect(screen.getByRole('button', { name: 'Закрыть карточку места' })).toBeInTheDocument();
+    fireEvent.keyDown(document, { key: 'Escape' });
+    expect(screen.queryByRole('button', { name: 'Закрыть карточку места' })).toBeNull();
   });
 });

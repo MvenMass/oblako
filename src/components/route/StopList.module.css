@@ -66,6 +66,17 @@
 .name {
   font-size: 15px;
   font-weight: 700;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  text-align: left;
+  text-decoration: underline;
+  text-decoration-color: var(--seat-border);
+  text-underline-offset: 3px;
+  cursor: pointer;
 }
 
 .time {

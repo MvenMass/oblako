@@ -7,6 +7,7 @@ import { useUserStore } from '@/store/user';
 import type { City } from '@/types/city';
 import type { RouteDay, Stop } from '@/types/user';
 import { DayDial } from './DayDial';
+import { PlaceCard } from './PlaceCard';
 import { StopList } from './StopList';
 import { TiltMap } from './TiltMap';
 import styles from './RoutePlanner.module.css';
@@ -16,15 +17,40 @@ export function RoutePlanner({ city, days }: { city: City; days: RouteDay[] }) {
   const setRoute = useUserStore((s) => s.setRoute);
   const [active, setActive] = useState(0);
   const [sheetOpen, setSheetOpen] = useState(true);
+  const [openId, setOpenId] = useState<string | null>(null);
   const dayIndex = Math.min(active, days.length - 1);
   const day = days[dayIndex];
   const items = schedule(city, day);
   const totals = dayTotals(items);
+  const stats: [string, string][] = [
+    ['Точек', String(totals.count)],
+    ['Пешком', `${totals.km.toFixed(1).replace('.', ',')} км`],
+    ['В пути', `${totals.walk} мин`],
+    ['Успеете до заката', !items.length ? '—' : totals.end <= SUNSET ? 'да' : 'нет'],
+  ];
 
   const save = (next: RouteDay[]) => setRoute(city.id, next);
   const setStops = (stops: Stop[]) => save(days.map((d, i) => (i === dayIndex ? { stops } : d)));
   const inDay = new Set(day.stops.map((s) => s.placeId));
   const suggestions = city.places.filter((p) => !inDay.has(p.id));
+  const openPlace = openId && inDay.has(openId) ? city.places.find((p) => p.id === openId) : null;
+
+  // Перенос точки в другой день: убираем из текущего, добавляем в конец выбранного
+  const moveTo = (placeId: string, to: number) => {
+    if (to === dayIndex) return;
+    const stop = day.stops.find((s) => s.placeId === placeId);
+    if (!stop) return;
+    save(
+      days.map((d, i) =>
+        i === dayIndex
+          ? { stops: d.stops.filter((s) => s.placeId !== placeId) }
+          : i === to
+            ? { stops: [...d.stops.filter((s) => s.placeId !== placeId), stop] }
+            : d,
+      ),
+    );
+    setOpenId(null);
+  };
 
   const onTabKey = (e: KeyboardEvent<HTMLButtonElement>) => {
     const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
@@ -94,7 +120,7 @@ export function RoutePlanner({ city, days }: { city: City; days: RouteDay[] }) {
               Тяните точку за&nbsp;ручку или&nbsp;используйте Alt и&nbsp;стрелки
             </p>
             {items.length ? (
-              <StopList items={items} onChange={setStops} />
+              <StopList items={items} onChange={setStops} onOpen={setOpenId} />
             ) : (
               <p className={styles.empty}>В&nbsp;этом дне пока нет точек&nbsp;— добавьте ниже.</p>
             )}
@@ -133,7 +159,22 @@ export function RoutePlanner({ city, days }: { city: City; days: RouteDay[] }) {
       </div>
 
       <div className={styles.main}>
+        {openPlace && (
+          <PlaceCard
+            city={city}
+            place={openPlace}
+            day={dayIndex}
+            days={days.length}
+            onMove={(to) => moveTo(openPlace.id, to)}
+            onRemove={() => {
+              setStops(day.stops.filter((s) => s.placeId !== openPlace.id));
+              setOpenId(null);
+            }}
+            onClose={() => setOpenId(null)}
+          />
+        )}
         <TiltMap
+          onOpen={setOpenId}
           items={items}
           area={city.places.map((p) => p.map)}
           label={`Наклонная карта: день ${dayIndex + 1}, ${items.map((x) => x.place.name).join(' → ') || 'точек нет'}`}
@@ -141,22 +182,12 @@ export function RoutePlanner({ city, days }: { city: City; days: RouteDay[] }) {
         <div className={styles.bottom}>
           <DayDial items={items} utc={city.utc} />
           <dl className={styles.stats}>
-            <div>
-              <dt>Точек</dt>
-              <dd>{totals.count}</dd>
-            </div>
-            <div>
-              <dt>Пешком</dt>
-              <dd>{totals.km.toFixed(1).replace('.', ',')}&nbsp;км</dd>
-            </div>
-            <div>
-              <dt>В&nbsp;пути</dt>
-              <dd>{totals.walk}&nbsp;мин</dd>
-            </div>
-            <div>
-              <dt>Успеете до&nbsp;заката</dt>
-              <dd>{!items.length ? '—' : totals.end <= SUNSET ? 'да' : 'нет'}</dd>
-            </div>
+            {stats.map(([k, v]) => (
+              <div key={k}>
+                <dt>{k}</dt>
+                <dd>{v}</dd>
+              </div>
+            ))}
           </dl>
         </div>
       </div>

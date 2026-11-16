@@ -13,13 +13,15 @@ gsap.registerPlugin(Draggable, Flip);
 interface StopListProps {
   items: ScheduledStop[];
   onChange: (stops: Stop[]) => void;
+  /** Открыть карточку места */
+  onOpen: (placeId: string) => void;
 }
 
 const hours = (min: number) =>
   min >= 60 ? `${+(min / 60).toFixed(1)} ч`.replace('.', ',') : `${min} мин`;
 
 /** Точки дня: перетаскивание за ручку (Draggable + Flip), Alt+↑/↓ с клавиатуры, удаление */
-export function StopList({ items, onChange }: StopListProps) {
+export function StopList({ items, onChange, onOpen }: StopListProps) {
   const reduced = useReducedMotion();
   const list = useRef<HTMLOListElement>(null);
   const flip = useRef<Flip.FlipState | null>(null);
@@ -102,7 +104,10 @@ export function StopList({ items, onChange }: StopListProps) {
               {i + 1}
             </span>
             <span className={styles.text}>
-              <span className={styles.name}>{x.place.name}</span>
+              <button type="button" className={styles.name} onClick={() => onOpen(x.stop.placeId)}>
+                {x.place.name}
+                <span className="visually-hidden">: подробнее о месте</span>
+              </button>
               <span className={styles.time}>
                 {formatTime(x.arrive)}–{formatTime(x.leave)} · {hours(x.stop.minutes)}
               </span>

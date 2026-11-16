@@ -1,0 +1,27 @@
+.print {
+  display: none;
+}
+
+@media print {
+  .print {
+    display: block;
+    color: var(--ink);
+    font-size: 12pt;
+    line-height: 1.45;
+  }
+
+  .print h2 {
+    margin-bottom: 12pt;
+    font-size: 18pt;
+  }
+
+  .print h3 {
+    margin: 14pt 0 6pt;
+    font-size: 14pt;
+  }
+
+  .print li {
+    margin-bottom: 8pt;
+    break-inside: avoid;
+  }
+}

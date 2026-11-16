@@ -53,6 +53,7 @@ function smooth(points: { x: number; y: number }[]): string {
 
 /** Наклонная 3D-карта дня: кварталы, река, линия маршрута и вертикальные метки */
 export function TiltMap({
+  onOpen,
   items,
   area,
   label,
@@ -60,6 +61,7 @@ export function TiltMap({
   items: ScheduledStop[];
   area: Pt[];
   label: string;
+  onOpen: (placeId: string) => void;
 }) {
   const reduced = useReducedMotion();
   const pos = fitter(area);
@@ -102,15 +104,17 @@ export function TiltMap({
             ))}
           </svg>
           {points.map((p, i) => (
-            <span
+            <button
               key={items[i].stop.placeId}
-              aria-hidden="true"
+              type="button"
               className={styles.pin}
               style={{ left: p.x, top: p.y } as CSSProperties}
+              aria-label={`${i + 1}. ${items[i].place.name}: подробнее`}
+              onClick={() => onOpen(items[i].stop.placeId)}
             >
               <span className={styles.head}>{i + 1}</span>
               <span className={styles.stem} />
-            </span>
+            </button>
           ))}
         </div>
       </div>

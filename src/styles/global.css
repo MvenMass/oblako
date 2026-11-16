@@ -124,3 +124,18 @@ html.lenis body {
 .lenis.lenis-stopped {
   overflow: hidden;
 }
+
+/* Печать: только содержимое страницы, без шапки, подвала, нижнего меню и интерактива */
+@media print {
+  body {
+    background: var(--white);
+  }
+
+  header,
+  footer,
+  nav,
+  .no-print,
+  [data-print='hide'] {
+    display: none !important;
+  }
+}

@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { RouteGuide } from '@/components/route/RouteGuide';
 import { RoutePlanner } from '@/components/route/RoutePlanner';
+import { RoutePrint } from '@/components/route/RoutePrint';
 import { Aurora } from '@/components/ui/Aurora';
 import { Button } from '@/components/ui/Button';
 import { SectionHead } from '@/components/ui/SectionHead';
@@ -90,7 +92,11 @@ export default function Route() {
             </Button>
           }
         />
-        <RoutePlanner city={city} days={days} />
+        <RouteGuide cityId={city.id} />
+        <div data-print="hide">
+          <RoutePlanner city={city} days={days} />
+        </div>
+        <RoutePrint city={city} days={days} />
       </section>
     </div>
   );

@@ -17,6 +17,12 @@ export const STROKE_ICONS = {
   check: <path d="M5 12.5l4.5 4.5L19 7.5" />,
   plus: <path d="M12 5v14M5 12h14" />,
   heart: <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" />,
+  print: (
+    <>
+      <path d="M7 9V3h10v6M7 17H4v-7h16v7h-3" />
+      <rect x="7" y="14" width="10" height="7" />
+    </>
+  ),
   pen: <path d="M4 20h4L19 9l-4-4L4 16zM13 7l4 4" />,
   send: <path d="M4 12l16-8-6 16-3-7z" />,
   home: <path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z" />,
