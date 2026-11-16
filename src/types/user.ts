@@ -90,7 +90,14 @@ export interface UserData {
   plans: { list: TripPlan[]; activeId: string | null };
   /** Бюджет одной поездки: план в ₽ и траты */
   budget: { cityId: string; plan: number; expenses: Expense[] } | null;
-  packing: { cityId: string; packed: Record<string, boolean> } | null;
+  packing: {
+    cityId: string;
+    packed: Record<string, boolean>;
+    /** Свои вещи с весом */
+    custom?: { id: string; name: string; kg: number }[];
+    /** Лимит багажа по тарифу, кг */
+    limit?: number;
+  } | null;
   booking: { seat: string | null; shade: boolean; passes: Pass[] };
   journal: { trips: Trip[] };
   passport: { stamps: string[]; achievements: string[] };

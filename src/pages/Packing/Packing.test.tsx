@@ -12,7 +12,7 @@ const renderPacking = (url = '/packing?city=istanbul') =>
     </MemoryRouter>,
   );
 
-const item = (name: RegExp) => screen.getByRole('button', { name });
+const check = (name: RegExp) => screen.getByRole('checkbox', { name });
 const packed = () => useUserStore.getState().packing?.packed ?? {};
 
 beforeEach(() => {
@@ -23,52 +23,76 @@ beforeEach(() => {
 afterEach(() => vi.unstubAllGlobals());
 
 describe('Packing', () => {
-  it('packs an item and takes it back out', () => {
+  it('ticks an item in the list and it lands in the suitcase', () => {
     renderPacking();
-    const passport = item(/^Паспорт: на полу/);
-    expect(passport).toHaveAttribute('aria-pressed', 'false');
-    fireEvent.click(passport);
-    expect(item(/^Паспорт: в чемодане/)).toHaveAttribute('aria-pressed', 'true');
+    fireEvent.click(check(/^Паспорт/));
+    expect(check(/^Паспорт/)).toHaveAttribute('aria-checked', 'true');
     expect(packed()).toEqual({ passport: true });
+    // Вещь на сцене тоже «в чемодане»
+    expect(screen.getByRole('button', { name: /^Паспорт: в чемодане/ })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    );
     expect(screen.getByText(/Уложено 1 из/)).toBeInTheDocument();
-    fireEvent.click(item(/^Паспорт: в чемодане/));
-    expect(packed()).toEqual({ passport: false });
   });
 
-  it('shows culture tips for Istanbul', () => {
+  it('groups weather and culture tips separately', () => {
     renderPacking();
-    expect(item(/^Платок для храмов — совет:/)).toBeInTheDocument();
-    expect(item(/^Одежда, закрывающая колени — совет:/)).toBeInTheDocument();
-    expect(screen.getByText('нет прогноза — по климату месяца')).toBeInTheDocument();
+    const tips = screen.getByRole('region', { name: /По погоде и\sобычаям/ });
+    expect(within(tips).getByRole('checkbox', { name: /^Платок для храмов/ })).toBeInTheDocument();
+    expect(screen.getByText(/по климату месяца/)).toBeInTheDocument();
   });
 
-  it('syncs the accessible checklist', () => {
+  it('adds own items with weight and removes them', () => {
     renderPacking();
-    fireEvent.click(screen.getByText('Списком'));
-    const check = screen.getByRole('checkbox', { name: 'Зарядка' });
-    fireEvent.click(check);
-    expect(check).toHaveAttribute('aria-checked', 'true');
-    expect(item(/^Зарядка: в чемодане/)).toBeInTheDocument();
+    fireEvent.change(screen.getByLabelText('Название вещи'), { target: { value: 'Фотоаппарат' } });
+    fireEvent.change(screen.getByLabelText('Вес, кг'), { target: { value: '1,2' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Добавить' }));
+    const own = useUserStore.getState().packing!.custom!;
+    expect(own).toMatchObject([{ name: 'Фотоаппарат', kg: 1.2 }]);
+    expect(packed()[own[0].id]).toBe(true);
+    expect(screen.getByText(/^4,4\s*кг$/)).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'Удалить: Фотоаппарат' }));
+    expect(useUserStore.getState().packing!.custom).toEqual([]);
   });
 
-  it('packs everything, updates the luggage tag and celebrates; then unpacks', () => {
+  it('switches the luggage limit and warns about overweight', () => {
     renderPacking();
+    fireEvent.click(screen.getByRole('button', { name: /Ручная кладь/ }));
     fireEvent.click(screen.getByRole('button', { name: 'Собрать всё' }));
-    expect(screen.getByText(/Уложено 15 из/)).toBeInTheDocument();
+    expect(useUserStore.getState().packing?.limit).toBe(10);
+    expect(screen.getByText(/Багаж · лимит 10/)).toBeInTheDocument();
     expect(screen.getByRole('status')).toHaveTextContent('Чемодан собран');
-    // 3,2 кг база + 5,15 кг вещей
-    expect(screen.getByText(/^8,\d\s*кг$/)).toBeInTheDocument();
-    expect(screen.getByText(/запас 14,\d/)).toBeInTheDocument();
     fireEvent.click(screen.getByRole('button', { name: 'Вытряхнуть' }));
     expect(packed()).toEqual({});
-    expect(screen.queryByRole('status')).toBeNull();
+  });
+
+  it('counts T-shirts by trip days', () => {
+    const d = new Date(Date.now() + 20 * 86400000).toISOString().slice(0, 10);
+    useUserStore.getState().upsertPlan({
+      id: 'p1',
+      cityId: 'istanbul',
+      dateFrom: d,
+      nights: 3,
+      people: 1,
+      budget: 0,
+      outId: null,
+      backId: null,
+      hotelId: null,
+      transferId: null,
+      checklist: {},
+      saved: true,
+      createdAt: d,
+    });
+    renderPacking('/packing');
+    expect(check(/^Футболки ×4/)).toBeInTheDocument();
+    expect(screen.getByText(/по вашей поездке/)).toBeInTheDocument();
   });
 
   it('keeps packing per city', () => {
     useUserStore.getState().setPacked('tbilisi', 'passport', true);
     renderPacking();
-    const list = screen.getByText('Списком').closest('details')!;
-    expect(within(list).getByText('0/15')).toBeInTheDocument();
+    expect(screen.getByText(/Уложено 0 из/)).toBeInTheDocument();
   });
 });
 
@@ -78,9 +102,9 @@ describe('Packing without a trip', () => {
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
       'Сначала выберите направление',
     );
-    expect(screen.getByRole('link', { name: 'Выбрать направление' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'Спланировать поездку' })).toHaveAttribute(
       'href',
-      '/destinations',
+      '/trip',
     );
   });
 });

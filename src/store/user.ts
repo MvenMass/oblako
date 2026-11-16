@@ -23,6 +23,10 @@ interface UserActions {
   setPacked: (cityId: string, itemId: string, packed: boolean) => void;
   /** «Собрать всё» / «Вытряхнуть»: весь набор сразу */
   setPacking: (cityId: string, packed: Record<string, boolean>) => void;
+  /** Своя вещь: сразу отмечается уложенной */
+  addCustomItem: (cityId: string, item: { id: string; name: string; kg: number }) => void;
+  removeCustomItem: (cityId: string, id: string) => void;
+  setLuggageLimit: (cityId: string, kg: number) => void;
   setSeat: (seat: string | null) => void;
   setShade: (shade: boolean) => void;
   /** Оформленная бронь: талон в кошелёк и штамп страны в паспорт */
@@ -116,11 +120,52 @@ export const useUserStore = create<UserStore>()(
 
       setPacked: (cityId, itemId, packed) =>
         set((s) => {
-          const prev = s.packing?.cityId === cityId ? s.packing.packed : {};
-          return { packing: { cityId, packed: { ...prev, [itemId]: packed } } };
+          const same = s.packing?.cityId === cityId ? s.packing : null;
+          return {
+            packing: { ...same, cityId, packed: { ...same?.packed, [itemId]: packed } },
+          };
         }),
 
-      setPacking: (cityId, packed) => set({ packing: { cityId, packed } }),
+      setPacking: (cityId, packed) =>
+        set((s) => ({
+          packing: { ...(s.packing?.cityId === cityId ? s.packing : null), cityId, packed },
+        })),
+
+      addCustomItem: (cityId, item) =>
+        set((s) => {
+          const same = s.packing?.cityId === cityId ? s.packing : null;
+          return {
+            packing: {
+              ...same,
+              cityId,
+              packed: { ...same?.packed, [item.id]: true },
+              custom: [...(same?.custom ?? []), item],
+            },
+          };
+        }),
+
+      removeCustomItem: (cityId, id) =>
+        set((s) => {
+          if (s.packing?.cityId !== cityId) return {};
+          const packed = { ...s.packing.packed };
+          delete packed[id];
+          return {
+            packing: {
+              ...s.packing,
+              packed,
+              custom: (s.packing.custom ?? []).filter((c) => c.id !== id),
+            },
+          };
+        }),
+
+      setLuggageLimit: (cityId, kg) =>
+        set((s) => ({
+          packing: {
+            ...(s.packing?.cityId === cityId ? s.packing : { packed: {} }),
+            cityId,
+            limit: kg,
+          },
+        })),
 
       setSeat: (seat) => set((s) => ({ booking: { ...s.booking, seat } })),
 

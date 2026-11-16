@@ -135,8 +135,66 @@ export const LIMIT_KG = 23;
 /** Ремни застёгиваются, когда уложено больше этого числа вещей */
 export const STRAP_AFTER = 6;
 
-export function weight(packed: Record<string, boolean>): number {
-  return ITEMS.reduce((s, it) => s + (packed[it.id] ? it.kg : 0), BASE_KG);
+/** Группы списка: что точно нужно, одежда, техника; советы погоды и обычаев — отдельно */
+export type PackGroup = 'must' | 'clothes' | 'tech';
+
+export const GROUP_OF: Record<string, PackGroup> = {
+  passport: 'must',
+  insurance: 'must',
+  card: 'must',
+  aid: 'must',
+  toothbrush: 'must',
+  cream: 'must',
+  charger: 'tech',
+  powerbank: 'tech',
+  headphones: 'tech',
+  tees: 'clothes',
+  jacket: 'clothes',
+  trousers: 'clothes',
+  scarf: 'clothes',
+  shoes: 'clothes',
+  umbrella: 'clothes',
+};
+
+export const GROUP_LABEL: Record<PackGroup, string> = {
+  must: 'Обязательно',
+  clothes: 'Одежда и обувь',
+  tech: 'Техника',
+};
+
+/** Своя вещь из формы: название и вес */
+export interface CustomItem {
+  id: string;
+  name: string;
+  kg: number;
+}
+
+/** Лимит багажа по тарифу */
+export const LIMITS = [
+  { kg: 10, label: 'Ручная кладь, 10 кг' },
+  { kg: 23, label: 'Багаж, 23 кг' },
+];
+
+/** Футболок — по числу дней, но не больше недели: дальше стирка */
+export const teesCount = (days: number) => Math.min(7, Math.max(2, days));
+
+export const itemName = (it: PackItem, days: number) =>
+  it.id === 'tees' ? `Футболки ×${teesCount(days)}` : it.name;
+
+export const itemKg = (it: PackItem, days: number) =>
+  it.id === 'tees' ? +(0.2 * teesCount(days)).toFixed(2) : it.kg;
+
+export function weight(
+  packed: Record<string, boolean>,
+  days = 5,
+  custom: CustomItem[] = [],
+): number {
+  const base = ITEMS.reduce((s, it) => s + (packed[it.id] ? itemKg(it, days) : 0), BASE_KG);
+  return custom.reduce((s, c) => s + (packed[c.id] ? c.kg : 0), base);
+}
+
+export function newItemId(): string {
+  return `own-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 5)}`;
 }
 
 // Храмы и мечети, куда нужны закрытые колени / платок
@@ -144,9 +202,9 @@ const COVER_KNEES = ['istanbul', 'zanzibar', 'tbilisi', 'yerevan', 'kazan'];
 const SCARF = ['istanbul', 'zanzibar', 'tbilisi', 'kazan'];
 
 /** Без сети — неделя по среднему климату месяца */
-export function climateWeek(city: City, month: number): DayForecast[] {
+export function climateWeek(city: City, month: number, from?: string): DayForecast[] {
   const max = city.climate.avgHighC[month];
-  const start = new Date();
+  const start = from ? new Date(`${from}T12:00:00Z`) : new Date();
   return Array.from({ length: 7 }, (_, i) => {
     const d = new Date(start.getTime() + i * 86400000);
     return {
