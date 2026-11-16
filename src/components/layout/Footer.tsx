@@ -32,6 +32,7 @@ const COLUMNS = [
       { to: '/#faq', label: 'Вопросы' },
       { to: '/journal', label: 'Дневник' },
       { to: '/profile', label: 'Профиль' },
+      { to: '/about', label: 'О проекте и фото' },
     ],
   },
 ];
