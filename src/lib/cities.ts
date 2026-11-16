@@ -48,3 +48,6 @@ export function formatRub(value: number): string {
   const digits = String(Math.round(value)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
   return `${digits} ₽`;
 }
+
+/** Неделя на одного: перелёт + 7 дней в городе (демо) */
+export const weekCost = (c: City) => c.quiz.flightRub + c.quiz.dailyRub * 7;

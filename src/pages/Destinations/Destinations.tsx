@@ -1,5 +1,8 @@
 import { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { DestBackdrop } from '@/components/destinations/DestBackdrop';
+import { DestGuide } from '@/components/destinations/DestGuide';
+import { DestList } from '@/components/destinations/DestList';
 import { FolderCarousel } from '@/components/destinations/FolderCarousel';
 import { FILTERS, applyFilter } from '@/components/destinations/filters';
 import { Aurora } from '@/components/ui/Aurora';
@@ -13,9 +16,8 @@ import styles from './Destinations.module.css';
 
 const ALL = getCities();
 const BLOBS = [
-  { top: 200, left: 'calc(50% - 450px)', size: 900, color: 'var(--sky-light)' },
-  { top: 460, left: 'calc(50% - 380px)', size: 420, color: 'var(--aurora-2)', delay: -8 },
-  { top: 420, left: 'calc(50% + 60px)', size: 420, color: 'var(--aurora-3)', delay: -14 },
+  { top: 460, left: 'calc(50% - 520px)', size: 420, color: 'var(--aurora-2)', delay: -8 },
+  { top: 420, left: 'calc(50% + 160px)', size: 420, color: 'var(--aurora-3)', delay: -14 },
 ];
 
 export default function Destinations() {
@@ -44,6 +46,7 @@ export default function Destinations() {
 
   return (
     <div className={styles.page}>
+      <DestBackdrop />
       <Aurora blobs={BLOBS} grain={false} />
       <section className={`container ${styles.content}`} aria-labelledby="dest-title">
         <SectionHead
@@ -105,6 +108,11 @@ export default function Destinations() {
           и&nbsp;визы&nbsp;— демо.
         </p>
       </section>
+
+      <div className={`container ${styles.more}`}>
+        <DestGuide />
+        <DestList cities={cities} />
+      </div>
     </div>
   );
 }

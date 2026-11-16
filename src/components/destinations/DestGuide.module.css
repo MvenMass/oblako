@@ -1,0 +1,96 @@
+.guide {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  grid-gap: 40px;
+  gap: 40px;
+  align-items: start;
+}
+
+.intro {
+  display: grid;
+  justify-items: start;
+  grid-gap: 16px;
+  gap: 16px;
+}
+
+.h2 {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: var(--ls-tight);
+}
+
+.lead {
+  color: var(--muted);
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+}
+
+.cta {
+  color: var(--pink);
+  font-weight: 700;
+}
+
+.groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-gap: 14px;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.group {
+  display: grid;
+  align-content: start;
+  grid-gap: 8px;
+  gap: 8px;
+  padding: 20px;
+  border: 1px solid var(--glass-border);
+  border-radius: 22px;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+}
+
+.group h3 {
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.group p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.links {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.links a {
+  color: var(--sky-ink);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .group {
+    background: var(--glass-bg-solid);
+  }
+}
+
+@media (max-width: 1023px) {
+  .guide {
+    grid-template-columns: minmax(0, 1fr);
+    grid-gap: 24px;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 639px) {
+  .groups {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

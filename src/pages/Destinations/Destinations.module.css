@@ -29,6 +29,14 @@
   margin: 4px;
 }
 
+.more {
+  position: relative;
+  display: grid;
+  grid-gap: 72px;
+  gap: 72px;
+  padding-bottom: 96px;
+}
+
 .status {
   color: var(--muted);
   font-size: 15px;

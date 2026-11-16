@@ -214,6 +214,8 @@
   --ach-pink: #c8146f;
   --ach-green: #3e8c7b;
   --ach-gold: #f08a24;
+  /* Направления: небо фона */
+  --dest-sky: linear-gradient(180deg, #bfe9fb 0, #d9f1fc 40%, #f4fafe 100%);
   /* Табло: статусы и радар */
   --board-delay: #f5b544;
   --board-radar: #7fd3f2;
