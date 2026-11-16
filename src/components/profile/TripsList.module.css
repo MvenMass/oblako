@@ -17,8 +17,16 @@
 }
 
 .add {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  padding: 0 16px;
+  border-radius: var(--r-btn);
+  background: var(--white);
+  box-shadow: var(--glass-shadow);
   color: var(--pink);
   font-weight: 700;
+  text-decoration: none;
 }
 
 .list {

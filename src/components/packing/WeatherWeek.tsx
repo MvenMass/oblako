@@ -51,7 +51,7 @@ export function WeatherWeek({ week, source }: { week: DayForecast[]; source: str
           const wet = d.kind === 'rain' || d.kind === 'storm';
           const day = DAYS[new Date(`${d.date}T12:00:00`).getDay()];
           return (
-            <li key={d.date} data-wet={wet || undefined}>
+            <li key={d.date} className={wet ? styles.wet : undefined}>
               <Glyph kind={d.kind} />
               <span className={styles.text}>
                 <span>{day}</span>

@@ -20,16 +20,16 @@
   justify-content: center;
   padding: 12px 8px;
   border-radius: 16px;
-  background: var(--glass-bg-strong);
+  background-color: var(--glass-bg-strong);
 }
 
-.week li[data-wet] {
-  background: var(--ink);
+.week li.wet {
+  background-color: var(--ink);
   color: var(--white);
 }
 
-.week li[data-wet] .text span,
-.week li[data-wet] .text b {
+.week li.wet .text span,
+.week li.wet .text b {
   color: var(--white);
 }
 
@@ -43,9 +43,9 @@
 }
 
 .text span {
+  color: var(--muted);
   font-size: 12px;
   font-weight: 700;
-  opacity: 0.8;
 }
 
 .text b {
