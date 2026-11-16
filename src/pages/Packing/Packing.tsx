@@ -52,7 +52,7 @@ export default function Packing() {
 
 function PackingView({ city }: { city: City }) {
   const reduced = useReducedMotion();
-  const phone = useMediaQuery('(max-width: 767px)');
+  const compact = useMediaQuery('(max-width: 1023px)');
   const quiz = useUserStore((s) => s.quiz.answers);
   const packing = useUserStore((s) => s.packing);
   const setPacked = useUserStore((s) => s.setPacked);
@@ -118,7 +118,7 @@ function PackingView({ city }: { city: City }) {
           week={week}
           source={live ? 'прогноз Open‑Meteo' : 'нет прогноза — по климату месяца'}
         />
-        {phone ? <PackShelf {...sceneProps} /> : <PackScene {...sceneProps} />}
+        {compact ? <PackShelf {...sceneProps} /> : <PackScene {...sceneProps} />}
         <PackList packed={packed} onToggle={toggle} />
         {done === ITEMS.length && <Confetti reduced={reduced} />}
       </section>

@@ -6,6 +6,9 @@
 
 .case {
   position: relative;
+  justify-self: center;
+  width: 100%;
+  max-width: 560px;
   padding: 12px;
   border: 1px solid var(--glass-border);
   border-radius: 28px;

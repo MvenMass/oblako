@@ -23,10 +23,13 @@
   background: var(--glass-bg-strong);
 }
 
-.week li[data-wet],
+.week li[data-wet] {
+  background: var(--ink);
+  color: var(--white);
+}
+
 .week li[data-wet] .text span,
 .week li[data-wet] .text b {
-  background: var(--ink);
   color: var(--white);
 }
 

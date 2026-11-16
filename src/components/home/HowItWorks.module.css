@@ -1,5 +1,7 @@
 .section {
   position: relative;
+  /* Сцена 700 px масштабируется после замера — до него не даём ей раздвинуть страницу */
+  overflow-x: hidden;
   padding: 72px 0 104px;
 }
 
