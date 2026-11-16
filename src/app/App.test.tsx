@@ -66,6 +66,8 @@ describe('App layout', { timeout: 15000 }, () => {
     });
     fireEvent.click(screen.getByRole('button', { name: 'Подписаться' }));
     expect(screen.getByRole('button', { name: 'Готово ✓' })).toBeDisabled();
-    expect(screen.getByRole('status')).toHaveTextContent(/Демо/);
+    // Статусов два: офлайн-плашка (пустая) и подтверждение подписки
+    const statuses = screen.getAllByRole('status').map((s) => s.textContent ?? '');
+    expect(statuses.some((t) => /Демо/.test(t))).toBe(true);
   });
 });

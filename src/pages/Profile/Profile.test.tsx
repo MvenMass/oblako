@@ -55,7 +55,7 @@ describe('Profile', () => {
   it('shows an empty passport with a booking link', () => {
     renderProfile();
     fireEvent.click(screen.getByRole('button', { name: 'Открыть паспорт' }));
-    expect(screen.getByRole('link', { name: 'оформите бронь' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'Забронировать перелёт' })).toHaveAttribute(
       'href',
       '/booking',
     );

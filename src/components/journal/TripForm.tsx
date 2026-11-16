@@ -9,7 +9,13 @@ import styles from './TripForm.module.css';
 const today = () => new Date().toISOString().slice(0, 10);
 
 /** Новая поездка: город, дата, фото (в IndexedDB) и попробованные блюда */
-export function TripForm({ onAdded }: { onAdded: (id: string) => void }) {
+interface TripFormProps {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  onAdded: (id: string) => void;
+}
+
+export function TripForm({ open, onOpenChange, onAdded }: TripFormProps) {
   const addTrip = useUserStore((s) => s.addTrip);
   const [cityId, setCityId] = useState('istanbul');
   const [date, setDate] = useState(today);
@@ -41,13 +47,18 @@ export function TripForm({ onAdded }: { onAdded: (id: string) => void }) {
   };
 
   return (
-    <details className={styles.box}>
+    <details
+      className={styles.box}
+      open={open}
+      onToggle={(e) => onOpenChange(e.currentTarget.open)}
+    >
       <summary>Добавить поездку</summary>
       <form className={styles.form} onSubmit={submit}>
         <div className={styles.row}>
           <label className={styles.field}>
             <span>Город</span>
             <select
+              id="trip-city"
               value={cityId}
               onChange={(e) => {
                 setCityId(e.target.value);

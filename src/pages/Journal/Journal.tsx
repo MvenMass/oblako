@@ -6,6 +6,7 @@ import { TripForm } from '@/components/journal/TripForm';
 import { usePhotoUrls } from '@/components/journal/usePhotoUrls';
 import { Aurora } from '@/components/ui/Aurora';
 import { Button } from '@/components/ui/Button';
+import { EmptyState } from '@/components/ui/EmptyState';
 import { StoryViewer, type StorySlide } from '@/components/ui/StoryViewer';
 import { getCity } from '@/lib/cities';
 import {
@@ -32,6 +33,7 @@ export default function Journal() {
   const removeTrip = useUserStore((s) => s.removeTrip);
   const [now] = useState(() => Date.now());
   const [filter, setFilter] = useState<string>('all');
+  const [formOpen, setFormOpen] = useState(false);
   const [story, setStory] = useState<{ title: string; list: TripPhoto[]; start: number } | null>(
     null,
   );
@@ -105,7 +107,24 @@ export default function Journal() {
           />
         </section>
 
-        <TripForm onAdded={setFilter} />
+        {stored.length === 0 && (
+          <EmptyState
+            title="Добавьте первые фото"
+            text="Пока здесь только демо-поездка в Тбилиси. Свои снимки остаются в этом браузере."
+            action={
+              <Button
+                iconStart="plus"
+                onClick={() => {
+                  setFormOpen(true);
+                  requestAnimationFrame(() => document.getElementById('trip-city')?.focus());
+                }}
+              >
+                Добавить поездку
+              </Button>
+            }
+          />
+        )}
+        <TripForm open={formOpen} onOpenChange={setFormOpen} onAdded={setFilter} />
 
         <section className={styles.route} aria-labelledby="route-title">
           <div className={styles.routeText}>

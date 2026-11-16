@@ -71,3 +71,16 @@ describe('Packing', () => {
     expect(within(list).getByText('0/15')).toBeInTheDocument();
   });
 });
+
+describe('Packing without a trip', () => {
+  it('asks to choose a destination first', () => {
+    renderPacking('/packing');
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
+      'Сначала выберите направление',
+    );
+    expect(screen.getByRole('link', { name: 'Выбрать направление' })).toHaveAttribute(
+      'href',
+      '/destinations',
+    );
+  });
+});

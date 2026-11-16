@@ -105,8 +105,8 @@ export function Passport({ stamps, name, countries }: PassportProps) {
                   ))}
                   {!stamps.length && (
                     <p className={styles.empty}>
-                      Штампов пока нет&nbsp;— <Link to="/booking">оформите бронь</Link>,
-                      и&nbsp;здесь появится первый.
+                      Штампы появятся после первой брони.{' '}
+                      <Link to="/booking">Забронировать перелёт</Link>
                     </p>
                   )}
                 </div>

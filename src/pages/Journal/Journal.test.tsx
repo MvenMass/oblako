@@ -64,7 +64,8 @@ describe('Journal', () => {
 
   it('adds a trip with photos into IndexedDB and filters by it', async () => {
     renderJournal();
-    fireEvent.click(screen.getByText('Добавить поездку'));
+    fireEvent.click(screen.getByRole('button', { name: 'Добавить поездку' }));
+    expect(screen.getByRole('heading', { name: 'Добавьте первые фото' })).toBeInTheDocument();
     fireEvent.change(screen.getByLabelText('Город'), { target: { value: 'kazan' } });
     const files = [
       new File(['a'], 'b.jpg', { type: 'image/jpeg', lastModified: 2 }),

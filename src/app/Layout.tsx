@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { BottomNav } from '@/components/layout/BottomNav';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
+import { OfflineBar } from '@/components/layout/OfflineBar';
 import { PageTransition } from '@/components/layout/PageTransition';
 import { useReducedMotion } from '@/lib/motion';
 import { scrollToTop, useSmoothScroll } from '@/lib/scroll';
@@ -35,6 +36,7 @@ export function Layout() {
         Перейти к&nbsp;содержимому
       </a>
       <Header dark={dark} />
+      <OfflineBar />
       <main id="main" ref={mainRef} tabIndex={-1} className={styles.main}>
         <Suspense fallback={<div className={styles.fallback} />}>
           <Outlet />

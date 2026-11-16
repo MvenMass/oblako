@@ -6,6 +6,7 @@ import { PackShelf } from '@/components/packing/PackShelf';
 import { WeatherWeek } from '@/components/packing/WeatherWeek';
 import { Aurora } from '@/components/ui/Aurora';
 import { Button } from '@/components/ui/Button';
+import { EmptyState } from '@/components/ui/EmptyState';
 import { getForecast } from '@/lib/api/weather';
 import { getCity } from '@/lib/cities';
 import { MONTHS_FULL } from '@/lib/months';
@@ -15,24 +16,41 @@ import { plural } from '@/lib/plural';
 import { useAsync } from '@/lib/useAsync';
 import { usePageTitle } from '@/lib/usePageTitle';
 import { useUserStore } from '@/store/user';
+import type { City } from '@/types/city';
 import styles from './Packing.module.css';
 
-/** Город: ?city= → маршрут → подбор → Стамбул */
+/** Город: ?city= → маршрут → подбор; без них — пустое состояние */
 function usePackingCity() {
   const [params] = useSearchParams();
   const routeCity = useUserStore((s) => s.route?.cityId);
   const quizCity = useUserStore((s) => s.quiz.result);
   return (
-    getCity(params.get('city') ?? undefined) ??
-    getCity(routeCity) ??
-    getCity(quizCity ?? undefined) ??
-    getCity('istanbul')!
+    getCity(params.get('city') ?? undefined) ?? getCity(routeCity) ?? getCity(quizCity ?? undefined)
   );
 }
 
 export default function Packing() {
   const city = usePackingCity();
-  usePageTitle(`Сборы · ${city.name}`);
+  usePageTitle(city ? `Сборы · ${city.name}` : 'Сборы');
+  if (!city) {
+    return (
+      <div className={styles.page}>
+        <Aurora grain={false} />
+        <div className={`container ${styles.content}`}>
+          <EmptyState
+            level={1}
+            title="Сначала выберите направление"
+            text="Подскажем, что взять: по погоде на неделю и обычаям города."
+            action={<Button to="/destinations">Выбрать направление</Button>}
+          />
+        </div>
+      </div>
+    );
+  }
+  return <PackingView city={city} />;
+}
+
+function PackingView({ city }: { city: City }) {
   const reduced = useReducedMotion();
   const phone = useMediaQuery('(max-width: 767px)');
   const quiz = useUserStore((s) => s.quiz.answers);
